@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "FallGods.API.root",
+  "type": "java.lang.String",
+  "description": "FallGods API root"
+}]}

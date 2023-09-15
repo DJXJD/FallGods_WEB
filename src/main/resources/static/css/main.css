@@ -1,0 +1,65 @@
+@charset "ISO-8859-1";
+
+html, body {
+	min-height: 100vh;
+	margin: 0;
+}
+
+footer.hcontainer > div {
+	display: flex;
+	gap: 2.5rem;
+}
+
+.hcontainer {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+.vcontainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 100%;
+}
+
+.cg10 {
+	column-gap: 10px;
+}
+
+.rg10 {
+	row-gap: 10px;
+}
+
+.vocontainer {
+	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-gutter: stable;
+}
+
+.vocontainer thead {
+	position: sticky;
+	top: 0;
+	background-color: white;
+}
+
+.left {
+	text-align: left;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+.topright {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}

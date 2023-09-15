@@ -1,0 +1,19 @@
+@charset "ISO-8859-1";
+
+body {
+	background-color: #0f0f0f;
+	color: darkgray;
+}
+
+table[border], :enabled, .vocontainer thead {
+	background-color: #151515;
+	color: inherit;
+}
+
+a:link {
+	color: darkcyan;
+}
+
+a:visited {
+	color: darkslategray;
+}
