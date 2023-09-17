@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class RootController {
 	
 	public enum Theme {
-		LIGHT, DARK, HORNY
+		LIGHT, DARK
 	}
 
 	@ModelAttribute
