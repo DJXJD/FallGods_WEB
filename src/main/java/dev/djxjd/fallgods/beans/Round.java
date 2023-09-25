@@ -44,6 +44,8 @@ public class Round extends DBEntity<Round> {
 	private Minigame gameMode;
 	private Match match;
 	
+	private Player mvp;
+	
 	private Byte num;
 	private Duration duration;
 	private boolean finalRound;
