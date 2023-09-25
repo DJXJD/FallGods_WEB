@@ -22,6 +22,14 @@ $(() => {
 		});
 		$("#gmRow")[0].hidden = false;
 	}
+	$("#mvpSelection").change(function(){ 
+		let selectedValue = $(this).val();
+		let enabledMvp = $("#mvpEnable");
+		enabledMvp[0].disabled = selectedValue === "";
+		if(!enabledMvp.disabled){
+			enabledMvp.val(selectedValue);
+		}	
+	});
 	if ($(".pfrow")[0]) {
 		$("[id^='pf'][id$='cb']").each((i, e) => {
 			e.checked = $(`#pf${i}`).val() === "true";
