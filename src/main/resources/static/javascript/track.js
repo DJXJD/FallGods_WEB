@@ -24,7 +24,7 @@ $(() => {
 	}
 	if ($(".pfrow")[0]) {
 		$("[id^='pf'][id$='cb']").each((i, e) => {
-			e.checked = $(`#pf${i}`).val();
+			e.checked = $(`#pf${i}`).val() === "true";
 			$(e).change((event) => {
 				$(`#pf${i}`).val(event.target.checked);
 			});
