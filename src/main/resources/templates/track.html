@@ -135,16 +135,16 @@
 					<td><input type="checkbox" th:id="|pf${iStat.index}null|"></td>
 					<td hidden><input type="hidden" th:id="|pf${iStat.index}|" th:field="*{playersFinished[__${pf.key}__]}"></td>
 				</tr>				
-				<tr>
+				<tr id="mvprow" hidden>
 					<td><label>Round MVP:</label></td>
 					<td>
-						<select id="mvpSelection">
-							<option id="noMvp" value=""></option>
-							<option th:each="player : *{match.players}" th:value="${player}" th:text="${player.name}"></option>
+						<select id="mvpdd">
+							<option value="">N/A</option>
+							<option th:each="player : *{match.players}" th:value="${player.id}" th:text="${player.name}"></option>
 						</select>
-						<input id="mvpEnable" disabled type="hidden" th:field="*{mvp}">
 					</td>
-				</tr>		
+					<td hidden><input type="hidden" id="mvp" th:field="*{mvp.id}" disabled></td>
+				</tr>
 				<tr>
 					<td><label for="earlyFinalRound1">Early final round:</label></td>
 					<td><input type="checkbox" th:field="*{earlyFinalRound}"></td>

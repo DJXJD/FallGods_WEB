@@ -22,14 +22,6 @@ $(() => {
 		});
 		$("#gmRow")[0].hidden = false;
 	}
-	$("#mvpSelection").change(function(){ 
-		let selectedValue = $(this).val();
-		let enabledMvp = $("#mvpEnable");
-		enabledMvp[0].disabled = selectedValue === "";
-		if(!enabledMvp.disabled){
-			enabledMvp.val(selectedValue);
-		}	
-	});
 	if ($(".pfrow")[0]) {
 		$("[id^='pf'][id$='cb']").each((i, e) => {
 			e.checked = $(`#pf${i}`).val() === "true";
@@ -47,5 +39,12 @@ $(() => {
 		$(".pfrow").each((i, e) => {
 			e.hidden = false;
 		});
+	}
+	if ($("#mvprow")[0]) {
+		$("#mvpdd").change((e) => {
+			$("#mvp")[0].disabled = e.target.value === "";
+			$("#mvp").val(e.target.value);
+		});
+		$("#mvprow")[0].hidden = false;
 	}
 });
