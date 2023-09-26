@@ -125,7 +125,7 @@ public class TrackingController {
 			return "redirect:/track";
 		if (!oedt || newRound.getEndDateTime() == null) newRound.setEndDateTime(LocalDateTime.now());
 		Long rId = rService.addElement(newRound);
-		if (newRound.getPlayersFinished() != null)
+		if (rId != null && newRound.getPlayersFinished() != null)
 			newRound.getPlayersFinished().forEach((p, f) -> rService.putPlayerFinished(rId, p.getId(), f));
 		return "redirect:/track";
 	}
