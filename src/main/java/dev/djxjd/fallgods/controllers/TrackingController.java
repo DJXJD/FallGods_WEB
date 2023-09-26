@@ -2,8 +2,6 @@ package dev.djxjd.fallgods.controllers;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dev.djxjd.fallgods.beans.GameSession;
 import dev.djxjd.fallgods.beans.Match;
@@ -55,20 +52,13 @@ public class TrackingController {
 			if (!gs.getLastMatch().isFinished()) {
 				model.addAttribute("players", null);
 				model.addAttribute("minigames", mgService.getCollection());
-				if (!model.containsAttribute("newRound")) model.addAttribute("newRound", Round.builder()
+				model.addAttribute("newRound", Round.builder()
 						.match(gs.getLastMatch())
 						.playersFinished(gs.getLastMatch().getPlayers().stream().collect(Collectors.toMap(p -> p, p -> true)))
 						.build());
 			} else model.addAttribute("newMatch", Match.builder().group(group).session(gs).build());
 		} else model.addAttribute("newMatch", Match.builder().group(group).build());
 		return "track";
-	}
-	
-	@GetMapping("/undo")
-	public String undo(RedirectAttributes ra) {
-		List<Player> pList = Arrays.asList(pService.getCollection());
-		ra.addFlashAttribute("newRound", Round.builder().playersFinished(pList.stream().collect(Collectors.toMap(p -> p, p -> false))).build());
-		return "redirect:/track";
 	}
 	
 	@GetMapping("/setGroup")
