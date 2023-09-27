@@ -14,7 +14,7 @@
 	<h2>Who do you (mainly) want to track for?</h2>
 	<form class="vcontainer rg10" action="/track/setGroup" method="post" th:object="${group}">
 		<select th:each="pId, iStat : *{playerIds}" th:field="*{playerIds[__${iStat.index}__]}">
-			<option value=""></option>
+			<option value="">N/A</option>
 			<option th:each="player : ${players}" th:text="${player.name}" th:value="${player.id}">
 		</select>
 		<p><input type="submit" value="Set Group"></p>

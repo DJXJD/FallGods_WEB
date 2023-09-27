@@ -85,7 +85,7 @@
 						<td><label th:for="'player' + ${iStat.count}" th:text="|Player ${iStat.count}:|"></label></td>
 						<td>
 							<select th:id="'player' + ${iStat.count}" th:field="*{group.playerIds[__${iStat.index}__]}">
-								<option value=""></option>
+								<option value="">N/A</option>
 								<option th:each="player : ${players}" th:text="${player.name}" th:value="${player.id}">
 							</select>
 						</td>
