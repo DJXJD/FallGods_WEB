@@ -20,7 +20,7 @@ import lombok.experimental.SuperBuilder;
 		scope = Player.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "id")
-public class Player extends DBEntity<Player> {
+public class Player extends DBEntity<Player> implements Comparable<Player> {
 	
 	private String name;
 	
@@ -37,6 +37,11 @@ public class Player extends DBEntity<Player> {
 	public Player(String toString) {
 		super(toString);
 		name = Pattern.compile("name=(\\w*)").matcher(toString).results().findFirst().orElseThrow().group(1);
+	}
+
+	@Override
+	public int compareTo(Player o) {
+		return name.compareTo(o.name);
 	}
 	
 }
