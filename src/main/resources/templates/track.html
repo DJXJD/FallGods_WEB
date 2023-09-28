@@ -115,7 +115,7 @@
 					<td><input id="edt" type="datetime-local" th:field="*{endDateTime}" required disabled></td>
 				</tr>
 				<tr id="gmRow" hidden>
-					<td><label for="gameMode.id">Game mode:</label></td>
+					<td><label for="gmBox">Game mode:</label></td>
 					<td>
 						<input list="gameModes" id="gmBox" required></input>
 						<datalist id="gameModes">
@@ -136,7 +136,7 @@
 					<td hidden><input type="hidden" th:id="|pf${iStat.index}|" th:field="*{playersFinished[__${pf.key}__]}"></td>
 				</tr>				
 				<tr id="mvprow" hidden>
-					<td><label>Round MVP:</label></td>
+					<td><label for="mvpdd">Round MVP:</label></td>
 					<td>
 						<select id="mvpdd">
 							<option value="">N/A</option>
