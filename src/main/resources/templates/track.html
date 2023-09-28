@@ -47,8 +47,9 @@
 							<th>Start Time
 							<th>Duration
 							<th>Rounds
-							<th>Last Round
-							<th>Last Round Losers
+							<th>Last Round (LR)
+							<th>LR Losers
+							<th>LR MVP
 							<th>Subs
 						</tr>
 					</thead>
@@ -59,8 +60,9 @@
 							<td th:text="*{#temporals.format(startDateTime.toLocalTime)}">
 							<td th:text="*{#strings.substring(duration.withNanos(0), 2)}">
 							<td th:text="*{rounds.size}">
-							<td th:text="*{rounds.size} > 0 ? *{rounds[rounds.size - 1].gameMode.friendlyName}">
-							<td th:text="*{rounds.size} > 0 ? *{rounds[rounds.size - 1].losers}">
+							<td th:text="*{rounds.size} > 0 ? *{lastRound.gameMode.friendlyName}">
+							<td th:text="*{rounds.size} > 0 ? *{lastRound.losers}">
+							<td th:text="*{rounds.size} > 0 and *{lastRound.mvp} != null ? *{lastRound.mvp.name}">
 							<td th:text="*{subs}">
 						</tr>
 					</tbody>
