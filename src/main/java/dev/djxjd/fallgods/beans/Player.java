@@ -34,6 +34,12 @@ public class Player extends DBEntity<Player> implements Comparable<Player> {
 	@ToString.Exclude
 	private Set<Match> matches;
 	
+	@Singular
+	@JsonIgnore
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	private List<Round> mvpRounds;
+	
 	public Player(String toString) {
 		super(toString);
 		Pattern.compile("name=(\\w*)").matcher(toString).results().findFirst().ifPresent(mr -> name = mr.group(1));
