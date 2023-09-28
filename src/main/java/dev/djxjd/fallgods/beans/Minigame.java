@@ -6,17 +6,12 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
-import lombok.experimental.Accessors;
 import lombok.experimental.SuperBuilder;
 
-@Getter
-@Setter
-@Accessors(chain = true)
-@ToString(callSuper = true)
+@Data
 @NoArgsConstructor
 @SuperBuilder
 @JsonIdentityInfo(

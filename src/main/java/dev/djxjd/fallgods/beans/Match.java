@@ -11,18 +11,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import dev.djxjd.fallgods.beans.wrappers.Group;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.Singular;
 import lombok.ToString;
-import lombok.experimental.Accessors;
 import lombok.experimental.SuperBuilder;
 
-@Getter
-@Setter
-@Accessors(chain = true)
-@ToString(callSuper = true)
+@Data
 @NoArgsConstructor
 @SuperBuilder
 @JsonIdentityInfo(

@@ -107,7 +107,7 @@ public class TrackingController {
 			@RequestParam(defaultValue = "false") boolean oedt) {
 		GameSession gs = gsService.getLatestWithMainPlayers(group.toSet());
 		if (newRound.getMatch().getRounds() == null) newRound.getMatch().setRounds(new ArrayList<>());
-		if (!gs.getLastMatch().equals(newRound.getMatch()) || gs.getLastMatch().isFinished() || newRound.getGameMode().getId() == null ||
+		if (!gs.getLastMatch().getId().equals(newRound.getMatch().getId()) || gs.getLastMatch().isFinished() || newRound.getGameMode().getId() == null ||
 				gs.getLastMatch().getRounds().size() != newRound.getMatch().getRounds().size() || newRound.getEndDateTime() != null && (
 				newRound.getEndDateTime().isBefore(gs.getLastMatch().getStartDateTime()) || !gs.getLastMatch().getRounds().isEmpty() &&
 				newRound.getEndDateTime().isBefore(gs.getLastMatch().getLastRound().getEndDateTime()) ||
