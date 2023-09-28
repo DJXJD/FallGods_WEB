@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
@@ -25,6 +26,7 @@ public class Minigame extends DBEntity<Minigame> {
 	
 	@JsonIgnore
 	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	private List<Round> rounds;
 	
 	public String getFriendlyName() {

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.Singular;
 import lombok.ToString;
@@ -37,6 +38,7 @@ public class Round extends DBEntity<Round> {
 	private String notes;
 	
 	private Minigame gameMode;
+	@EqualsAndHashCode.Exclude
 	private Match match;
 	
 	private Player mvp;

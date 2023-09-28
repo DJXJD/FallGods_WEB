@@ -1,5 +1,6 @@
 package dev.djxjd.fallgods.beans;
 
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -8,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.Singular;
 import lombok.ToString;
@@ -27,11 +29,13 @@ public class Player extends DBEntity<Player> implements Comparable<Player> {
 	@Singular
 	@JsonIgnore
 	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	private Set<GameSession> sessions;
 	
 	@Singular
 	@JsonIgnore
 	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	private Set<Match> matches;
 	
 	@Singular

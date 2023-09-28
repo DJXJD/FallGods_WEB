@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import dev.djxjd.fallgods.beans.wrappers.Group;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.Singular;
 import lombok.ToString;
@@ -33,6 +34,7 @@ public class Match extends DBEntity<Match> {
 	private SortedSet<Player> players;
 	
 	@JsonIgnore
+	@EqualsAndHashCode.Exclude
 	private Group group;
 	
 	@Singular
@@ -40,6 +42,7 @@ public class Match extends DBEntity<Match> {
 	private List<Round> rounds;
 	
 	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	private GameSession session;
 	
 	private boolean finished;
