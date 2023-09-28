@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import dev.djxjd.fallgods.beans.Player;
@@ -15,13 +16,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Group {
 	
-	private List<Long> playerIds = new ArrayList<>(Collections.nCopies(4, null));
+	private List<Player> players = new ArrayList<>(Collections.nCopies(4, null));
 	
-	public Set<Player> toSet() {
-		return playerIds.stream()
+	public SortedSet<Player> toSet() {
+		return players.stream()
 				.filter(Objects::nonNull)
-				.map(pId -> Player.builder().id(pId).build())
-				.collect(Collectors.toSet());
+				.collect(Collectors.toCollection(TreeSet::new));
 	}
 
 }

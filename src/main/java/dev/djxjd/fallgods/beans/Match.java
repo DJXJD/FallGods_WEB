@@ -3,7 +3,7 @@ package dev.djxjd.fallgods.beans;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
+import java.util.SortedSet;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -30,7 +30,7 @@ public class Match extends DBEntity<Match> {
 	
 	@Singular
 	@ToString.Exclude
-	private Set<Player> players;
+	private SortedSet<Player> players;
 	
 	@JsonIgnore
 	private Group group;

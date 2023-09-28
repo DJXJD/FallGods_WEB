@@ -2,7 +2,7 @@ package dev.djxjd.fallgods.beans;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.Map;
+import java.util.SortedMap;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -31,7 +31,7 @@ public class Round extends DBEntity<Round> {
 	
 	@Singular("playerFinished")
 	@ToString.Exclude
-	private Map<Player, Boolean> playersFinished; // ensure null values work (mostly client side stuff)
+	private SortedMap<Player, Boolean> playersFinished; // ensure null values work (mostly client side stuff)
 	
 	private boolean earlyFinalRound;
 	private String notes;
