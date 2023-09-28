@@ -14,7 +14,7 @@ public abstract class DBEntity<T extends DBEntity<T>> {
 	private Long id;
 	
 	protected DBEntity(String toString) {
-		id = Long.valueOf(Pattern.compile("id=(\\d*)").matcher(toString).results().findFirst().orElseThrow().group(1));
+		Pattern.compile("id=(\\d*)").matcher(toString).results().findFirst().ifPresent(mr -> id = Long.valueOf(mr.group(1)));
 	}
 	
 	@SuppressWarnings("unchecked")

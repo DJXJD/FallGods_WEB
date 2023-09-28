@@ -36,7 +36,7 @@ public class Player extends DBEntity<Player> implements Comparable<Player> {
 	
 	public Player(String toString) {
 		super(toString);
-		name = Pattern.compile("name=(\\w*)").matcher(toString).results().findFirst().orElseThrow().group(1);
+		Pattern.compile("name=(\\w*)").matcher(toString).results().findFirst().ifPresent(mr -> name = mr.group(1));
 	}
 
 	@Override
