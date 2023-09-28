@@ -5,14 +5,18 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dev.djxjd.fallgods.beans.GameSession;
 import dev.djxjd.fallgods.beans.Match;
@@ -37,6 +41,11 @@ public class TrackingController {
 	private DBEntityService<Minigame> mgService;
 	private RoundService rService;
 	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(Player.class, new StringTrimmerEditor(true));
+	}
+	
 	@ModelAttribute
 	public Group initGroup() {
 		return new Group();
@@ -52,13 +61,24 @@ public class TrackingController {
 			if (!gs.getLastMatch().isFinished()) {
 				model.addAttribute("players", null);
 				model.addAttribute("minigames", mgService.getCollection());
-				model.addAttribute("newRound", Round.builder()
+				if (!model.containsAttribute("newRound")) model.addAttribute("newRound", Round.builder()
 						.match(gs.getLastMatch())
 						.playersFinished(gs.getLastMatch().getPlayers().stream().collect(Collectors.toMap(p -> p, p -> true)))
 						.build());
 			} else model.addAttribute("newMatch", Match.builder().group(group).session(gs).build());
 		} else model.addAttribute("newMatch", Match.builder().group(group).build());
 		return "track";
+	}
+	
+	@PostMapping("/undo")
+	public String undo(@ModelAttribute(binding = false) Group group, @RequestParam(required = false) Long latestRoundId, RedirectAttributes ra) {
+		if (latestRoundId == null) return "redirect:/track";
+		GameSession gs = gsService.getLatestWithMainPlayers(group.toSet());
+		if (!gs.getLastMatch().getRounds().get(gs.getLastMatch().getRounds().size() - 2).getId().equals(latestRoundId)) return "redirect:/track";
+		Round roundToDelete = rService.getElement(latestRoundId);
+		rService.deleteElement(latestRoundId);
+		ra.addFlashAttribute("newRound", roundToDelete);
+		return "redirect:/track";
 	}
 	
 	@GetMapping("/setGroup")

@@ -104,60 +104,66 @@
 				</form>
 			</th:block>
 		</th:block>
-		<form class="vcontainer" action="/track/addRound" method="post" th:if="${newRound}" th:object="${newRound}">
-			<table class="center">
-				<tr id="oedtRow" hidden>
-					<td><label for="oedt">Override EndDateTime:</label></td>
-					<td><input id="oedt" type="checkbox" name="oedt"></td>
-				</tr>
-				<tr id="edtRow" hidden>
-					<td><label for="edt">EndDateTime:</label></td>
-					<td><input id="edt" type="datetime-local" th:field="*{endDateTime}" required disabled></td>
-				</tr>
-				<tr id="gmRow" hidden>
-					<td><label for="gmBox">Game mode:</label></td>
-					<td>
-						<input list="gameModes" id="gmBox" required></input>
-						<datalist id="gameModes">
-							<option th:each="minigame : ${minigames}" th:text="${minigame.friendlyName}" th:data-value="${minigame.id}">
-						</datalist>
-						<input type="hidden" id="gmId" th:field="*{gameMode.id}">
-					</td>
-				</tr>
-				<tr>
-					<td><label for="teamQualified1">Team qualified:</label></td>
-					<td><input type="checkbox" th:field="*{teamQualified}"></td>
-				</tr>
-				<tr class="pfrow" th:each="pf, iStat : *{playersFinished}" hidden>
-					<td><label th:for="|pf${iStat.index}cb|" th:text="|${pf.key.name} finished:|"></label></td>
-					<td><input type="checkbox" th:id="|pf${iStat.index}cb|"></td>
-					<td><label th:for="|pf${iStat.index}null|">Unknown:</label></td>
-					<td><input type="checkbox" th:id="|pf${iStat.index}null|"></td>
-					<td hidden><input type="hidden" th:id="|pf${iStat.index}|" th:field="*{playersFinished[__${pf.key}__]}"></td>
-				</tr>				
-				<tr id="mvprow" hidden>
-					<td><label for="mvpdd">Round MVP:</label></td>
-					<td>
-						<select id="mvpdd">
-							<option value="">N/A</option>
-							<option th:each="player : *{match.players}" th:value="${player.id}" th:text="${player.name}"></option>
-						</select>
-					</td>
-					<td hidden><input type="hidden" id="mvp" th:field="*{mvp.id}" disabled></td>
-				</tr>
-				<tr>
-					<td><label for="earlyFinalRound1">Early final round:</label></td>
-					<td><input type="checkbox" th:field="*{earlyFinalRound}"></td>
-				</tr>
-				<tr>
-					<td><label for="notes">Notes:</label></td>
-					<td><textarea th:field="*{notes}"></textarea></td>
-				</tr>
-			</table>
-			<input type="hidden" th:field="*{match.id}">
-			<input type="hidden" th:each="round, iStat : *{match.rounds}" th:field="*{match.rounds[__${iStat.index}__]}">
-			<p><input type="submit" value="Add Round"></p>
-		</form>
+		<th:block th:if="${newRound}">
+			<form class="vcontainer" action="/track/addRound" method="post" th:object="${newRound}">
+				<table class="center">
+					<tr id="oedtRow" hidden>
+						<td><label for="oedt">Override EndDateTime:</label></td>
+						<td><input id="oedt" type="checkbox" name="oedt"></td>
+					</tr>
+					<tr id="edtRow" hidden>
+						<td><label for="edt">EndDateTime:</label></td>
+						<td><input id="edt" type="datetime-local" th:field="*{endDateTime}" required disabled></td>
+					</tr>
+					<tr id="gmRow" hidden>
+						<td><label for="gmBox">Game mode:</label></td>
+						<td>
+							<input list="gameModes" id="gmBox" required></input>
+							<datalist id="gameModes">
+								<option th:each="minigame : ${minigames}" th:text="${minigame.friendlyName}" th:data-value="${minigame.id}">
+							</datalist>
+							<input type="hidden" id="gmId" th:field="*{gameMode.id}">
+						</td>
+					</tr>
+					<tr>
+						<td><label for="teamQualified1">Team qualified:</label></td>
+						<td><input type="checkbox" th:field="*{teamQualified}"></td>
+					</tr>
+					<tr class="pfrow" th:each="pf, iStat : *{playersFinished}" hidden>
+						<td><label th:for="|pf${iStat.index}cb|" th:text="|${pf.key.name} finished:|"></label></td>
+						<td><input type="checkbox" th:id="|pf${iStat.index}cb|"></td>
+						<td><label th:for="|pf${iStat.index}null|">Unknown:</label></td>
+						<td><input type="checkbox" th:id="|pf${iStat.index}null|"></td>
+						<td hidden><input type="hidden" th:id="|pf${iStat.index}|" th:field="*{playersFinished[__${pf.key}__]}"></td>
+					</tr>				
+					<tr>
+						<td><label for="mvpdd">Round MVP:</label></td>
+						<td>
+							<select id="mvpdd" th:field="*{mvp}">
+								<option value="">N/A</option>
+								<option th:each="player : *{match.players}" th:text="${player.name}" th:value="${player}"></option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="earlyFinalRound1">Early final round:</label></td>
+						<td><input type="checkbox" th:field="*{earlyFinalRound}"></td>
+					</tr>
+					<tr>
+						<td><label for="notes">Notes:</label></td>
+						<td><textarea th:field="*{notes}"></textarea></td>
+					</tr>
+				</table>
+				<input type="hidden" th:field="*{match.id}">
+				<input type="hidden" th:each="round, iStat : *{match.rounds}" th:field="*{match.rounds[__${iStat.index}__]}">
+				<p><input type="submit" value="Add Round"></p>
+			</form>
+			<h2>Or</h2>
+			<form action="/track/undo" method="post">
+				<input type="hidden" th:if="${gameSession.lastMatch.lastRound}" name="lastRoundId" th:value="${gameSession.lastMatch.lastRound.id}">
+				<input type="submit" value="Undo previous round submission in match">
+			</form>
+		</th:block>
 	</div>
 </main>
 <footer class="hcontainer">

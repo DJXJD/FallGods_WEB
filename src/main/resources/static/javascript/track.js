@@ -40,11 +40,4 @@ $(() => {
 			e.hidden = false;
 		});
 	}
-	if ($("#mvprow")[0]) {
-		$("#mvpdd").change((e) => {
-			$("#mvp")[0].disabled = e.target.value === "";
-			$("#mvp").val(e.target.value);
-		});
-		$("#mvprow")[0].hidden = false;
-	}
 });
