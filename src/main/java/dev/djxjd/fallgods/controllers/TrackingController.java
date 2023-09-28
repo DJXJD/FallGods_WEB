@@ -55,6 +55,7 @@ public class TrackingController {
 	public String getTrackingRoot(@ModelAttribute(binding = false) Group group, Model model) {
 		if (group.toSet().isEmpty()) return "redirect:/track/setGroup";
 		GameSession gs = gsService.getLatestWithMainPlayers(group.toSet());
+		model.addAttribute("gsHash", gs != null ? gs.hashCode() : 0);
 		model.addAttribute("players", pService.getCollection());
 		if (gs != null && !gs.isFinished()) {
 			model.addAttribute("gameSession", gs);
@@ -70,13 +71,19 @@ public class TrackingController {
 		return "track";
 	}
 	
-	@PostMapping("/undo")
-	public String undo(@ModelAttribute(binding = false) Group group, @RequestParam(required = false) Long latestRoundId, RedirectAttributes ra) {
-		if (latestRoundId == null) return "redirect:/track";
+	@GetMapping("/test")
+	public String test(@ModelAttribute(binding = false) Group group) {
 		GameSession gs = gsService.getLatestWithMainPlayers(group.toSet());
-		if (!gs.getLastMatch().getRounds().get(gs.getLastMatch().getRounds().size() - 2).getId().equals(latestRoundId)) return "redirect:/track";
-		Round roundToDelete = rService.getElement(latestRoundId);
-		rService.deleteElement(latestRoundId);
+		System.out.println(gs.hashCode());
+		return "redirect:/track";
+	}
+	
+	@PostMapping("/undo")
+	public String undo(@ModelAttribute(binding = false) Group group, @RequestParam int gsHash, RedirectAttributes ra) {
+		GameSession gs = gsService.getLatestWithMainPlayers(group.toSet());
+		if (gs != null && gs.hashCode() != gsHash || gs == null && gsHash != 0) return "redirect:/track";
+		Round roundToDelete = rService.getElement(gs.getLastMatch().getLastRound().getId());
+		rService.deleteElement(roundToDelete.getId());
 		ra.addFlashAttribute("newRound", roundToDelete);
 		return "redirect:/track";
 	}

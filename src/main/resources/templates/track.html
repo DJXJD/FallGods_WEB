@@ -160,10 +160,9 @@
 				<input type="hidden" th:each="round, iStat : *{match.rounds}" th:field="*{match.rounds[__${iStat.index}__]}">
 				<p><input type="submit" value="Add Round"></p>
 			</form>
-			<h2>Or</h2>
 			<form action="/track/undo" method="post">
-				<input type="hidden" th:if="${gameSession.lastMatch.lastRound}" name="lastRoundId" th:value="${gameSession.lastMatch.lastRound.id}">
-				<input type="submit" value="Undo previous round submission in match">
+				<input type="hidden" name="gsHash" th:value="${gsHash}">
+				<input type="submit" value="Undo">
 			</form>
 		</th:block>
 	</div>
