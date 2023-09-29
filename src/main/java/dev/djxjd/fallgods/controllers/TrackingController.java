@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,7 @@ public class TrackingController {
 	private DBEntityService<Match> mService;
 	private DBEntityService<Minigame> mgService;
 	private RoundService rService;
+    private final SimpMessagingTemplate messagingTemplate;
 	
 	@ModelAttribute
 	public Group initGroup() {
@@ -117,6 +119,7 @@ public class TrackingController {
 		Long rId = rService.addElement(newRound);
 		if (rId != null && newRound.getPlayersFinished() != null)
 			newRound.getPlayersFinished().forEach((p, f) -> rService.putPlayerFinished(rId, p.getId(), f));
+		 messagingTemplate.convertAndSend("/topic/newRound", "New round added!");
 		return "redirect:/track";
 	}
 
