@@ -19,7 +19,7 @@ import lombok.experimental.SuperBuilder;
 		scope = Minigame.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "id")
-public class Minigame extends DBEntity<Minigame> {
+public class Minigame extends RESTEntity<Minigame> {
 	
 	private String name;
 	private GameType type;

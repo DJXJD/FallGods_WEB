@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import dev.djxjd.fallgods.beans.Round;
 
 @Service
-public class RoundServiceImpl extends DBEntityServiceImpl<Round> implements RoundService {
+public class RoundServiceImpl extends RESTEntityServiceImpl<Round> implements RoundService {
 
 	public RoundServiceImpl(@Value("${FallGods.API.root}") String apiRoot, RestTemplateBuilder builder) {
 		super(Round.class, Round[].class, builder.rootUri(apiRoot + "/rounds").build());

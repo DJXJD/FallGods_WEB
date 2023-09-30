@@ -24,7 +24,7 @@ import dev.djxjd.fallgods.beans.Minigame;
 import dev.djxjd.fallgods.beans.Player;
 import dev.djxjd.fallgods.beans.Round;
 import dev.djxjd.fallgods.beans.wrappers.Group;
-import dev.djxjd.fallgods.services.DBEntityService;
+import dev.djxjd.fallgods.services.RESTEntityService;
 import dev.djxjd.fallgods.services.GameSessionService;
 import dev.djxjd.fallgods.services.RoundService;
 import lombok.AllArgsConstructor;
@@ -35,10 +35,10 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class TrackingController {
 	
-	private DBEntityService<Player> pService;
+	private RESTEntityService<Player> pService;
 	private GameSessionService gsService;
-	private DBEntityService<Match> mService;
-	private DBEntityService<Minigame> mgService;
+	private RESTEntityService<Match> mService;
+	private RESTEntityService<Minigame> mgService;
 	private RoundService rService;
 	
 	@InitBinder

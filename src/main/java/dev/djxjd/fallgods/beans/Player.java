@@ -22,7 +22,7 @@ import lombok.experimental.SuperBuilder;
 		scope = Player.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "id")
-public class Player extends DBEntity<Player> implements Comparable<Player> {
+public class Player extends RESTEntity<Player> implements Comparable<Player> {
 	
 	private String name;
 	

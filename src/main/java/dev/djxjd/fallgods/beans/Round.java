@@ -24,7 +24,7 @@ import lombok.experimental.SuperBuilder;
 		scope = Round.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "id")
-public class Round extends DBEntity<Round> {
+public class Round extends RESTEntity<Round> {
 	
 	private LocalDateTime endDateTime;
 	@Builder.Default

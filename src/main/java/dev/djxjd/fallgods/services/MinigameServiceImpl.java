@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import dev.djxjd.fallgods.beans.Minigame;
 
 @Service
-public class MinigameServiceImpl extends DBEntityServiceImpl<Minigame> implements MinigameService {
+public class MinigameServiceImpl extends RESTEntityServiceImpl<Minigame> implements MinigameService {
 	
 	public MinigameServiceImpl(@Value("${FallGods.API.root}") String apiRoot, RestTemplateBuilder builder) {
 		super(Minigame.class, Minigame[].class, builder.rootUri(apiRoot + "/minigames").build());

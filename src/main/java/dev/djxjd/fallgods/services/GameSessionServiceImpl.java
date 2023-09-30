@@ -10,7 +10,7 @@ import dev.djxjd.fallgods.beans.GameSession;
 import dev.djxjd.fallgods.beans.Player;
 
 @Service
-public class GameSessionServiceImpl extends DBEntityServiceImpl<GameSession> implements GameSessionService {
+public class GameSessionServiceImpl extends RESTEntityServiceImpl<GameSession> implements GameSessionService {
 	
 	public GameSessionServiceImpl(@Value("${FallGods.API.root}") String apiRoot, RestTemplateBuilder builder) {
 		super(GameSession.class, GameSession[].class, builder.rootUri(apiRoot + "/sessions").build());

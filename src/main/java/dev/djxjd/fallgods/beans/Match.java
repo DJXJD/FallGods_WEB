@@ -25,7 +25,7 @@ import lombok.experimental.SuperBuilder;
 		scope = Match.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "id")
-public class Match extends DBEntity<Match> {
+public class Match extends RESTEntity<Match> {
 	
 	private LocalDateTime startDateTime;
 	

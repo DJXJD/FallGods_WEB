@@ -21,7 +21,7 @@ import lombok.experimental.SuperBuilder;
 		scope = GameSession.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "id")
-public class GameSession extends DBEntity<GameSession> {
+public class GameSession extends RESTEntity<GameSession> {
 	
 	@Singular
 	@ToString.Exclude

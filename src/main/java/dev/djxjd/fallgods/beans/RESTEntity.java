@@ -9,11 +9,11 @@ import lombok.experimental.SuperBuilder;
 @Data
 @NoArgsConstructor
 @SuperBuilder
-public abstract class DBEntity<T extends DBEntity<T>> {
+public abstract class RESTEntity<T extends RESTEntity<T>> {
 	
 	private Long id;
 	
-	protected DBEntity(String toString) {
+	protected RESTEntity(String toString) {
 		Pattern.compile("id=(\\d*)").matcher(toString).results().findFirst().ifPresent(mr -> id = Long.valueOf(mr.group(1)));
 	}
 	
