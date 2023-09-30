@@ -32,7 +32,7 @@
 				<div class="hcontainer cg10">
 					<label for="mgType">Type:</label>
 					<select id="mgType" th:field="*{type}" required>
-						<option value=""></option>
+						<option value="">N/A</option>
 						<option th:each="gameType : ${gameTypes}" th:text="${gameType}" th:value="${gameType}"></option>
 					</select>
 				</div>

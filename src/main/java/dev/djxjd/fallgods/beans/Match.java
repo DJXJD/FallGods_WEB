@@ -3,7 +3,7 @@ package dev.djxjd.fallgods.beans;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
+import java.util.SortedSet;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -11,33 +11,30 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import dev.djxjd.fallgods.beans.wrappers.Group;
-import lombok.Getter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.Singular;
 import lombok.ToString;
-import lombok.experimental.Accessors;
 import lombok.experimental.SuperBuilder;
 
-@Getter
-@Setter
-@Accessors(chain = true)
-@ToString(callSuper = true)
+@Data
 @NoArgsConstructor
 @SuperBuilder
 @JsonIdentityInfo(
 		scope = Match.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "id")
-public class Match extends DBEntity<Match> {
+public class Match extends RESTEntity<Match> {
 	
 	private LocalDateTime startDateTime;
 	
 	@Singular
 	@ToString.Exclude
-	private Set<Player> players;
+	private SortedSet<Player> players;
 	
 	@JsonIgnore
+	@EqualsAndHashCode.Exclude
 	private Group group;
 	
 	@Singular
@@ -45,6 +42,7 @@ public class Match extends DBEntity<Match> {
 	private List<Round> rounds;
 	
 	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	private GameSession session;
 	
 	private boolean finished;
@@ -58,11 +56,11 @@ public class Match extends DBEntity<Match> {
 	@JsonIgnore
 	public String getSubs() {
 		String subs = "";
-		String in = players.stream()
+		String in = players.stream().sorted()
 				.filter(p -> !session.getMainPlayers().contains(p))
 				.map(Player::getName)
 				.collect(Collectors.joining(", ", "In: ", ";"));
-		String out = session.getMainPlayers().stream()
+		String out = session.getMainPlayers().stream().sorted()
 				.filter(mp -> !players.contains(mp))
 				.map(Player::getName)
 				.collect(Collectors.joining(", ", "Out: ", ";"));

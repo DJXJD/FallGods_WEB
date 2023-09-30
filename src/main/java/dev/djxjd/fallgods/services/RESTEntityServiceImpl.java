@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.web.client.RestTemplate;
 
-import dev.djxjd.fallgods.beans.DBEntity;
+import dev.djxjd.fallgods.beans.RESTEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public abstract class DBEntityServiceImpl<T extends DBEntity<T>> implements DBEntityService<T> {
+public abstract class RESTEntityServiceImpl<T extends RESTEntity<T>> implements RESTEntityService<T> {
 
 	private Class<T> clazz;
 	private Class<T[]> clazzArray;
