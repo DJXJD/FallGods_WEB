@@ -53,8 +53,8 @@ public class TrackingController {
 	
 	@GetMapping
 	public String getTrackingRoot(@ModelAttribute(binding = false) Group group, Model model) {
-		if (group.toSet().isEmpty()) return "redirect:/track/setGroup";
-		GameSession gs = gsService.getLatestWithMainPlayers(group.toSet());
+		if (group.toSortedSet().isEmpty()) return "redirect:/track/setGroup";
+		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
 		model.addAttribute("gsHash", gs != null ? gs.hashCode() : 0);
 		model.addAttribute("players", pService.getCollection());
 		if (gs != null && !gs.isFinished()) {
@@ -66,26 +66,11 @@ public class TrackingController {
 						.match(gs.getLastMatch())
 						.playersFinished(gs.getLastMatch().getPlayers().stream().collect(Collectors.toMap(p -> p, p -> true)))
 						.build());
-			} else model.addAttribute("newMatch", Match.builder().group(group).session(gs).build());
-		} else model.addAttribute("newMatch", Match.builder().group(group).build());
+			} else if (!model.containsAttribute("newMatch"))
+				model.addAttribute("newMatch", Match.builder().group(group).session(gs).build());
+		} else if (!model.containsAttribute("newMatch"))
+			model.addAttribute("newMatch", Match.builder().group(group).build());
 		return "track";
-	}
-	
-	@GetMapping("/test")
-	public String test(@ModelAttribute(binding = false) Group group) {
-		GameSession gs = gsService.getLatestWithMainPlayers(group.toSet());
-		System.out.println(gs.hashCode());
-		return "redirect:/track";
-	}
-	
-	@PostMapping("/undo")
-	public String undo(@ModelAttribute(binding = false) Group group, @RequestParam int gsHash, RedirectAttributes ra) {
-		GameSession gs = gsService.getLatestWithMainPlayers(group.toSet());
-		if (gs != null && gs.hashCode() != gsHash || gs == null && gsHash != 0) return "redirect:/track";
-		Round roundToDelete = rService.getElement(gs.getLastMatch().getLastRound().getId());
-		rService.deleteElement(roundToDelete.getId());
-		ra.addFlashAttribute("newRound", roundToDelete);
-		return "redirect:/track";
 	}
 	
 	@GetMapping("/setGroup")
@@ -102,7 +87,7 @@ public class TrackingController {
 	@PostMapping("/addMatch")
 	public String processAddMatch(@ModelAttribute(binding = false) Group group, @ModelAttribute Match newMatch,
 			@RequestParam(defaultValue = "false") boolean osdt) {
-		GameSession gs = gsService.getLatestWithMainPlayers(group.toSet());
+		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
 		if (gs != null && (!gs.getLastMatch().isFinished() || gs.isFinished() && newMatch.getSession().getId() != null) ||
 				newMatch.getStartDateTime() != null && newMatch.getStartDateTime().isAfter(LocalDateTime.now()))
 			return "redirect:/track";
@@ -112,15 +97,15 @@ public class TrackingController {
 				newMatch.getStartDateTime() != null && newMatch.getStartDateTime().isBefore(gs.getLastMatch().getLastRound().getEndDateTime()))))
 			return "redirect:/track";
 		if (newMatch.getSession().getId() == null)
-			newMatch.getSession().setId(gsService.addElement(GameSession.builder().mainPlayers(group.toSet()).build()));
+			newMatch.getSession().setId(gsService.addElement(GameSession.builder().mainPlayers(group.toSortedSet()).build()));
 		if (!osdt || newMatch.getStartDateTime() == null) newMatch.setStartDateTime(LocalDateTime.now());
-		mService.addElement(newMatch.setPlayers(newMatch.getGroup().toSet()));
+		mService.addElement(newMatch.setPlayers(newMatch.getGroup().toSortedSet()));
 		return "redirect:/track";
 	}
 	
 	@PostMapping("/endSession")
 	public String processEndSession(@ModelAttribute(binding = false) Group group, @ModelAttribute GameSession session) {
-		GameSession gs = gsService.getLatestWithMainPlayers(group.toSet());
+		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
 		if (gs != null && !gs.getLastMatch().isFinished()) return "redirect:/track";
 		if (gs == null) gs = new GameSession();
 		if (!Objects.equals(gs.getId(), session.getId()) || gs.getMatches().size() != session.getMatches().size())
@@ -132,7 +117,8 @@ public class TrackingController {
 	@PostMapping("/addRound")
 	public String processAddRound(@ModelAttribute(binding = false) Group group, @ModelAttribute Round newRound,
 			@RequestParam(defaultValue = "false") boolean oedt) {
-		GameSession gs = gsService.getLatestWithMainPlayers(group.toSet());
+		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
+		if (gs == null) return "redirect:/track";
 		if (newRound.getMatch().getRounds() == null) newRound.getMatch().setRounds(new ArrayList<>());
 		if (!gs.getLastMatch().getId().equals(newRound.getMatch().getId()) || gs.getLastMatch().isFinished() || newRound.getGameMode().getId() == null ||
 				gs.getLastMatch().getRounds().size() != newRound.getMatch().getRounds().size() || newRound.getEndDateTime() != null && (
@@ -144,6 +130,34 @@ public class TrackingController {
 		Long rId = rService.addElement(newRound);
 		if (rId != null && newRound.getPlayersFinished() != null)
 			newRound.getPlayersFinished().forEach((p, f) -> rService.putPlayerFinished(rId, p.getId(), f));
+		return "redirect:/track";
+	}
+	
+	@PostMapping("/undo")
+	public String processUndo(@ModelAttribute(binding = false) Group group, @RequestParam int gsHash, RedirectAttributes ra) {
+		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
+		if (gs == null || gs.hashCode() != gsHash) return "redirect:/track";
+		if (gs.isFinished()) gsService.replaceElement(gs.setFinished(false));
+		else if (gs.getLastMatch() != null && gs.getLastMatch().getLastRound() != null) {
+			Round roundToDelete = gs.getLastMatch().getLastRound();
+			rService.deleteElement(roundToDelete.getId());
+			for (Player p : roundToDelete.getMatch().getPlayers())
+				if (!roundToDelete.getPlayersFinished().containsKey(p)) roundToDelete.getPlayersFinished().put(p, null);
+			roundToDelete.getMatch().getRounds().remove(roundToDelete);
+			ra.addFlashAttribute("newRound", roundToDelete);
+		} else if (gs.getLastMatch() != null) {
+			if (gs.getMatches().indexOf(gs.getLastMatch()) != 0) {
+				Match matchToDelete = gs.getLastMatch();
+				mService.deleteElement(matchToDelete.getId());
+				matchToDelete.getSession().getMatches().remove(matchToDelete);
+				matchToDelete.setGroup(new Group(new ArrayList<>(matchToDelete.getPlayers())));
+				ra.addFlashAttribute("newMatch", matchToDelete);
+			} else {
+				Match newMatch = gs.getLastMatch().setSession(null);
+				gsService.deleteElement(gs.getId());
+				ra.addFlashAttribute("newMatch", newMatch.setGroup(new Group(new ArrayList<>(newMatch.getPlayers()))));
+			}
+		}
 		return "redirect:/track";
 	}
 

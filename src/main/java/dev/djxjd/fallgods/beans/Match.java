@@ -56,11 +56,11 @@ public class Match extends DBEntity<Match> {
 	@JsonIgnore
 	public String getSubs() {
 		String subs = "";
-		String in = players.stream()
+		String in = players.stream().sorted()
 				.filter(p -> !session.getMainPlayers().contains(p))
 				.map(Player::getName)
 				.collect(Collectors.joining(", ", "In: ", ";"));
-		String out = session.getMainPlayers().stream()
+		String out = session.getMainPlayers().stream().sorted()
 				.filter(mp -> !players.contains(mp))
 				.map(Player::getName)
 				.collect(Collectors.joining(", ", "Out: ", ";"));

@@ -16,12 +16,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Group {
 	
-	private List<Player> players = new ArrayList<>(Collections.nCopies(4, null));
+	int size = 4;
 	
-	public SortedSet<Player> toSet() {
+	private List<Player> players = new ArrayList<>(Collections.nCopies(size, null));
+	
+	public SortedSet<Player> toSortedSet() {
 		return players.stream()
 				.filter(Objects::nonNull)
 				.collect(Collectors.toCollection(TreeSet::new));
+	}
+	
+	public Group(List<Player> players) {
+		if (players.size() > size) players = players.subList(0, size);
+		while (players.size() < size) players.add(null);
+		this.players = players;
 	}
 
 }

@@ -97,6 +97,8 @@
 				<input type="hidden" th:each="match, iStat : *{session.matches}" th:field="*{session.matches[__${iStat.index}__]}">
 				<p><input type="submit" value="Start Match"></p>
 			</form>
+			<h2>Or</h2>
+			<th:block th:replace="~{ :: undo}"/>
 			<th:block th:if="${gameSession}">
 				<h2>Or</h2>
 				<form action="/track/endSession" method="post" th:object="${gameSession}">
@@ -135,7 +137,7 @@
 						<td><label th:for="|pf${iStat.index}cb|" th:text="|${pf.key.name} finished:|"></label></td>
 						<td><input type="checkbox" th:id="|pf${iStat.index}cb|"></td>
 						<td><label th:for="|pf${iStat.index}null|">Unknown:</label></td>
-						<td><input type="checkbox" th:id="|pf${iStat.index}null|"></td>
+						<td><input type="checkbox" th:id="|pf${iStat.index}null|" th:checked="${pf.value} == null"></td>
 						<td hidden><input type="hidden" th:id="|pf${iStat.index}|" th:field="*{playersFinished[__${pf.key}__]}"></td>
 					</tr>				
 					<tr>
@@ -160,7 +162,8 @@
 				<input type="hidden" th:each="round, iStat : *{match.rounds}" th:field="*{match.rounds[__${iStat.index}__]}">
 				<p><input type="submit" value="Add Round"></p>
 			</form>
-			<form action="/track/undo" method="post">
+			<h2>Or</h2>
+			<form th:fragment="undo" action="/track/undo" method="post">
 				<input type="hidden" name="gsHash" th:value="${gsHash}">
 				<input type="submit" value="Undo">
 			</form>

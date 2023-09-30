@@ -32,7 +32,7 @@ public class Round extends DBEntity<Round> {
 	
 	@Singular("playerFinished")
 	@ToString.Exclude
-	private SortedMap<Player, Boolean> playersFinished; // ensure null values work (mostly client side stuff)
+	private SortedMap<Player, Boolean> playersFinished;
 	
 	private boolean earlyFinalRound;
 	private String notes;

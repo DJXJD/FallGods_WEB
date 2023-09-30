@@ -14,6 +14,7 @@ $(() => {
 		$("#oedtRow")[0].hidden = false;
 	}
 	if ($("#gmRow")[0]) {
+		$("#gmBox").val($(`#gmRow option[data-value='${$("#gmId").val()}']`).text());
 		$("#gmBox").on("input", (e) => {
 			$(`#gmRow option:contains(${e.target.value})`).each((i, element) => {
 				if (e.target.value === element.text) $("#gmId").val($(element).attr("data-value"));
@@ -30,7 +31,11 @@ $(() => {
 			});
 		});
 		$("[id^='pf'][id$='null']").each((i, e) => {
+			$(`#pf${i}, #pf${i}cb`).each((i, element) => {
+				element.disabled = e.checked;
+			});
 			$(e).change((event) => {
+				$(`#pf${i}`).val($(`#pf${i}cb`)[0].checked);
 				$(`#pf${i}, #pf${i}cb`).each((i, element) => {
 					element.disabled = event.target.checked;
 				});
