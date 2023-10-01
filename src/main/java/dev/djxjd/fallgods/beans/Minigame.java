@@ -6,30 +6,27 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import lombok.Getter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
-import lombok.experimental.Accessors;
 import lombok.experimental.SuperBuilder;
 
-@Getter
-@Setter
-@Accessors(chain = true)
-@ToString(callSuper = true)
+@Data
 @NoArgsConstructor
 @SuperBuilder
 @JsonIdentityInfo(
 		scope = Minigame.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "id")
-public class Minigame extends DBEntity<Minigame> {
+public class Minigame extends RESTEntity<Minigame> {
 	
 	private String name;
 	private GameType type;
 	
 	@JsonIgnore
 	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	private List<Round> rounds;
 	
 	public String getFriendlyName() {

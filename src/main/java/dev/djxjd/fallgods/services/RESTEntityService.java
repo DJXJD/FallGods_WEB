@@ -2,9 +2,9 @@ package dev.djxjd.fallgods.services;
 
 import java.util.List;
 
-import dev.djxjd.fallgods.beans.DBEntity;
+import dev.djxjd.fallgods.beans.RESTEntity;
 
-public interface DBEntityService<T extends DBEntity<T>> {
+public interface RESTEntityService<T extends RESTEntity<T>> {
 	
 	public T getElement(Long id);
 	public T[] getCollection();

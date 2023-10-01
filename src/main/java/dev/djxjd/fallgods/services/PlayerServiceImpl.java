@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import dev.djxjd.fallgods.beans.Player;
 
 @Service
-public class PlayerServiceImpl extends DBEntityServiceImpl<Player> implements PlayerService {
+public class PlayerServiceImpl extends RESTEntityServiceImpl<Player> implements PlayerService {
 
 	public PlayerServiceImpl(@Value("${FallGods.API.root}") String apiRoot, RestTemplateBuilder builder) {
 		super(Player.class, Player[].class, builder.rootUri(apiRoot + "/players").build());
