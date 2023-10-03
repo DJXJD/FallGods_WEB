@@ -88,7 +88,7 @@ public class TrackingController {
 	
 	@PostMapping("/addMatch")
 	public String processAddMatch(@ModelAttribute(binding = false) Group group, @ModelAttribute Match newMatch,
-			@RequestParam(defaultValue = "false") boolean osdt) {
+			@RequestParam(defaultValue = "false") boolean osdt, @RequestParam String clientID) {
 		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
 		if (gs != null && (!gs.getLastMatch().isFinished() || gs.isFinished() && newMatch.getSession().getId() != null) ||
 				newMatch.getStartDateTime() != null && newMatch.getStartDateTime().isAfter(LocalDateTime.now()))
@@ -102,23 +102,26 @@ public class TrackingController {
 			newMatch.getSession().setId(gsService.addElement(GameSession.builder().mainPlayers(group.toSortedSet()).build()));
 		if (!osdt || newMatch.getStartDateTime() == null) newMatch.setStartDateTime(LocalDateTime.now());
 		mService.addElement(newMatch.setPlayers(newMatch.getGroup().toSortedSet()));
+		messagingTemplate.convertAndSend("/updateTracking/addMatch", clientID);
 		return "redirect:/track";
 	}
 	
 	@PostMapping("/endSession")
-	public String processEndSession(@ModelAttribute(binding = false) Group group, @ModelAttribute GameSession session) {
+	public String processEndSession(@ModelAttribute(binding = false) Group group, @ModelAttribute GameSession session, @RequestParam String clientID) {
 		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
 		if (gs != null && !gs.getLastMatch().isFinished()) return "redirect:/track";
 		if (gs == null) gs = new GameSession();
 		if (!Objects.equals(gs.getId(), session.getId()) || gs.getMatches().size() != session.getMatches().size())
 			return "redirect:/track";
 		gsService.replaceElement(gs.setFinished(true));
+		messagingTemplate.convertAndSend("/updateTracking/endSession", clientID);
 		return "redirect:/track";
 	}
 	
 	@PostMapping("/addRound")
 	public String processAddRound(@ModelAttribute(binding = false) Group group, @ModelAttribute Round newRound,
-			@RequestParam(defaultValue = "false") boolean oedt) {
+			@RequestParam(defaultValue = "false") boolean oedt, @RequestParam String clientID) {
+		System.out.println("Client id : " + clientID);
 		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
 		if (gs == null) return "redirect:/track";
 		if (newRound.getMatch().getRounds() == null) newRound.getMatch().setRounds(new ArrayList<>());
@@ -132,14 +135,17 @@ public class TrackingController {
 		Long rId = rService.addElement(newRound);
 		if (rId != null && newRound.getPlayersFinished() != null)
 			newRound.getPlayersFinished().forEach((p, f) -> rService.putPlayerFinished(rId, p.getId(), f));
-		messagingTemplate.convertAndSend("/topic/newRound", "New round added!");
+		messagingTemplate.convertAndSend("/updateTracking/newRound", clientID);
 		return "redirect:/track";
 	}
 
 	@PostMapping("/undo")
-	public String processUndo(@ModelAttribute(binding = false) Group group, @RequestParam int gsHash, RedirectAttributes ra) {
+	public String processUndo(@ModelAttribute(binding = false) Group group, @RequestParam int gsHash, RedirectAttributes ra, @RequestParam String clientID) {
 		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
-		if (gs == null || gs.hashCode() != gsHash) return "redirect:/track";
+		if (gs == null || gs.hashCode() != gsHash) {
+			messagingTemplate.convertAndSend("/updateTracking/undoCalled", clientID);
+			return "redirect:/track";
+		}
 		if (gs.isFinished()) gsService.replaceElement(gs.setFinished(false));
 		else if (gs.getLastMatch() != null && gs.getLastMatch().getLastRound() != null) {
 			Round roundToDelete = gs.getLastMatch().getLastRound();
@@ -161,6 +167,7 @@ public class TrackingController {
 				ra.addFlashAttribute("newMatch", newMatch.setGroup(new Group(new ArrayList<>(newMatch.getPlayers()))));
 			}
 		}
+		messagingTemplate.convertAndSend("/updateTracking/undoCalled", clientID);
 		return "redirect:/track";
 	}
 

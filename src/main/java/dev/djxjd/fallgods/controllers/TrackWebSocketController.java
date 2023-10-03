@@ -7,10 +7,27 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class TrackWebSocketController {
 
-    @MessageMapping("/update")
-    @SendTo("/topic/newRound")
-    public String sendUpdate(String message) {
-        // Process the message if needed
-        return message; // Broadcast the message to all subscribers
-    }
+	@MessageMapping("/newRoundUpdate")
+	@SendTo("/updateTracking/newRound")
+	public String sendnewRoundUpdate(String message) {
+		return message; 
+	}
+
+	@MessageMapping("/undoUpdate")
+	@SendTo("/updateTracking/undoCalled")
+	public String sendUndoUpdate(String message) {
+		return message;
+	}
+
+	@MessageMapping("/endSessionUpdate")
+	@SendTo("/updateTracking/endSession")
+	public String sendEndSessionUpdate(String message) {
+		return message;
+	}
+
+	@MessageMapping("/addMatchUpdate")
+	@SendTo("/updateTracking/addMatch")
+	public String sendAddMatchUpdate(String message) {
+		return message;
+	}
 }

@@ -12,15 +12,12 @@ public class TrackWebSocketConfig implements WebSocketMessageBrokerConfigurer {
     
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        // Enable a simple in-memory message broker to send messages to clients
-        config.enableSimpleBroker("/topic");
-        // Set the prefix for messages that the client can send to the server
+        config.enableSimpleBroker("/updateTracking");
         config.setApplicationDestinationPrefixes("/app");
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        // Define the WebSocket endpoint for clients to connect to
         registry.addEndpoint("/TrackWebSocket").withSockJS();
     }
 }
