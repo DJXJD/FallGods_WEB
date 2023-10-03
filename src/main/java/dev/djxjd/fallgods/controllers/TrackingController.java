@@ -92,12 +92,18 @@ public class TrackingController {
 		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
 		if (gs != null && (!gs.getLastMatch().isFinished() || gs.isFinished() && newMatch.getSession().getId() != null) ||
 				newMatch.getStartDateTime() != null && newMatch.getStartDateTime().isAfter(LocalDateTime.now()))
+			{
+			messagingTemplate.convertAndSend("/updateTracking/newRound", clientID);
 			return "redirect:/track";
+			}
 		if (gs == null) gs = new GameSession();
 		if ((gs.getId() == null || !gs.isFinished()) && (!Objects.equals(gs.getId(), newMatch.getSession().getId()) ||
 				gs.getId() != null && (gs.getMatches().size() != newMatch.getSession().getMatches().size() ||
 				newMatch.getStartDateTime() != null && newMatch.getStartDateTime().isBefore(gs.getLastMatch().getLastRound().getEndDateTime()))))
+			{
+			messagingTemplate.convertAndSend("/updateTracking/newRound", clientID);
 			return "redirect:/track";
+			}
 		if (newMatch.getSession().getId() == null)
 			newMatch.getSession().setId(gsService.addElement(GameSession.builder().mainPlayers(group.toSortedSet()).build()));
 		if (!osdt || newMatch.getStartDateTime() == null) newMatch.setStartDateTime(LocalDateTime.now());
@@ -123,14 +129,19 @@ public class TrackingController {
 			@RequestParam(defaultValue = "false") boolean oedt, @RequestParam String clientID) {
 		System.out.println("Client id : " + clientID);
 		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
-		if (gs == null) return "redirect:/track";
+		if (gs == null) {
+			messagingTemplate.convertAndSend("/updateTracking/newRound", clientID);
+			return "redirect:/track";
+		}
 		if (newRound.getMatch().getRounds() == null) newRound.getMatch().setRounds(new ArrayList<>());
 		if (!gs.getLastMatch().getId().equals(newRound.getMatch().getId()) || gs.getLastMatch().isFinished() || newRound.getGameMode().getId() == null ||
 				gs.getLastMatch().getRounds().size() != newRound.getMatch().getRounds().size() || newRound.getEndDateTime() != null && (
 				newRound.getEndDateTime().isBefore(gs.getLastMatch().getStartDateTime()) || !gs.getLastMatch().getRounds().isEmpty() &&
 				newRound.getEndDateTime().isBefore(gs.getLastMatch().getLastRound().getEndDateTime()) ||
-				newRound.getEndDateTime().isAfter(LocalDateTime.now())))
+				newRound.getEndDateTime().isAfter(LocalDateTime.now()))) {
+			messagingTemplate.convertAndSend("/updateTracking/newRound", clientID);
 			return "redirect:/track";
+		}
 		if (!oedt || newRound.getEndDateTime() == null) newRound.setEndDateTime(LocalDateTime.now());
 		Long rId = rService.addElement(newRound);
 		if (rId != null && newRound.getPlayersFinished() != null)
