@@ -11,33 +11,29 @@ const clientId = Math.random().toString(36).substr(2, 9);
 $(() => {
 	$(".clientID").val(clientId);
 });
-
+ 	
 
 stompClient.connect({}, () => {
 
 	stompClient.subscribe("/updateTracking/undoCalled", (message) => {
-		console.log("My client id is: " + clientId + "\n other user client id is: " + message.body);
 		if (clientId !== message.body) {
 			location.reload();
 		}
 	})
 
 	stompClient.subscribe('/updateTracking/newRound', (message) => {
-		console.log("My client id is: " + clientId + "\n other user client id is: " + message.body);
 		if (clientId !== message.body) {
 			location.reload();
 		}
 	});
 
 	stompClient.subscribe('/updateTracking/endSession', (message) => {
-		console.log("My client id is: " + clientId + "\n other user client id is: " + message.body);
 		if (clientId !== message.body) {
 			location.reload();
 		}
 	});
 
 	stompClient.subscribe('/updateTracking/addMatch', (message) => {
-		console.log("My client id is: " + clientId + "\n other user client id is: " + message.body);
 		if (clientId !== message.body) {
 			location.reload();
 		}
