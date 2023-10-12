@@ -3,6 +3,8 @@
 html, body {
 	min-height: 100vh;
 	margin: 0;
+
+	background-color: rgb(170, 227, 255, 1);
 }
 
 footer.hcontainer > div {
