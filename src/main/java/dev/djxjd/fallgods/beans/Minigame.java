@@ -1,6 +1,7 @@
 package dev.djxjd.fallgods.beans;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -28,6 +29,16 @@ public class Minigame extends RESTEntity<Minigame> {
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private List<Round> rounds;
+	
+	public Minigame(String toString) {
+		super(toString);
+		Pattern.compile("name=([\\w\\h-']*)").matcher(toString).results().findFirst().ifPresent(mr -> {
+			if (!mr.group(1).equals("null")) name = mr.group(1);
+		});
+		Pattern.compile("type=(\\w*)").matcher(toString).results().findFirst().ifPresent(mr -> {
+			if (!mr.group(1).equals("null")) type = GameType.valueOf(mr.group(1));
+		});
+	}
 	
 	public String getFriendlyName() {
 		return name + " - " + type;

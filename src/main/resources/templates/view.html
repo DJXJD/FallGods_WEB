@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<th:block th:replace="~{index :: stdHead}"/>
+<title>View - FallGods</title>
+</head>
+<body class="vcontainer">
+<th:block th:replace="~{index :: themeSelector}"/>
+<header class="center">
+	<h1>View Player Data</h1>
+</header>
+<main>
+	<div th:each="player : ${players}" th:object="${player}">
+		<h2 th:text="*{name}"/>
+		<table border="1">
+			<thead>
+				<th>Map
+				<th>plays
+				<th>occurrence
+				<th>qualifications
+				<th>qualificationRate
+				<th>eliminations
+				<th>eliminationRate
+				<th>finishes
+				<th>finishRate
+				<th>fumbles
+				<th>fumbleRate
+				<th>mvps
+				<th>mvpRate
+			</thead>
+			<tbody>
+				<tr th:each="md : *{mapData}" th:object="${md.value}">
+					<td th:text="${md.key.name} != null and ${md.key.type} != null ? ${md.key.friendlyName}"/>
+					<td th:text="*{plays}"/>
+					<td th:text="*{occurrence}"/>
+					<td th:text="*{qualifications}"/>
+					<td th:text="*{qualificationRate}"/>
+					<td th:text="*{eliminations}"/>
+					<td th:text="*{eliminationRate}"/>
+					<td th:text="*{finishes}"/>
+					<td th:text="*{finishRate}"/>
+					<td th:text="*{fumbles}"/>
+					<td th:text="*{fumbleRate}"/>
+					<td th:text="*{mvps}"/>
+					<td th:text="*{mvpRate}"/>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</main>
+<footer>
+	
+</footer>
+</body>
+</html>
