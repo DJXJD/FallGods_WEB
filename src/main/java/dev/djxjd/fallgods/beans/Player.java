@@ -1,6 +1,5 @@
 package dev.djxjd.fallgods.beans;
 
-import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -30,7 +29,7 @@ public class Player extends RESTEntity<Player> implements Comparable<Player> {
 	@JsonIgnore
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	private Set<GameSession> sessions;
+	private Set<GameSession> mainPlayerSessions;
 	
 	@Singular
 	@JsonIgnore
@@ -42,7 +41,7 @@ public class Player extends RESTEntity<Player> implements Comparable<Player> {
 	@JsonIgnore
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	private List<Round> mvpRounds;
+	private Set<Round> mvpRounds;
 	
 	public Player(String toString) {
 		super(toString);
