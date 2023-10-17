@@ -1,5 +1,6 @@
 package dev.djxjd.fallgods.beans;
 
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -7,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import dev.djxjd.fallgods.beans.wrappers.MinigameData;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -42,6 +44,10 @@ public class Player extends RESTEntity<Player> implements Comparable<Player> {
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private Set<Round> mvpRounds;
+	
+	@Singular("mapData")
+	@ToString.Exclude
+	private Map<Minigame, MinigameData> mapData;
 	
 	public Player(String toString) {
 		super(toString);
