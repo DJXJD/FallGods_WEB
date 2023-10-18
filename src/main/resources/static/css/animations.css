@@ -1,0 +1,41 @@
+@charset "ISO-8859-1";
+
+body.fall-enter-active {
+    animation: fallIn 0.5s forwards;
+}
+
+@keyframes fallIn {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh);
+    }
+}
+
+.streak {
+    position: absolute;
+    background: rgb(255, 0, 0);
+    width: 10px;
+    height: 1000px;
+    display: none;
+}
+
+
+input[type="submit"]:hover {
+    color: black;
+    background-color: green;
+}
+
+input[type="submit"][value="Undo"]:hover {
+    background-color: orange;
+    cursor: pointer;
+}
+
+input[type="submit"][value="End Session"]:hover {
+    background-color: red;
+    cursor: pointer;
+}
+

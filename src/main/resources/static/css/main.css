@@ -59,7 +59,7 @@ footer.hcontainer > div {
 }
 
 .topright {
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	right: 0px;
 }

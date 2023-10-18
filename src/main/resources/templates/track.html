@@ -3,10 +3,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <th:block th:replace="~{index :: stdHead}"/>
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/animations.css">
 <script defer type="text/javascript" src="/javascript/track.js"></script>
 <script defer type="text/javascript" src="/javascript/DatabaseTrackRefresh.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>Track - FallGods</title>
 </head>
 <body class="vcontainer">
@@ -63,13 +67,17 @@
 							<td th:text="*{#temporals.format(startDateTime.toLocalTime)}">
 							<td th:text="*{#strings.substring(duration.withNanos(0), 2)}">
 							<td th:text="*{rounds.size}">
-							<td th:text="*{rounds.size} > 0 ? *{lastRound.gameMode.friendlyName}">
+							<td th:text="*{rounds.size} > 0 ? *{lastRound.gameMode.friendlyName}" th:id="|lgf${iStat.index}|" >
 							<td th:text="*{rounds.size} > 0 ? *{lastRound.losers}">
 							<td th:text="*{rounds.size} > 0 and *{lastRound.mvp} != null ? *{lastRound.mvp.name}">
 							<td th:text="*{subs}">
 						</tr>
 					</tbody>
 				</table>
+			</div>
+			<div class="chart-container" style="max-height: 50vh;" $(getGameMode().getName())>
+				<canvas id="pcRoundFrequency"></canvas>
+				<canvas id="lcRoundOutcome"></canvas>
 			</div>
 		</th:block>
 	</div>
@@ -181,8 +189,10 @@
 	<div>
 		<a href="/">Home</a>
 		<a href="/register">Register</a>
+		<a href="/view">View</a>
 		<a href="/track/setGroup">Change Tracking Group</a>
 	</div>
 </footer>
+<script defer type="text/javascript" src="/javascript/animations.js"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@
 <th:block th:fragment="stdHead">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/animations.css">
 <link rel="stylesheet" th:if="${theme.name} != LIGHT" th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
 <script defer type="text/javascript" src="/javascript/jquery-3.7.0.slim.min.js"></script>
 <script defer type="text/javascript" src="/javascript/main.js"></script>
@@ -22,7 +23,7 @@
 <header class="center">
 </header>
 <main class="hcontainer">
-	<h2><a href="/view">View</a> (Coming Later)</h2>
+	<h2><a href="/view">View</a></h2>
 	<h2><a href="/register">Register</a></h2>
 	<h2><a href="/track">Track</a></h2>
 </main>
@@ -32,5 +33,6 @@
 		<p>placeholder2</p>
 	</div>
 </footer>
+<script defer type="text/javascript" src="/javascript/animations.js"></script>
 </body>
 </html>
