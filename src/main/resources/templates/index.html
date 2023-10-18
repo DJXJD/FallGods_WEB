@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
-<meta charset="ISO-8859-1">
-<th:block th:fragment="stdHead">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" th:if="${theme.name} != LIGHT" th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
-<script defer type="text/javascript" src="/javascript/jquery-3.7.0.slim.min.js"></script>
-<script defer type="text/javascript" src="/javascript/main.js"></script>
-</th:block>
-<img alt="The big boy logo" src="images/FallGods_Logo.svg" width="75%">
-<title>FallGods</title>
+	<meta charset="ISO-8859-1">
+	<th:block th:fragment="stdHead">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/style.dev.tailwind.css">
+		<link rel="stylesheet" th:if="${theme.name} != LIGHT"
+			th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
+		<script defer type="text/javascript" src="/javascript/jquery-3.7.0.slim.min.js"></script>
+		<script defer type="text/javascript" src="/javascript/main.js"></script>
+	</th:block>
+	<title>FallGods</title>
 </head>
 <body class="vcontainer">
-<form th:fragment="themeSelector" class="topright" id="themeForm" action="/setTheme" method="post" hidden>
-	<select id="theme" th:field="${theme.name}">
-		<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
-	</select>
-	<input type="hidden" name="sourcePath" th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
-</form>
-<header class="center">
-</header>
-<main class="hcontainer">
-	<h2><a href="/view">View</a> (Coming Later)</h2>
-	<h2><a href="/register">Register</a></h2>
-	<h2><a href="/track">Track</a></h2>
-</main>
-<footer class="hcontainer">
-	<div>
-		<p>placeholder1</p>
-		<p>placeholder2</p>
+	<div class="" >
+	<main class="flex justify-center items-center w-full flex-wrap pt-4 pb-4 w-3/4">
+		<div class="bg-CustomFallGuysPinkBackground"></div>
+		<h2><a href="/view"
+				class="hover:text-white pr-10 pl-10 rounded-full text-6xl font-bold text-CustomFallGuysPinkText">View</a>
+		</h2>
+		<h2><a class="hover:text-white pr-10 pl-10 text-6xl font-bold rounded-full text-CustomFallGuysPinkText"
+				href="/register">Register</a></h2>
+		<h2><a href="/track"
+				class="hover:text-CustomFallGuysPinkText pr-10 pl-10 text-6xl font-bold text-CustomFallGuysPinkText">Track</a>
+		</h2>
+	</main>
 	</div>
-</footer>
+	<img alt="The big boy logo" src="images/FallGods_Logo.svg" width="75%">
+	<form th:fragment="themeSelector" class="topright" id="themeForm" action="/setTheme" method="post" hidden>
+		<select id="theme" th:field="${theme.name}">
+			<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
+		</select>
+		<input type="hidden" name="sourcePath"
+			th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
+	</form>
+	<header class="center"></header>
+
+	<footer>
+		<div class="flex justify-center items-center w-full flex-wrap w-3/4">
+			<p>© 2023 POOF Media, All Rights Reserved</p>
+			<p class="pl-6">Privacy Policy</p>
+			<p class="pl-6">Terms Of Use</p>
+		</div>
+	</footer>
 </body>
+
 </html>

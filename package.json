@@ -1,0 +1,18 @@
+{
+  "name": "fallgods_web",
+  "version": "1.0.0",
+  "description": "Web interface for FallGods (Fall Guys game tracker)",
+  "scripts": {
+  "build:postcss": "set NODE_ENV=production && postcss src/main/resources/static/css/style.tailwind.css -o target/classes/static/css/style.build.tailwind.css",
+  "watch:postcss": "set NODE_ENV=development && postcss src/main/resources/static/css/style.tailwind.css -o src/main/resources/static/css/style.dev.tailwind.css -w"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.3.3"
+  }
+}
