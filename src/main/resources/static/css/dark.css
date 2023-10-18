@@ -10,10 +10,3 @@ table[border], :enabled, .vocontainer thead {
 	color: inherit;
 }
 
-a:link {
-	color: darkcyan;
-}
-
-a:visited {
-	color: darkslategray;
-}
