@@ -1,5 +1,24 @@
 @charset "ISO-8859-1";
 
+
+@font-face {
+    font-family: 'TITANONE';
+    src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.text-stroke {
+  -webkit-text-stroke: 1px black; /* Stroke color and width */
+  text-stroke: 1px black; /* Stroke color and width */
+}
+
+.titanOne-Font{
+	font-family: "TITANONE", sans-serif;
+}
+
+
 html, body {
 	min-height: 100vh;
 	margin: 0;

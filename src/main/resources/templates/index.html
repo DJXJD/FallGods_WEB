@@ -5,7 +5,6 @@
 	<meta charset="ISO-8859-1">
 	<th:block th:fragment="stdHead">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 		<link rel="stylesheet" href="/css/main.css">
 		<link rel="stylesheet" href="/css/style.dev.tailwind.css">
 		<link rel="stylesheet" th:if="${theme.name} != LIGHT"
@@ -15,21 +14,27 @@
 	</th:block>
 	<title>FallGods</title>
 </head>
-<body class="vcontainer">
-	<div class="" >
-	<main class="flex justify-center items-center w-full flex-wrap pt-4 pb-4 w-3/4">
-		<div class="bg-CustomFallGuysPinkBackground"></div>
-		<h2><a href="/view"
-				class="hover:text-white pr-10 pl-10 rounded-full text-6xl font-bold text-CustomFallGuysPinkText">View</a>
-		</h2>
-		<h2><a class="hover:text-white pr-10 pl-10 text-6xl font-bold rounded-full text-CustomFallGuysPinkText"
-				href="/register">Register</a></h2>
-		<h2><a href="/track"
-				class="hover:text-CustomFallGuysPinkText pr-10 pl-10 text-6xl font-bold text-CustomFallGuysPinkText">Track</a>
-		</h2>
-	</main>
+
+<body class="flex flex-col min-h-screen">
+
+	<div class="flex w-full flex-wrap justify-center py-5 ">
+		<main class="flex justify-evenly items-center">
+			<h2><a href="/view"
+					class="mx-10 px-3 py-3 font-TitanOneFont text-[45px] font-bold text-stroke hover:text-CustomFallGuysPinkText text-white">View</a>
+			</h2>
+			<h2><a href="/register"
+					class="mx-10 px-3 py-3 text-[45px] font-TitanOneFont font-bold text-stroke hover:text-CustomFallGuysPinkText text-white">Register</a>
+			</h2>
+			<h2><a href="/track"
+					class="mx-10 px-3 py-3 text-[45px] font-bold font-TitanOneFont text-stroke hover:text-CustomFallGuysPinkText text-white">Track</a>
+			</h2>
+		</main>
 	</div>
-	<img alt="The big boy logo" src="images/FallGods_Logo.svg" width="75%">
+	<div class="flex flex-grow"></div>
+	<div class="flex items-center justify-center">
+		<img class="w-3/4 max-w-[1920px] " width="100%" alt="The big boy logo" src="images/FallGods_Logo.svg">
+	</div>
+
 	<form th:fragment="themeSelector" class="topright" id="themeForm" action="/setTheme" method="post" hidden>
 		<select id="theme" th:field="${theme.name}">
 			<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
@@ -38,14 +43,18 @@
 			th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
 	</form>
 	<header class="center"></header>
+	</div>
 
-	<footer>
-		<div class="flex justify-center items-center w-full flex-wrap w-3/4">
-			<p>© 2023 POOF Media, All Rights Reserved</p>
-			<p class="pl-6">Privacy Policy</p>
-			<p class="pl-6">Terms Of Use</p>
+	<div class="flex flex-grow "></div>
+
+	<footer class="flex  w-full flex-wrap justify-evenly mt-auto">
+		<div class="flex justify-evenly items-center my-5">
+			<p class="mx-5 font-TitanOneFont text-[30px] text-white text-stroke font-bold">© 2023 POOF Media, All Rights Reserved</p>
+			<p class="mx-5 font-TitanOneFont text-[30px] text-white text-stroke font-bold">Privacy Policy</p>
+			<p class="mx-5 font-TitanOneFont text-[30px] text-white text-stroke font-bold">Terms Of Use</p>
 		</div>
 	</footer>
+	</div>
 </body>
 
 </html>

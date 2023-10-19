@@ -6,9 +6,11 @@ module.exports = {
 	content: [],
 	theme: {
 		extend: {
+			fontFamily: {
+				TitanOneFont: ['TITANONE', 'sans'],
+			},	
 			borderWidth: {
 				'REALLYBIGBORDER': '15px'
-
 			},
 			borderColor:{
 				'CustomFallGuysBorderBackground': '#f906bf'

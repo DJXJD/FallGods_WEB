@@ -1,6 +1,6 @@
 @charset "ISO-8859-1";
 
-body {
+html,body {
 	background-color: #0f0f0f;
 	color: darkgray;
 }
