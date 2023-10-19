@@ -15,27 +15,33 @@
 	<title>FallGods</title>
 </head>
 
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col relative">
 
-	<div class="flex w-full flex-wrap justify-center py-5 ">
-		<main class="flex justify-evenly items-center">
+	<img src="images/cloudstransparenttop.png" alt="Clouds"
+		class="pointer-events-none w-full absolute z-0 max-h-[600px] min-h-[550px]">
+
+	<div class="flex w-full flex-wrap justify-center z-10 ">
+		<main class="flex justify-evenly items-center mt-8 ">
+
 			<h2><a href="/view"
-					class="mx-10 px-3 py-3 font-TitanOneFont text-[45px] font-bold text-stroke hover:text-CustomFallGuysPinkText text-white">View</a>
+					class="mx-[100px] mt-8 py-10 font-TitanOneFont text-[60px] NavTextShadow font-bold text-stroke hover:text-CustomFallGuysPinkText text-white">View</a>
 			</h2>
 			<h2><a href="/register"
-					class="mx-10 px-3 py-3 text-[45px] font-TitanOneFont font-bold text-stroke hover:text-CustomFallGuysPinkText text-white">Register</a>
+					class="mx-[100px] mt-8 py-10 text-[60px] font-TitanOneFont NavTextShadow font-bold text-stroke hover:text-CustomFallGuysPinkText text-white">Register</a>
 			</h2>
 			<h2><a href="/track"
-					class="mx-10 px-3 py-3 text-[45px] font-bold font-TitanOneFont text-stroke hover:text-CustomFallGuysPinkText text-white">Track</a>
+					class="mx-[100px] mt-8 py-10 text-[60px] font-bold font-TitanOneFont NavTextShadow text-stroke hover:text-CustomFallGuysPinkText text-white">Track</a>
 			</h2>
 		</main>
 	</div>
-	<div class="flex flex-grow"></div>
+
+	<div class="flex flex-grow relative min-h-[150px]"></div>
 	<div class="flex items-center justify-center">
-		<img class="w-3/4 max-w-[1920px] " width="100%" alt="The big boy logo" src="images/FallGods_Logo.svg">
+		<img class="w-3/4 max-w-[1920px] min-w-[1300px] min-h-[720px] max-h-[1080px] z-10 pointer-events-none"
+			width="100%" alt="The big boy logo" src="images/FallGods_Logo.svg">
 	</div>
 
-	<form th:fragment="themeSelector" class="topright" id="themeForm" action="/setTheme" method="post" hidden>
+	<form th:fragment="themeSelector" class="topright z-10" id="themeForm" action="/setTheme" method="post" hidden>
 		<select id="theme" th:field="${theme.name}">
 			<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
 		</select>
@@ -45,16 +51,22 @@
 	<header class="center"></header>
 	</div>
 
-	<div class="flex flex-grow "></div>
+	<div class="flex flex-grow relative min-h-[150px]"></div>
 
-	<footer class="flex  w-full flex-wrap justify-evenly mt-auto">
+	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
+		<img src="images/cloudstransparentbottom.png" alt="Clouds"
+			class="pointer-events-none absolute bottom-0 left-0 z-0 max-h-[550px] min-h-[500px] min-w-full">
+
 		<div class="flex justify-evenly items-center my-5">
-			<p class="mx-5 font-TitanOneFont text-[30px] text-white text-stroke font-bold">© 2023 POOF Media, All Rights Reserved</p>
-			<p class="mx-5 font-TitanOneFont text-[30px] text-white text-stroke font-bold">Privacy Policy</p>
-			<p class="mx-5 font-TitanOneFont text-[30px] text-white text-stroke font-bold">Terms Of Use</p>
+			<p class="mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">© 2023
+				POOF Media, All
+				Rights Reserved</p>
+			<p class="mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">Privacy
+				Policy</p>
+			<p class="mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">Terms Of
+				Use</p>
 		</div>
 	</footer>
-	</div>
 </body>
 
 </html>
