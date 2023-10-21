@@ -15,13 +15,22 @@
 	<title>FallGods</title>
 </head>
 
-<body class="flex flex-col relative">
+<body class="flex flex-col relative bg-repeat bg-center bg-fill"
+	style="background-image: url('images/TESTBACKGROUND2.svg');">
 
+	<!--
 	<img src="images/cloudstransparenttop.png" alt="Clouds"
-		class="pointer-events-none w-full absolute z-0 max-h-[600px] min-h-[550px]">
+		class="pointer-events-none w-full absolute z-0 max-h-[300px] min-h-[200px]">
+-->
 
-	<div class="flex w-full flex-wrap justify-center z-10 ">
-		<main class="flex justify-evenly items-center mt-8 ">
+	<div class="flex flex-grow relative min-h-[150px]"></div>
+
+	<div class="flex items-center justify-center mt-[-150px]">
+		<img class="w-3/4 max-w-[1920px] min-w-[1300px] min-h-[720px] max-h-[1080px] z-10 pointer-events-none"
+			width="100%" alt="The big boy logo" src="images/FallGods_Logo.svg">
+	</div>
+<div class="flex w-full flex-wrap justify-center z-10 ">
+		<main class="flex justify-evenly items-center mt-[-200px]">
 
 			<h2><a href="/view"
 					class="mx-[100px] mt-8 py-10 font-TitanOneFont text-[60px] NavTextShadow font-bold text-stroke hover:text-CustomFallGuysPinkText text-white">View</a>
@@ -33,12 +42,6 @@
 					class="mx-[100px] mt-8 py-10 text-[60px] font-bold font-TitanOneFont NavTextShadow text-stroke hover:text-CustomFallGuysPinkText text-white">Track</a>
 			</h2>
 		</main>
-	</div>
-
-	<div class="flex flex-grow relative min-h-[150px]"></div>
-	<div class="flex items-center justify-center">
-		<img class="w-3/4 max-w-[1920px] min-w-[1300px] min-h-[720px] max-h-[1080px] z-10 pointer-events-none"
-			width="100%" alt="The big boy logo" src="images/FallGods_Logo.svg">
 	</div>
 
 	<form th:fragment="themeSelector" class="topright z-10" id="themeForm" action="/setTheme" method="post" hidden>
@@ -54,10 +57,12 @@
 	<div class="flex flex-grow relative min-h-[150px]"></div>
 
 	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
+		<!--
 		<img src="images/cloudstransparentbottom.png" alt="Clouds"
-			class="pointer-events-none absolute bottom-0 left-0 z-0 max-h-[550px] min-h-[500px] min-w-full">
-
-		<div class="flex justify-evenly items-center my-5">
+			class="pointer-events-none absolute bottom-0 left-0 z-0 max-h-[300px] min-h-[300px] min-w-full">
+-->
+		<div class="flex justify-evenly items-center my-5 ">
+			
 			<p class="mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">© 2023
 				POOF Media, All
 				Rights Reserved</p>

@@ -28,14 +28,14 @@
     min-width: 200px; /* Set a minimum width as needed */
     height: auto; /* Maintain aspect ratio */
   }
-
-
+  
 html,
 body {
+	
 	min-height: 100vh;
 	margin: 0;
 	background-color: rgb(180, 230, 255, 1);
- 	overflow-x: auto; /* or overflow-x: scroll; */
+  	overflow-x: auto; /* or overflow-x: scroll; */
   	min-width: 1024px; /* Minimum width to prevent content from becoming too narrow */
 }
 
