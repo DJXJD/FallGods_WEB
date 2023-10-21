@@ -37,7 +37,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="md : *{mapData}" th:object="${md.value}">
-					<td th:text="${md.key.name} != null and ${md.key.type} != null ? ${md.key.friendlyName}"/>
+					<td><div th:text="${md.key.name} != null and ${md.key.type} != null ? ${md.key.friendlyName}" max-lines="2"/></td>
 					<td th:text="*{plays}"/>
 					<td th:text="*{occurrence}"/>
 					<td th:text="*{qualifications}"/>
