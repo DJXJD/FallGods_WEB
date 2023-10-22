@@ -11,9 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -36,10 +34,25 @@ import lombok.AllArgsConstructor;
 @SessionAttributes({ "theme", "group" })
 @AllArgsConstructor
 public class ViewController {
-
-@GetMapping
+	
+	private PlayerService pService;
+	
+	@GetMapping
 	public String getViewRoot() {
-		return "view";
+		return "viewRoot";
+	}
+	
+	@GetMapping("/players")
+	public String getViewPlayers(Model model) {
+		model.addAttribute("players", pService.getCollection());
+		return "viewPlayers";
+	}
+	
+	@GetMapping("/player/{id}")
+	public String getViewPlayerDetails(@PathVariable Long id, Model model) {
+		model.addAttribute("players", pService.getCollection());
+		model.addAttribute("player", pService.getElement(id));
+		return "viewPlayerDetails";
 	}
 
 }

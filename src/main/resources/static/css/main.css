@@ -1,5 +1,7 @@
 @charset "ISO-8859-1";
 
+[hidden] { display: none !important; }
+
 html, body {
 	min-height: 100vh;
 	margin: 0;
@@ -35,12 +37,33 @@ footer.hcontainer > div {
 	height: 100%;
 }
 
+.close {
+	display: flex;
+	gap: 2.5rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.close.left {
+	justify-content: flex-start;
+}
+
+.close.right {
+	justify-content: flex-end;
+}
+
 .cg10 {
 	column-gap: 10px;
 }
 
 .rg10 {
 	row-gap: 10px;
+}
+
+.hocontainer {
+	overflow-x: auto;
+	scrollbar-width: thin;
+	scrollbar-gutter: stable;
 }
 
 .vocontainer {
