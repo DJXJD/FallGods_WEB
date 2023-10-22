@@ -3,30 +3,38 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="/css/animations.css">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
 <th:block th:replace="~{index :: stdHead}"/>
 <title>Set Group - FallGods</title>
 </head>
 <body class="vcontainer">
 <th:block th:replace="~{index :: themeSelector}"/>
+<div class="home-button">
+<button class="home-button topleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    <img src="https://fontmeme.com/permalink/231021/047dcde5525df79b9a4c02270201b83d.png" alt="fall-guys-font">
+</button>
+<button class="home-button top2ndleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    <img src="https://fontmeme.com/permalink/231021/ac8105c706d1c01ec09085986aac5c42.png" alt="fall-guys-font">
+</button>
+</div>
 <header class="center">
-	<h1>Set Tracking Group</h1>
+	<h1 class="fall-font-title text-6xl mb-4">Set Tracking Group</h1>
 </header>
 <main>
-	<h2>Who do you (mainly) want to track for?</h2>
+	<h2 class="fall-font-general">Who do you (mainly) want to track for?:</h2>
 	<form class="vcontainer rg10" action="/track/setGroup" method="post" th:object="${group}">
-		<select th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}">
-			<option value="">N/A</option>
-			<option th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
+		<select class="fall-font-general" th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}">
+			<option class="fall-font-general" value="">N/A</option>
+			<option class="fall-font-general" th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
 		</select>
-		<p><input type="submit" value="Set Group"></p>
+		<p><input class="fall-btn-mini" type="submit" value="Set Group"></p>
 	</form>
 </main>
 <footer class="hcontainer">
 	<div>
-		<a href="/">Home</a>
-		<a href="/view">View</a>
-		<a href="/register">Register</a>
-		<a href="/track">Track</a>
+		<a class="fall-btn tooltip" href="/view" data-tooltip="View Player Data">View</a>
+		<a class="fall-btn tooltip" href="/register" data-tooltip="Register New Entities">Register</a>
+		<a class="fall-btn tooltip" href="/track" data-tooltip="Track Player Data">Track</a>
 	</div>
 </footer>
 <script defer type="text/javascript" src="/javascript/animations.js"></script>

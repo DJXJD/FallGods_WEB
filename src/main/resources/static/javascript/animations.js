@@ -6,14 +6,12 @@ $(() => {
         
         var linkPos = $(this).offset();
 
-        $('body').addClass('fall-enter-active');
-
         setTimeout(function() {
-            window.location.href = $(e.target).attr('href');
-        }, 500);
-
-
-
+        $('body').addClass('fall-enter-active');
+        	setTimeout(function() {
+           		window.location.href = $(e.target).attr('href');
+        	}, 500);
+    	}, 50);
 
         for (let i = 0; i < 10; i++) {
             setTimeout(function() {
@@ -35,4 +33,14 @@ $(() => {
             }, i * 1); 
         }
     });
+    /*const $button = $('.fallGuysBtnView');
+    $button.on('click', function(e) {
+        e.preventDefault();
+        $(this).addClass('button-poof');
+        setTimeout(() => {
+            $(this).removeClass('button-poof').hide();
+		}, 1);
+    });*/
+    
+
 });

@@ -1,13 +1,83 @@
 $(() => {
-    $(document).on("mousemove", function(event) {
-        if (event.clientY <= window.innerHeight * 0.25) {
-            $(".navbar").css("height", "50px");
-            $("body").css("padding-top", "50px");
-        } else {
-            $(".navbar").css("height", "0");
-            $("body").css("padding-top","0");
-        }
+    //Obtain player data    
+    const playersData = [
+        { name: 'David', map: 'Map 1', plays: 5, qualificationRate: 80 },
+        { name: 'Alice', map: 'Map 2', plays: 8, qualificationRate: 70 },
+    ];
+    function generateTable(data) {
+        const table = $('#playerTable');
+        table.empty();
+        const thead = $('<thead>');
+        const headerRow = $('<tr>');
+        headerRow.append('<th>Name</th><th>Map</th><th>Plays</th><th>Qualification Rate</th>');
+        thead.append(headerRow);
+        table.append(thead);
+        const tbody = $('<tbody>');
+        data.forEach(player => {
+            const row = $('<tr>');
+            row.append(`<td>${player.name}</td>`);
+            row.append(`<td>${player.map}</td>`);
+            row.append(`<td>${player.plays}</td>`);
+            row.append(`<td>${player.qualificationRate}%</td>`);
+            tbody.append(row);
+        });
+        table.append(tbody);
+    }
+    generateTable(playersData);
+    $('.navbar a').click(function() {
+        const filter = $(this).text();
+        const filteredData = filterData(playersData, filter);
+        generateTable(filteredData);
     });
+    function filterData(data, filter) {
+        return data.filter(player => player.map === filter);
+    }
+    if ($("#osdt")[0]) {
+		$("#osdt").change((e) => {
+			$("#sdtRow")[0].hidden = !e.target.checked;
+			$("#sdt")[0].disabled = !e.target.checked;
+		});
+		$("#osdtRow")[0].hidden = false;
+	}
+	if ($("#oedt")[0]) {
+		$("#oedt").change((e) => {
+			$("#edtRow")[0].hidden = !e.target.checked;
+			$("#edt")[0].disabled = !e.target.checked;
+		});
+		$("#oedtRow")[0].hidden = false;
+	}
+	if ($("#gmRow")[0]) {
+		$("#gmBox").val($(`#gmRow option[data-value='${$("#gmId").val()}']`).text());
+		$("#gmBox").on("input", (e) => {
+			$(`#gmRow option:contains(${e.target.value})`).each((i, element) => {
+				if (e.target.value === element.text) $("#gmId").val($(element).attr("data-value"));
+				else $("#gmId").val("");
+			});
+		});
+		$("#gmRow")[0].hidden = false;
+	}
+	if ($(".pfrow")[0]) {
+		$("[id^='pf'][id$='cb']").each((i, e) => {
+			e.checked = $(`#pf${i}`).val() === "true";
+			$(e).change((event) => {
+				$(`#pf${i}`).val(event.target.checked);
+			});
+		});
+		$("[id^='pf'][id$='null']").each((i, e) => {
+			$(`#pf${i}, #pf${i}cb`).each((i, element) => {
+				element.disabled = e.checked;
+			});
+			$(e).change((event) => {
+				$(`#pf${i}`).val($(`#pf${i}cb`)[0].checked);
+				$(`#pf${i}, #pf${i}cb`).each((i, element) => {
+					element.disabled = event.target.checked;
+				});
+			});
+		});
+		$(".pfrow").each((i, e) => {
+			e.hidden = false;
+		});
+	};
 });
 
 /*

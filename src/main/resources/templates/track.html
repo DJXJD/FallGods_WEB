@@ -3,103 +3,108 @@
 <head>
 <meta charset="ISO-8859-1">
 <th:block th:replace="~{index :: stdHead}"/>
-<link rel="stylesheet" href="/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/animations.css">
 <script defer type="text/javascript" src="/javascript/track.js"></script>
 <script defer type="text/javascript" src="/javascript/DatabaseTrackRefresh.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>Track - FallGods</title>
 </head>
 <body class="vcontainer">
 <th:block th:replace="~{index :: themeSelector}"/>
+<div class="home-button">
+<button class="home-button topleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    <img src="https://fontmeme.com/permalink/231021/047dcde5525df79b9a4c02270201b83d.png" alt="fall-guys-font">
+</button>
+<button class="home-button top2ndleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    <img src="https://fontmeme.com/permalink/231021/ac8105c706d1c01ec09085986aac5c42.png" alt="fall-guys-font">
+</button>
+</div>
+<div class="tooltip-box"></div>
 <header class="center">
-	<h1>Track Session Data</h1>
+	<h1 class="fall-font-title text-6xl mb-4">Track Session Data</h1>
 </header>
 <main class="hcontainer">
 	<div class="vcontainer">
-		<h2 th:text="${gameSession} ? 'Group\'s current session stats' : 'No active session for group'"></h2>
+		<h2 class="fall-font-subtitle text-4xl mb-4" th:text="${gameSession} ? 'Group\'s current session stats' : 'No active session for group'"></h2>
 		<th:block th:if="${gameSession}" th:object="${gameSession}">
-			<h3>Summary stats</h3>
+			<h3 class="fall-font-general text-2xl mb-2">Summary stats</h3>
 			<table border="1">
 				<thead>
-					<tr>
-						<th>Start Date
-						<th>Duration
-						<th>Wins
-						<th>Losses
-						<th>Current Streak
-						<th>Highest Streak
+					<tr class="fall-font-subtitle">
+						<th class="fall-font-subtitle">Start Date
+						<th class="fall-font-subtitle">Duration
+						<th class="fall-font-subtitle">Wins
+						<th class="fall-font-subtitle">Losses
+						<th class="fall-font-subtitle">Current Streak
+						<th class="fall-font-subtitle">Highest Streak
 					</tr>
 				</thead>
 				<tbody class="center">
-					<tr>
-						<td th:text="*{#temporals.format(matches[0].startDateTime.toLocalDate)}">
-						<td th:text="*{#strings.substring(duration.withNanos(0), 2)}">
-						<td th:text="*{wins}">
-						<td th:text="*{losses}">
-						<td th:text="*{currentStreak}">
-						<td th:text="*{highestStreak}">
+					<tr class="fall-font-general">
+						<td  class="fall-font-general" th:text="*{#temporals.format(matches[0].startDateTime.toLocalDate)}">
+						<td  class="fall-font-general" th:text="*{#strings.substring(duration.withNanos(0), 2)}">
+						<td  class="fall-font-general" th:text="*{wins}">
+						<td  class="fall-font-general" th:text="*{losses}">
+						<td  class="fall-font-general" th:text="*{currentStreak}">
+						<td  class="fall-font-general" th:text="*{highestStreak}">
 					</tr>
 				</tbody>
 			</table>
-			<h3>Matches</h3>
-			<div class="vocontainer" style="max-height: 50vh;">
+			<br>
+			<h3 class="fall-font-general text-2xl mb-2">Matches</h3>
 				<table border="1">
 					<thead>
-						<tr>
-							<th>&nbsp;#&nbsp;
-							<th>Start Time
-							<th>Duration
-							<th>Rounds
-							<th>Last Round (LR)
-							<th>LR Losers
-							<th>LR MVP
-							<th>Subs
+						<tr class="fall-font-subtitle">
+							<th class="fall-font-subtitle">&nbsp;#&nbsp;
+							<th class="fall-font-subtitle">Start Time
+							<th class="fall-font-subtitle">Duration
+							<th class="fall-font-subtitle">Rounds
+							<th class="fall-font-subtitle">Last Round (LR)
+							<th class="fall-font-subtitle">LR Losers
+							<th class="fall-font-subtitle">LR MVP
+							<th class="fall-font-subtitle">Subs
 						</tr>
 					</thead>
 					<tbody class="center">
-						<tr th:each="match, iStat : *{matches}" th:object="${match}">
-							<td th:text="${iStat.count}"
+						<tr class="fall-font-general" th:each="match, iStat : *{matches}" th:object="${match}">
+							<td  class="fall-font-general" th:text="${iStat.count}"
 								th:style="*{finished} ? ('background-color: ' + (*{won} ? 'green;' : 'red;') + 'color: black;')">
-							<td th:text="*{#temporals.format(startDateTime.toLocalTime)}">
-							<td th:text="*{#strings.substring(duration.withNanos(0), 2)}">
-							<td th:text="*{rounds.size}">
-							<td th:text="*{rounds.size} > 0 ? *{lastRound.gameMode.friendlyName}" th:id="|lgf${iStat.index}|" >
-							<td th:text="*{rounds.size} > 0 ? *{lastRound.losers}">
-							<td th:text="*{rounds.size} > 0 and *{lastRound.mvp} != null ? *{lastRound.mvp.name}">
-							<td th:text="*{subs}">
+							<td  class="fall-font-general" th:text="*{#temporals.format(startDateTime.toLocalTime)}">
+							<td  class="fall-font-general" th:text="*{#strings.substring(duration.withNanos(0), 2)}">
+							<td  class="fall-font-general" th:text="*{rounds.size}">
+							<td  class="fall-font-general" th:text="*{rounds.size} > 0 ? *{lastRound.gameMode.friendlyName}">
+							<td  class="fall-font-general" th:text="*{rounds.size} > 0 ? *{lastRound.losers}">
+							<td  class="fall-font-general" th:text="*{rounds.size} > 0 and *{lastRound.mvp} != null ? *{lastRound.mvp.name}">
+							<td  class="fall-font-general" th:text="*{subs}">
 						</tr>
 					</tbody>
 				</table>
-			</div>
-			<div class="chart-container" style="max-height: 50vh;" $(getGameMode().getName())>
-				<canvas id="pcRoundFrequency"></canvas>
-				<canvas id="lcRoundOutcome"></canvas>
-			</div>
 		</th:block>
 	</div>
 	<div class="vcontainer">
-		<h2 th:text="${newMatch} ? (${gameSession} ? 'Start new match' : 'Start session with match') : 'Add finished round'"></h2>
+		<h2 class="fall-font-subtitle text-3xl mb-4" th:text="${newMatch} ? (${gameSession} ? 'Start new match' : 'Start session with match') : 'Add finished round'"></h2>
 		<th:block th:if="${newMatch}">
 			<form class="vcontainer" action="/track/addMatch" method="post" th:object="${newMatch}">
-				<table class="center">
+				<table class="center mb-4">
 					<tr id="osdtRow" hidden>
-						<td><label for="osdt">Override StartDateTime:</label></td>
-						<td><input id="osdt" type="checkbox" name="osdt"></td>
+						<td><label class="fall-font-general tooltip" for="osdt" data-tooltip="Enter a new Start time for the round.">Override StartDateTime:</label></td>
+						<td><input class="fall-font-general" id="osdt" type="checkbox" name="osdt"></td>
+						<div class="tooltip-box"></div>
 					</tr>
 					<tr id="sdtRow" hidden>
-						<td><label for="sdt">StartDateTime:</label></td>
-						<td><input id="sdt" type="datetime-local" th:field="*{startDateTime}" required disabled></td>
+						<td><label class="fall-font-general "for="sdt">StartDateTime:</label></td>
+						<td><input class="fall-font-general" id="sdt" type="datetime-local" th:field="*{startDateTime}" required disabled></td>
+						<div class="tooltip-box"></div>
 					</tr>
 					<tr th:each="p, iStat : *{group.players}">
-						<td><label th:for="'player' + ${iStat.count}" th:text="|Player ${iStat.count}:|"></label></td>
+						<td><label class="fall-font-general" th:for="'player' + ${iStat.count}" th:text="|Player ${iStat.count}:|"></label></td>
 						<td>
-							<select th:id="'player' + ${iStat.count}" th:field="*{group.players[__${iStat.index}__]}">
-								<option value="">N/A</option>
-								<option th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
+							<select class="fall-font-general" th:id="'player' + ${iStat.count}" th:field="*{group.players[__${iStat.index}__]}">
+								<div class="tooltip-box"></div>
+								<option class="fall-font-general" value="">N/A</option>
+								<option class="fall-font-general" th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
 							</select>
 						</td>
 					</tr>
@@ -107,17 +112,17 @@
 				<input type="hidden" th:field="*{session.id}">
 				<input type="hidden" th:each="match, iStat : *{session.matches}" th:field="*{session.matches[__${iStat.index}__]}">
 				<input type="hidden" class="clientID" name="clientID">
-				<p><input type="submit" value="Start Match"></p>
+				<p><input class="fall-btn-mini" type="submit" value="Start Match"></p>
 			</form>
-			<h2>Or</h2>
+			<h2 class="fall-font-subtitle mb-2">Or</h2>
 			<th:block th:replace="~{ :: undo}"/>
 			<th:block th:if="${gameSession}">
-				<h2>Or</h2>
+				<h2 class="fall-font-subtitle mb-2">Or</h2>
 				<form action="/track/endSession" method="post" th:object="${gameSession}">
 					<input type="hidden" th:field="*{id}">
 					<input type="hidden" th:each="match, iStat : *{matches}" th:field="*{matches[__${iStat.index}__]}">
 					<input type="hidden" class="clientID" name="clientID">
-					<input type="submit" value="End Session">
+					<input class="fall-btn-mini" type="submit" value="End Session">
 				</form>
 			</th:block>
 		</th:block>
@@ -125,17 +130,17 @@
 			<form class="vcontainer" action="/track/addRound" method="post" th:object="${newRound}">
 				<table class="center">
 					<tr id="oedtRow" hidden>
-						<td><label for="oedt">Override EndDateTime:</label></td>
-						<td><input id="oedt" type="checkbox" name="oedt"></td>
+						<td><label class="fall-font-general tooltip" for="oedt" data-tooltip="Enter a new End time for the round.">Override EndDateTime:</label></td>
+						<td><input class="fall-font-general" id="oedt" type="checkbox" name="oedt"></td>
 					</tr>
 					<tr id="edtRow" hidden>
-						<td><label for="edt">EndDateTime:</label></td>
-						<td><input id="edt" type="datetime-local" th:field="*{endDateTime}" required disabled></td>
+						<td><label class="fall-font-general" for="edt">EndDateTime:</label></td>
+						<td><input class="fall-font-general" id="edt" type="datetime-local" th:field="*{endDateTime}" required disabled></td>
 					</tr>
 					<tr id="gmRow" hidden>
-						<td><label for="gmBox">Game mode:</label></td>
+						<td><label class="fall-font-general" for="gmBox">Game mode:</label></td>
 						<td>
-							<input list="gameModes" id="gmBox" required></input>
+							<input class="fall-font-general" list="gameModes" id="gmBox" required></input>
 							<datalist id="gameModes">
 								<option th:each="minigame : ${minigames}" th:text="${minigame.friendlyName}" th:data-value="${minigame.id}">
 							</datalist>
@@ -143,54 +148,53 @@
 						</td>
 					</tr>
 					<tr>
-						<td><label for="teamQualified1">Team qualified:</label></td>
+						<td><label class="fall-font-subtitle" for="teamQualified1">Team qualified:</label></td>
 						<td><input type="checkbox" th:field="*{teamQualified}"></td>
 					</tr>
 					<tr class="pfrow" th:each="pf, iStat : *{playersFinished}" hidden>
-						<td><label th:for="|pf${iStat.index}cb|" th:text="|${pf.key.name} finished:|"></label></td>
+						<td><label class="fall-font-general" th:for="|pf${iStat.index}cb|" th:text="|${pf.key.name} finished:|"></label></td>
 						<td><input type="checkbox" th:id="|pf${iStat.index}cb|"></td>
-						<td><label th:for="|pf${iStat.index}null|">Unknown:</label></td>
+						<td><label  class="fall-font-general" th:for="|pf${iStat.index}null|">Unknown:</label></td>
 						<td><input type="checkbox" th:id="|pf${iStat.index}null|" th:checked="${pf.value} == null"></td>
 						<td hidden><input type="hidden" th:id="|pf${iStat.index}|" th:field="*{playersFinished[__${pf.key}__]}"></td>
 					</tr>				
 					<tr>
-						<td><label for="mvpdd">Round MVP:</label></td>
+						<td><label class="fall-font-general" for="mvpdd">Round MVP:</label></td>
 						<td>
-							<select id="mvpdd" th:field="*{mvp}">
-								<option value="">N/A</option>
-								<option th:each="player : *{match.players}" th:text="${player.name}" th:value="${player}"></option>
+							<select class="fall-font-general" id="mvpdd" th:field="*{mvp}">
+								<option class="fall-font-general" value="">N/A</option>
+								<option class="fall-font-general" th:each="player : *{match.players}" th:text="${player.name}" th:value="${player}"></option>
 							</select>
 						</td>
 					</tr>
 					<tr>
-						<td><label for="earlyFinalRound1">Early final round:</label></td>
-						<td><input type="checkbox" th:field="*{earlyFinalRound}"></td>
+						<td><label for="earlyFinalRound1" class="fall-font-general">Early final round:</class="fall-btn"label></td>
+						<td><input class="fall-font-general" type="checkbox" th:field="*{earlyFinalRound}"></td>
 					</tr>
 					<tr>
-						<td><label for="notes">Notes:</label></td>
-						<td><textarea th:field="*{notes}"></textarea></td>
+						<td><label class="fall-font-general" for="notes">Notes:</label></td>
+						<td><textarea class="fall-font-general" th:field="*{notes}"></textarea></td>
 					</tr>
 				</table>
 				<input type="hidden" th:field="*{match.id}">
 				<input type="hidden" th:each="round, iStat : *{match.rounds}" th:field="*{match.rounds[__${iStat.index}__]}">
 				<input type="hidden" class="clientID" name="clientID">
-				<p><input type="submit" value="Add Round"></p>
+				<p><input class="fall-btn-mini" type="submit" value="Add Round"></p>
 			</form>
-			<h2>Or</h2>
+			<h2 class="fall-font-subtitle">Or</h2>
 			<form th:fragment="undo" action="/track/undo" method="post">
 				<input type="hidden" name="gsHash" th:value="${gsHash}">
 				<input type="hidden" class="clientID" name="clientID">
-				<input type="submit" value="Undo">
+				<input class="fall-btn-mini" type="submit" value="Undo">
 			</form>
 		</th:block>
 	</div>
 </main>
 <footer class="hcontainer">
 	<div>
-		<a href="/">Home</a>
-		<a href="/register">Register</a>
-		<a href="/view">View</a>
-		<a href="/track/setGroup">Change Tracking Group</a>
+		<a class="fall-btn tooltip" href="/view" data-tooltip="View Player Data">View</a>
+		<a class="fall-btn tooltip" href="/register" data-tooltip="Register New Entities">Register</a>
+		<a class="fall-btn tooltip" href="/track/setGroup" data-tooltip="Track Player Data">Change Tracking Group</a>
 	</div>
 </footer>
 <script defer type="text/javascript" src="/javascript/animations.js"></script>

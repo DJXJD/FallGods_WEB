@@ -19,6 +19,14 @@ footer.hcontainer > div {
 	flex-wrap: wrap;
 }
 
+.hcontainer2 {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 50%;
+	flex-wrap: wrap;
+}
+
 .vcontainer {
 	display: flex;
 	flex-direction: column;
@@ -63,4 +71,16 @@ footer.hcontainer > div {
 	position: fixed;
 	top: 0px;
 	right: 0px;
+}
+
+.topleft {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+}
+
+.top2ndleft {
+    position: fixed;
+    top: 45px;
+    left: 5px;
 }

@@ -5,31 +5,29 @@
 	<meta charset="ISO-8859-1">
 	<th:block th:fragment="stdHead">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+		<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="/css/main.css">
 		<link rel="stylesheet" href="/css/style.dev.tailwind.css">
+		<link rel="stylesheet" href="/css/animations.css">
 		<link rel="stylesheet" th:if="${theme.name} != LIGHT"
 			th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
 		<script defer type="text/javascript" src="/javascript/jquery-3.7.0.slim.min.js"></script>
 		<script defer type="text/javascript" src="/javascript/main.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	</th:block>
 	<title>FallGods</title>
 </head>
 <body class="vcontainer">
+	<img alt="The big boy logo" src="images/FallGods_Logo.svg" width="75%">
 	<div class="" >
 	<main class="flex justify-center items-center w-full flex-wrap pt-4 pb-4 w-3/4">
 		<div class="bg-CustomFallGuysPinkBackground"></div>
-		<h2><a href="/view"
-				class="hover:text-white pr-10 pl-10 rounded-full text-6xl font-bold text-CustomFallGuysPinkText">View</a>
-		</h2>
-		<h2><a class="hover:text-white pr-10 pl-10 text-6xl font-bold rounded-full text-CustomFallGuysPinkText"
-				href="/register">Register</a></h2>
-		<h2><a href="/track"
-				class="hover:text-CustomFallGuysPinkText pr-10 pl-10 text-6xl font-bold text-CustomFallGuysPinkText">Track</a>
-		</h2>
+		<h2><a class="fall-btn tooltip" href="/view" data-tooltip="View Player Data">View</a></h2>
+		<h2><a class="fall-btn tooltip" href="/register" data-tooltip="Register New Entities">Register</a></h2>
+		<h2><a class="fall-btn tooltip" href="/track" data-tooltip="Track Player Data">Track</a></h2>
+		<div class="tooltip-box"></div>
 	</main>
 	</div>
-	<img alt="The big boy logo" src="images/FallGods_Logo.svg" width="75%">
 	<form th:fragment="themeSelector" class="topright" id="themeForm" action="/setTheme" method="post" hidden>
 		<select id="theme" th:field="${theme.name}">
 			<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
@@ -46,6 +44,7 @@
 			<p class="pl-6">Terms Of Use</p>
 		</div>
 	</footer>
+<script defer type="text/javascript" src="/javascript/animations.js"></script>
 </body>
 
 </html>

@@ -33,3 +33,5 @@ build/
 .vscode/
 
 vpproject/
+
+node_modules/

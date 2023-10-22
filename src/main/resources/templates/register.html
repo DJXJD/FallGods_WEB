@@ -3,50 +3,58 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="/css/animations.css">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
 <th:block th:replace="~{index :: stdHead}"/>
 <title>Register - FallGods</title>
 </head>
 <body class="vcontainer">
 <th:block th:replace="~{index :: themeSelector}"/>
+<div class="home-button">
+<button class="home-button topleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    <img src="https://fontmeme.com/permalink/231021/047dcde5525df79b9a4c02270201b83d.png" alt="fall-guys-font">
+</button>
+<button class="home-button top2ndleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    <img src="https://fontmeme.com/permalink/231021/ac8105c706d1c01ec09085986aac5c42.png" alt="fall-guys-font">
+</button>
+</div>
 <header class="center">
-	<h1>Register New Entities</h1>
+	<h1 class="fall-font-title text-6xl mb-4" >Register New Entities</h1>
 </header>
-<main class="hcontainer">
+<main class="hcontainer2">
 	<div class="vcontainer">
-		<h2>Register players</h2>
-		<h3 th:if="${rpError}" th:text="${rpError}" style="color: red;"></h3>
+		<h2 class="fall-font-general" >Register players</h2>
+		<h3 class="fall-font-general"  th:if="${rpError}" th:text="${rpError}" style="color: red;"></h3>
 		<form class="vcontainer" action="/register/addPlayer" method="post">
 			<div class="hcontainer cg10">
-				<label for="pName">Name:</label><input type="text" id="pName" name="name" required>
+				<label class="fall-font-general" for="pName">Name:</label><input class="fall-box" type="text" id="pName" name="name" required>
 			</div>
-			<p><input type="submit" value="Add Player"></p>
+			<p><input class="fall-btn-mini"  type="submit" value="Add Player"></p>
 		</form>
 	</div>
 	<div class="vcontainer">
-		<h2>Register Minigames</h2>
+		<h2 class="fall-font-general">Register Minigames</h2>
 		<h3 th:if="${rmgError}" th:text="${rmgError}" style="color: red;"></h3>
 		<form class="vcontainer" action="/register/addMinigame" method="post" th:object="${newMinigame}">
 			<div class="vcontainer rg10">
 				<div class="hcontainer cg10">
-					<label for="mgName">Name:</label><input type="text" id="mgName" th:field="*{name}" required>
+					<label class="fall-font-general" for="mgName">Name:</label><input class="fall-box" type="text" id="mgName" th:field="*{name}" required>
 				</div>
 				<div class="hcontainer cg10">
-					<label for="mgType">Type:</label>
-					<select id="mgType" th:field="*{type}" required>
-						<option value="">N/A</option>
-						<option th:each="gameType : ${gameTypes}" th:text="${gameType}" th:value="${gameType}"></option>
+					<label class="fall-font-general" for="mgType">Type:</label>
+					<select class="fall-font-general" id="mgType" th:field="*{type}" required>
+						<option class="fall-font-general" value="">N/A</option>
+						<option class="fall-font-general" th:each="gameType : ${gameTypes}" th:text="${gameType}" th:value="${gameType}"></option>
 					</select>
 				</div>
 			</div>
-			<p><input type="submit" value="Add Minigame"></p>
+			<p><input class="fall-btn-mini" type="submit" value="Add Minigame"></p>
 		</form>
 	</div>
 </main>
 <footer class="hcontainer">
 	<div>
-		<a href="/">Home</a>
-		<a href="/view">View</a>
-		<a href="/track">Track</a>
+		<a class="fall-btn tooltip" href="/view" data-tooltip="View Player Data">View</a>
+		<a class="fall-btn tooltip" href="/track" data-tooltip="Track Player Data">Track</a>
 	</div>
 </footer>
 <script defer type="text/javascript" src="/javascript/animations.js"></script>
