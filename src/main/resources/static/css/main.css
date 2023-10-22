@@ -25,6 +25,13 @@
 	text-shadow: 6px 6px 6px rgb(129, 220, 239)
 }
 
+.topcloud {
+	 width: 100vw; /* Set the width to 100% of the viewport width */
+  height: auto; /* Allow the height to adjust proportionally */
+  max-height: none !important; /* Remove any max-height restrictions */
+  min-height: 200px !important; /* Remove any min-height restrictions */
+}
+
  .logo {
     max-width: 100%; /* Adjust the maximum width as needed */
     min-width: 200px; /* Set a minimum width as needed */
