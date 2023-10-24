@@ -15,18 +15,17 @@
 	</th:block>
 	<title>FallGods</title>
 </head>
-			
+
 <body class="flex flex-col relative bg-repeat bg-center bg-contain"
 	style="background-image: url('images/trialanderror.svg'); background-size: 2.25%;">
 
-	<div class="flex relative flex-grow relative min-h-[350px]"></div>
+	<div id="cloud-container"></div>
 
-<div id="cloud-container"></div>
-	
-	<div class="flex relative items-center justify-center mt-[-150px]">
-		<img  class="w-3/4 max-w-[1920px] min-w-[1300px] min-h-[720px] max-h-[1080px] z-10 pointer-events-none"
+	<div class="flex relative items-center justify-center mt-auto">
+		<img class="w-3/4 max-w-[1920px] min-w-[1300px] min-h-[720px] max-h-[1080px] z-10 pointer-events-none"
 			width="100%" alt="The big boy logo" src="images/FallGods_Logo.svg">
 	</div>
+
 	<div class="flex w-full flex-wrap justify-center z-10">
 		<main class="flex justify-evenly items-center mt-[-255px]">
 
@@ -49,16 +48,11 @@
 		<input type="hidden" name="sourcePath"
 			th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
 	</form>
-	<header class="center"></header>
-	</div>
 
-	<div class="flex flex-grow relative min-h-[150px]"></div>
+	<header class="center"></header>
 
 	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
-		<!--
-		<img src="images/cloudstransparentbottom.png" alt="Clouds"
-			class="pointer-events-none absolute bottom-0 left-0 z-0 max-h-[300px] min-h-[300px] min-w-full">
--->
+	
 		<div class="flex justify-evenly items-center my-5 ">
 
 			<p class="mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">© 2023

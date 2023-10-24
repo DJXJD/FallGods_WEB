@@ -19,7 +19,7 @@ function createAndAnimateCloud(isInitialSpawn) {
 
 	// Generate random properties
 	const size = Math.random() * 200 + 400; // Random size between 300px and 500px
-	const speed = Math.random() * 0.75 + 0.75; // Random speed between 2 and 7 pixels per frame
+	const speed = Math.random() * 0.75 + 0.5; // Random speed between 2 and 7 pixels per frame
 	const opacity = Math.random(); // Random opacity between 0 and 1
 	let xPos, yPos;
 

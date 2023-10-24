@@ -37,6 +37,7 @@
 
 .cloud {
 	position: absolute;
+	z-index: 1;
 	background-size: contain;
 	opacity: 1;
 	pointer-events: none;
@@ -44,13 +45,11 @@
 
 html,
 body {
-
 	min-height: 100vh;
 	margin: 0;
 	background-color: rgb(180, 230, 255, 1);
 	overflow: hidden;
 	min-width: 1024px;
-	/* Minimum width to prevent content from becoming too narrow */
 }
 
 footer.hcontainer>div {
