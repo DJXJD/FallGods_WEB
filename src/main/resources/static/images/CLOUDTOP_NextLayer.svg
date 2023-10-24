@@ -4,6 +4,7 @@
     <style>
       .cls-1 {
         fill: url(#linear-gradient);
+        opacity: .65;
         stroke-width: 0px;
       }
     </style>

@@ -1,7 +1,8 @@
 @charset "ISO-8859-1";
 
-[hidden] { display: none !important; }
-
+[hidden] {
+	display: none !important;
+}
 
 @font-face {
 	font-family: 'TITANONE';
@@ -21,31 +22,35 @@
 	font-family: "TITANONE", sans-serif;
 }
 
-.NavTextShadow{
+.NavTextShadow {
 	text-shadow: 6px 6px 6px rgb(129, 220, 239)
 }
 
-.topcloud {
-	 width: 100vw; /* Set the width to 100% of the viewport width */
-  height: auto; /* Allow the height to adjust proportionally */
-  max-height: none !important; /* Remove any max-height restrictions */
-  min-height: 200px !important; /* Remove any min-height restrictions */
+.logo {
+	max-width: 100%;
+	/* Adjust the maximum width as needed */
+	min-width: 200px;
+	/* Set a minimum width as needed */
+	height: auto;
+	/* Maintain aspect ratio */
 }
 
- .logo {
-    max-width: 100%; /* Adjust the maximum width as needed */
-    min-width: 200px; /* Set a minimum width as needed */
-    height: auto; /* Maintain aspect ratio */
-  }
-  
+.cloud {
+	position: absolute;
+	background-size: contain;
+	opacity: 1;
+	pointer-events: none;
+}
+
 html,
 body {
-	
+
 	min-height: 100vh;
 	margin: 0;
 	background-color: rgb(180, 230, 255, 1);
-  	overflow-x: auto; /* or overflow-x: scroll; */
-  	min-width: 1024px; /* Minimum width to prevent content from becoming too narrow */
+	overflow: hidden;
+	min-width: 1024px;
+	/* Minimum width to prevent content from becoming too narrow */
 }
 
 footer.hcontainer>div {
