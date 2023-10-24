@@ -11,7 +11,7 @@
 			th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
 		<script defer type="text/javascript" src="/javascript/jquery-3.7.0.slim.min.js"></script>
 		<script defer type="text/javascript" src="/javascript/main.js"></script>
-		<script defer type="text/javascript" src="/javascript/RandomClouds.js"></script>
+		<script defer type="text/javascript" src="/javascript/RandomCloudsAndFallGuys.js"></script>
 	</th:block>
 	<title>FallGods</title>
 </head>
@@ -20,6 +20,8 @@
 	style="background-image: url('images/trialanderror.svg'); background-size: 2.25%;">
 
 	<div id="cloud-container"></div>
+	<div id="fallguys-container"></div>
+
 
 	<div class="flex relative items-center justify-center mt-auto">
 		<img class="w-3/4 max-w-[1920px] min-w-[1300px] min-h-[720px] max-h-[1080px] z-10 pointer-events-none"

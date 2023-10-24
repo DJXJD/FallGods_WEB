@@ -4,6 +4,7 @@
 	display: none !important;
 }
 
+
 @font-face {
 	font-family: 'TITANONE';
 	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
@@ -41,6 +42,14 @@
 	background-size: contain;
 	opacity: 1;
 	pointer-events: none;
+}
+
+.falling_fallguy {
+	position: absolute;
+	z-index: 10;
+	background-size: contain;
+	opacity: 1;
+	background-repeat: no-repeat;
 }
 
 html,
