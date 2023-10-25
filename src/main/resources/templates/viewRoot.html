@@ -4,20 +4,28 @@
 <meta charset="UTF-8">
 <th:block th:replace="~{index :: stdHead}"/>
 <title>View - FallGods</title>
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/animations.css">
 </head>
 <body class="vcontainer">
+<div class="home-button">
+	<button class="home-button topleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    	<img src="https://fontmeme.com/permalink/231021/047dcde5525df79b9a4c02270201b83d.png" alt="fall-guys-font">
+	</button>
+	<button class="home-button top2ndleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    	<img src="https://fontmeme.com/permalink/231021/ac8105c706d1c01ec09085986aac5c42.png" alt="fall-guys-font">
+	</button>
+</div>
 <th:block th:replace="~{index :: themeSelector}"/>
 <header class="center">
-	<h1>Select View Mode</h1>
+	<h1 class="fall-font-title text-6xl mb-4">Select View Mode</h1class="fall-font-title text-6xl mb-4">
 </header>
 <main class="hcontainer">
-	<h2><a href="/view/sessions">Sessions</a></h2>
-	<h2><a href="/view/players">Players</a></h2>
+	<h2><a class="fall-btn text-3xl mb-4" href="/view/sessions">Sessions</a></h2>
+	<h2><a class="fall-btn text-3xl mb-4" href="/view/players">Players</a></h2>
 </main>
 <footer class="hcontainer">
-	<div>
-		<a href="/">Home</a>
-	</div>
+
 </footer>
 </body>
 </html>

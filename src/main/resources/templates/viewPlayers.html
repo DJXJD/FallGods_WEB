@@ -4,36 +4,45 @@
 <meta charset="UTF-8">
 <th:block th:replace="~{index :: stdHead}"/>
 <title>View Players - FallGods</title>
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/animations.css">
 </head>
 <body class="vcontainer">
 <th:block th:replace="~{index :: themeSelector}"/>
+<div class="home-button">
+	<button class="home-button topleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    	<img src="https://fontmeme.com/permalink/231021/047dcde5525df79b9a4c02270201b83d.png" alt="fall-guys-font">
+	</button>
+	<button class="home-button top2ndleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    	<img src="https://fontmeme.com/permalink/231021/ac8105c706d1c01ec09085986aac5c42.png" alt="fall-guys-font">
+	</button>
+</div>
 <header class="center">
-	<h1>View Players</h1>
+	<h1 class="fall-font-title text-6xl mb-4">View Players</h1>
 </header>
 <main>
 	<h2 th:text="*{name}"/>
 	<table border="1">
 		<thead>
-			<th>Name
+			<th class="fall-font-title text-3xl mb-4">Name
 			<th>Avg stat 1?
 			<th>Avg stat 2?
 			<th>Avg stat 3?
 		</thead>
 		<tbody>
-			<tr th:each="player : *{players}" th:object="${player}">
-				<td th:text="*{name}"/>
+			<tr class="fall-font-general"th:each="player : *{players}" th:object="${player}">
+				<td class="fall-font-general text-2xl" th:text="*{name}"/>
 				<td/>
 				<td/>
 				<td/>
-				<td><a th:href="@{/view/player/{id} (id = *{id})}">Details</a></td>
+				<td><a class="fall-font-subtitle text-2xl" th:href="@{/view/player/{id} (id = *{id})}">Details</a></td>
 			</tr>
 		</tbody>
 	</table>
 </main>
 <footer class="hcontainer">
 	<div>
-		<a href="/">Home</a>
-		<a href="/view">View</a>
+		<a class="fall-btn"href="/view">View</a>
 	</div>
 </footer>
 </body>
