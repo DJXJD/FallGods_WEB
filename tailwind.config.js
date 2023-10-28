@@ -16,7 +16,9 @@ module.exports = {
 				'CustomFallGuysBorderBackground': '#f906bf'
 			},
 			backgroundColor: {
-				'CustomFallGuysPinkBackground': '#f906bf'
+				'CustomFallGuysPinkBackground': '#f906bf',
+				'CustomFallGuysBlueBackground': '#ADD8E6'
+				
 			},
 			textColor:{
 				'CustomFallGuysPinkText': '#f906bf',

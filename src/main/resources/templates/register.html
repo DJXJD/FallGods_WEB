@@ -1,51 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
-<th:block th:replace="~{index :: stdHead}"/>
-<title>Register - FallGods</title>
+	<meta charset="ISO-8859-1">
+	<th:block th:replace="~{index :: stdHead}" />
+	<title>Register - FallGods</title>
 </head>
-<body class="vcontainer">
-<th:block th:replace="~{index :: themeSelector}"/>
-<header class="center">
-	<h1>Register New Entities</h1>
-</header>
-<main class="hcontainer">
-	<div class="vcontainer">
-		<h2>Register players</h2>
-		<h3 th:if="${rpError}" th:text="${rpError}" style="color: red;"></h3>
-		<form class="vcontainer" action="/register/addPlayer" method="post">
-			<div class="hcontainer cg10">
-				<label for="pName">Name:</label><input type="text" id="pName" name="name" required>
-			</div>
-			<p><input type="submit" value="Add Player"></p>
-		</form>
-	</div>
-	<div class="vcontainer">
-		<h2>Register Minigames</h2>
-		<h3 th:if="${rmgError}" th:text="${rmgError}" style="color: red;"></h3>
-		<form class="vcontainer" action="/register/addMinigame" method="post" th:object="${newMinigame}">
-			<div class="vcontainer rg10">
+
+<body class="vcontainer bg-repeat bg-center bg-contain overflow-hidden"
+	style="background-image: url('images/trialanderror.svg'); background-size: 5vh;">
+	<th:block th:replace="~{index :: themeSelector}" />
+	<header class="center z-10">
+		<h1>Register New Entities</h1>
+	</header>
+	
+	
+	<div id="cloud-container"></div>
+	<div id="fallguys-container"></div>
+
+	
+	<main class="hcontainer z-10">
+		<div class="vcontainer">
+			<h2>Register players</h2>
+			<h3 th:if="${rpError}" th:text="${rpError}" style="color: red;"></h3>
+			<form class="vcontainer" action="/register/addPlayer" method="post">
 				<div class="hcontainer cg10">
-					<label for="mgName">Name:</label><input type="text" id="mgName" th:field="*{name}" required>
+					<label for="pName">Name:</label><input type="text" id="pName" name="name" required>
 				</div>
-				<div class="hcontainer cg10">
-					<label for="mgType">Type:</label>
-					<select id="mgType" th:field="*{type}" required>
-						<option value="">N/A</option>
-						<option th:each="gameType : ${gameTypes}" th:text="${gameType}" th:value="${gameType}"></option>
-					</select>
+				<p><input type="submit" value="Add Player"></p>
+			</form>
+		</div>
+		<div class="vcontainer">
+			<h2>Register Minigames</h2>
+			<h3 th:if="${rmgError}" th:text="${rmgError}" style="color: red;"></h3>
+			<form class="vcontainer" action="/register/addMinigame" method="post" th:object="${newMinigame}">
+				<div class="vcontainer rg10">
+					<div class="hcontainer cg10">
+						<label for="mgName">Name:</label><input type="text" id="mgName" th:field="*{name}" required>
+					</div>
+					<div class="hcontainer cg10">
+						<label for="mgType">Type:</label>
+						<select id="mgType" th:field="*{type}" required>
+							<option value="">N/A</option>
+							<option th:each="gameType : ${gameTypes}" th:text="${gameType}" th:value="${gameType}">
+							</option>
+						</select>
+					</div>
 				</div>
-			</div>
-			<p><input type="submit" value="Add Minigame"></p>
-		</form>
-	</div>
-</main>
-<footer class="hcontainer">
-	<div>
-		<a href="/">Home</a>
-		<a href="/track">Track</a>
-	</div>
-</footer>
+				<p><input type="submit" value="Add Minigame"></p>
+			</form>
+		</div>
+	</main>
+	
+	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
+		<div class=" flex justify-evenly items-center my-5 ">
+			<a href="/"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
+				Home</a>
+			<a href="/track"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
+				Track</a>
+			<a href="/view"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
+				View</a>
+		</div>
+	</footer>
 </body>
+
 </html>

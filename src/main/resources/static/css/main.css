@@ -4,6 +4,9 @@
 	display: none !important;
 }
 
+.custom {
+  cursor: url("/src/main/resources/static/images/fallGuyTest2.png"), grab;
+}
 
 @font-face {
 	font-family: 'TITANONE';
@@ -57,7 +60,7 @@ body {
 	min-height: 100vh;
 	margin: 0;
 	background-color: rgb(180, 230, 255, 1);
-	overflow: hidden;
+
 	min-width: 1024px;
 }
 

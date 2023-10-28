@@ -1,23 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
-<meta charset="UTF-8">
-<th:block th:replace="~{index :: stdHead}"/>
-<title>View - FallGods</title>
+	<meta charset="UTF-8">
+	<th:block th:replace="~{index :: stdHead}" />
+	<title>View - FallGods</title>
 </head>
-<body class="vcontainer">
-<th:block th:replace="~{index :: themeSelector}"/>
-<header class="center">
-	<h1>Select View Mode</h1>
-</header>
-<main class="hcontainer">
-	<h2><a href="/view/sessions">Sessions</a></h2>
-	<h2><a href="/view/players">Players</a></h2>
-</main>
-<footer class="hcontainer">
-	<div>
-		<a href="/">Home</a>
+
+<body class="flex flex-col relative bg-repeat bg-center bg-contain overflow-hidden"
+	style="background-image: url('images/trialanderror.svg'); background-size: 5vh;">
+
+	<th:block th:replace="~{index :: themeSelector}" />
+	<header class="flex flex-col items-center justify-center text-center z-10">
+
+		<!--<h1 class="font-TitanOneFont text-[100px] NavTextShadow font-bold text-stroke text-white text-stroke ">
+			Select View Mode</h1>-->
+	</header>
+
+	<div id="cloud-container"></div>
+	<div id="fallguys-container"></div>
+
+
+	<div class=" flex justify-center items-center z-10 mt-auto">
+		<main class="  flex flex-col justify-center items-center text-center ">
+			<h2
+				class="text-[80px] mb-5 font-TitanOneFont NavTextShadow text-white text-stroke font-bold z-10">
+				What Would You Like To View?</h2>
+			<div class="flex flex-row justify-center items-center text-center">
+				<h2
+					class="hover:bg-CustomFallGuysPinkBackground border-4 border-black bg-CustomFallGuysBlueBackground rounded-full px-[50px] mx-[65px] my-[25px]">
+					<a class="font-TitanOneFont text-[50px]  text-stroke font-bold z-10 text-white "
+						href="/view/sessions">Sessions</a></h2>
+				<h2
+					class="hover:bg-CustomFallGuysPinkBackground border-4 border-black bg-CustomFallGuysBlueBackground rounded-full px-[50px] mx-[65px] my-[25px]">
+					<a class="font-TitanOneFont text-[50px]  text-stroke font-bold z-10 text-white"
+						href="/view/players">Players</a></h2>
+			</div>
+		</main>
 	</div>
-</footer>
+	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
+		<div class=" flex justify-evenly items-center my-5 ">
+			<a href="/"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
+				Home</a>
+			<a href="/register"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
+				Register</a>
+			<a href="/track"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
+				Track</a>
+		</div>
+	</footer>
+
 </body>
+
 </html>
