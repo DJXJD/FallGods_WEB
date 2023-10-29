@@ -1,6 +1,7 @@
 package dev.djxjd.fallgods.beans;
 
 import java.util.Map;
+import java.time.Duration;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -48,6 +49,16 @@ public class Player extends RESTEntity<Player> implements Comparable<Player> {
 	@Singular("mapData")
 	@ToString.Exclude
 	private Map<Minigame, MinigameData> mapData;
+	
+	private MinigameData aggMapData;
+	
+	private int numMainPlayerSessions;
+	private int numMatches;
+	private int wins;
+	private float winRate;
+	private int losses;
+	private float lossRate;
+	private Duration inGameTime;
 	
 	public Player(String toString) {
 		super(toString);
