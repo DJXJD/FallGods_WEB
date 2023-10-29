@@ -12,23 +12,40 @@
 </header>
 <main>
 	<h2 th:text="*{name}"/>
-	<table border="1">
-		<thead>
-			<th>Name
-			<th>Avg stat 1?
-			<th>Avg stat 2?
-			<th>Avg stat 3?
-		</thead>
-		<tbody>
-			<tr th:each="player : *{players}" th:object="${player}">
-				<td th:text="*{name}"/>
-				<td/>
-				<td/>
-				<td/>
-				<td><a th:href="@{/view/player/{id} (id = *{id})}">Details</a></td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="hocontainer" style="max-width: 100vw;">
+		<table border="1">
+			<thead>
+				<th>Name
+				<th>Sessions
+				<th>Matches
+				<th>Rounds
+				<th><div max-lines="2">In Game Time</div></th>
+				<th>Wins
+				<th>Win Rate
+				<th>Qualifications
+				<th>Qualification Rate
+				<th>Finishes
+				<th>Finish Rate
+				<th>MVPs
+			</thead>
+			<tbody class="center">
+				<tr th:each="player : *{players}" th:object="${player}">
+					<td><a th:text="*{name}" th:href="@{/view/player/{id} (id = *{id})}"/></td>
+					<td th:text="*{numMainPlayerSessions}"/>
+					<td th:text="*{numMatches}"/>
+					<td th:text="*{aggMapData.plays}"/>
+					<td th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}"/>
+					<td th:text="*{wins}"/>
+					<td th:text="*{winRate}"/>
+					<td th:text="*{aggMapData.qualifications}"/>
+					<td th:text="*{aggMapData.qualificationRate}"/>
+					<td th:text="*{aggMapData.finishes}"/>
+					<td th:text="*{aggMapData.finishRate}"/>
+					<td th:text="*{aggMapData.mvps}"/>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </main>
 <footer class="hcontainer">
 	<div>
