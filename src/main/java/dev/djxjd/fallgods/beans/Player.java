@@ -18,6 +18,7 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 @Data
+@ToString(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @SuperBuilder
 @JsonIdentityInfo(
@@ -26,28 +27,25 @@ import lombok.experimental.SuperBuilder;
 		property = "id")
 public class Player extends RESTEntity<Player> implements Comparable<Player> {
 	
+	@ToString.Include
 	private String name;
 	
 	@Singular
 	@JsonIgnore
-	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private Set<GameSession> mainPlayerSessions;
 	
 	@Singular
 	@JsonIgnore
-	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private Set<Match> matches;
 	
 	@Singular
 	@JsonIgnore
-	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private Set<Round> mvpRounds;
 	
 	@Singular("mapData")
-	@ToString.Exclude
 	private Map<Minigame, MinigameData> mapData;
 	
 	private MinigameData aggMapData;
