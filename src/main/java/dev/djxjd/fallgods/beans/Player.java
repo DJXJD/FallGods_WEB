@@ -1,8 +1,8 @@
 package dev.djxjd.fallgods.beans;
 
-import java.util.Map;
 import java.time.Duration;
 import java.util.Set;
+import java.util.SortedMap;
 import java.util.regex.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -46,7 +46,7 @@ public class Player extends RESTEntity<Player> implements Comparable<Player> {
 	private Set<Round> mvpRounds;
 	
 	@Singular("mapData")
-	private Map<Minigame, MinigameData> mapData;
+	private SortedMap<Minigame, MinigameData> mapData;
 	
 	private MinigameData aggMapData;
 	

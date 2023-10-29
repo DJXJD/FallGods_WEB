@@ -20,7 +20,7 @@ import lombok.experimental.SuperBuilder;
 		scope = Minigame.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "id")
-public class Minigame extends RESTEntity<Minigame> {
+public class Minigame extends RESTEntity<Minigame> implements Comparable<Minigame> {
 	
 	private String name;
 	private GameType type;
@@ -51,6 +51,12 @@ public class Minigame extends RESTEntity<Minigame> {
 		HUNT,
 		SURVIVAL,
 		RACE
+	}
+
+	@Override
+	public int compareTo(Minigame o) {
+		if (!type.equals(o.type)) return type.compareTo(o.type);
+		else return name.compareTo(o.name);
 	}
 	
 }
