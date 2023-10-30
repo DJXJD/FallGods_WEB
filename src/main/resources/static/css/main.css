@@ -86,3 +86,11 @@ footer.hcontainer > div {
 	top: 0px;
 	right: 0px;
 }
+
+td > svg {
+	display: block;
+}
+
+table table {
+	width: 100%;
+}

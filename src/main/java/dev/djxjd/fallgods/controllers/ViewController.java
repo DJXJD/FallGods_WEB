@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import dev.djxjd.fallgods.services.GameSessionService;
 import dev.djxjd.fallgods.services.PlayerService;
 import lombok.AllArgsConstructor;
 
@@ -17,6 +18,7 @@ import lombok.AllArgsConstructor;
 public class ViewController {
 	
 	private PlayerService pService;
+	private GameSessionService gsService;
 	
 	@GetMapping
 	public String getViewRoot() {
@@ -34,6 +36,12 @@ public class ViewController {
 		model.addAttribute("players", pService.getCollection());
 		model.addAttribute("player", pService.getElement(id));
 		return "viewPlayerDetails";
+	}
+	
+	@GetMapping("/sessions")
+	public String getViewSessions(Model model) {
+		model.addAttribute("gameSessions", gsService.getCollection());
+		return "viewSessions";
 	}
 
 }

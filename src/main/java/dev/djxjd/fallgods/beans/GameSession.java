@@ -3,6 +3,7 @@ package dev.djxjd.fallgods.beans;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -35,6 +36,14 @@ public class GameSession extends RESTEntity<GameSession> {
 	public Match getLastMatch() {
 		if (matches == null || matches.isEmpty()) return null;
 		return matches.get(matches.size() - 1);
+	}
+	
+	@JsonIgnore
+	public String getMainPlayerNames() {
+		return mainPlayers.stream()
+				.sorted()
+				.map(Player::getName)
+				.collect(Collectors.joining(", "));
 	}
 	
 	private boolean finished;
