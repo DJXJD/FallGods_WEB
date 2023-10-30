@@ -5,11 +5,19 @@
 <th:block th:replace="~{index :: stdHead}"/>
 <title>View Players - FallGods</title>
 </head>
-<body class="vcontainer">
+<body class="flex flex-col relative bg-repeat bg-center bg-contain overflow-hidden"
+	style="background-image: url('images/trialanderror.svg'); background-size: 5vh;">
+
 <th:block th:replace="~{index :: themeSelector}"/>
 <header class="center">
 	<h1>View Players</h1>
 </header>
+
+
+	<div id="cloud-container"></div>
+	<div id="fallguys-container"></div>
+
+
 <main>
 	<h2 th:text="*{name}"/>
 	<table border="1">
@@ -30,11 +38,19 @@
 		</tbody>
 	</table>
 </main>
-<footer class="hcontainer">
-	<div>
-		<a href="/">Home</a>
-		<a href="/view">View</a>
-	</div>
-</footer>
+
+	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
+		<div class=" flex justify-evenly items-center my-5 ">
+			<a href="/"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
+				Home</a>
+			<a href="/register"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
+				Register</a>
+			<a href="/view"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
+				View</a>
+		</div>
+	</footer>
 </body>
 </html>

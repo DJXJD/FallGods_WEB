@@ -2,13 +2,33 @@
 const cloudContainer = document.getElementById("cloud-container");
 const fallguysContainer = document.getElementById("fallguys-container");
 
+
+
+// Normalize a value based on the viewport width (window.innerWidth)
+function normalizeValue(value, min, max) {
+  const vw = window.innerWidth;
+  return (value / 100) * (vw / (max - min)) + (min * vw) / (max - min);
+}
+
+// Example usage:
+const minValue = 100; // Minimum value
+const maxValue = 500; // Maximum value
+const normalizedValue = normalizeValue(50, minValue, maxValue);
+
+console.log(normalizedValue); // This will give you a value relative to the viewport width
+
+
+
+
+
+
 function createAndAnimateCloud(isInitialSpawn) {
 	const cloud = document.createElement("div");
 	cloud.className = "cloud";
 
 	// Generate a random cloud image
 	const cloudImages = [
-		'images/cloudbackgroundforlogo.png',
+		'/images/cloudbackgroundforlogo.png',
 	];
 
 	const randomImageIndex = Math.floor(Math.random() * cloudImages.length);
@@ -22,7 +42,7 @@ function createAndAnimateCloud(isInitialSpawn) {
 
 	// Generate random properties
 	const size = Math.random() * 200 + 400; // Random size between 300px and 500px
-	const speed = Math.random() * 0.75 + 0.5; // Random speed between 2 and 7 pixels per frame
+	const speed = Math.random() * (1 - 0.75) + 0.75;
 	const opacity = Math.random(); // Random opacity between 0 and 1
 	let xPos, yPos;
 
@@ -75,14 +95,17 @@ function createAndAnimateFallGuy() {
 
 	// Generate a random cloud image
 	const FallGuysImages = [
-		'images/fallguyTest.png',
-		'images/fallguyTest2.png'
+		'/images/fallguyTest.png',
+		'/images/fallguyTest2.png',
+		'/images/fallguyTest3.png',
+		'/images/fallguyTest4.png',
+		'/images/fallguyTest5.png',
 	];
 
 	const randomFallGuyImageIndex = Math.floor(Math.random() * FallGuysImages.length);
 	const randomFallGuyImage = FallGuysImages[randomFallGuyImageIndex];
 
-	const zIndex = Math.floor(Math.random() * 8);
+	const zIndex = Math.floor(Math.random() * 7);
 
 	FallGuy.style.backgroundImage = `url('${randomFallGuyImage}')`;
 
@@ -124,7 +147,7 @@ function createAndAnimateFallGuy() {
 
 
 // Create and animate clouds initially spawned all over the screen
-for (let i = 0; i < Math.random() * (8 - 1 + 1) + 1; i++) {
+for (let i = 0; i < Math.random() * (9 - 1 + 1) + 1; i++) {
 	createAndAnimateFallGuy();
 }
 
