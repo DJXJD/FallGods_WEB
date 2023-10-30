@@ -42,6 +42,7 @@ public class GameSession extends RESTEntity<GameSession> {
 	
 	private int wins;
 	private int losses;
+	private float winRate;
 	private List<List<Match>> streaks;
 	private int currentStreak;
 	private int highestStreak;
