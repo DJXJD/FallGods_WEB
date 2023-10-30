@@ -176,3 +176,12 @@ footer.hcontainer>div {
     background-position: 0 100%;
   }
 }
+
+
+td > svg {
+	display: block;
+}
+
+table table {
+	width: 100%;
+}
