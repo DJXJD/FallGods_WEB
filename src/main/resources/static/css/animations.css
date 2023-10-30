@@ -24,10 +24,7 @@ body.fall-enter-active {
 }
 
 
-input[type="submit"]:hover {
-    color: black;
-    background-color: green;
-}
+
 
 input[type="submit"][value="Undo"]:hover {
     background-color: orange;
