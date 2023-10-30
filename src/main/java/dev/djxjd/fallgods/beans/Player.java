@@ -1,7 +1,8 @@
 package dev.djxjd.fallgods.beans;
 
-import java.util.Map;
+import java.time.Duration;
 import java.util.Set;
+import java.util.SortedMap;
 import java.util.regex.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -17,6 +18,7 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 @Data
+@ToString(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @SuperBuilder
 @JsonIdentityInfo(
@@ -25,29 +27,36 @@ import lombok.experimental.SuperBuilder;
 		property = "id")
 public class Player extends RESTEntity<Player> implements Comparable<Player> {
 	
+	@ToString.Include
 	private String name;
 	
 	@Singular
 	@JsonIgnore
-	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private Set<GameSession> mainPlayerSessions;
 	
 	@Singular
 	@JsonIgnore
-	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private Set<Match> matches;
 	
 	@Singular
 	@JsonIgnore
-	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private Set<Round> mvpRounds;
 	
 	@Singular("mapData")
-	@ToString.Exclude
-	private Map<Minigame, MinigameData> mapData;
+	private SortedMap<Minigame, MinigameData> mapData;
+	
+	private MinigameData aggMapData;
+	
+	private int numMainPlayerSessions;
+	private int numMatches;
+	private int wins;
+	private float winRate;
+	private int losses;
+	private float lossRate;
+	private Duration inGameTime;
 	
 	public Player(String toString) {
 		super(toString);
