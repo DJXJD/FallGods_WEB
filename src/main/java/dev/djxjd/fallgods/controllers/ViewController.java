@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 
 @Controller
 @RequestMapping("/view")
-@SessionAttributes({ "theme", "group" })
+@SessionAttributes("theme")
 @AllArgsConstructor
 public class ViewController {
 	

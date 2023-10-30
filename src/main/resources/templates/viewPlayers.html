@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/animations.css">
 </head>
+
 <body class="flex flex-col relative bg-repeat bg-center bg-contain overflow-hidden"
 	style="background-image: url('images/trialanderror.svg'); background-size: 5vh;">
 
@@ -18,43 +19,45 @@
 	</header>
 	<div id="cloud-container"></div>
 	<div id="fallguys-container"></div>
-<main>
-	<h2 th:text="*{name}"/>
-	<div class="hocontainer" style="max-width: 100vw;">
-		<table border="1">
-			<thead>
-				<th>Name
-				<th>Sessions
-				<th>Matches
-				<th>Rounds
-				<th><div max-lines="2">In Game Time</div></th>
-				<th>Wins
-				<th>Win Rate
-				<th>Qualifications
-				<th>Qualification Rate
-				<th>Finishes
-				<th>Finish Rate
-				<th>MVPs
-			</thead>
-			<tbody class="center">
-				<tr th:each="player : *{players}" th:object="${player}">
-					<td><a th:text="*{name}" th:href="@{/view/player/{id} (id = *{id})}"/></td>
-					<td th:text="*{numMainPlayerSessions}"/>
-					<td th:text="*{numMatches}"/>
-					<td th:text="*{aggMapData.plays}"/>
-					<td th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}"/>
-					<td th:text="*{wins}"/>
-					<td th:text="*{winRate}"/>
-					<td th:text="*{aggMapData.qualifications}"/>
-					<td th:text="*{aggMapData.qualificationRate}"/>
-					<td th:text="*{aggMapData.finishes}"/>
-					<td th:text="*{aggMapData.finishRate}"/>
-					<td th:text="*{aggMapData.mvps}"/>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</main>
+	<main class="z-10">
+		<h2 th:text="*{name}" />
+		<div class="hocontainer" style="max-width: 100vw;">
+			<table border="1">
+				<thead>
+					<th>Name
+					<th>Sessions
+					<th>Matches
+					<th>Rounds
+					<th>
+						<div max-lines="2">In Game Time</div>
+					</th>
+					<th>Wins
+					<th>Win Rate
+					<th>Qualifications
+					<th>Qualification Rate
+					<th>Finishes
+					<th>Finish Rate
+					<th>MVPs
+				</thead>
+				<tbody class="center">
+					<tr th:each="player : *{players}" th:object="${player}">
+						<td><a th:text="*{name}" th:href="@{/view/player/{id} (id = *{id})}" /></td>
+						<td th:text="*{numMainPlayerSessions}" />
+						<td th:text="*{numMatches}" />
+						<td th:text="*{aggMapData.plays}" />
+						<td th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}" />
+						<td th:text="*{wins}" />
+						<td th:text="*{winRate}" />
+						<td th:text="*{aggMapData.qualifications}" />
+						<td th:text="*{aggMapData.qualificationRate}" />
+						<td th:text="*{aggMapData.finishes}" />
+						<td th:text="*{aggMapData.finishRate}" />
+						<td th:text="*{aggMapData.mvps}" />
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
 	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
 		<div class=" flex justify-evenly items-center my-5 ">
 			<a href="/"
@@ -69,5 +72,4 @@
 		</div>
 	</footer>
 </body>
-
 </html>
