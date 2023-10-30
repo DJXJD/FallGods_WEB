@@ -1,0 +1,346 @@
+@charset "ISO-8859-1";
+
+body.fall-enter-active {
+    animation: fallIn 0.5s forwards;
+}
+
+@keyframes fallIn {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh);
+    }
+}
+
+.streak {
+    position: absolute;
+    background: rgb(255, 0, 0);
+    width: 10px;
+    height: 1000px;
+    display: none;
+}
+
+
+input[type="submit"]:hover {
+    color: black;
+    background-color: green;
+}
+
+input[type="submit"][value="Undo"]:hover {
+    background-color: orange;
+    cursor: pointer;
+}
+
+input[type="submit"][value="End Session"]:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+.fall-font-title {
+	color: #F73CA3;
+    font-family: 'Luckiest Guy', cursive;
+    text-shadow: 3px 4px 3px #6FB4D6;
+    border-radius: 30px;
+    padding: 5px 20px;
+    -webkit-text-stroke-width: 0.15px;
+    -webkit-text-stroke-color: black;
+}
+
+.fall-font-subtitle {
+	color: #F73CA3;
+    font-family: 'Luckiest Guy', cursive;
+    text-shadow: 2px 2px 2px #6FB4D6;
+    border-radius: 30px;
+    padding: 5px 20px;
+    -webkit-text-stroke-width: 0.15px;
+    -webkit-text-stroke-color: black;
+}
+
+.fall-font-general {
+	color: ghostwhite;
+    font-family: 'Luckiest Guy', cursive;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    padding: 2px 3px;
+    text-shadow: #6FB4D6;
+    background-color: #89CFF0;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+}
+
+.fall-font-nav {
+	color: ghostwhite;
+    font-family: 'Luckiest Guy', cursive;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    width: 75%;
+    margin-left: 12%;
+    margin-right: 12%;
+    display: flex;
+    position: center;
+    border-radius: 15px;
+    padding: 1px 1px;
+    text-shadow: #6FB4D6;
+    background-color: #89CFF0;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+}
+
+.fall-box {
+	color: #6FB4D6;
+    font-family: 'Luckiest Guy', cursive;
+    background-color: ghostwhite;
+    -webkit-text-stroke-width: 0.01px;
+    -webkit-text-stroke-color: black;
+}
+
+.fall-btn {
+	color: ghostwhite;
+    background-color: #89CFF0;
+    font-family: 'Luckiest Guy', cursive;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 25px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.6s transform 0.4s, box-shadow 0.4s;
+    margin: 0 15px;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+}
+
+.fall-btn-mini {
+	color: ghostwhite;
+    background-color: #89CFF0;
+    font-family: 'Luckiest Guy', cursive;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    padding: 7px 15px;
+    font-size: 20px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.6s transform 0.4s, box-shadow 0.4s;
+    margin: 0 15px;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+}
+
+.fall-form-btn {
+	color: ghostwhite;
+    background-color: #89CFF0;
+    font-family: 'Luckiest Guy', cursive;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 15px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.6s transform 0.4s, box-shadow 0.4s;
+    margin: 0 15px;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+}
+
+.fall-btn:hover {
+    background-color: #6FB4D6;
+    transform: translateY(-5px);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.fall-btn:active {
+    transform: scale(0.95);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.fall-btn-mini:hover {
+    background-color: #6FB4D6;
+    transform: translateY(-5px);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.fall-btn-mini:active {
+    transform: scale(0.95);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fall-form-btn:hover {
+    background-color: #6FB4D6;
+    transform: translateY(-5px);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.fall-form-btn:active {
+    transform: scale(0.95);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes poof {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.button-poof {
+    animation: poof 5s forwards;
+}
+
+.tooltip {
+  position: relative;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 25;
+  -webkit-text-stroke-width: 0.2px;
+  -webkit-text-stroke-color: black;
+}
+
+.tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: ghostwhite;
+  padding: 7px;
+  bottom: 80px;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 1;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.tooltip:hover::before {
+  visibility: visible;
+  opacity: 1;
+}
+
+.home-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.home-button img {
+  width: 80px;
+  height: 40px;
+}
+
+.home-button:hover img {
+  filter: brightness(1.2);
+  transition: filter 0.3s;
+}
+/* Style the dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the dropdown button */
+.dropbtn {
+    background-color: #89CFF0;
+    padding: 12px 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #89CFF0;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Style the dropdown links */
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    -webkit-text-stroke-width: 0.2px;
+  	-webkit-text-stroke-color: black;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/* Style the dropdown container */
+.dropdown-map {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-map-content {
+	columns: 7;
+    display: none;
+    position: absolute;
+    background-color: #89CFF0;
+    color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-map-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    -webkit-text-stroke-width: 0.3px;
+    -webkit-text-stroke-color: black;
+}
+.dropdown-map-content a:hover {
+    background-color: #ddd;
+}
+.dropdown-map:hover .dropdown-map-content {
+    display: block;
+}
+.column {
+    break-inside: avoid; /* Prevent columns from breaking inside the div */
+    margin-bottom: 10px; /* Adjust the margin between columns as needed */
+}
+
+/* Style unclickable links */
+.unclickable {
+    color: #888;
+    font-weight: bold;
+}
+
+.race-sect {
+    color: #d47d7d;
+}
+.survival-sect {
+	color: #a8a5ec;
+}
+.hunt-sect {
+	color: #5e999a;
+}
+.logic-sect {
+	color: #ff5733;
+}
+.team-sect {
+	color: #9351ff;
+}
+.finalMap-sect {
+	color: #4b8d6b;
+}
+.invisabeans-sect {
+	color: #74a3f4;
+}

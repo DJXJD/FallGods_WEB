@@ -44,5 +44,5 @@ $(() => {
 		$(".pfrow").each((i, e) => {
 			e.hidden = false;
 		});
-	}
+	};
 });

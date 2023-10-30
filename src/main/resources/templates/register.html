@@ -2,69 +2,72 @@
 <html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-	<meta charset="ISO-8859-1">
-	<th:block th:replace="~{index :: stdHead}" />
-	<title>Register - FallGods</title>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="/css/animations.css">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+<th:block th:replace="~{index :: stdHead}"/>
+<title>Register - FallGods</title>
 </head>
-
 <body class="vcontainer bg-repeat bg-center bg-contain overflow-hidden"
 	style="background-image: url('images/trialanderror.svg'); background-size: 5vh;">
 	<th:block th:replace="~{index :: themeSelector}" />
-	<header class="center z-10">
-		<h1>Register New Entities</h1>
-	</header>
-	
-	
 	<div id="cloud-container"></div>
 	<div id="fallguys-container"></div>
-
-	
-	<main class="hcontainer z-10">
-		<div class="vcontainer">
-			<h2>Register players</h2>
-			<h3 th:if="${rpError}" th:text="${rpError}" style="color: red;"></h3>
-			<form class="vcontainer" action="/register/addPlayer" method="post">
+<header class="center">
+	<h1 class="fall-font-title text-6xl mb-4" >Register New Entities</h1>
+</header>
+<div class="home-button">
+<button class="home-button topleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    <img src="https://fontmeme.com/permalink/231021/047dcde5525df79b9a4c02270201b83d.png" alt="fall-guys-font">
+</button>
+<button class="home-button top2ndleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    <img src="https://fontmeme.com/permalink/231021/ac8105c706d1c01ec09085986aac5c42.png" alt="fall-guys-font">
+</div>
+</button>
+<main class="hcontainer2">
+	<div class="vcontainer">
+		<h2 class="fall-font-general" >Register players</h2>
+		<h3 class="fall-font-general"  th:if="${rpError}" th:text="${rpError}" style="color: red;"></h3>
+		<form class="vcontainer" action="/register/addPlayer" method="post">
+			<div class="hcontainer cg10">
+			</div>
+				<label class="fall-font-general" for="pName">Name:</label><input class="fall-box" type="text" id="pName" name="name" required>
+			<p><input class="fall-btn-mini"  type="submit" value="Add Player"></p>
+		</form>
+	</div>
+		<form class="vcontainer" action="/register/addMinigame" method="post" th:object="${newMinigame}">
+		<h3 th:if="${rmgError}" th:text="${rmgError}" style="color: red;"></h3>
+		<h2 class="fall-font-general">Register Minigames</h2>
+	<div class="vcontainer">
+			<div class="vcontainer rg10">
 				<div class="hcontainer cg10">
-					<label for="pName">Name:</label><input type="text" id="pName" name="name" required>
+					<label class="fall-font-general" for="mgName">Name:</label><input class="fall-box" type="text" id="mgName" th:field="*{name}" required>
 				</div>
-				<p><input type="submit" value="Add Player"></p>
-			</form>
-		</div>
-		<div class="vcontainer">
-			<h2>Register Minigames</h2>
-			<h3 th:if="${rmgError}" th:text="${rmgError}" style="color: red;"></h3>
-			<form class="vcontainer" action="/register/addMinigame" method="post" th:object="${newMinigame}">
-				<div class="vcontainer rg10">
-					<div class="hcontainer cg10">
-						<label for="mgName">Name:</label><input type="text" id="mgName" th:field="*{name}" required>
-					</div>
-					<div class="hcontainer cg10">
-						<label for="mgType">Type:</label>
-						<select id="mgType" th:field="*{type}" required>
-							<option value="">N/A</option>
-							<option th:each="gameType : ${gameTypes}" th:text="${gameType}" th:value="${gameType}">
-							</option>
-						</select>
-					</div>
+				<div class="hcontainer cg10">
+					<label class="fall-font-general" for="mgType">Type:</label>
+					<select class="fall-font-general" id="mgType" th:field="*{type}" required>
+						<option class="fall-font-general" value="">N/A</option>
+						<option class="fall-font-general" th:each="gameType : ${gameTypes}" th:text="${gameType}" th:value="${gameType}"></option>
+					</select>
 				</div>
-				<p><input type="submit" value="Add Minigame"></p>
-			</form>
-		</div>
-	</main>
-	
+			</div>
+			<p><input class="fall-btn-mini" type="submit" value="Add Minigame"></p>
+		</form>
+	</div>
+</main>
 	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
 		<div class=" flex justify-evenly items-center my-5 ">
 			<a href="/"
-				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
 				Home</a>
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
 			<a href="/track"
 				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
 				Track</a>
 			<a href="/view"
 				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
 				View</a>
-		</div>
 	</footer>
+		</div>
 </body>
 
 </html>

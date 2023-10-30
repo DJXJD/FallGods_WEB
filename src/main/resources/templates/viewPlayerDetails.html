@@ -2,76 +2,73 @@
 <html xmlns:th="https://www.thymeleaf.org/">
 
 <head>
-	<meta charset="UTF-8">
-	<th:block th:replace="~{index :: stdHead}" />
-	<script defer type="text/javascript" src="/javascript/viewPlayerDetails.js"></script>
-	<title>View Player Details - FallGods</title>
+<meta charset="UTF-8">
+<th:block th:replace="~{index :: stdHead}"/>
+<script defer type="text/javascript" src="/javascript/viewPlayerDetails.js"></script>
+<title>View Player Details - FallGods</title>
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/animations.css">
 </head>
-
 <body class="flex flex-col relative bg-repeat bg-center bg-contain overflow-hidden"
 	style="background-image: url('images/trialanderror.svg'); background-size: 5vh;">
-
 	<th:block th:replace="~{index :: themeSelector}" />
 	<header class="center">
 		<h1>View Player Details</h1>
 	</header>
-
-
 	<div id="cloud-container"></div>
 	<div id="fallguys-container"></div>
-
-
-	<main class="vcontainer" th:object="${player}">
-		<form id="playerSelectorForm" class="hcontainer close" hidden>
-			<label for="playerSelector">
-				<h2>Player:</h2>
-			</label>
-			<select id="playerSelector">
-				<option th:each="p : ${players}" th:text="${p.name}" th:value="@{/view/player/{id} (id = ${p.id})}"
-					th:selected="${p == player}">
-			</select>
-		</form>
-		<div class="hocontainer" style="max-width: 100vw;">
-			<table border="1">
-				<thead>
-					<th>Map
-					<th>plays
-					<th>occurrence
-					<th>qualifications
-					<th>qualificationRate
-					<th>eliminations
-					<th>eliminationRate
-					<th>finishes
-					<th>finishRate
-					<th>fumbles
-					<th>fumbleRate
-					<th>mvps
-					<th>mvpRate
-				</thead>
-				<tbody>
-					<tr th:each="md : *{mapData}" th:object="${md.value}">
-						<td>
-							<div th:text="${md.key.name} != null and ${md.key.type} != null ? ${md.key.friendlyName}"
-								max-lines="2" />
-						</td>
-						<td th:text="*{plays}" />
-						<td th:text="*{occurrence}" />
-						<td th:text="*{qualifications}" />
-						<td th:text="*{qualificationRate}" />
-						<td th:text="*{eliminations}" />
-						<td th:text="*{eliminationRate}" />
-						<td th:text="*{finishes}" />
-						<td th:text="*{finishRate}" />
-						<td th:text="*{fumbles}" />
-						<td th:text="*{fumbleRate}" />
-						<td th:text="*{mvps}" />
-						<td th:text="*{mvpRate}" />
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</main>
-
+<div class="home-button">
+	<button class="home-button topleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    	<img src="https://fontmeme.com/permalink/231021/047dcde5525df79b9a4c02270201b83d.png" alt="fall-guys-font">
+	</button>
+	<button class="home-button top2ndleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
+    	<img src="https://fontmeme.com/permalink/231021/ac8105c706d1c01ec09085986aac5c42.png" alt="fall-guys-font">
+	</button>
+</div>
+<main class="vcontainer" th:object="${player}">
+	<form id="playerSelectorForm" class="hcontainer close" hidden>
+		<label class="fall-font-general text-2xl mb-4" for="playerSelector"><h2>Player:</h2></label>
+		<select class="fall-font-subtitle text-2xl mb-4"id="playerSelector">
+		</select>
+			<option th:each="p : ${players}" th:text="${p.name}" th:value="@{/view/player/{id} (id = ${p.id})}" th:selected="${p == player}">
+	</form>
+	<div class="hocontainer fall-font-general" style="max-width: 100vw;">
+		<table border="1">
+			<thead>
+				<th class="fall-font-subtitle">Map
+				<th class="fall-font-subtitle">plays
+				<th class="fall-font-subtitle">qualifications
+				<th class="fall-font-subtitle">occurrence
+				<th class="fall-font-subtitle">qualificationRate
+				<th class="fall-font-subtitle">eliminations
+				<th class="fall-font-subtitle">eliminationRate
+				<th class="fall-font-subtitle">finishes
+				<th class="fall-font-subtitle">finishRate
+				<th class="fall-font-subtitle">fumbles
+				<th class="fall-font-subtitle">fumbleRate
+				<th class="fall-font-subtitle">mvpRate
+				<th class="fall-font-subtitle">mvps
+			</thead>
+			<tbody>
+				<tr class="fall-font-general" th:each="md : *{mapData}" th:object="${md.value}">
+					<td><div th:text="${md.key.name} != null and ${md.key.type} != null ? ${md.key.friendlyName}" max-lines="2"/></td>
+					<td class="fall-font-general" th:text="*{plays}"/>
+					<td class="fall-font-general" th:text="*{qualifications}"/>
+					<td class="fall-font-general" th:text="*{occurrence}"/>
+					<td class="fall-font-general" th:text="*{qualificationRate}"/>
+					<td class="fall-font-general" th:text="*{eliminationRate}"/>
+					<td class="fall-font-general" th:text="*{eliminations}"/>
+					<td class="fall-font-general" h:text="*{finishes}"/>
+					<td class="fall-font-general" th:text="*{finishRate}"/>
+					<td class="fall-font-general" th:text="*{fumbleRate}"/>
+					<td class="fall-font-general" th:text="*{fumbles}"/>
+					<td class="fall-font-general" th:text="*{mvps}"/>
+					<td class="fall-font-general" th:text="*{mvpRate}"/>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</main>
 	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
 		<div class=" flex justify-evenly items-center my-5 ">
 			<a href="/"
