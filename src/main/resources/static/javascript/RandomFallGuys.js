@@ -50,15 +50,58 @@ function createAndAnimateFallGuy() {
 
 const FallGuys_URLPathName = window.location.pathname;
 
+console.log(FallGuys_URLPathName);
+const pattern = /^\/view\/player\/\d+$/;
+
+if(pattern.test(FallGuys_URLPathName)){
+	console.log("The pattern is true");
+}else{
+switch(FallGuys_URLPathName){
+	
+	case "/":
+		console.log("The homepage");
+	break;
+	
+	case "/track":
+		console.log("track page");
+	break;
+	
+	case "/view":
+		console.log("view page");
+	break;
+	
+	case "/view/players":
+		console.log("players page");
+	break;
+	
+	case "/view/sessions":
+		console.log("sessions page");
+	break;
+	
+	case "/register":
+		console.log("register page");
+	break;
+	
+	case "/track/setGroup":
+		console.log("Set group page");
+	break;
+	
+	case pattern.test(FallGuys_URLPathName):
+		console.log("Some player info page");
+	break;
+	
+	default:
+		console.log("This is an unknown page");
+		break;
+	}
+}
 //For specific pages we want to spawn different amounts of fall guys.
 if (FallGuys_URLPathName === "/") {
-	console.log("Homepage");
 	for (let i = 0; i < Math.random() * (9 - 1 + 1) + 1; i++) {
 		createAndAnimateFallGuy();
 	}
-} else {
-	console.log("Other views");
-	for (let i = 0; i < Math.random() * (6 - 1 + 1) + 1; i++) {
+} else if(FallGuys_URLPathName === ''){
+		for (let i = 0; i < Math.random() * (6 - 1 + 1) + 1; i++) {
 		createAndAnimateFallGuy();
 	}
 }
