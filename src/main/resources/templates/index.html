@@ -12,12 +12,14 @@
 			th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
 		<script defer type="text/javascript" src="/javascript/jquery-3.7.0.slim.min.js"></script>
 		<script defer type="text/javascript" src="/javascript/main.js"></script>
-		<script defer type="text/javascript" src="/javascript/RandomCloudsAndFallGuys.js"></script>
+		<script defer type="text/javascript" src="/javascript/RandomClouds.js"></script>
+		<script defer type="text/javascript" src="/javascript/RandomFallGuys.js"></script>
 	</th:block>
+
 	<title>FallGods</title>
 </head>
 
-<body class="flex flex-col relative bg-repeat bg-center bg-contain overflow-hidden"
+<body class="flex bg-moving flex-col relative bg-repeat bg-center bg-contain overflow-hidden"
 	style="background-image: url('images/trialanderror.svg'); background-size: 5vh;">
 
 	<div id="cloud-container"></div>
@@ -54,19 +56,19 @@
 	<header class="center"></header>
 
 	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
-
 		<div class="flex justify-evenly items-center my-5 ">
-
-			<a href="" class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">© 2023
-				POOF Media, All
-				Rights Reserved</p>
-			<a href="/" class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">Privacy
-				Policy</p>
-			<a href="/" class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">Terms Of
-				Use</a>
+			<a href="/"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">©
+				2023 POOF Media, All Rights Reserved</a>
+			<a href="/"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">Privacy
+				Policy</a>
+			<a href="/"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">Terms
+				Of Use</a>
 		</div>
 	</footer>
-<script defer type="text/javascript" src="/javascript/animations.js"></script>
+
 </body>
 
 </html>

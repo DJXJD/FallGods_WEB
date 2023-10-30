@@ -1,66 +1,63 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
-<meta charset="UTF-8">
-<th:block th:replace="~{index :: stdHead}"/>
-<title>View Players - FallGods</title>
-<link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" href="/css/animations.css">
+	<meta charset="UTF-8">
+	<th:block th:replace="~{index :: stdHead}" />
+	<title>View Players - FallGods</title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/animations.css">
 </head>
+
 <body class="flex flex-col relative bg-repeat bg-center bg-contain overflow-hidden"
 	style="background-image: url('images/trialanderror.svg'); background-size: 5vh;">
 
-<th:block th:replace="~{index :: themeSelector}"/>
-<div class="home-button">
-	<button class="home-button topleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
-    	<img src="https://fontmeme.com/permalink/231021/047dcde5525df79b9a4c02270201b83d.png" alt="fall-guys-font">
-	</button>
-	<button class="home-button top2ndleft" onclick="window.location.href = '/';" data-tooltip="Go Back to Homepage">
-    	<img src="https://fontmeme.com/permalink/231021/ac8105c706d1c01ec09085986aac5c42.png" alt="fall-guys-font">
-	</button>
-</div>
-<header class="center">
-	<h1 class="fall-font-title text-6xl mb-4">View Players</h1>
-</header>
+	<th:block th:replace="~{index :: themeSelector}" />
+
+	<header class="center z-10 pointer-events-none">
+		<h1 class="fall-font-title text-6xl mb-4">View Players</h1>
+	</header>
 
 
 	<div id="cloud-container"></div>
 	<div id="fallguys-container"></div>
 
 
-<main>
-	<h2 th:text="*{name}"/>
-	<table border="1">
-		<thead>
-			<th class="fall-font-title text-3xl mb-4">Name
-			<th>Avg stat 1?
-			<th>Avg stat 2?
-			<th>Avg stat 3?
-		</thead>
-		<tbody>
-			<tr class="fall-font-general"th:each="player : *{players}" th:object="${player}">
-				<td class="fall-font-general text-2xl" th:text="*{name}"/>
-				<td/>
-				<td/>
-				<td/>
-				<td><a class="fall-font-subtitle text-2xl" th:href="@{/view/player/{id} (id = *{id})}">Details</a></td>
-			</tr>
-		</tbody>
-	</table>
-</main>
+	<main class="z-10">
+		<h2 th:text="*{name}" />
+		<table border="1">
+			<thead>
+				<th class="fall-font-title text-3xl mb-4">Name
+				<th>Avg stat 1?
+				<th>Avg stat 2?
+				<th>Avg stat 3?
+			</thead>
+			<tbody>
+				<tr class="fall-font-general" th:each="player : *{players}" th:object="${player}">
+					<td class="fall-font-general text-2xl" th:text="*{name}" />
+					<td />
+					<td />
+					<td />
+					<td><a class="fall-font-subtitle text-2xl" th:href="@{/view/player/{id} (id = *{id})}">Details</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
 
 	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
 		<div class=" flex justify-evenly items-center my-5 ">
 			<a href="/"
-				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">
 				Home</a>
 			<a href="/register"
-				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">
 				Register</a>
 			<a href="/view"
-				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">
 				View</a>
 		</div>
 	</footer>
 </body>
+
 </html>

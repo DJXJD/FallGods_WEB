@@ -163,3 +163,16 @@ footer.hcontainer>div {
     top: 45px;
     left: 5px;
 }
+
+  .bg-moving {
+    animation: moveBackground 35s linear infinite; /* You can adjust the duration as needed */
+  }
+  
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0%;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}

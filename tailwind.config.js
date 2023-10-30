@@ -6,6 +6,9 @@ module.exports = {
 	content: [],
 	theme: {
 		extend: {
+			zIndex: {
+				BiggerZIndex: '11',
+			},
 			fontFamily: {
 				TitanOneFont: ['TITANONE', 'sans'],
 			},	
