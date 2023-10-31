@@ -20,24 +20,25 @@
 	<div id="fallguys-container"></div>
 
 	<div class="tooltip-box z-10"></div>
-	<header class="center z-10 pointer-events-none">
+	<header class="center z-10 pointer-events-none"><br><br><br><br><br>
 		<h1 class="fall-font-title text-6xl mb-4">Track Session Data</h1>
 	</header>
-	<main class="hcontainer">
-		<h2 class="fall-font-subtitle text-4xl mb-4 z-10"
-			th:text="${gameSession} ? 'Group\'s current session stats' : 'No active session for group'"></h2>
+	<main class="hcontainer close">
 		<div class="vcontainer">
+			<br><br><br><br>
+			<h2 class="fall-font-subtitle text-4xl mb-4 z-10"
+			th:text="${gameSession} ? 'Group\'s current session stats' : 'No active session for group'"></h2>
 			<th:block th:if="${gameSession}" th:object="${gameSession}">
 				<h3 class="fall-font-general text-2xl mb-2 z-10">Summary stats</h3>
 				<table border="1" class="z-10">
 					<thead>
 						<tr class="fall-font-subtitle ">
-							<th class="fall-font-subtitle">Start Date
-							<th class="fall-font-subtitle">Duration
-							<th class="fall-font-subtitle">Losses
-							<th class="fall-font-subtitle">Wins
-							<th class="fall-font-subtitle">Current Streak
-							<th class="fall-font-subtitle">Highest Streak
+							<th class="fall-font-session-gen-index text-1xl">Start Date
+							<th class="fall-font-session-gen-index text-1xl">Duration
+							<th class="fall-font-session-gen-index text-1xl">Losses
+							<th class="fall-font-session-gen-index text-1xl">Wins
+							<th class="fall-font-session-gen-index text-1xl">Current Streak
+							<th class="fall-font-session-gen-index text-1xl">Highest Streak
 					<tbody class="center z-10">
 						</thead>
 						</tr>
@@ -47,9 +48,9 @@
 							<td class="fall-font-general" th:text="*{#strings.substring(duration.withNanos(0), 2)}">
 							<td class="fall-font-general" th:text="*{wins}">
 							<td class="fall-font-general" th:text="*{losses}">
+							<td class="fall-font-general" th:text="*{currentStreak}">
+							<td class="fall-font-general" th:text="*{highestStreak}">
 						</tr>
-						<td class="fall-font-general" th:text="*{currentStreak}">
-						<td class="fall-font-general" th:text="*{highestStreak}">
 					</tbody>
 				</table>
 				<br>
@@ -57,20 +58,20 @@
 				<table border="1" class="z-10">
 					<thead>
 						<tr class="fall-font-subtitle">
-							<th class="fall-font-subtitle">&nbsp;#&nbsp;
-							<th class="fall-font-subtitle">Start Time
-							<th class="fall-font-subtitle">Duration
-							<th class="fall-font-subtitle">Last Round (LR)
-							<th class="fall-font-subtitle">Rounds
-							<th class="fall-font-subtitle">LR Losers
-							<th class="fall-font-subtitle">Subs
-							<th class="fall-font-subtitle">LR MVP
+							<th class="fall-font-session-gen-index text-1xl">&nbsp;#&nbsp;
+							<th class="fall-font-session-gen-index text-1xl">Start Time
+							<th class="fall-font-session-gen-index text-1xl">Duration
+							<th class="fall-font-session-gen-index text-1xl">Last Round (LR)
+							<th class="fall-font-session-gen-index text-1xl">Rounds
+							<th class="fall-font-session-gen-index text-1xl">LR Losers
+							<th class="fall-font-session-gen-index text-1xl">Subs
+							<th class="fall-font-session-gen-index text-1xl">LR MVP
 						</tr>
 					</thead>
 					<tbody class="center">
 						<tr class="fall-font-general" th:each="match, iStat : *{matches}" th:object="${match}">
 							<td class="fall-font-general" th:text="${iStat.count}"
-								th:style="*{finished} ? ('background-color: ' + (*{won} ? 'green;' : 'red;') + 'color: black;')">
+								th:style="*{finished} ? ('background-color: ' + (*{won} ? 'green;' : 'red;') + 'color: white;')">
 							<td class="fall-font-general" th:text="*{#temporals.format(startDateTime.toLocalTime)}">
 							<td class="fall-font-general" th:text="*{#strings.substring(duration.withNanos(0), 2)}">
 							<td class="fall-font-general" th:text="*{rounds.size}">
@@ -85,7 +86,7 @@
 				</table>
 			</th:block>
 		</div>
-		<div class="vcontainer z-10">
+		<div class="vcontainer z-10"><br><br><br><br>
 			<h2 class="fall-font-subtitle text-3xl mb-4"
 				th:text="${newMatch} ? (${gameSession} ? 'Start new match' : 'Start session with match') : 'Add finished round'">
 			</h2>
@@ -96,8 +97,8 @@
 							<td><label class="fall-font-general tooltip" for="osdt"
 									data-tooltip="Enter a new Start time for the round.">Override StartDateTime:</label>
 							</td>
-							<td><input class="fall-font-general" id="osdt" type="checkbox" name="osdt"></td>
-							<div class="tooltip-box"></div>
+							<td><input style="cursor: pointer;" class="fall-font-general" id="osdt" type="checkbox" name="osdt"></td>
+							<div  class="tooltip-box"></div>
 						</tr>
 						<tr id="sdtRow" hidden>
 							<td><label class="fall-font-general " for="sdt">StartDateTime:</label></td>
@@ -109,7 +110,7 @@
 							<td><label class="fall-font-general" th:for="'player' + ${iStat.count}"
 									th:text="|Player ${iStat.count}:|"></label></td>
 							<td>
-								<select class="fall-font-general" th:id="'player' + ${iStat.count}"
+								<select style="cursor: pointer;" class="fall-font-general" th:id="'player' + ${iStat.count}"
 									th:field="*{group.players[__${iStat.index}__]}">
 									<div class="tooltip-box"></div>
 									<option class="fall-font-general" value="">N/A</option>
@@ -150,7 +151,7 @@
 							<td><label class="fall-font-general tooltip" for="oedt"
 									data-tooltip="Enter a new End time for the round.">Override EndDateTime:</label>
 							</td>
-							<td><input class="fall-font-general" id="oedt" type="checkbox" name="oedt"></td>
+							<td><input style="cursor: pointer;" class="fall-font-general" id="oedt" type="checkbox" name="oedt"></td>
 						</tr>
 						<tr id="edtRow" hidden>
 							<td><label class="fall-font-general" for="edt">EndDateTime:</label></td>
@@ -160,7 +161,7 @@
 						<tr id="gmRow" hidden>
 							<td><label class="fall-font-general" for="gmBox">Game mode:</label></td>
 							<td>
-								<input class="fall-font-general" list="gameModes" id="gmBox" required></input>
+								<input style="cursor: pointer;" class="fall-font-general" list="gameModes" id="gmBox" required></input>
 								<datalist id="gameModes">
 									<option th:each="minigame : ${minigames}" th:text="${minigame.friendlyName}"
 										th:data-value="${minigame.id}">
@@ -169,15 +170,15 @@
 							</td>
 						</tr>
 						<tr>
-							<td><label class="fall-font-subtitle" for="teamQualified1">Team qualified:</label></td>
-							<td><input type="checkbox" th:field="*{teamQualified}"></td>
+							<td><label class="fall-font-session-gen-index" for="teamQualified1">Team qualified:</label></td>
+							<td><input style="cursor: pointer;" type="checkbox" th:field="*{teamQualified}"></td>
 						</tr>
 						<tr class="pfrow" th:each="pf, iStat : *{playersFinished}" hidden>
 							<td><label class="fall-font-general" th:for="|pf${iStat.index}cb|"
 									th:text="|${pf.key.name} finished:|"></label></td>
-							<td><input type="checkbox" th:id="|pf${iStat.index}cb|"></td>
+							<td><input style="cursor: pointer; "type="checkbox" th:id="|pf${iStat.index}cb|"></td>
 							<td><label class="fall-font-general" th:for="|pf${iStat.index}null|">Unknown:</label></td>
-							<td><input type="checkbox" th:id="|pf${iStat.index}null|" th:checked="${pf.value} == null">
+							<td><input style="cursor: pointer;" type="checkbox" th:id="|pf${iStat.index}null|" th:checked="${pf.value} == null">
 							</td>
 							<td hidden><input type="hidden" th:id="|pf${iStat.index}|"
 									th:field="*{playersFinished[__${pf.key}__]}"></td>
@@ -185,7 +186,7 @@
 						<tr>
 							<td><label class="fall-font-general" for="mvpdd">Round MVP:</label></td>
 							<td>
-								<select class="fall-font-general" id="mvpdd" th:field="*{mvp}">
+								<select style="cursor: pointer;" class="fall-font-general" id="mvpdd" th:field="*{mvp}">
 									<option class="fall-font-general" value="">N/A</option>
 									<option class="fall-font-general" th:each="player : *{match.players}"
 										th:text="${player.name}" th:value="${player}"></option>
@@ -195,7 +196,7 @@
 						<tr>
 							<td><label for="earlyFinalRound1" class="fall-font-general">Early final
 									round:</class="fall-btn"label></td>
-							<td><input class="fall-font-general" type="checkbox" th:field="*{earlyFinalRound}"></td>
+							<td><input style="cursor: pointer;" class="fall-font-general" type="checkbox" th:field="*{earlyFinalRound}"></td>
 						</tr>
 						<tr>
 							<td><label class="fall-font-general" for="notes">Notes:</label></td>
@@ -233,6 +234,7 @@
 				Change Tracking Group</a>
 		</div>
 	</footer>
+	<br><br>
 </body>
 
 </html>

@@ -6,7 +6,8 @@
 	<th:block th:replace="~{index :: stdHead}" />
 	<title>View Players - FallGods</title>
 	<link rel="stylesheet" href="/css/main.css">
-	<link rel="stylesheet" href="/css/animations.css">
+	<link rel="stylesheet" href="/css/animations.css">	
+	<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
 </head>
 
 <body class="flex flex-col bg-moving relative bg-repeat bg-center bg-contain overflow-hidden"
@@ -15,44 +16,46 @@
 	<th:block th:replace="~{index :: themeSelector}" />
 
 	<header class="center z-10 pointer-events-none">
+		<br><br><br><br>
 		<h1 class="fall-font-title text-6xl mb-4">View Players</h1>
+		<br><br><br><br>
 	</header>
 	<div id="cloud-container"></div>
 	<div id="fallguys-container"></div>
 	<main class="z-10">
 		<h2 th:text="*{name}" />
-		<div class="hocontainer" style="max-width: 100vw;">
+		<div class="hcontainer" style="max-width: 100vw;">
 			<table border="1">
 				<thead>
-					<th>Name
-					<th>Sessions
-					<th>Matches
-					<th>Rounds
-					<th>
+					<th class="fall-font-session-gen-index text-2xl">Name
+					<th class="fall-font-session-gen-index text-2xl">Sessions
+					<th class="fall-font-session-gen-index text-2xl">Matches
+					<th class="fall-font-session-gen-index text-2xl">Rounds
+					<th class="fall-font-session-gen-index text-2xl">
 						<div max-lines="2">In Game Time</div>
 					</th>
-					<th>Wins
-					<th>Win Rate
-					<th>Qualifications
-					<th>Qualification Rate
-					<th>Finishes
-					<th>Finish Rate
-					<th>MVPs
+					<th class="fall-font-session-gen-index text-2xl">Wins
+					<th class="fall-font-session-gen-index text-2xl">Win Rate
+					<th class="fall-font-session-gen-index text-2xl">Qualifications
+					<th class="fall-font-session-gen-index text-2xl">Qualification Rate
+					<th class="fall-font-session-gen-index text-2xl">Finishes
+					<th class="fall-font-session-gen-index text-2xl">Finish Rate
+					<th class="fall-font-session-gen-index text-2xl">MVPs
 				</thead>
 				<tbody class="center">
-					<tr th:each="player : *{players}" th:object="${player}">
-						<td><a th:text="*{name}" th:href="@{/view/player/{id} (id = *{id})}" /></td>
-						<td th:text="*{numMainPlayerSessions}" />
-						<td th:text="*{numMatches}" />
-						<td th:text="*{aggMapData.plays}" />
-						<td th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}" />
-						<td th:text="*{wins}" />
-						<td th:text="*{winRate}" />
-						<td th:text="*{aggMapData.qualifications}" />
-						<td th:text="*{aggMapData.qualificationRate}" />
-						<td th:text="*{aggMapData.finishes}" />
-						<td th:text="*{aggMapData.finishRate}" />
-						<td th:text="*{aggMapData.mvps}" />
+					<tr class="fall-font-session-gen-index" th:each="player : *{players}" th:object="${player}">
+						<td><a class="text-2xl hover:text-CustomFallGuysPinkText px-[50px]" th:text="*{name}" th:href="@{/view/player/{id} (id = *{id})}" /></td>
+						<td class="fall-font-general" th:text="*{numMainPlayerSessions}" />
+						<td class="fall-font-general" th:text="*{numMatches}" />
+						<td class="fall-font-general" th:text="*{aggMapData.plays}" />
+						<td class="fall-font-general" th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}" />
+						<td class="fall-font-general" vvvvth:text="*{wins}" />
+						<td class="fall-font-general" th:text="*{winRate}" />
+						<td class="fall-font-general" th:text="*{aggMapData.qualifications}" />
+						<td class="fall-font-general" th:text="*{aggMapData.qualificationRate}" />
+						<td class="fall-font-general" th:text="*{aggMapData.finishes}" />
+						<td class="fall-font-general" vth:text="*{aggMapData.finishRate}" />
+						<td class="fall-font-general" th:text="*{aggMapData.mvps}" />
 					</tr>
 				</tbody>
 			</table>
@@ -74,5 +77,6 @@
 				View</a>
 		</div>
 	</footer>
+	<br><br><br><br>
 </body>
 </html>

@@ -20,6 +20,14 @@ body.fall-enter-active {
     height: 1000px;
     display: none;
 }
+input[type="submit"][value="Start Match"]:hover {
+    background-color: green;
+    cursor: pointer;
+}
+input[type="submit"][value="Add Round"]:hover {
+    background-color: green;
+    cursor: pointer;
+}
 input[type="submit"][value="Undo"]:hover {
     background-color: orange;
     cursor: pointer;
@@ -46,12 +54,21 @@ input[type="submit"][value="End Session"]:hover {
     -webkit-text-stroke-width: 0.15px;
     -webkit-text-stroke-color: black;
 }
+.fall-font-subtitle-vpd {
+	color: #89CFF0;
+    font-family: 'Luckiest Guy', cursive;
+    text-shadow: 2px 2px 2px #6FB4D6;
+    border-radius: 30px;
+    padding: 5px 10px;
+    -webkit-text-stroke-width: 0.15px;
+    -webkit-text-stroke-color: black;
+}
 .fall-font-general {
 	color: ghostwhite;
     font-family: 'Luckiest Guy', cursive;
     border: 5px solid rgba(255, 255, 255, 0.5);
     border-radius: 0px;
-    padding: 2px 3px;
+    padding: 3px 3px;
     text-shadow: #6FB4D6;
     background-color: #89CFF0;
     -webkit-text-stroke-width: 0.2px;
@@ -69,22 +86,30 @@ input[type="submit"][value="End Session"]:hover {
     -webkit-text-stroke-color: black;
 }
 .fall-font-session-gen {
-	color: #F73CA3;
+	color: #FA6DBE;
     font-family: 'Luckiest Guy', cursive;
-    border: 6px solid rgba(255, 255, 255, 1);
+    border: 6px solid rgba(255, 255, 255, 0.5);
     padding: 6px 6px;
-    text-shadow: 3px 4px 3px #6FB4D6;
     background-color: #89CFF0;
-    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-width: 0.3px;
     -webkit-text-stroke-color: black;
 }
 .fall-font-session-gen-index {
-	color: #F73CA3;
+	color: #FA6DBE;
+    font-family: 'Luckiest Guy', cursive;
+    border: 6px solid rgba(255, 255, 255, 0.5);
+    padding: 10px 6px;
+    background-color: #89CFF0;
+    -webkit-text-stroke-width: 0.3px;
+    -webkit-text-stroke-color: black;
+}
+.fall-font-session-header {
+	color: rgb(255, 255, 255);
     font-family: 'Luckiest Guy', cursive;
     border: 6px solid rgba(255, 255, 255, 1);
     padding: 6px 6px;
     background-color: #89CFF0;
-    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: black;
 }
 .fall-font-nav {

@@ -6,6 +6,9 @@ module.exports = {
 	content: [],
 	theme: {
 		extend: {
+			colors: {
+       			'fall-blue': '#6FB4D6',
+      		},
 			zIndex: {
 				BiggerZIndex: '11',
 			},
