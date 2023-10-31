@@ -57,13 +57,13 @@
 						</thead>
 						</tr>
 						<tr class="fall-font-general rounded-full">
-							<td class="fall-font-general"
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]"
 								th:text="*{#temporals.format(matches[0].startDateTime.toLocalDate)}">
-							<td class="fall-font-general" th:text="*{#strings.substring(duration.withNanos(0), 2)}">
-							<td class="fall-font-general" th:text="*{wins}">
-							<td class="fall-font-general" th:text="*{losses}">
-							<td class="fall-font-general" th:text="*{currentStreak}">
-							<td class="fall-font-general" th:text="*{highestStreak}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]" th:text="*{#strings.substring(duration.withNanos(0), 2)}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]" th:text="*{wins}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]" th:text="*{losses}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]" th:text="*{currentStreak}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]" th:text="*{highestStreak}">
 						</tr>
 					</tbody>
 				</table>
@@ -102,19 +102,19 @@
 					</thead>
 					<tbody class="center">
 						<tr class="fall-font-general" th:each="match, iStat : *{matches}" th:object="${match}">
-							<td class="fall-font-general" th:text="${iStat.count}"
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3" th:text="${iStat.count}"
 								th:style="*{finished} ? ('background-color: ' + (*{won} ? 'green;' : 'red;') + 'color: white;')">
-							<td class="fall-font-general border-[4px] border-white"
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white"
 								th:text="*{#temporals.format(startDateTime.toLocalTime)}">
-							<td class="fall-font-general border-[4px] border-white"
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white"
 								th:text="*{#strings.substring(duration.withNanos(0), 2)}">
-							<td class="fall-font-general" th:text="*{rounds.size}">
-							<td class="fall-font-general"
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white" th:text="*{rounds.size}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white  px-[20px]"
 								th:text="*{rounds.size} > 0 ? *{lastRound.gameMode.friendlyName}">
-							<td class="fall-font-general" th:text="*{rounds.size} > 0 ? *{lastRound.losers}">
-							<td class="fall-font-general"
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]" th:text="*{rounds.size} > 0 ? *{lastRound.losers}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white"
 								th:text="*{rounds.size} > 0 and *{lastRound.mvp} != null ? *{lastRound.mvp.name}">
-							<td class="fall-font-general border-[4px] border-white" th:text="*{subs}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white" th:text="*{subs}">
 						</tr>
 					</tbody>
 				</table>
@@ -173,8 +173,6 @@
 				<th:block th:replace="~{ :: undo}" />
 				<th:block th:if="${gameSession}">
 
-					
-	
 					<form th:fragment="undo" action="/track/undo" method="post">
 						<input type="hidden" name="gsHash" th:value="${gsHash}">
 						<input type="hidden" class="clientID" name="clientID">
