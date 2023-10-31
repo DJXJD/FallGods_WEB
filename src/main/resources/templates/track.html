@@ -6,7 +6,7 @@
 	<th:block th:replace="~{index :: stdHead}" />
 	<script defer type="text/javascript" src="/javascript/track.js"></script>
 	<script defer type="text/javascript" src="/javascript/DatabaseTrackRefresh.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/sockjs/1.5.1/sockjs.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/css/animations.css">
@@ -57,11 +57,16 @@
 						<tr class="fall-font-general rounded-full">
 							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]"
 								th:text="*{#temporals.format(matches[0].startDateTime.toLocalDate)}">
-							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]" th:text="*{#strings.substring(duration.withNanos(0), 2)}">
-							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]" th:text="*{wins}">
-							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]" th:text="*{losses}">
-							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]" th:text="*{currentStreak}">
-							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]" th:text="*{highestStreak}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]"
+								th:text="*{#strings.substring(duration.withNanos(0), 2)}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]"
+								th:text="*{wins}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]"
+								th:text="*{losses}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]"
+								th:text="*{currentStreak}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]"
+								th:text="*{highestStreak}">
 						</tr>
 					</tbody>
 				</table>
@@ -106,13 +111,16 @@
 								th:text="*{#temporals.format(startDateTime.toLocalTime)}">
 							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white"
 								th:text="*{#strings.substring(duration.withNanos(0), 2)}">
-							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white" th:text="*{rounds.size}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white"
+								th:text="*{rounds.size}">
 							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white  px-[20px]"
 								th:text="*{rounds.size} > 0 ? *{lastRound.gameMode.friendlyName}">
-							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]" th:text="*{rounds.size} > 0 ? *{lastRound.losers}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white px-[20px]"
+								th:text="*{rounds.size} > 0 ? *{lastRound.losers}">
 							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white"
 								th:text="*{rounds.size} > 0 and *{lastRound.mvp} != null ? *{lastRound.mvp.name}">
-							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white" th:text="*{subs}">
+							<td class="text-[20px] font-TitanOneFont text-white text-stroke3 border-[4px] border-white"
+								th:text="*{subs}">
 						</tr>
 					</tbody>
 				</table>
@@ -175,10 +183,10 @@
 						<input type="hidden" name="gsHash" th:value="${gsHash}">
 						<input type="hidden" class="clientID" name="clientID">
 					</form>
-				<h2 class="text-[35px] font-TitanOneFont text-CustomFallGuysPinkText text-stroke2">
+					<h2 class="text-[35px] font-TitanOneFont text-CustomFallGuysPinkText text-stroke2">
 						Or</h2>
 
-<form action="/track/endSession" method="post" th:object="${gameSession}">
+					<form action="/track/endSession" method="post" th:object="${gameSession}">
 						<input type="hidden" th:field="*{id}">
 						<input type="hidden" th:each="match, iStat : *{matches}"
 							th:field="*{matches[__${iStat.index}__]}">
@@ -242,7 +250,8 @@
 							<td><label class="text-[25px] mb-5 font-TitanOneFont text-white text-stroke font-bold z-10"
 									for="mvpdd">Round MVP:</label></td>
 							<td>
-								<select class="ml-[10px] border-[4px] w-[200px] center border-black font-TitanOneFont text-black"
+								<select
+									class="ml-[10px] border-[4px] w-[200px] center border-black font-TitanOneFont text-black"
 									id="mvpdd" th:field="*{mvp}">
 									<option class="text-black" value="">N/A</option>
 									<option class="text-black" th:each="player : *{match.players}"
