@@ -17,8 +17,8 @@
 
 
 	<header class="flex relative items-center justify-center mt-auto z-10">
-		<h1
-			class="pointer-events-none text-[90px] mb-5 NavTextShadow font-TitanOneFont text-CustomFallGuysPinkText text-stroke font-bold z-10">
+		
+		<h1 class="pointer-events-none text-[90px] mb-5 NavTextShadow font-TitanOneFont text-CustomFallGuysPinkText text-stroke font-bold z-10">
 			Register New Entities</h1>
 	</header>
 	
@@ -26,7 +26,7 @@
 		<!-- Register Players Form -->
 		<form class="flex flex-col justify-center items-center text-center z-10 mx-[75px]" action="/register/addPlayer"
 			method="post">
-			<h3 class="text-red-600 text-[55px] text-stroke2 font-TitanOneFont" th:if="${rpError}" th:text="${rpError}">
+			<h3 style="color: red;" class="text-[40px] text-stroke2 font-TitanOneFont" th:if="${rpError}" th:text="${rpError}">
 			</h3>
 			<h2 class="text-[40px] mb-5 font-TitanOneFont text-white text-stroke font-bold">
 				Register players</h2>
@@ -38,14 +38,14 @@
 			<p
 				class="hover:bg-CustomFallGuysPinkBackground border-4 border-black bg-[#9bdbf3] rounded-full px-[50px] mx-[65px]">
 				<input class="font-TitanOneFont text-[50px] text-stroke font-bold z-10 text-white" type="submit"
-					value="Add Player">
+					value="Add Player" style="cursor: pointer;">
 			</p>
 		</form>
 
 		<!-- Register Minigames Form -->
 		<form class="mt-[25px] flex flex-col justify-center items-center text-center z-10 mx-[75px]"
 			action="/register/addMinigame" method="post" th:object="${newMinigame}">
-			<h3 th:if="${rmgError}" th:text="${rmgError}" style="color: red;"></h3>
+			<h3 th:if="${rmgError}" class="text-[40px] text-stroke2 font-TitanOneFont" th:text="${rmgError}" style="color: red;"></h3>
 			<h2 class="text-[40px] mb-5 font-TitanOneFont text-white text-stroke font-bold">
 				Register Minigames</h2>
 			<div class="flex flex-row justify-center items-center text-center">
@@ -63,7 +63,7 @@
 			<p
 				class="hover:bg-CustomFallGuysPinkBackground border-4 border-black bg-[#9bdbf3] rounded-full px-[50px] mx-[65px] my-[25px]">
 				<input class="font-TitanOneFont text-[50px] text-stroke font-bold z-10 text-white" type="submit"
-					value="Add Minigame">
+					value="Add Minigame" style="cursor: pointer;">
 			</p>
 		</form>
 	</main>
@@ -80,6 +80,7 @@
 				View</a>
 	</footer>
 	</div>
+	<br><br>
 </body>
 
 </html>
