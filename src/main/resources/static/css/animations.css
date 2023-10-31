@@ -38,7 +38,10 @@ input[type="submit"][value="End Session"]:hover {
 }
 .fall-font-title {
 	color: #F73CA3;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'TITANONE';
+	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
     text-shadow: 3px 4px 3px #6FB4D6;
     border-radius: 30px;
     padding: 5px 20px;
@@ -47,7 +50,10 @@ input[type="submit"][value="End Session"]:hover {
 }
 .fall-font-subtitle {
 	color: #F73CA3;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'TITANONE';
+	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
     text-shadow: 2px 2px 2px #6FB4D6;
     border-radius: 30px;
     padding: 5px 20px;
@@ -56,7 +62,10 @@ input[type="submit"][value="End Session"]:hover {
 }
 .fall-font-subtitle-vpd {
 	color: #89CFF0;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'TITANONE';
+	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
     text-shadow: 2px 2px 2px #6FB4D6;
     border-radius: 30px;
     padding: 5px 10px;
@@ -65,7 +74,10 @@ input[type="submit"][value="End Session"]:hover {
 }
 .fall-font-general {
 	color: ghostwhite;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'TITANONE';
+	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
     border: 5px solid rgba(255, 255, 255, 0.5);
     border-radius: 0px;
     padding: 3px 3px;
@@ -76,7 +88,10 @@ input[type="submit"][value="End Session"]:hover {
 }
 .fall-font-subtitle-session {
 	color: ghostwhite;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'TITANONE';
+	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
     border: 5px solid rgba(255, 255, 255, 0.5);
     border-radius: 0px;
     padding: 2px 3px;
@@ -87,7 +102,10 @@ input[type="submit"][value="End Session"]:hover {
 }
 .fall-font-session-gen {
 	color: #FA6DBE;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'TITANONE';
+	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
     border: 6px solid rgba(255, 255, 255, 0.5);
     padding: 6px 6px;
     background-color: #89CFF0;
@@ -96,7 +114,10 @@ input[type="submit"][value="End Session"]:hover {
 }
 .fall-font-session-gen-index {
 	color: #FA6DBE;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'TITANONE';
+	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
     border: 6px solid rgba(255, 255, 255, 0.5);
     padding: 10px 6px;
     background-color: #89CFF0;
@@ -105,7 +126,10 @@ input[type="submit"][value="End Session"]:hover {
 }
 .fall-font-session-header {
 	color: rgb(255, 255, 255);
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'TITANONE';
+	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
     border: 6px solid rgba(255, 255, 255, 1);
     padding: 6px 6px;
     background-color: #89CFF0;
@@ -114,7 +138,10 @@ input[type="submit"][value="End Session"]:hover {
 }
 .fall-font-nav {
 	color: ghostwhite;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'TITANONE';
+	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
     border: 5px solid rgba(255, 255, 255, 0.5);
     width: 75%;
     margin-left: 12%;
@@ -131,7 +158,10 @@ input[type="submit"][value="End Session"]:hover {
 
 .fall-box {
 	color: #6FB4D6;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'TITANONE';
+	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
     background-color: ghostwhite;
     -webkit-text-stroke-width: 0.01px;
     -webkit-text-stroke-color: black;
@@ -140,7 +170,10 @@ input[type="submit"][value="End Session"]:hover {
 .fall-btn {
 	color: ghostwhite;
     background-color: #89CFF0;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'TITANONE';
+	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
     border: 3px solid rgba(255, 255, 255, 0.5);
     border-radius: 25px;
     padding: 10px 20px;
@@ -155,7 +188,10 @@ input[type="submit"][value="End Session"]:hover {
 .fall-btn-mini {
 	color: ghostwhite;
     background-color: #89CFF0;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'TITANONE';
+	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
     border: 3px solid rgba(255, 255, 255, 0.5);
     border-radius: 25px;
     padding: 7px 15px;
@@ -170,7 +206,10 @@ input[type="submit"][value="End Session"]:hover {
 .fall-form-btn {
 	color: ghostwhite;
     background-color: #89CFF0;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'TITANONE';
+	src: url('/fonts/TitanOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
     border: 3px solid rgba(255, 255, 255, 0.5);
     border-radius: 25px;
     padding: 10px 20px;
