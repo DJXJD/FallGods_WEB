@@ -3,7 +3,6 @@
 body.fall-enter-active {
     animation: fallIn 0.5s forwards;
 }
-
 @keyframes fallIn {
     0% {
         opacity: 1;
@@ -14,7 +13,6 @@ body.fall-enter-active {
         transform: translateY(100vh);
     }
 }
-
 .streak {
     position: absolute;
     background: rgb(255, 0, 0);
@@ -22,20 +20,14 @@ body.fall-enter-active {
     height: 1000px;
     display: none;
 }
-
-
-
-
 input[type="submit"][value="Undo"]:hover {
     background-color: orange;
     cursor: pointer;
 }
-
 input[type="submit"][value="End Session"]:hover {
     background-color: red;
     cursor: pointer;
 }
-
 .fall-font-title {
 	color: #F73CA3;
     font-family: 'Luckiest Guy', cursive;
@@ -45,7 +37,6 @@ input[type="submit"][value="End Session"]:hover {
     -webkit-text-stroke-width: 0.15px;
     -webkit-text-stroke-color: black;
 }
-
 .fall-font-subtitle {
 	color: #F73CA3;
     font-family: 'Luckiest Guy', cursive;
@@ -55,19 +46,47 @@ input[type="submit"][value="End Session"]:hover {
     -webkit-text-stroke-width: 0.15px;
     -webkit-text-stroke-color: black;
 }
-
 .fall-font-general {
 	color: ghostwhite;
     font-family: 'Luckiest Guy', cursive;
     border: 5px solid rgba(255, 255, 255, 0.5);
-    border-radius: 15px;
+    border-radius: 0px;
     padding: 2px 3px;
     text-shadow: #6FB4D6;
     background-color: #89CFF0;
     -webkit-text-stroke-width: 0.2px;
     -webkit-text-stroke-color: black;
 }
-
+.fall-font-subtitle-session {
+	color: ghostwhite;
+    font-family: 'Luckiest Guy', cursive;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    border-radius: 0px;
+    padding: 2px 3px;
+    text-shadow: 3px 4px 3px #6FB4D6;
+    background-color: #89CFF0;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+}
+.fall-font-session-gen {
+	color: #F73CA3;
+    font-family: 'Luckiest Guy', cursive;
+    border: 6px solid rgba(255, 255, 255, 1);
+    padding: 6px 6px;
+    text-shadow: 3px 4px 3px #6FB4D6;
+    background-color: #89CFF0;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+}
+.fall-font-session-gen-index {
+	color: #F73CA3;
+    font-family: 'Luckiest Guy', cursive;
+    border: 6px solid rgba(255, 255, 255, 1);
+    padding: 6px 6px;
+    background-color: #89CFF0;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+}
 .fall-font-nav {
 	color: ghostwhite;
     font-family: 'Luckiest Guy', cursive;
