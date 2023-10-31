@@ -1,31 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
-<meta charset="ISO-8859-1">
-<th:block th:replace="~{index :: stdHead}"/>
-<title>Set Group - FallGods</title>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="/css/animations.css">
+	<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+	<th:block th:replace="~{index :: stdHead}" />
+	<title>Set Group - FallGods</title>
 </head>
-<body class="vcontainer">
-<th:block th:replace="~{index :: themeSelector}"/>
-<header class="center">
-	<h1>Set Tracking Group</h1>
-</header>
-<main>
-	<h2>Who do you (mainly) want to track for?</h2>
-	<form class="vcontainer rg10" action="/track/setGroup" method="post" th:object="${group}">
-		<select th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}">
-			<option value="">N/A</option>
-			<option th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
-		</select>
-		<p><input type="submit" value="Set Group"></p>
-	</form>
-</main>
-<footer class="hcontainer">
-	<div>
-		<a href="/">Home</a>
-		<a href="/register">Register</a>
-		<a href="/track">Track</a>
+
+<body class="flex flex-col relative bg-repeat bg-center bg-contain overflow-hidden"
+	style="background-image: url('/images/trialanderror.svg'); background-size: 5vh;">
+	<th:block th:replace="~{index :: themeSelector}" />
+	<header class="z-10 flex relative items-center justify-center">
+	</header>
+
+	<div id="cloud-container"></div>
+	<div id="fallguys-container "></div>
+
+	<div class="flex justify-center items-center z-10 mt-auto">
+		<main class="flex flex-col justify-center items-center text-center ">
+			<h2
+				class="pointer-events-none text-[60px] mb-5 font-TitanOneFont NavTextShadow text-CustomFallGuysPinkText text-stroke font-bold z-10">
+				Who do
+				you (mainly) want to track for?</h2><br><br><br><br>
+			<form class="flex flex-col justify-center items-center text-center rg10" action="/track/setGroup"
+				method="post" th:object="${group}">
+				<select style="width: 200px; height: 60px; cursor: pointer;"
+					class="flex text-[30px] text-black bg-white justify-evenly font-TitanOneFont border-4 border-black items-center text-center   py-[10px]"
+					th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}">
+					<option class="text-black" value="">N/A</option>
+					<option class="text-black" th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
+				</select>
+				<p><input
+						class="font-TitanOneFont text-[40px] hover:bg-CustomFallGuysPinkBackground  border-4 bg-[#9bdbf3] border-black text-stroke2 text-white items-center rounded-full px-[55px] py-[10px] text-center"
+						type="submit" style="cursor: pointer;" value="Set Group"></p>
+			</form>
+		</main>
 	</div>
-</footer>
+	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
+		<div class=" flex justify-evenly items-center my-5 ">
+			<a href="/"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">
+				Home</a>
+			<a href="/register"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">
+				Register</a>
+			<a href="/view"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">
+				View</a>
+		</div>
+	</footer>
+	<br><br>
 </body>
+
 </html>

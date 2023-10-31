@@ -1,51 +1,86 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
-<th:block th:replace="~{index :: stdHead}"/>
-<title>Register - FallGods</title>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="/css/animations.css">
+	<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+	<th:block th:replace="~{index :: stdHead}" />
+	<title>Register - FallGods</title>
 </head>
-<body class="vcontainer">
-<th:block th:replace="~{index :: themeSelector}"/>
-<header class="center">
-	<h1>Register New Entities</h1>
-</header>
-<main class="hcontainer">
-	<div class="vcontainer">
-		<h2>Register players</h2>
-		<h3 th:if="${rpError}" th:text="${rpError}" style="color: red;"></h3>
-		<form class="vcontainer" action="/register/addPlayer" method="post">
-			<div class="hcontainer cg10">
-				<label for="pName">Name:</label><input type="text" id="pName" name="name" required>
+
+<body class="flex bg-moving flex-col relative bg-repeat bg-center bg-contain overflow-hidden"
+	style="background-image: url('images/trialanderror.svg'); background-size: 5vh;">
+	<th:block th:replace="~{index :: themeSelector}" />
+	<div id="cloud-container"></div>
+	<div id="fallguys-container"></div>
+
+
+	<header class="flex relative items-center justify-center mt-auto z-10">
+		
+		<h1 class="pointer-events-none text-[90px] mb-5 NavTextShadow font-TitanOneFont text-CustomFallGuysPinkText text-stroke font-bold z-10">
+			Register New Entities</h1>
+	</header>
+	
+	<main class="mt-[35px] flex flex-row justify-center items-center text-center z-10">
+		<!-- Register Players Form -->
+		<form class="flex flex-col justify-center items-center text-center z-10 mx-[75px]" action="/register/addPlayer"
+			method="post">
+			<h3 style="color: red;" class="text-[40px] text-stroke2 font-TitanOneFont" th:if="${rpError}" th:text="${rpError}">
+			</h3>
+			<h2 class="text-[40px] mb-5 font-TitanOneFont text-white text-stroke3 font-bold">
+				Register players</h2>
+			<div class="flex flex-row justify-center items-center text-center mb-[20px]">
+				<label class="mx-[15px] text-white font-TitanOneFont text-stroke2 text-[30px]" for="pName">Name:</label>
+				<input class="text-black font-TitanOneFont  rounded-semifull border-[4px] border-black" type="text"
+					id="pName" name="name" required>
 			</div>
-			<p><input type="submit" value="Add Player"></p>
+			<p
+				class="hover:bg-CustomFallGuysPinkBackground border-4 border-black bg-[#9bdbf3] rounded-full px-[50px] mx-[65px]">
+				<input class="font-TitanOneFont text-[50px] text-stroke font-bold z-10 text-white" type="submit"
+					value="Add Player" style="cursor: pointer;">
+			</p>
 		</form>
-	</div>
-	<div class="vcontainer">
-		<h2>Register Minigames</h2>
-		<h3 th:if="${rmgError}" th:text="${rmgError}" style="color: red;"></h3>
-		<form class="vcontainer" action="/register/addMinigame" method="post" th:object="${newMinigame}">
-			<div class="vcontainer rg10">
-				<div class="hcontainer cg10">
-					<label for="mgName">Name:</label><input type="text" id="mgName" th:field="*{name}" required>
-				</div>
-				<div class="hcontainer cg10">
-					<label for="mgType">Type:</label>
-					<select id="mgType" th:field="*{type}" required>
-						<option value="">N/A</option>
-						<option th:each="gameType : ${gameTypes}" th:text="${gameType}" th:value="${gameType}"></option>
-					</select>
-				</div>
+
+		<!-- Register Minigames Form -->
+		<form class="flex flex-col justify-center items-center text-center z-10 mx-[75px]"
+			action="/register/addMinigame" method="post" th:object="${newMinigame}">
+			<h3 th:if="${rmgError}" class="text-[40px] text-stroke2 font-TitanOneFont" th:text="${rmgError}" style="color: red;"></h3>
+			<h2 class="text-[40px] mb-5 font-TitanOneFont text-white text-stroke font-bold">
+				Register Minigames</h2>
+			<div class="flex flex-row justify-center items-center text-center">
+				<label class="text-white font-TitanOneFont text-stroke2 text-[30px]" for="mgName">Name:</label><input
+					class="ml-[15px] text-black font-TitanOneFont rounded-semifull border-[4px] border-black"
+					type="text" id="mgName" th:field="*{name}" required>
+				<label class="ml-[15px] text-white font-TitanOneFont text-stroke2 text-[30px]"
+					for="mgType">Type:</label>
+				<select class="ml-[10px] border-[4px] border-black font-TitanOneFont text-black" id="mgType" th:field="*{type}" required>
+					<option class="text-black" value="">N/A</option>
+					<option class="text-black" th:each="gameType : ${gameTypes}" th:text="${gameType}"
+						th:value="${gameType}"></option>
+				</select>
 			</div>
-			<p><input type="submit" value="Add Minigame"></p>
+			<p
+				class="hover:bg-CustomFallGuysPinkBackground border-4 border-black bg-[#9bdbf3] rounded-full px-[50px] mx-[65px] my-[25px]">
+				<input class="font-TitanOneFont text-[50px] text-stroke font-bold z-10 text-white" type="submit"
+					value="Add Minigame" style="cursor: pointer;">
+			</p>
 		</form>
+	</main>
+	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
+		<div class=" flex justify-evenly items-center my-5 ">
+			<a href="/"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">
+				Home</a>
+			<a href="/track"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">
+				Track</a>
+			<a href="/view"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">
+				View</a>
+	</footer>
 	</div>
-</main>
-<footer class="hcontainer">
-	<div>
-		<a href="/">Home</a>
-		<a href="/track">Track</a>
-	</div>
-</footer>
+	<br><br>
 </body>
+
 </html>

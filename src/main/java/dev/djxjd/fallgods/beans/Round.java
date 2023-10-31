@@ -52,6 +52,14 @@ public class Round extends RESTEntity<Round> {
 	}
 	
 	@JsonIgnore
+	public String getFinishers() {
+		return playersFinished.keySet().stream()
+				.filter(k -> playersFinished.get(k))
+				.map(Player::getName)
+				.collect(Collectors.joining(", "));
+	}
+	
+	@JsonIgnore
 	public String getLosers() {
 		return playersFinished.keySet().stream()
 				.filter(k -> playersFinished.get(k).equals(false))
