@@ -27,6 +27,7 @@ module.exports = {
 				'CustomFallGuysPinkText': '#f906bf',
 				'CustomFallGuysBlueText': '#48c2f9'
 			}
+			
 		},
 	},
 	plugins: [],

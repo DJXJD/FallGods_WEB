@@ -57,14 +57,13 @@ input[type="submit"][value="End Session"]:hover {
 }
 
 .fall-font-general {
-	color: ghostwhite;
+	color: rgb(255, 255, 255);
     font-family: 'Luckiest Guy', cursive;
-    border: 5px solid rgba(255, 255, 255, 0.5);
-    border-radius: 15px;
-    padding: 2px 3px;
+    border: 6px solid rgba(255, 255, 255, 1);
+    padding: 6px 6px;
     text-shadow: #6FB4D6;
     background-color: #89CFF0;
-    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-width: 0.9px;
     -webkit-text-stroke-color: black;
 }
 

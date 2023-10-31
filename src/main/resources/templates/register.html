@@ -22,13 +22,13 @@
 			Register New Entities</h1>
 	</header>
 	
-	<main class="mt-[35px] flex flex-row justify-center items-center text-center z-10">
+	<main class="flex flex-row justify-center items-center text-center z-10">
 		<!-- Register Players Form -->
 		<form class="flex flex-col justify-center items-center text-center z-10 mx-[75px]" action="/register/addPlayer"
 			method="post">
 			<h3 class="text-red-600 text-[55px] text-stroke2 font-TitanOneFont" th:if="${rpError}" th:text="${rpError}">
 			</h3>
-			<h2 class="text-[40px] mb-5 font-TitanOneFont text-white text-stroke3 font-bold">
+			<h2 class="text-[40px] mb-5 font-TitanOneFont text-white text-stroke font-bold">
 				Register players</h2>
 			<div class="flex flex-row justify-center items-center text-center mb-[20px]">
 				<label class="mx-[15px] text-white font-TitanOneFont text-stroke2 text-[30px]" for="pName">Name:</label>
@@ -43,7 +43,7 @@
 		</form>
 
 		<!-- Register Minigames Form -->
-		<form class="flex flex-col justify-center items-center text-center z-10 mx-[75px]"
+		<form class="mt-[25px] flex flex-col justify-center items-center text-center z-10 mx-[75px]"
 			action="/register/addMinigame" method="post" th:object="${newMinigame}">
 			<h3 th:if="${rmgError}" th:text="${rmgError}" style="color: red;"></h3>
 			<h2 class="text-[40px] mb-5 font-TitanOneFont text-white text-stroke font-bold">

@@ -30,7 +30,8 @@
 					class="flex text-[35px] text-black bg-white justify-evenly font-TitanOneFont border-4 border-black items-center text-center   py-[10px]"
 					th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}">
 					<option class="text-black" value="">N/A</option>
-					<option class="text-black" th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
+					<option class="text-black" th:each="player : ${players}" th:text="${player.name}"
+						th:value="${player}">
 				</select>
 				<p><input
 						class="font-TitanOneFont text-[55px] hover:bg-CustomFallGuysPinkBackground  border-4 bg-[#9bdbf3] border-black text-stroke2 text-white items-center rounded-full px-[55px] py-[10px] text-center"

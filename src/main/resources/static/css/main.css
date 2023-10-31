@@ -151,7 +151,7 @@ footer.hcontainer>div {
 	scrollbar-gutter: stable;
 }
 
-.vocontainer thead {
+.vocontainer  {
 	position: sticky;
 	top: 0;
 	background-color: white;
