@@ -17,7 +17,7 @@
 
 	<header class="center z-10 pointer-events-none">
 		<br><br><br><br>
-		<h1 class="fall-font-title text-6xl mb-4">View Players</h1>
+		<h1 class="pointer-events-none text-[90px] mb-5 NavTextShadow font-TitanOneFont text-CustomFallGuysPinkText text-stroke font-bold z-10 mb-4">View Players</h1>
 		<br><br><br><br>
 	</header>
 	<div id="cloud-container"></div>
@@ -27,35 +27,35 @@
 		<div class="hcontainer" style="max-width: 100vw;">
 			<table border="1">
 				<thead>
-					<th class="fall-font-session-gen-index text-2xl">Name
-					<th class="fall-font-session-gen-index text-2xl">Sessions
-					<th class="fall-font-session-gen-index text-2xl">Matches
-					<th class="fall-font-session-gen-index text-2xl">Rounds
-					<th class="fall-font-session-gen-index text-2xl">
+					<th class="fall-font-session-gen-index text-[20px]">Name
+					<th class="fall-font-session-gen-index text-[15px]">Sessions
+					<th class="fall-font-session-gen-index text-[15px]">Matches
+					<th class="fall-font-session-gen-index text-[15px]">Rounds
+					<th class="fall-font-session-gen-index text-[15px]">
 						<div max-lines="2">In Game Time</div>
 					</th>
-					<th class="fall-font-session-gen-index text-2xl">Wins
-					<th class="fall-font-session-gen-index text-2xl">Win Rate
-					<th class="fall-font-session-gen-index text-2xl">Qualifications
-					<th class="fall-font-session-gen-index text-2xl">Qualification Rate
-					<th class="fall-font-session-gen-index text-2xl">Finishes
-					<th class="fall-font-session-gen-index text-2xl">Finish Rate
-					<th class="fall-font-session-gen-index text-2xl">MVPs
+					<th class="fall-font-session-gen-index text-[15px]">Wins
+					<th class="fall-font-session-gen-index text-[15px]">Win Rate
+					<th class="fall-font-session-gen-index text-[15px]">Qualifications
+					<th class="fall-font-session-gen-index text-[15px]">Qualification Rate
+					<th class="fall-font-session-gen-index text-[15px]">Finishes
+					<th class="fall-font-session-gen-index text-[15px]">Finish Rate
+					<th class="fall-font-session-gen-index text-[15px]">MVPs
 				</thead>
 				<tbody class="center">
 					<tr class="fall-font-session-gen-index" th:each="player : *{players}" th:object="${player}">
 						<td><a class="text-2xl hover:text-CustomFallGuysPinkText px-[50px]" th:text="*{name}" th:href="@{/view/player/{id} (id = *{id})}" /></td>
-						<td class="fall-font-general" th:text="*{numMainPlayerSessions}" />
-						<td class="fall-font-general" th:text="*{numMatches}" />
-						<td class="fall-font-general" th:text="*{aggMapData.plays}" />
-						<td class="fall-font-general" th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}" />
-						<td class="fall-font-general" vvvvth:text="*{wins}" />
-						<td class="fall-font-general" th:text="*{winRate}" />
-						<td class="fall-font-general" th:text="*{aggMapData.qualifications}" />
-						<td class="fall-font-general" th:text="*{aggMapData.qualificationRate}" />
-						<td class="fall-font-general" th:text="*{aggMapData.finishes}" />
-						<td class="fall-font-general" vth:text="*{aggMapData.finishRate}" />
-						<td class="fall-font-general" th:text="*{aggMapData.mvps}" />
+						<td class="fall-font-general text-[25px]" th:text="*{numMainPlayerSessions}" />
+						<td class="fall-font-general text-[25px]" th:text="*{numMatches}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.plays}" />
+						<td class="fall-font-general text-[25px]" th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}" />
+						<td class="fall-font-general text-[25px]" vvvvth:text="*{wins}" />
+						<td class="fall-font-general text-[25px]" th:text="*{winRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.qualifications}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.qualificationRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.finishes}" />
+						<td class="fall-font-general text-[25px]" vth:text="*{aggMapData.finishRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.mvps}" />
 					</tr>
 				</tbody>
 			</table>

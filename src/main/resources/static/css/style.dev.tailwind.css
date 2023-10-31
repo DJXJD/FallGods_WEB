@@ -581,6 +581,9 @@ video {
 .mt-auto {
   margin-top: auto;
 }
+.mt-\[5px\] {
+  margin-top: 5px;
+}
 .block {
   display: block;
 }
@@ -775,6 +778,9 @@ video {
 }
 .text-\[90px\] {
   font-size: 90px;
+}
+.text-\[15px\] {
+  font-size: 15px;
 }
 .font-bold {
   font-weight: 700;

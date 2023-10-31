@@ -16,66 +16,66 @@
 	<th:block th:replace="~{index :: themeSelector}" />
 	<header class="center z-10 pointer-events-none">
 		<br><br><br><br><br>
-		<h1 class="fall-font-title text-6xl mb-4">View Player Details</h1>
+		<h1 class="pointer-events-none text-[90px] mb-5 NavTextShadow font-TitanOneFont text-CustomFallGuysPinkText text-stroke font-bold z-10 mb-4">View Player Details</h1>
 	</header>
 	<br><br><br>
 	<div id="cloud-container"></div>
 	<div id="fallguys-container"></div>
 	<main class="vcontainer z-10" style="row-gap: 1.25em;" th:object="${player}">
 		<form id="playerSelectorForm" class="hcontainer close fall-font-subtitle-vpd text-2xl" hidden>
-			<label class="fall-font-subtitle text-2xl" for="playerSelector">
+			<label class="pointer-events-none text-[40px] NavTextShadow font-TitanOneFont text-white text-stroke font-bold z-10" for="playerSelector">
 				<h2>Player:</h2>
 			</label>
-			<select id="playerSelector">
+			<select class="bg-white mt-[5px] text-black border-[4px] border-black" id="playerSelector">
 				<option th:each="p : ${players}" th:text="${p.name}" th:value="@{/view/player/{id} (id = ${p.id})}"
 					th:selected="${p == player}">
 			</select>
 		</form>
-		<br><br><br>
+		<br>
 		<div class=" vcontainer hocontainer" style="max-width: 100vw;">
 			<table border="1">
 				<thead>
-					<th class="fall-font-session-gen-index">Sessions
-					<th class="fall-font-session-gen-index">Matches
-					<th class="fall-font-session-gen-index">Rounds
-					<th class="fall-font-session-gen-index">
+					<th class="fall-font-session-gen-index text-[15px]">Sessions
+					<th class="fall-font-session-gen-index text-[15px]">Matches
+					<th class="fall-font-session-gen-index text-[15px]">Rounds
+					<th class="fall-font-session-gen-index text-[15px]">
 						<div max-lines="2">In Game Time</div>
 					</th>
-					<th class="fall-font-session-gen-index">Wins
-					<th class="fall-font-session-gen-index">Win Rate
-					<th class="fall-font-session-gen-index">Losses
-					<th class="fall-font-session-gen-index">Loss Rate
-					<th class="fall-font-session-gen-index">Qualifications
-					<th class="fall-font-session-gen-index">Qualification Rate
-					<th class="fall-font-session-gen-index">Eliminations
-					<th class="fall-font-session-gen-index">Elimination Rate
-					<th class="fall-font-session-gen-index">Finishes
-					<th class="fall-font-session-gen-index">Finish Rate
-					<th class="fall-font-session-gen-index">Fumbles
-					<th class="fall-font-session-gen-index">Fumble Rate
-					<th class="fall-font-session-gen-index">MVPs
-					<th class="fall-font-session-gen-index">MVP Rate
+					<th class="fall-font-session-gen-index text-[15px]">Wins
+					<th class="fall-font-session-gen-index text-[15px]">Win Rate
+					<th class="fall-font-session-gen-index text-[15px]">Losses
+					<th class="fall-font-session-gen-index text-[15px]">Loss Rate
+					<th class="fall-font-session-gen-index text-[15px]">Qualifications
+					<th class="fall-font-session-gen-index text-[15px]">Qualification Rate
+					<th class="fall-font-session-gen-index text-[15px]">Eliminations
+					<th class="fall-font-session-gen-index text-[15px]">Elimination Rate
+					<th class="fall-font-session-gen-index text-[15px]">Finishes
+					<th class="fall-font-session-gen-index text-[15px]">Finish Rate
+					<th class="fall-font-session-gen-index text-[15px]">Fumbles
+					<th class="fall-font-session-gen-index text-[15px]">Fumble Rate
+					<th class="fall-font-session-gen-index text-[15px]">MVPs
+					<th class="fall-font-session-gen-index text-[15px]">MVP Rate
 				</thead>
 				<tbody class="center">
 					<tr>
-						<td class="fall-font-general" th:text="*{numMainPlayerSessions}" />
-						<td class="fall-font-general" th:text="*{numMatches}" />
-						<td class="fall-font-general" th:text="*{aggMapData.plays}" />
-						<td class="fall-font-general" th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}" />
-						<td class="fall-font-general" th:text="*{wins}" />
-						<td class="fall-font-general" th:text="*{winRate}" />
-						<td class="fall-font-general" th:text="*{losses}" />
-						<td class="fall-font-general" th:text="*{lossRate}" />
-						<td class="fall-font-general" th:text="*{aggMapData.qualifications}" />
-						<td class="fall-font-general" th:text="*{aggMapData.qualificationRate}" />
-						<td class="fall-font-general" th:text="*{aggMapData.eliminations}" />
-						<td class="fall-font-general" th:text="*{aggMapData.eliminationRate}" />
-						<td class="fall-font-general" th:text="*{aggMapData.finishes}" />
-						<td class="fall-font-general" th:text="*{aggMapData.finishRate}" />
-						<td class="fall-font-general" th:text="*{aggMapData.fumbles}" />
-						<td class="fall-font-general" th:text="*{aggMapData.fumbleRate}" />
-						<td class="fall-font-general" th:text="*{aggMapData.mvps}" />
-						<td class="fall-font-general" th:text="*{aggMapData.mvpRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{numMainPlayerSessions}" />
+						<td class="fall-font-general text-[25px]" th:text="*{numMatches}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.plays}" />
+						<td class="fall-font-general text-[25px]" th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}" />
+						<td class="fall-font-general text-[25px]" th:text="*{wins}" />
+						<td class="fall-font-general text-[25px]" th:text="*{winRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{losses}" />
+						<td class="fall-font-general text-[25px]" th:text="*{lossRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.qualifications}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.qualificationRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.eliminations}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.eliminationRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.finishes}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.finishRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.fumbles}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.fumbleRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.mvps}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.mvpRate}" />
 					</tr>
 				</tbody>
 			</table>
@@ -99,22 +99,22 @@
 				</thead>
 				<tbody class="center">
 					<tr th:each="md : *{mapData}" th:object="${md.value}">
-						<td class="fall-font-general" >
+						<td class="fall-font-general text-[25px]" >
 							<div th:text="${md.key.name} != null and ${md.key.type} != null ? ${md.key.friendlyName}"
 								max-lines="2" />
 						</td>
-						<td class="fall-font-general" th:text="*{plays}" />
-						<td class="fall-font-general" th:text="*{occurrence}" />
-						<td class="fall-font-general" th:text="*{qualifications}" />
-						<td class="fall-font-general" th:text="*{qualificationRate}" />
-						<td class="fall-font-general" th:text="*{eliminations}" />
-						<td class="fall-font-general" th:text="*{eliminationRate}" />
-						<td class="fall-font-general" th:text="*{finishes}" />
-						<td class="fall-font-general" th:text="*{finishRate}" />
-						<td class="fall-font-general" th:text="*{fumbles}" />
-						<td class="fall-font-general" th:text="*{fumbleRate}" />
-						<td class="fall-font-general" th:text="*{mvps}" />
-						<td class="fall-font-general" th:text="*{mvpRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{plays}" />
+						<td class="fall-font-general text-[25px]" th:text="*{occurrence}" />
+						<td class="fall-font-general text-[25px]" th:text="*{qualifications}" />
+						<td class="fall-font-general text-[25px]" th:text="*{qualificationRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{eliminations}" />
+						<td class="fall-font-general text-[25px]" th:text="*{eliminationRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{finishes}" />
+						<td class="fall-font-general text-[25px]" th:text="*{finishRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{fumbles}" />
+						<td class="fall-font-general text-[25px]" th:text="*{fumbleRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{mvps}" />
+						<td class="fall-font-general text-[25px]" th:text="*{mvpRate}" />
 					</tr>
 				</tbody>
 			</table>
