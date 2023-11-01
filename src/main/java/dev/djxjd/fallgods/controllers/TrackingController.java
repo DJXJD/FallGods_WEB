@@ -6,7 +6,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -41,7 +40,6 @@ public class TrackingController {
 	private RESTEntityService<Match> mService;
 	private RESTEntityService<Minigame> mgService;
 	private RoundService rService;
-	private final SimpMessagingTemplate messagingTemplate;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -93,7 +91,6 @@ public class TrackingController {
 		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
 		if (gs != null && (!gs.getLastMatch().isFinished() || gs.isFinished() && newMatch.getSession().getId() != null)
 				|| newMatch.getStartDateTime() != null && newMatch.getStartDateTime().isAfter(LocalDateTime.now())) {
-			messagingTemplate.convertAndSend("/updateTracking/addMatch", clientID);
 			return "redirect:/track";
 		}
 		if (gs == null)
@@ -102,7 +99,6 @@ public class TrackingController {
 				|| gs.getId() != null && (gs.getMatches().size() != newMatch.getSession().getMatches().size()
 						|| newMatch.getStartDateTime() != null && newMatch.getStartDateTime()
 								.isBefore(gs.getLastMatch().getLastRound().getEndDateTime())))) {
-			messagingTemplate.convertAndSend("/updateTracking/addMatch", clientID);
 			return "redirect:/track";
 		}
 		if (newMatch.getSession().getId() == null)
@@ -111,7 +107,6 @@ public class TrackingController {
 		if (!osdt || newMatch.getStartDateTime() == null)
 			newMatch.setStartDateTime(LocalDateTime.now());
 		mService.addElement(newMatch.setPlayers(newMatch.getGroup().toSortedSet()));
-		messagingTemplate.convertAndSend("/updateTracking/addMatch", clientID);
 		return "redirect:/track";
 	}
 
@@ -126,7 +121,6 @@ public class TrackingController {
 		if (!Objects.equals(gs.getId(), session.getId()) || gs.getMatches().size() != session.getMatches().size())
 			return "redirect:/track";
 		gsService.replaceElement(gs.setFinished(true));
-		messagingTemplate.convertAndSend("/updateTracking/endSession", clientID);
 		return "redirect:/track";
 	}
 
@@ -136,7 +130,6 @@ public class TrackingController {
 		System.out.println("Client id : " + clientID);
 		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
 		if (gs == null) {
-			messagingTemplate.convertAndSend("/updateTracking/newRound", clientID);
 			return "redirect:/track";
 		}
 		if (newRound.getMatch().getRounds() == null)
@@ -149,7 +142,6 @@ public class TrackingController {
 								|| !gs.getLastMatch().getRounds().isEmpty() && newRound.getEndDateTime()
 										.isBefore(gs.getLastMatch().getLastRound().getEndDateTime())
 								|| newRound.getEndDateTime().isAfter(LocalDateTime.now()))) {
-			messagingTemplate.convertAndSend("/updateTracking/newRound", clientID);
 			return "redirect:/track";
 		}
 		if (!oedt || newRound.getEndDateTime() == null)
@@ -157,7 +149,6 @@ public class TrackingController {
 		Long rId = rService.addElement(newRound);
 		if (rId != null && newRound.getPlayersFinished() != null)
 			newRound.getPlayersFinished().forEach((p, f) -> rService.putPlayerFinished(rId, p.getId(), f));
-		messagingTemplate.convertAndSend("/updateTracking/newRound", clientID);
 		return "redirect:/track";
 	}
 
@@ -166,7 +157,6 @@ public class TrackingController {
 			RedirectAttributes ra, @RequestParam String clientID) {
 		GameSession gs = gsService.getLatestWithMainPlayers(group.toSortedSet());
 		if (gs == null || gs.hashCode() != gsHash) {
-			messagingTemplate.convertAndSend("/updateTracking/undoCalled", clientID);
 			return "redirect:/track";
 		}
 		if (gs.isFinished())
@@ -192,7 +182,6 @@ public class TrackingController {
 				ra.addFlashAttribute("newMatch", newMatch.setGroup(new Group(new ArrayList<>(newMatch.getPlayers()))));
 			}
 		}
-		messagingTemplate.convertAndSend("/updateTracking/undoCalled", clientID);
 		return "redirect:/track";
 	}
 
