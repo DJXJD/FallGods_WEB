@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+	<meta charset="UTF-8">
+	<th:block th:replace="~{index :: stdHead}" />
+	<title>View Players - FallGods</title>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/animations.css">	
+	<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+</head>
+
+<body class="flex flex-col bg-moving relative bg-repeat bg-center bg-contain overflow-hidden"
+	style="background-image: url('/images/trialanderror.svg'); background-size: 5vh;">
+
+	<th:block th:replace="~{index :: themeSelector}" />
+
+	<header class="center z-10 pointer-events-none">
+		<br><br><br><br>
+		<h1 class="pointer-events-none text-[90px] mb-5 NavTextShadow font-TitanOneFont text-CustomFallGuysPinkText text-stroke font-bold z-10 mb-4">View Players</h1>
+		<br><br><br><br>
+	</header>
+	<div id="cloud-container"></div>
+	<div id="fallguys-container"></div>
+	<main class="z-10">
+		<h2 th:text="*{name}" />
+		<div class="hcontainer" style="max-width: 100vw;">
+			<table border="1">
+				<thead>
+					<th class="fall-font-session-gen-index text-[20px]">Name
+					<th class="fall-font-session-gen-index text-[15px]">Sessions
+					<th class="fall-font-session-gen-index text-[15px]">Matches
+					<th class="fall-font-session-gen-index text-[15px]">Rounds
+					<th class="fall-font-session-gen-index text-[15px]">
+						<div max-lines="2">In Game Time</div>
+					</th>
+					<th class="fall-font-session-gen-index text-[15px]">Wins
+					<th class="fall-font-session-gen-index text-[15px]">Win Rate
+					<th class="fall-font-session-gen-index text-[15px]">Qualifications
+					<th class="fall-font-session-gen-index text-[15px]">Qualification Rate
+					<th class="fall-font-session-gen-index text-[15px]">Finishes
+					<th class="fall-font-session-gen-index text-[15px]">Finish Rate
+					<th class="fall-font-session-gen-index text-[15px]">MVPs
+				</thead>
+				<tbody class="center">
+					<tr class="fall-font-session-gen-index" th:each="player : *{players}" th:object="${player}">
+						<td><a class="text-2xl hover:text-CustomFallGuysPinkText px-[50px]" th:text="*{name}" th:href="@{/view/player/{id} (id = *{id})}" /></td>
+						<td class="fall-font-general text-[25px]" th:text="*{numMainPlayerSessions}" />
+						<td class="fall-font-general text-[25px]" th:text="*{numMatches}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.plays}" />
+						<td class="fall-font-general text-[25px]" th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}" />
+						<td class="fall-font-general text-[25px]" vvvvth:text="*{wins}" />
+						<td class="fall-font-general text-[25px]" th:text="*{winRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.qualifications}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.qualificationRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.finishes}" />
+						<td class="fall-font-general text-[25px]" vth:text="*{aggMapData.finishRate}" />
+						<td class="fall-font-general text-[25px]" th:text="*{aggMapData.mvps}" />
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
+		<div class=" flex justify-evenly items-center my-5 ">
+			<a href="/"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">
+				Home</a>
+			<a href="/register"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">
+				Register</a>
+				<a href="/track"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">
+				Track</a>
+					<a href="/view"
+				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">
+				View</a>
+		</div>
+	</footer>
+	<br><br><br><br>
+</body>
+</html>

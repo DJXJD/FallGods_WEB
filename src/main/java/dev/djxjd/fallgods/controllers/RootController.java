@@ -20,7 +20,7 @@ public class RootController {
 
 	@ModelAttribute
 	public Theme initTheme() {
-		return Theme.DARK;
+		return Theme.LIGHT;
 	}
 	
 	@ModelAttribute("themes")

@@ -1,6 +1,6 @@
 @charset "ISO-8859-1";
 
-body {
+html,body {
 	background-color: #0f0f0f;
 	color: darkgray;
 }
@@ -10,10 +10,16 @@ table[border], :enabled, .vocontainer thead {
 	color: inherit;
 }
 
-a:link {
-	color: darkcyan;
+table[border] table[border],
+.vocontainer table[border] table[border] thead {
+	background-color: #121212;
 }
 
-a:visited {
-	color: darkslategray;
+table[border] table[border] table[border],
+.vocontainer table[border] table[border] table[border] thead {
+	background-color: #0f0f0f;
+}
+
+a:link {
+	color: darkcyan;
 }
