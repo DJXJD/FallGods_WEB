@@ -5,11 +5,11 @@ function createAndAnimateFallGuy() {
 	FallGuy.className = "falling_fallguy";
 
 	const FallGuysImages = [
-		'/images/fallguyTest.png',
-		'/images/fallguyTest2.png',
-		'/images/fallguyTest3.png',
-		'/images/fallguyTest4.png',
-		'/images/fallguyTest5.png',
+		'/images/fallGuyTest.png',
+		'/images/fallGuyTest2.png',
+		'/images/fallGuyTest3.png',
+		'/images/fallGuyTest4.png',
+		'/images/fallGuyTest5.png',
 	];
 
 	const randomFallGuyImageIndex = Math.floor(Math.random() * FallGuysImages.length);
