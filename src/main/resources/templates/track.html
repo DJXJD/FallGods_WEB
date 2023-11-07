@@ -19,22 +19,24 @@
 			<table border="1">
 				<thead>
 					<tr>
-						<th>Start Date
-						<th>Duration
-						<th>Wins
-						<th>Losses
-						<th>Current Streak
-						<th>Highest Streak
+						<th>Start Date</th>
+						<th>Duration</th>
+						<th>Wins</th>
+						<th>Losses</th>
+						<th>Win Rate</th>
+						<th>Current Streak</th>
+						<th>Highest Streak</th>
 					</tr>
 				</thead>
 				<tbody class="center">
 					<tr>
-						<td th:text="*{#temporals.format(matches[0].startDateTime.toLocalDate)}">
-						<td th:text="*{#strings.substring(duration.withNanos(0), 2)}">
-						<td th:text="*{wins}">
-						<td th:text="*{losses}">
-						<td th:text="*{currentStreak}">
-						<td th:text="*{highestStreak}">
+						<td th:text="*{#temporals.format(matches[0].startDateTime.toLocalDate)}"/>
+						<td th:text="*{#strings.substring(duration.withNanos(0), 2)}"/>
+						<td th:text="*{wins}"/>
+						<td th:text="*{losses}"/>
+						<td th:text="*{winRate}"/>
+						<td th:text="*{currentStreak}"/>
+						<td th:text="*{highestStreak}"/>
 					</tr>
 				</tbody>
 			</table>

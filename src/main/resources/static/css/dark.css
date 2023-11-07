@@ -10,6 +10,16 @@ table[border], :enabled, .vocontainer thead {
 	color: inherit;
 }
 
+table[border] table[border],
+.vocontainer table[border] table[border] thead {
+	background-color: #121212;
+}
+
+table[border] table[border] table[border],
+.vocontainer table[border] table[border] table[border] thead {
+	background-color: #0f0f0f;
+}
+
 a:link {
 	color: darkcyan;
 }
