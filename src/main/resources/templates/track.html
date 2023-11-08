@@ -124,7 +124,7 @@
 					<tr id="gmRow" hidden>
 						<td><label for="gmBox">Game mode:</label></td>
 						<td>
-							<input list="gameModes" id="gmBox" required></input>
+							<input list="gameModes" autocomplete="off" id="gmBox" required></input>
 							<datalist id="gameModes">
 								<option th:each="minigame : ${minigames}" th:text="${minigame.friendlyName}" th:data-value="${minigame.id}">
 							</datalist>
