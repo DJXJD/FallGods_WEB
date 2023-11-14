@@ -1,13 +1,21 @@
 @charset "ISO-8859-1";
 
-[hidden] { display: none !important; }
-
-html, body {
-	min-height: 100vh;
-	margin: 0;
+[hidden] {
+	display: none !important;
 }
 
-footer.hcontainer > div {
+html,
+body {
+	min-height: 100vh;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+
+
+footer.hcontainer>div {
 	display: flex;
 	gap: 2.5rem;
 }
@@ -28,11 +36,65 @@ footer.hcontainer > div {
 	height: 100%;
 }
 
+
+.LeftSideBarContainer {
+	width: 250px;
+	min-width: 200px;
+	min-height: 100vh;
+	background-color: #333;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.content {
+	margin-left: 250px;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	position: relative;
+}
+
+.LeftSideBarVerticalSpacing {
+	margin-top: 10%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	position: relative;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+@media (max-width: 768px) {
+	.LeftSideBarContainer {
+		width: 200px;
+	}
+
+	.content {
+		margin-left: 200px;
+	}
+}
+
 .close {
 	display: flex;
 	gap: 2.5rem;
 	align-items: center;
 	justify-content: center;
+
 }
 
 .close.left {
@@ -64,7 +126,7 @@ footer.hcontainer > div {
 }
 
 .vocontainer thead {
-	position: sticky;
+
 	top: 0;
 	background-color: white;
 }
@@ -87,7 +149,7 @@ footer.hcontainer > div {
 	right: 0px;
 }
 
-td > svg {
+td>svg {
 	display: block;
 }
 

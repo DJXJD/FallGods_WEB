@@ -1,51 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
-<th:block th:replace="~{index :: stdHead}"/>
-<title>Register - FallGods</title>
+	<meta charset="ISO-8859-1">
+	<th:block th:replace="~{index :: stdHead}" />
+	<title>Register - FallGods</title>
 </head>
-<body class="vcontainer">
-<th:block th:replace="~{index :: themeSelector}"/>
-<header class="center">
-	<h1>Register New Entities</h1>
-</header>
-<main class="hcontainer">
-	<div class="vcontainer">
-		<h2>Register players</h2>
-		<h3 th:if="${rpError}" th:text="${rpError}" style="color: red;"></h3>
-		<form class="vcontainer" action="/register/addPlayer" method="post">
-			<div class="hcontainer cg10">
-				<label for="pName">Name:</label><input type="text" id="pName" name="name" required>
+
+<body>
+	<th:block th:replace="~{index :: themeSelector}" />
+
+
+	<div class="LeftSideBarContainer">
+		<div class="LeftSideBarVerticalSpacing">
+			<h2><a href="/">Overview</a></h2>
+			<h2><a href="/track">Track</a></h2>
+			<h2><a href="/track/setGroup">Set Group</a></h2>
+			<h2><a href="/register">Register</a></h2>
+			<h2><a href="/view">View</a></h2>
+			<h2><a href="/view/sessions">Sessions</a></h2>
+			<h2><a href="/view/players">Players</a></h2>
+		</div>
+	</div>
+
+
+
+	<div class="content">
+		<header class="center">
+			<h1>Register New Entities</h1>
+		</header>
+		<main class="hcontainer">
+			<div class="vcontainer">
+				<h2>Register players</h2>
+				<h3 th:if="${rpError}" th:text="${rpError}" style="color: red;"></h3>
+				<form class="vcontainer" action="/register/addPlayer" method="post">
+					<div class="hcontainer cg10">
+						<label for="pName">Name:</label><input type="text" id="pName" name="name" required>
+					</div>
+					<p><input type="submit" value="Add Player"></p>
+				</form>
 			</div>
-			<p><input type="submit" value="Add Player"></p>
-		</form>
-	</div>
-	<div class="vcontainer">
-		<h2>Register Minigames</h2>
-		<h3 th:if="${rmgError}" th:text="${rmgError}" style="color: red;"></h3>
-		<form class="vcontainer" action="/register/addMinigame" method="post" th:object="${newMinigame}">
-			<div class="vcontainer rg10">
-				<div class="hcontainer cg10">
-					<label for="mgName">Name:</label><input type="text" id="mgName" th:field="*{name}" required>
-				</div>
-				<div class="hcontainer cg10">
-					<label for="mgType">Type:</label>
-					<select id="mgType" th:field="*{type}" required>
-						<option value="">N/A</option>
-						<option th:each="gameType : ${gameTypes}" th:text="${gameType}" th:value="${gameType}"></option>
-					</select>
-				</div>
+			<div class="vcontainer">
+				<h2>Register Minigames</h2>
+				<h3 th:if="${rmgError}" th:text="${rmgError}" style="color: red;"></h3>
+				<form class="vcontainer" action="/register/addMinigame" method="post" th:object="${newMinigame}">
+					<div class="vcontainer rg10">
+						<div class="hcontainer cg10">
+							<label for="mgName">Name:</label><input type="text" id="mgName" th:field="*{name}" required>
+						</div>
+						<div class="hcontainer cg10">
+							<label for="mgType">Type:</label>
+							<select id="mgType" th:field="*{type}" required>
+								<option value="">N/A</option>
+								<option th:each="gameType : ${gameTypes}" th:text="${gameType}" th:value="${gameType}">
+								</option>
+							</select>
+						</div>
+					</div>
+					<p><input type="submit" value="Add Minigame"></p>
+				</form>
 			</div>
-			<p><input type="submit" value="Add Minigame"></p>
-		</form>
+		</main>
 	</div>
-</main>
-<footer class="hcontainer">
-	<div>
-		<a href="/">Home</a>
-		<a href="/track">Track</a>
-	</div>
-</footer>
+	<footer class="hcontainer">
+		<div>
+			<p>Poof Games Media 2023</p>
+			<p>Terms and Conditions</p>
+			<p>Conditions Of Use</p>
+			<p>Privacy Policy</p>
+		</div>
+	</footer>
+
 </body>
+
 </html>

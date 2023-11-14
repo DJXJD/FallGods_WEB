@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
-<meta charset="ISO-8859-1">
-<th:block th:replace="~{index :: stdHead}"/>
-<title>Set Group - FallGods</title>
+	<meta charset="ISO-8859-1">
+	<th:block th:replace="~{index :: stdHead}" />
+	<title>Set Group - FallGods</title>
 </head>
-<body class="vcontainer">
-<th:block th:replace="~{index :: themeSelector}"/>
-<header class="center">
-	<h1>Set Tracking Group</h1>
-</header>
-<main>
-	<h2>Who do you (mainly) want to track for?</h2>
-	<form class="vcontainer rg10" action="/track/setGroup" method="post" th:object="${group}">
-		<select th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}">
-			<option value="">N/A</option>
-			<option th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
-		</select>
-		<p><input type="submit" value="Set Group"></p>
-	</form>
-</main>
-<footer class="hcontainer">
-	<div>
-		<a href="/">Home</a>
-		<a href="/register">Register</a>
-		<a href="/track">Track</a>
+
+<body>
+	<th:block th:replace="~{index :: themeSelector}" />
+
+	<div class="LeftSideBarContainer">
+		<div class="LeftSideBarVerticalSpacing">
+			<h2><a href="/">Overview</a></h2>
+			<h2><a href="/track">Track</a></h2>
+			<h2><a href="/track/setGroup">Set Group</a></h2>
+			<h2><a href="/register">Register</a></h2>
+			<h2><a href="/view">View</a></h2>
+			<h2><a href="/view/sessions">Sessions</a></h2>
+			<h2><a href="/view/players">Players</a></h2>
+		</div>
 	</div>
-</footer>
+
+	<div class="content">
+		<header class="center">
+			<h1>Set Tracking Group</h1>
+		</header>
+		<main class="hcontainer">
+			<h2>Who do you (mainly) want to track for?</h2>
+			<form class="vcontainer rg10" action="/track/setGroup" method="post" th:object="${group}">
+				<select th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}">
+					<option value="">N/A</option>
+					<option th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
+				</select>
+				<p><input type="submit" value="Set Group"></p>
+			</form>
+		</main>
+	</div>
+
+	<footer class="hcontainer">
+		<div>
+			<p>Poof Games Media 2023</p>
+			<p>Terms and Conditions</p>
+			<p>Conditions Of Use</p>
+			<p>Privacy Policy</p>
+		</div>
+	</footer>
 </body>
+
 </html>

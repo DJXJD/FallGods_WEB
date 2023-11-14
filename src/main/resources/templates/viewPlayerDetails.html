@@ -1,112 +1,140 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
-<meta charset="UTF-8">
-<th:block th:replace="~{index :: stdHead}"/>
-<script defer type="text/javascript" src="/javascript/viewPlayerDetails.js"></script>
-<title>View Player Details - FallGods</title>
+	<meta charset="UTF-8">
+	<th:block th:replace="~{index :: stdHead}" />
+	<script defer type="text/javascript" src="/javascript/viewPlayerDetails.js"></script>
+	<title>View Player Details - FallGods</title>
 </head>
-<body class="vcontainer">
-<th:block th:replace="~{index :: themeSelector}"/>
-<header class="center">
-	<h1>View Player Details</h1>
-</header>
-<main class="vcontainer" style="row-gap: 1.25em;" th:object="${player}">
-	<form id="playerSelectorForm" class="hcontainer close" hidden>
-		<label for="playerSelector"><h2>Player:</h2></label>
-		<select id="playerSelector">
-			<option th:each="p : ${players}" th:text="${p.name}" th:value="@{/view/player/{id} (id = ${p.id})}" th:selected="${p == player}">
-		</select>
-	</form>
-	<div class="hocontainer" style="max-width: 100vw;">
-		<table border="1">
-			<thead>
-				<th>Sessions
-				<th>Matches
-				<th>Rounds
-				<th><div max-lines="2">In Game Time</div></th>
-				<th>Wins
-				<th>Win Rate
-				<th>Losses
-				<th>Loss Rate
-				<th>Qualifications
-				<th>Qualification Rate
-				<th>Eliminations
-				<th>Elimination Rate
-				<th>Finishes
-				<th>Finish Rate
-				<th>Fumbles
-				<th>Fumble Rate
-				<th>MVPs
-				<th>MVP Rate
-			</thead>
-			<tbody class="center">
-				<tr>
-					<td th:text="*{numMainPlayerSessions}"/>
-					<td th:text="*{numMatches}"/>
-					<td th:text="*{aggMapData.plays}"/>
-					<td th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}"/>
-					<td th:text="*{wins}"/>
-					<td th:text="*{winRate}"/>
-					<td th:text="*{losses}"/>
-					<td th:text="*{lossRate}"/>
-					<td th:text="*{aggMapData.qualifications}"/>
-					<td th:text="*{aggMapData.qualificationRate}"/>
-					<td th:text="*{aggMapData.eliminations}"/>
-					<td th:text="*{aggMapData.eliminationRate}"/>
-					<td th:text="*{aggMapData.finishes}"/>
-					<td th:text="*{aggMapData.finishRate}"/>
-					<td th:text="*{aggMapData.fumbles}"/>
-					<td th:text="*{aggMapData.fumbleRate}"/>
-					<td th:text="*{aggMapData.mvps}"/>
-					<td th:text="*{aggMapData.mvpRate}"/>
-				</tr>
-			</tbody>
-		</table>
+
+<body>
+	<th:block th:replace="~{index :: themeSelector}" />
+
+		<div class="LeftSideBarContainer">
+		<div class="LeftSideBarVerticalSpacing">
+			<h2><a href="/">Overview</a></h2>
+			<h2><a href="/track">Track</a></h2>
+			<h2><a href="/track/setGroup">Set Group</a></h2>
+			<h2><a href="/register">Register</a></h2>
+			<h2><a href="/view">View</a></h2>
+			<h2><a href="/view/sessions">Sessions</a></h2>
+			<h2><a href="/view/players">Players</a></h2>
+		</div>
 	</div>
-	<div class="hocontainer vocontainer" style="max-width: 100vw; max-height: 50vh;">
-		<table border="1">
-			<thead>
-				<th>Map
-				<th>Plays
-				<th>Occurrence
-				<th>Qualifications
-				<th>Qualification Rate
-				<th>Eliminations
-				<th>Elimination Rate
-				<th>Finishes
-				<th>Finish Rate
-				<th>Fumbles
-				<th>Fumble Rate
-				<th>MVPs
-				<th>MVP Rate
-			</thead>
-			<tbody class="center">
-				<tr th:each="md : *{mapData}" th:object="${md.value}">
-					<td><div th:text="${md.key.name} != null and ${md.key.type} != null ? ${md.key.friendlyName}" max-lines="2"/></td>
-					<td th:text="*{plays}"/>
-					<td th:text="*{occurrence}"/>
-					<td th:text="*{qualifications}"/>
-					<td th:text="*{qualificationRate}"/>
-					<td th:text="*{eliminations}"/>
-					<td th:text="*{eliminationRate}"/>
-					<td th:text="*{finishes}"/>
-					<td th:text="*{finishRate}"/>
-					<td th:text="*{fumbles}"/>
-					<td th:text="*{fumbleRate}"/>
-					<td th:text="*{mvps}"/>
-					<td th:text="*{mvpRate}"/>
-				</tr>
-			</tbody>
-		</table>
+
+	<div class="content">
+		<header class="center">
+			<h1>View Player Details</h1>
+		</header>
+		<main class="vcontainer" style="row-gap: 1.25em;" th:object="${player}">
+			<form id="playerSelectorForm" class="hcontainer close" hidden>
+				<label for="playerSelector">
+					<h2>Player:</h2>
+				</label>
+				<select id="playerSelector">
+					<option th:each="p : ${players}" th:text="${p.name}" th:value="@{/view/player/{id} (id = ${p.id})}"
+						th:selected="${p == player}">
+				</select>
+			</form>
+			<div class="hocontainer" style="max-width: 100vw;">
+				<table border="1">
+					<thead>
+						<th>Sessions
+						<th>Matches
+						<th>Rounds
+						<th>
+							<div max-lines="2">In Game Time</div>
+						</th>
+						<th>Wins
+						<th>Win Rate
+						<th>Losses
+						<th>Loss Rate
+						<th>Qualifications
+						<th>Qualification Rate
+						<th>Eliminations
+						<th>Elimination Rate
+						<th>Finishes
+						<th>Finish Rate
+						<th>Fumbles
+						<th>Fumble Rate
+						<th>MVPs
+						<th>MVP Rate
+					</thead>
+					<tbody class="center">
+						<tr>
+							<td th:text="*{numMainPlayerSessions}" />
+							<td th:text="*{numMatches}" />
+							<td th:text="*{aggMapData.plays}" />
+							<td th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}" />
+							<td th:text="*{wins}" />
+							<td th:text="*{winRate}" />
+							<td th:text="*{losses}" />
+							<td th:text="*{lossRate}" />
+							<td th:text="*{aggMapData.qualifications}" />
+							<td th:text="*{aggMapData.qualificationRate}" />
+							<td th:text="*{aggMapData.eliminations}" />
+							<td th:text="*{aggMapData.eliminationRate}" />
+							<td th:text="*{aggMapData.finishes}" />
+							<td th:text="*{aggMapData.finishRate}" />
+							<td th:text="*{aggMapData.fumbles}" />
+							<td th:text="*{aggMapData.fumbleRate}" />
+							<td th:text="*{aggMapData.mvps}" />
+							<td th:text="*{aggMapData.mvpRate}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="hocontainer vocontainer" style="max-width: 100vw; max-height: 50vh;">
+				<table border="1">
+					<thead>
+						<th>Map
+						<th>Plays
+						<th>Occurrence
+						<th>Qualifications
+						<th>Qualification Rate
+						<th>Eliminations
+						<th>Elimination Rate
+						<th>Finishes
+						<th>Finish Rate
+						<th>Fumbles
+						<th>Fumble Rate
+						<th>MVPs
+						<th>MVP Rate
+					</thead>
+					<tbody class="center">
+						<tr th:each="md : *{mapData}" th:object="${md.value}">
+							<td>
+								<div th:text="${md.key.name} != null and ${md.key.type} != null ? ${md.key.friendlyName}"
+									max-lines="2" />
+							</td>
+							<td th:text="*{plays}" />
+							<td th:text="*{occurrence}" />
+							<td th:text="*{qualifications}" />
+							<td th:text="*{qualificationRate}" />
+							<td th:text="*{eliminations}" />
+							<td th:text="*{eliminationRate}" />
+							<td th:text="*{finishes}" />
+							<td th:text="*{finishRate}" />
+							<td th:text="*{fumbles}" />
+							<td th:text="*{fumbleRate}" />
+							<td th:text="*{mvps}" />
+							<td th:text="*{mvpRate}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</main>
 	</div>
-</main>
-<footer class="hcontainer">
-	<div>
-		<a href="/">Home</a>
-		<a href="/view">View</a>
-		<a href="/view/players">View Players</a>
-	</div>
-</footer>
+	<footer class="hcontainer">
+		<div>
+			<p>Poof Games Media 2023</p>
+			<p>Terms and Conditions</p>
+			<p>Conditions Of Use</p>
+			<p>Privacy Policy</p>
+		</div>
+	</footer>
+
 </body>
+
 </html>

@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
-<meta charset="UTF-8">
-<th:block th:replace="~{index :: stdHead}"/>
-<title>View - FallGods</title>
+	<meta charset="UTF-8">
+	<th:block th:replace="~{index :: stdHead}" />
+	<title>View - FallGods</title>
 </head>
-<body class="vcontainer">
-<th:block th:replace="~{index :: themeSelector}"/>
-<header class="center">
-	<h1>Select View Mode</h1>
-</header>
-<main class="hcontainer">
-	<h2><a href="/view/sessions">Sessions</a></h2>
-	<h2><a href="/view/players">Players</a></h2>
-</main>
-<footer class="hcontainer">
-	<div>
-		<a href="/">Home</a>
+
+<body>
+	<th:block th:replace="~{index :: themeSelector}" />
+
+	<div class="LeftSideBarContainer">
+		<div class="LeftSideBarVerticalSpacing">
+			<h2><a href="/">Overview</a></h2>
+			<h2><a href="/track">Track</a></h2>
+			<h2><a href="/track/setGroup">Set Group</a></h2>
+			<h2><a href="/register">Register</a></h2>
+			<h2><a href="/view">View</a></h2>
+			<h2><a href="/view/sessions">Sessions</a></h2>
+			<h2><a href="/view/players">Players</a></h2>
+		</div>
 	</div>
-</footer>
+
+	<div class="content">
+		<header class="center">
+			<h1>Select View Mode</h1>
+		</header>
+
+		<main class="hcontainer">
+
+			<h2><a href="/view/sessions">Sessions</a></h2>
+			<h2><a href="/view/players">Players</a></h2>
+		</main>
+	</div>
+	<footer class="hcontainer">
+		<div>
+			<p>Poof Games Media 2023</p>
+			<p>Terms and Conditions</p>
+			<p>Conditions Of Use</p>
+			<p>Privacy Policy</p>
+		</div>
+	</footer>
+
 </body>
+
 </html>

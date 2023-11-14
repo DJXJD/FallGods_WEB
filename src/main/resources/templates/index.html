@@ -1,37 +1,60 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
-<meta charset="ISO-8859-1">
-<th:block th:fragment="stdHead">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" th:if="${theme.name} != LIGHT" th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
-<script defer type="text/javascript" src="/javascript/jquery-3.7.0.slim.min.js"></script>
-<script defer type="text/javascript" src="/javascript/main.js"></script>
-</th:block>
-<title>FallGods</title>
+	<meta charset="ISO-8859-1">
+	<th:block th:fragment="stdHead">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" th:if="${theme.name} != LIGHT"
+			th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
+		<script defer type="text/javascript" src="/javascript/jquery-3.7.0.slim.min.js"></script>
+		<script defer type="text/javascript" src="/javascript/main.js"></script>
+		<script defer type="text/javascript" src="/javascript/SideBar_View_Dropdown.js"></script>
+	</th:block>
+	<title>FallGods</title>
 </head>
-<body class="vcontainer">
-<form th:fragment="themeSelector" class="topright" id="themeForm" action="/setTheme" method="post" hidden>
-	<select id="theme" th:field="${theme.name}">
-		<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
-	</select>
-	<input type="hidden" name="sourcePath" th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
-</form>
-<header class="center">
-	<h1>FallGods - The new Fall Guys game tracker for the FDGA</h1>
-	<h3 class="right">btw - im no ui guy</h3>
-</header>
-<main class="hcontainer">
-	<h2><a href="/view">View</a> (Finally Here!!!)</h2>
-	<h2><a href="/register">Register</a></h2>
-	<h2><a href="/track">Track</a></h2>
-</main>
-<footer class="hcontainer">
-	<div>
-		<p>placeholder1</p>
-		<p>placeholder2</p>
+
+<body>
+	<form th:fragment="themeSelector" class="topright" id="themeForm" action="/setTheme" method="post" hidden>
+		<select id="theme" th:field="${theme.name}">
+			<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
+		</select>
+		<input type="hidden" name="sourcePath"
+			th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
+	</form>
+
+	<div class="LeftSideBarContainer">
+		<div class="LeftSideBarVerticalSpacing">
+			<h2><a href="/">Overview</a></h2>
+			<h2><a href="/track">Track</a></h2>
+			<h2><a href="/track/setGroup">Set Group</a></h2>
+			<h2><a href="/register">Register</a></h2>
+			<h2><a href="/view">View</a></h2>
+			<h2><a href="/view/sessions">Sessions</a></h2>
+			<h2><a href="/view/players">Players</a></h2>
+		</div>
 	</div>
-</footer>
+
+	<div class="content">
+
+		<main>
+			<header class="center">
+				<h1>FallGods - The new Fall Guys game tracker for the FDGA</h1>
+				<h3 class="right">btw - im no ui guy</h3>
+			</header>
+		</main>
+
+		<footer class="hcontainer">
+			<div>
+				<p>Poof Games Media 2023</p>
+				<p>Terms and Conditions</p>
+				<p>Conditions Of Use</p>
+				<p>Privacy Policy</p>
+			</div>
+		</footer>
+	</div>
 </body>
+
+
 </html>
