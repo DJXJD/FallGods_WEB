@@ -1,15 +1,22 @@
 $(() => {
-	console.log("This is something");
-    function toggleDropdown() {
-        var dropdownMenu = document.getElementById("dropdownMenu");
-        var sidebarContainer = document.querySelector(".LeftSideBarContainer");
+	let acc = $(".accordion");
 
-        if (dropdownMenu.style.display === "block") {
-            dropdownMenu.style.display = "none";
-            sidebarContainer.style.height = "100%"; // Restore the original height
-        } else {
-            dropdownMenu.style.display = "block";
-            sidebarContainer.style.height = "auto"; // Expand to fit dropdown content
-        }
-    }
+	//For displaying the accordion style view links
+	var i;
+	for (i = 0; i < acc.length; i++) {
+		acc[i].addEventListener("click", function() {
+			var panel = this.nextElementSibling;
+			if (panel.style.display === "block") {
+				panel.style.display = "none";
+			} else {
+				panel.style.display = "block";
+			}
+		});
+	}
+
+	//For opening and closing the side bar
+	let IsOpen = true;
+	$("#OpenCloseBtn").click(() => {
+		$(".SideBarLinkText, footer").toggle();
+	});
 });

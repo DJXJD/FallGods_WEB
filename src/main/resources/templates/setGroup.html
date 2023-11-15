@@ -8,44 +8,101 @@
 </head>
 
 <body>
-	<th:block th:replace="~{index :: themeSelector}" />
+	
 
-	<div class="LeftSideBarContainer">
-		<div class="LeftSideBarVerticalSpacing">
-			<h2><a href="/">Overview</a></h2>
-			<h2><a href="/track">Track</a></h2>
-			<h2><a href="/track/setGroup">Set Group</a></h2>
-			<h2><a href="/register">Register</a></h2>
-			<h2><a href="/view">View</a></h2>
-			<h2><a href="/view/sessions">Sessions</a></h2>
-			<h2><a href="/view/players">Players</a></h2>
-		</div>
-		
-		   <footer class="vcontainer">
-            <div class="footer-content">
-				<p>Poof Games Media 2023</p>
-				<p>Terms and Conditions</p>
-				<p>Conditions Of Use</p>
-				<p>Privacy Policy</p>
+	<div class="ContainerForAll">
+		<div class="SideBarContainer" id="SideBarContainer_ID">
+			<div class="SideBarTopArea">
+				<h2><a class="SideBarNavLinks" href="/">
+						<div class="IconTextHContainer">
+							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+								<use href="/icons/Home_Icon.svg#Home" />
+							</svg>
+							<div class="SideBarLinkText">Overview</div>
+						</div>
+					</a></h2>
+				<h2><a class="SideBarNavLinks" href="/track">
+						<div class="IconTextHContainer ">
+							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+								<use href="/icons/Track_Icon.svg#Track" />
+							</svg>
+							<div class="SideBarLinkText">Track</div>
+						</div>
+					</a></h2>
+				<h2><a class="SideBarNavLinks" href="/track/setGroup">
+						<div class="IconTextHContainer">
+							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+								<use href="/icons/SetGroup_Icon.svg#SetGroup" />
+							</svg>
+							<div class="SideBarLinkText">Set Group</div>
+						</div>
+					</a></h2>
+				<h2><a class="SideBarNavLinks" href="/register">
+						<div class="IconTextHContainer">
+							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+								<use href="/icons/Register_Icon.svg#Register" />
+							</svg>
+							<div class="SideBarLinkText">Register</div>
+						</div>
+					</a></h2>
+				<div class="accordion">
+					<div class="IconTextHContainer">
+						<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+							<use href="/icons/View_Icon.svg#View" />
+						</svg>
+						<div class="SideBarLinkText">View</div>
+					</div>
+				</div>
+				<div class="panel">
+					<h2><a class="SideBarNavLinks" href="/view/sessions">
+							<div class="IconTextHContainer">
+								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+									<use href="/icons/Sessions_Icon.svg#Sessions" />
+								</svg>
+								<div class="SideBarLinkText">Sessions</div>
+							</div>
+						</a></h2>
+					<h2><a class="SideBarNavLinks" href="/view/players">
+							<div class="IconTextHContainer">
+								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+									<use href="/icons/Player_Icon.svg#Player" />
+								</svg>
+								<div class="SideBarLinkText">Players</div>
+							</div>
+						</a></h2>
+				</div>
 			</div>
-		</footer>
-	</div>
+			<div class="SideBarBottomArea">
+				<!--<hr class="SideBarBottomHr"> -->
+				<footer>
+					<div>
+						<p>© Poof Games Media 2023</p>
+						<p>Terms and Conditions</p>
+						<p>Conditions Of Use</p>
+						<p>Privacy Policy</p>
+					<th:block th:replace="~{index :: themeSelector}" />
 
-	<div class="content">
-		<header class="center">
-			<h1>Set Tracking Group</h1>
-		</header>
-		<main class="hcontainer">
-			<h2>Who do you (mainly) want to track for?</h2>
-			<form class="vcontainer rg10" action="/track/setGroup" method="post" th:object="${group}">
-				<select th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}">
-					<option value="">N/A</option>
-					<option th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
-				</select>
-				<p><input type="submit" value="Set Group"></p>
-			</form>
-		</main>
-	</div>
+					</div>
+				</footer>
+			</div>
+		</div>
+		<div class="MainContentContainer" id="MainContentContainer_ID">
+			<div class="content">
+				<header class="center">
+					<h1>Set Tracking Group</h1>
+				</header>
+				<main class="hcontainer">
+					<h2>Who do you (mainly) want to track for?</h2>
+					<form class="vcontainer rg10" action="/track/setGroup" method="post" th:object="${group}">
+						<select th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}">
+							<option value="">N/A</option>
+							<option th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
+						</select>
+						<p><input type="submit" value="Set Group"></p>
+					</form>
+				</main>
+			</div>
+		</div>
 </body>
 
 </html>

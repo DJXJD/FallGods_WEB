@@ -18,6 +18,16 @@ footer.hcontainer>div {
 	gap: 2.5rem;
 }
 
+a:link {
+	color: black;
+text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: Black;
+}
+
 .hcontainer {
 	display: flex;
 	justify-content: space-evenly;
@@ -108,7 +118,6 @@ table table {
 
 .SideBarContainer {
 	border-right: 1.5px solid black;
-	width: 250px;
 	background-color: #f0f0f0;
 	position: sticky;
 	top: 0;
@@ -116,6 +125,10 @@ table table {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	overflow-y: auto;
+	overflow-x: hidden;
+	transition: 0.5s;
+	min-width: max-content;
 }
 
 .SideBarTopArea {
@@ -131,13 +144,12 @@ table table {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding-bottom: 3px;
-	padding-top: 3px;
+	padding: 10px;
 }
 
 .SideBarBottomHr {
 	border-top: 1.5px solid black;
-	width: 99.3%;
+	width: 100%;
 	z-index: 0;
 }
 
@@ -148,6 +160,7 @@ table table {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	transition: margin-left .5s;
 }
 
 .SideBarNavLinks {
@@ -184,26 +197,38 @@ footer {
 
 }
 
-.active,
-.accordion:hover {
-	color: blue;
-}
+.accordion:hover {}
 
 .panel {
-	padding-left: 20px;
+	padding-left: 35px;
 	display: none;
 	overflow: hidden;
 }
 
-.IconTextHContainer{
+.IconTextHContainer {
 	display: flex;
-	align-items: flex-start;
 	width: 100%;
 	flex-wrap: wrap;
+	align-items: center;
 }
 
-.SideBarIcon{
-padding-right: 5px;	
+.SideBarLinkText {
+	padding-left: 10px;
 }
 
+.sidebar .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
 
+.openbtn {
+	font-size: 20px;
+	cursor: pointer;
+	background-color: #111;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+}
