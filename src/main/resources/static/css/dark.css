@@ -5,7 +5,7 @@ body {
 	color: darkgray;
 }
 
-table[border], :enabled, .vocontainer thead {
+table[border], .vocontainer thead {
 	background-color: #151515;
 	color: inherit;
 }
@@ -26,4 +26,19 @@ a:link {
 
 a:visited {
 	color: darkslategray;
+}
+
+.accordion {
+  color: rgb(0, 0, 0);
+	cursor: pointer;
+	padding-inline: 0px;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+	transition: 0.4s;
+	font-size: 24px;
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold;
+	margin-top: 19.92px;
 }

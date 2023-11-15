@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="/css/main.css">
 		<link rel="stylesheet" th:if="${theme.name} != LIGHT"
 			th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<script defer type="text/javascript" src="/javascript/jquery-3.7.0.slim.min.js"></script>
 		<script defer type="text/javascript" src="/javascript/main.js"></script>
 		<script defer type="text/javascript" src="/javascript/SideBar_View_Dropdown.js"></script>
@@ -24,37 +25,81 @@
 			th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
 	</form>
 
-	<div class="LeftSideBarContainer">
-		<div class="LeftSideBarVerticalSpacing">
-			<h2><a href="/">Overview</a></h2>
-			<h2><a href="/track">Track</a></h2>
-			<h2><a href="/track/setGroup">Set Group</a></h2>
-			<h2><a href="/register">Register</a></h2>
-			<h2><a href="/view">View</a></h2>
-			<h2><a href="/view/sessions">Sessions</a></h2>
-			<h2><a href="/view/players">Players</a></h2>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			var acc = document.getElementsByClassName("accordion");
+			var i;
+
+			for (i = 0; i < acc.length; i++) {
+				acc[i].addEventListener("click", function () {
+					var panel = this.nextElementSibling;
+					if (panel.style.display === "block") {
+						panel.style.display = "none";
+					} else {
+						panel.style.display = "block";
+					}
+				});
+			}
+		});
+	</script>
+
+
+	<div class="ContainerForAll">
+		<div class="SideBarContainer">
+			<div class="SideBarTopArea">
+				<h2><a class="SideBarNavLinks" href="/">
+						<div class="IconTextHContainer"><img src="/icons/Home_Icon.svg" class="SideBarIcon"
+								alt="Overview Icon">Overview</div>
+					</a></h2>
+				<h2><a class="SideBarNavLinks" href="/track">
+						<div class="IconTextHContainer"><img src="/icons/Track_Icon.svg" class="SideBarIcon"
+								alt="Track Icon">Track</div>
+					</a></h2>
+				<h2><a class="SideBarNavLinks" href="/track/setGroup">
+						<div class="IconTextHContainer"><img src="/icons/SetGroup_Icon.svg" class="SideBarIcon"
+								alt="Set Group Icon">Set Group</div>
+					</a></h2>
+				<h2><a class="SideBarNavLinks" href="/register">
+						<div class="IconTextHContainer"><img src="/icons/Register_Icon.svg" class="SideBarIcon"
+								alt="Register Icon">Register</div>
+					</a></h2>
+				<div class="accordion">
+					<div class="IconTextHContainer"><img src="/icons/View_Icon.svg" class="SideBarIcon"
+							alt="View Icon">View</div>
+				</div>
+				<div class="panel">
+					<h2><a class="SideBarNavLinks" href="/view/sessions">
+							<div class="IconTextHContainer"><img src="/icons/Sessions_Icon.svg" class="SideBarIcon"
+									alt="Sessions Icon">Sessions</div>
+						</a></h2>
+					<h2><a class="SideBarNavLinks" href="/view/players">
+							<div class="IconTextHContainer"><img src="/icons/Player_Icon.svg" class="SideBarIcon"
+									alt="Players Icon">Players</div>
+						</a></h2>
+				</div>
+			</div>
+
+			<div class="SideBarBottomArea">
+				<hr class="SideBarBottomHr">
+				<footer>
+					<div>
+						<p>2023 © Poof Games Media 2023</p>
+						<p>Terms and Conditions</p>
+						<p>Conditions Of Use</p>
+						<p>Privacy Policy</p>
+					</div>
+				</footer>
+			</div>
+		</div>
+		<div class="MainContentContainer">
+			<main>
+				<header class="center">
+					<h1>FallGods - The new Fall Guys game tracker for the FDGA</h1>
+					<h3 class="right">btw - im no ui guy</h3>
+				</header>
+			</main>
 		</div>
 	</div>
-
-	<div class="content">
-
-		<main>
-			<header class="center">
-				<h1>FallGods - The new Fall Guys game tracker for the FDGA</h1>
-				<h3 class="right">btw - im no ui guy</h3>
-			</header>
-		</main>
-
-		<footer class="hcontainer">
-			<div>
-				<p>Poof Games Media 2023</p>
-				<p>Terms and Conditions</p>
-				<p>Conditions Of Use</p>
-				<p>Privacy Policy</p>
-			</div>
-		</footer>
-	</div>
 </body>
-
 
 </html>

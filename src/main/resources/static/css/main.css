@@ -13,8 +13,6 @@ body {
 	position: relative;
 }
 
-
-
 footer.hcontainer>div {
 	display: flex;
 	gap: 2.5rem;
@@ -34,59 +32,6 @@ footer.hcontainer>div {
 	justify-content: space-evenly;
 	align-items: center;
 	height: 100%;
-}
-
-
-.LeftSideBarContainer {
-	width: 250px;
-	min-width: 200px;
-	min-height: 100vh;
-	background-color: #333;
-	position: fixed;
-	top: 0;
-	left: 0;
-}
-
-.content {
-	margin-left: 250px;
-	flex-grow: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	align-items: center;
-	position: relative;
-}
-
-.LeftSideBarVerticalSpacing {
-	margin-top: 10%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	height: 100%;
-}
-
-footer {
-	background-color: #333;
-	color: #fff;
-	text-align: center;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	position: relative;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	width: 100%;
-	z-index: 1;
-}
-
-@media (max-width: 768px) {
-	.LeftSideBarContainer {
-		width: 200px;
-	}
-
-	.content {
-		margin-left: 200px;
-	}
 }
 
 .close {
@@ -126,7 +71,7 @@ footer {
 }
 
 .vocontainer thead {
-
+	position: sticky;
 	top: 0;
 	background-color: white;
 }
@@ -156,3 +101,109 @@ td>svg {
 table table {
 	width: 100%;
 }
+
+.ContainerForAll {
+	display: flex;
+}
+
+.SideBarContainer {
+	border-right: 1.5px solid black;
+	width: 250px;
+	background-color: #f0f0f0;
+	position: sticky;
+	top: 0;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.SideBarTopArea {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	text-align: left;
+}
+
+.SideBarBottomArea {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding-bottom: 3px;
+	padding-top: 3px;
+}
+
+.SideBarBottomHr {
+	border-top: 1.5px solid black;
+	width: 99.3%;
+	z-index: 0;
+}
+
+.MainContentContainer {
+	flex-grow: 1;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.SideBarNavLinks {
+	text-decoration: none;
+}
+
+.SideBarNavLinks:hover {
+	background-color: grey;
+}
+
+.SideBarNavLinks:visited {
+	color: black;
+}
+
+footer {
+	color: black;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.accordion {
+	color: rgb(0, 0, 0);
+	cursor: pointer;
+	padding-inline: 0px;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+	transition: 0.4s;
+	font-size: 24px;
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold;
+	margin-top: 19.92px;
+
+}
+
+.active,
+.accordion:hover {
+	color: blue;
+}
+
+.panel {
+	padding-left: 20px;
+	display: none;
+	overflow: hidden;
+}
+
+.IconTextHContainer{
+	display: flex;
+	align-items: flex-start;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+.SideBarIcon{
+padding-right: 5px;	
+}
+
+
