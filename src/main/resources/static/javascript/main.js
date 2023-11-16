@@ -26,4 +26,22 @@ $(() => {
 		$("table div[max-lines]").each((i, e) => resizeElementWidthwise(e, window.innerWidth - oldWindowWidth));
 		oldWindowWidth = window.innerWidth;
 	});
+	const $accordionButton = $('#nav-accordion-button');
+    const $accordionContent = $('.nav-accordion-content');
+
+    $accordionButton.click(function() {
+        $accordionContent.slideToggle();
+    });
+
+    $accordionButton.hover(function() {
+        $accordionContent.slideDown();
+    }, function() {
+        $accordionContent.slideUp();
+    });
+
+    $accordionContent.hover(function() {
+        $(this).show();
+    }, function() {
+        $(this).slideUp();
+    });
 });

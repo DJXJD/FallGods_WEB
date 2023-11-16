@@ -36,6 +36,14 @@ input[type="submit"][value="End Session"]:hover {
     background-color: red;
     cursor: pointer;
 }
+.main-box {
+	background-color: rgba(0, 0, 0, 0.3);
+	padding: 20px;
+	border-radius: 10px;
+	z-index: 10;
+
+	
+}
 .fall-font-title {
 	color: #F73CA3;
     font-family: 'TITANONE';

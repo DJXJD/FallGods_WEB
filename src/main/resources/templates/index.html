@@ -4,43 +4,98 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<th:block th:fragment="stdHead">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="/css/main.css">
-		<link rel="stylesheet" href="/css/style.dev.tailwind.css">
-		<link rel="stylesheet" href="/css/animations.css">
-		<link rel="stylesheet" th:if="${theme.name} != LIGHT"
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/style.dev.tailwind.css">
+	<link rel="stylesheet" href="/css/animations.css">
+	<link rel="stylesheet" href="/css/menuLayout.css">
+	<link rel="stylesheet" th:if="${theme.name} != LIGHT"
 			th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
-		<script defer type="text/javascript" src="/javascript/jquery-3.7.0.slim.min.js"></script>
-		<script defer type="text/javascript" src="/javascript/main.js"></script>
-		<script defer type="text/javascript" src="/javascript/RandomClouds.js"></script>
-		<script defer type="text/javascript" src="/javascript/RandomFallGuys.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+	<script defer type="text/javascript" src="/javascript/jquery-3.7.0.slim.min.js"></script>
+	<script defer type="text/javascript" src="/javascript/main.js"></script>
+	<script defer type="text/javascript" src="/javascript/RandomClouds.js"></script>
+	<script defer type="text/javascript" src="/javascript/RandomFallGuys.js"></script>
 	</th:block>
 
 	<title>FallGods</title>
 </head>
 
-<body class="flex bg-moving flex-col relative bg-repeat bg-center bg-contain overflow-hidden"
-	style="background-image: url('images/trialanderror.svg'); background-size: 5vh;">
+<body class=" ">
+	
+	<div class="accordion" id="accordion">
+        <div class="nav-accordion-button" id="nav-accordion-button">Menu &#9658;</div>
+        <div class="nav-accordion-content">
+            <a href="#"><img class="logo" alt="FallGodsLogo" src="images/FallGods_Logo2.svg" width="5%"/></a>
+            <a href="#">Register</a>
+            <a href="#">View</a>
+            <a href="#">Track</a>
+            <a href="#">About Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">FAQ</a>
+        </div>
+    </div>
+	
+	
+	
+	
+	
+	<header class="header">
+	
+	</header>
+
+	<section class="homepage-section">
+		
+		<div class="homepage">
+			<div class="homepage-text-box">
+				<h1 class="heading-first">
+					The Fall Guys Personal Compendium
+				</h1>
+				<p>
+					FallGods is a way to track your games, view and compare data,<br> and find your edge! 
+					
+					<br><br>Register your Player name, a new game map, <br>or track a game session.
+				</p>
+				<a href="/register"
+					class="btn">Register</a>
+					<a href="/track"
+					class="btn">Track</a>
+			</div>	
+		</div>
+		
+		
+		
+		
+		
+	</section>
+
+
+
+
 
 	<div class="flex relative items-center justify-center mt-auto">
 		<img class="w-3/4 max-w-[1920px] min-w-[1300px] min-h-[720px] max-h-[1080px] z-10 pointer-events-none"
-			width="100%" alt="The big boy logo" src="images/FallGods_Logo.svg">
+			width="80%" alt="The big boy logo" src="images/FallGods_Logo.svg">
 	</div>
 
-	<div id="cloud-container"></div>
-	<div id="fallguys-container"></div>
 
 	<div class="flex w-full relative flex-wrap justify-center z-10 ">
 		<main class="flex justify-evenly items-center mt-[-255px]">
 
-			<h2><br><br><br><br><br><br><a href="/view"
-					class="mx-[100px] relative mt-8 py-10 font-TitanOneFont text-[60px] NavTextShadow font-bold text-stroke hover:text-CustomFallGuysPinkText text-white">View</a>
+			<h2><a href="/view"
+					class="mx-[100px] relative mt-8 py-10 font-TitanOneFont text-[60px] NavTextShadow 
+					font-bold text-stroke hover:text-CustomFallGuysPinkText text-white">View</a>
 			</h2>
-			<h2><br><br><br><br><br><br><a href="/register"
-					class="mx-[100px] relative mt-8 py-10 text-[60px] custom font-TitanOneFont NavTextShadow font-bold text-stroke hover:text-CustomFallGuysPinkText text-white">Register</a>
+			<h2><a href="/register"
+					class="mx-[100px] relative mt-8 py-10 text-[60px] custom font-TitanOneFont NavTextShadow 
+					font-bold text-stroke hover:text-CustomFallGuysPinkText text-white">Register</a>
 			</h2>
-			<h2><br><br><br><br><br><br><a href="/track"
-					class="mx-[100px] relative mt-8 py-10 text-[60px] font-bold font-TitanOneFont NavTextShadow text-stroke hover:text-CustomFallGuysPinkText text-white">Track</a>
+			<h2><a href="/track"
+					class="mx-[100px] relative mt-8 py-10 text-[60px] font-bold font-TitanOneFont NavTextShadow 
+					text-stroke hover:text-CustomFallGuysPinkText text-white">Track</a>
 			</h2>
 		</main>
 	</div>
@@ -57,14 +112,11 @@
 
 	<footer class="flex w-full flex-wrap justify-evenly mt-auto relative ">
 		<div class="flex justify-evenly items-center my-5 ">
-			<a href="/"
-				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">©
+			<a class="mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">©
 				2023 POOF Media, All Rights Reserved</a>
-			<a href="/"
-				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">Privacy
+			<a class="mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">Privacy
 				Policy</a>
-			<a href="/"
-				class="hover:text-CustomFallGuysPinkText mx-5 font-TitanOneFont NavTextShadow text-[40px] text-white text-stroke font-bold z-10">Terms
+			<a class="mx-5 font-TitanOneFont NavTextShadow text-[30px] text-white text-stroke font-bold z-10">Terms
 				Of Use</a>
 		</div>
 	</footer>
