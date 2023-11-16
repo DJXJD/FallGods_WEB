@@ -1,7 +1,7 @@
 @charset "ISO-8859-1";
 
 body {
-	background-color: #0f0f0f;
+	background-color: #121213;
 	color: darkgray;
 }
 
@@ -28,26 +28,27 @@ a:link {
 
 a:visited {
 	text-decoration: none;
-	color: Black;
+	color: #FFFFF0;
 }
 
 .accordion {
-	color: rgb(0, 0, 0);
+	color: #8a8f98;
 }
 
 .SideBarContainer {
-	border-right: 1.5px solid black;
-	background-color: #f0f0f0;
-}
-
-.SideBarBottomHr {
-	border-top: 1.5px solid black;
+	border-right: 1.5px solid #2e2e32;
+	background-color: #141416;
+	color: #8a8f98;
 }
 
 .SideBarNavLinks:visited {
-	color: black;
+	color: #8a8f98;
 }
 
+.SideBarBottomArea {
+	border-top: 1px solid #2e2e32;
+	}
+
 footer {
-	color: black;
+	color: #8a8f98;
 }

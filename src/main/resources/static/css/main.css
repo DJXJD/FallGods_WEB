@@ -115,11 +115,12 @@ table table {
 
 .ContainerForAll {
 	display: flex;
+ 	position: relative;
 }
 
 .SideBarContainer {
-	border-right: 1.5px solid black;
-	background-color: #f0f0f0;
+	border-right: 1.5px solid gray;
+	background-color: #1a1224;
 	position: sticky;
 	top: 0;
 	height: 100vh;
@@ -144,24 +145,38 @@ table table {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding: 10px;
-}
-
-.SideBarBottomHr {
-	border-top: 1.5px solid black;
-	width: 100%;
-	z-index: 0;
+	border-top: 1px solid #2e2e32;
 }
 
 .MainContentContainer {
+	display: flex;
+	overflow-x: auto;
+	overflow-y: auto;
+	color: #FFFFF0;
 	flex-grow: 1;
 	padding: 20px;
-	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	overflow-x: auto;
-	overflow-y: auto;
+	position: relative;
+
+}
+
+.ButtonAndContentWrapper {
+	position: absolute;
+	background-color: darkgoldenrod;
+	top: 85px;
+	left: 0px;
+	 transform: translate(140px, 0px);
+  z-index: 999; /* Ensure the button is on top of other elements */
+}
+
+.openbtn {
+	background-color: #111;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	cursor: pointer;
 }
 
 .SideBarNavLinks {
@@ -169,7 +184,7 @@ table table {
 	cursor: pointer;
 	width: 100%;
 	text-align: left;
-	font-size: 24px;
+	font-size: 22px;
 	font-family: 'Times New Roman', Times, serif;
 	font-weight: bold;
 	padding-top: 25px;
@@ -186,7 +201,8 @@ table table {
 }
 
 footer {
-	color: black;
+	padding: 10px;
+	color: white;
 	font-weight: bold;
 	font-size: 16px;
 }
@@ -196,7 +212,7 @@ footer {
 	cursor: pointer;
 	width: 100%;
 	text-align: left;
-	font-size: 24px;
+	font-size: 22px;
 	font-family: 'Times New Roman', Times, serif;
 	font-weight: bold;
 
@@ -221,19 +237,10 @@ footer {
 }
 
 .IconTextHContainer:hover {
-	background-color: gray;
+	background-color: rgba(255, 255, 255, 0.12);
 	border-radius: 5px;
 }
 
 .SideBarLinkText {
 	padding-left: 10px;
-}
-
-.openbtn {
-	font-size: 20px;
-	cursor: pointer;
-	background-color: #111;
-	color: white;
-	padding: 10px 15px;
-	border: none;
 }
