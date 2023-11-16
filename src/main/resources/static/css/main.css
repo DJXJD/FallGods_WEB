@@ -11,6 +11,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	position: relative;
+	overflow-x: none;
+	overflow-y: none;
 }
 
 footer.hcontainer>div {
@@ -20,7 +22,7 @@ footer.hcontainer>div {
 
 a:link {
 	color: black;
-text-decoration: none;
+	text-decoration: none;
 }
 
 a:visited {
@@ -49,7 +51,6 @@ a:visited {
 	gap: 2.5rem;
 	align-items: center;
 	justify-content: center;
-
 }
 
 .close.left {
@@ -127,7 +128,6 @@ table table {
 	justify-content: space-between;
 	overflow-y: auto;
 	overflow-x: hidden;
-	transition: 0.5s;
 	min-width: max-content;
 }
 
@@ -160,19 +160,29 @@ table table {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	transition: margin-left .5s;
+	overflow-x: auto;
+	overflow-y: auto;
 }
 
 .SideBarNavLinks {
+	color: rgb(0, 0, 0);
+	cursor: pointer;
+	width: 100%;
+	text-align: left;
+	font-size: 24px;
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold;
+	padding-top: 25px;
 	text-decoration: none;
-}
-
-.SideBarNavLinks:hover {
-	background-color: grey;
+	align-items: center;
 }
 
 .SideBarNavLinks:visited {
 	color: black;
+}
+
+.SideBarIcon {
+	padding-left: 5px;
 }
 
 footer {
@@ -184,44 +194,39 @@ footer {
 .accordion {
 	color: rgb(0, 0, 0);
 	cursor: pointer;
-	padding-inline: 0px;
 	width: 100%;
-	border: none;
 	text-align: left;
-	outline: none;
-	transition: 0.4s;
 	font-size: 24px;
 	font-family: 'Times New Roman', Times, serif;
 	font-weight: bold;
-	margin-top: 19.92px;
 
 }
 
-.accordion:hover {}
-
 .panel {
-	padding-left: 35px;
 	display: none;
+	padding-left: 30px;
 	overflow: hidden;
+	padding-bottom: 10px;
+	padding-right: 10px;
+}
+
+.ViewLinkContainer {
+	padding-top: 25px;
 }
 
 .IconTextHContainer {
 	display: flex;
 	width: 100%;
-	flex-wrap: wrap;
 	align-items: center;
+}
+
+.IconTextHContainer:hover {
+	background-color: gray;
+	border-radius: 5px;
 }
 
 .SideBarLinkText {
 	padding-left: 10px;
-}
-
-.sidebar .closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
 }
 
 .openbtn {

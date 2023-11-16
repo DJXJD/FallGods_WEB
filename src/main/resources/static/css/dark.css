@@ -33,72 +33,15 @@ a:visited {
 
 .accordion {
 	color: rgb(0, 0, 0);
-	cursor: pointer;
-	padding-inline: 0px;
-	width: 100%;
-	border: none;
-	text-align: left;
-	outline: none;
-	transition: 0.4s;
-	font-size: 24px;
-	font-family: 'Times New Roman', Times, serif;
-	font-weight: bold;
-	margin-top: 19.92px;
-}
-
-.ContainerForAll {
-	display: flex;
 }
 
 .SideBarContainer {
 	border-right: 1.5px solid black;
 	background-color: #f0f0f0;
-	position: sticky;
-	top: 0;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.SideBarTopArea {
-	display: flex;
-	flex-direction: column;
-	padding: 10px;
-	text-align: left;
-}
-
-.SideBarBottomArea {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	padding: 10px;
-
 }
 
 .SideBarBottomHr {
 	border-top: 1.5px solid black;
-	width: 100%;
-	z-index: 0;
-}
-
-.MainContentContainer {
-	flex-grow: 1;
-	padding: 20px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-}
-
-.SideBarNavLinks {
-	text-decoration: none;
-}
-
-.SideBarNavLinks:hover {
-	background-color: grey;
 }
 
 .SideBarNavLinks:visited {
@@ -107,26 +50,4 @@ a:visited {
 
 footer {
 	color: black;
-	font-weight: bold;
-	font-size: 16px;
-}
-
-
-.accordion:hover {}
-
-.panel {
-	padding-left: 25px;
-	display: none;
-	overflow: hidden;
-}
-
-.IconTextHContainer {
-	display: flex;
-	align-items: flex-start;
-	width: 100%;
-	flex-wrap: wrap;
-}
-
-.SideBarLinkText {
-	padding-left: 10px;
 }

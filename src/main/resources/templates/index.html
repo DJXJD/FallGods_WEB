@@ -17,68 +17,72 @@
 
 <body>
 	<div class="ContainerForAll">
-		<div class="SideBarContainer" id="SideBarContainer_ID">
+		<div class="SideBarContainer">
 			<div class="SideBarTopArea">
-				<h2><a class="SideBarNavLinks" href="/">
-						<div class="IconTextHContainer">
-							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-								<use href="/icons/Home_Icon.svg#Home" />
-							</svg>
-							<div class="SideBarLinkText">Overview</div>
-						</div>
-					</a></h2>
-				<h2><a class="SideBarNavLinks" href="/track">
-						<div class="IconTextHContainer ">
-							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-								<use href="/icons/Track_Icon.svg#Track" />
-							</svg>
-							<div class="SideBarLinkText">Track</div>
-						</div>
-					</a></h2>
-				<h2><a class="SideBarNavLinks" href="/track/setGroup">
-						<div class="IconTextHContainer">
-							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-								<use href="/icons/SetGroup_Icon.svg#SetGroup" />
-							</svg>
-							<div class="SideBarLinkText">Set Group</div>
-						</div>
-					</a></h2>
-				<h2><a class="SideBarNavLinks" href="/register">
-						<div class="IconTextHContainer">
-							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-								<use href="/icons/Register_Icon.svg#Register" />
-							</svg>
-							<div class="SideBarLinkText">Register</div>
-						</div>
-					</a></h2>
-				<div class="accordion">
+				<a class="SideBarNavLinks" href="/">
 					<div class="IconTextHContainer">
 						<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-							<use href="/icons/View_Icon.svg#View" />
+							<use href="/icons/Home_Icon.svg#Home" />
 						</svg>
-						<div class="SideBarLinkText">View</div>
+						<div class="SideBarLinkText">Overview</div>
+					</div>
+				</a>
+				<a class="SideBarNavLinks" href="/track">
+					<div class="IconTextHContainer ">
+						<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+							<use href="/icons/Track_Icon.svg#Track" />
+						</svg>
+						<div class="SideBarLinkText">Track</div>
+					</div>
+				</a>
+				<a class="SideBarNavLinks" href="/track/setGroup">
+					<div class="IconTextHContainer">
+						<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+							<use href="/icons/SetGroup_Icon.svg#SetGroup" />
+						</svg>
+						<div class="SideBarLinkText">Set Group</div>
+					</div>
+				</a>
+				<a class="SideBarNavLinks" href="/register">
+					<div class="IconTextHContainer">
+						<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+							<use href="/icons/Register_Icon.svg#Register" />
+						</svg>
+						<div class="SideBarLinkText">Register</div>
+					</div>
+				</a>
+				<div class="ViewLinkContainer">
+					<div class="ViewInnerContainer">
+						<div class="accordion">
+							<div class="IconTextHContainer">
+								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+									<use href="/icons/View_Icon.svg#View" />
+								</svg>
+								<div class="SideBarLinkText">View</div>
+							</div>
+						</div>
+						<div class="panel">
+							<a class="SideBarNavLinks" href="/view/sessions">
+								<div class="IconTextHContainer">
+									<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+										<use href="/icons/Sessions_Icon.svg#Sessions" />
+									</svg>
+									<div class="SideBarLinkText">Sessions</div>
+								</div>
+							</a>
+				
+							<a class="SideBarNavLinks" href="/view/players">
+								<div class="IconTextHContainer">
+									<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+										<use href="/icons/Player_Icon.svg#Player" />
+									</svg>
+									<div class="SideBarLinkText">Players</div>
+								</div>
+							</a>
+						</div>
 					</div>
 				</div>
-				<div class="panel">
-					<h2><a class="SideBarNavLinks" href="/view/sessions">
-							<div class="IconTextHContainer">
-								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-									<use href="/icons/Sessions_Icon.svg#Sessions" />
-								</svg>
-								<div class="SideBarLinkText">Sessions</div>
-							</div>
-						</a></h2>
-					<h2><a class="SideBarNavLinks" href="/view/players">
-							<div class="IconTextHContainer">
-								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-									<use href="/icons/Player_Icon.svg#Player" />
-								</svg>
-								<div class="SideBarLinkText">Players</div>
-							</div>
-						</a></h2>
-				</div>
 			</div>
-
 			<div class="SideBarBottomArea">
 				<!--<hr class="SideBarBottomHr"> -->
 				<footer>
@@ -98,11 +102,9 @@
 				</footer>
 			</div>
 		</div>
-		<div class="MainContentContainer" id="MainContentContainer_ID">
+		<div class="MainContentContainer">
 			<main>
-
 				<button id="OpenCloseBtn">&#9776; Open Sidebar</button>
-
 				<header class="center">
 					<h1>FallGods - The new Fall Guys game tracker for the FDGA</h1>
 					<h3 class="right">btw - im no ui guy</h3>
