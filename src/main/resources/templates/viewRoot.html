@@ -8,105 +8,31 @@
 </head>
 
 <body>
-	<div class="ContainerForAll">
-		<div class="ButtonAndContentWrapper">
-			<button id="OpenCloseBtn">&#9776; Open Sidebar</button>
-		</div>
-		<div class="SideBarContainer">
-			<div class="SideBarTopArea">
-				<div style="margin-top: 75px; margin-bottom: 75px;"></div>
-				<a class="SideBarNavLinks" href="/">
-					<div class="IconTextHContainer">
-						<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-							<use href="/icons/Home_Icon.svg#Home" />
-						</svg>
-						<div class="SideBarLinkText">Overview</div>
-					</div>
-				</a>
-				<a class="SideBarNavLinks" href="/track">
-					<div class="IconTextHContainer ">
-						<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-							<use href="/icons/Track_Icon.svg#Track" />
-						</svg>
-						<div class="SideBarLinkText">Track</div>
-					</div>
-				</a>
-				<a class="SideBarNavLinks" href="/track/setGroup">
-					<div class="IconTextHContainer">
-						<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-							<use href="/icons/SetGroup_Icon.svg#SetGroup" />
-						</svg>
-						<div class="SideBarLinkText">Set Group</div>
-					</div>
-				</a>
-				<a class="SideBarNavLinks" href="/register">
-					<div class="IconTextHContainer">
-						<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-							<use href="/icons/Register_Icon.svg#Register" />
-						</svg>
-						<div class="SideBarLinkText">Register</div>
-					</div>
-				</a>
-				<div class="ViewLinkContainer">
-					<div class="ViewInnerContainer">
-						<div class="accordion">
-							<div class="IconTextHContainer">
-								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-									<use href="/icons/View_Icon.svg#View" />
-								</svg>
-								<div class="SideBarLinkText">View</div>
-							</div>
-						</div>
-						<div class="panel">
-							<a class="SideBarNavLinks" href="/view/sessions">
-								<div class="IconTextHContainer">
-									<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-										<use href="/icons/Sessions_Icon.svg#Sessions" />
-									</svg>
-									<div class="SideBarLinkText">Sessions</div>
-								</div>
-							</a>
-							<a class="SideBarNavLinks" href="/view/players">
-								<div class="IconTextHContainer">
-									<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-										<use href="/icons/Player_Icon.svg#Player" />
-									</svg>
-									<div class="SideBarLinkText">Players</div>
-								</div>
-							</a>
-						</div>
-					</div>
+	<div class="ContainerForAll IsHidden">
+		<th:block th:replace="~{index :: SideBarFragment}" />
+		<div class="MainContentContainer">
+			<div class="InnerMainContentContainer">
+				<div class="content">
+					<header class="center">
+						<h1>Select View Mode</h1>
+					</header>
+
+					<main class="hcontainer">
+						<h2><a href="/view/sessions">Sessions</a></h2>
+						<h2><a href="/view/players">Players</a></h2>
+					</main>
 				</div>
 			</div>
-			<div class="SideBarBottomArea">
-				<footer>
-					<div>
-						<p>Poof Games Media © 2023</p>
-						<p>Terms and Conditions</p>
-						<p>Conditions Of Use</p>
-						<p>Privacy Policy</p>
-						<form th:fragment="themeSelector" id="themeForm" action="/setTheme" method="post" hidden>
-							<select id="theme" th:field="${theme.name}">
-								<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
-							</select>
-							<input type="hidden" name="sourcePath"
-								th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
-						</form>
-					</div>
-				</footer>
+			<div class="MainContentFooterContainer">
+				<div class="MainContentFooterContent">
+					<p>Poof Games Media © 2023</p>
+					<p>Terms and Conditions</p>
+					<p>Conditions Of Use</p>
+					<p>Privacy Policy</p>
+
+				</div>
 			</div>
 		</div>
-		<div class="MainContentContainer">
-			<div class="content">
-				<header class="center">
-					<h1>Select View Mode</h1>
-				</header>
-
-				<main class="hcontainer">
-					<h2><a href="/view/sessions">Sessions</a></h2>
-					<h2><a href="/view/players">Players</a></h2>
-				</main>
-			</div>
 		</div>
 </body>
 

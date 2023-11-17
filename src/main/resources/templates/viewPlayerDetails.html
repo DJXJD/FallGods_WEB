@@ -9,199 +9,126 @@
 </head>
 
 <body>
-<div class="ContainerForAll">
-		<div class="ButtonAndContentWrapper">
-				<button id="OpenCloseBtn">&#9776; Open Sidebar</button>
-			</div>
-		<div class="SideBarContainer">
-			<div class="SideBarTopArea">
-				<div style="margin-top: 75px; margin-bottom: 75px;"></div>
-				<a class="SideBarNavLinks" href="/">
-					<div class="IconTextHContainer">
-						<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-							<use href="/icons/Home_Icon.svg#Home" />
-						</svg>
-						<div class="SideBarLinkText">Overview</div>
-					</div>
-				</a>
-				<a class="SideBarNavLinks" href="/track">
-					<div class="IconTextHContainer ">
-						<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-							<use href="/icons/Track_Icon.svg#Track" />
-						</svg>
-						<div class="SideBarLinkText">Track</div>
-					</div>
-				</a>
-				<a class="SideBarNavLinks" href="/track/setGroup">
-					<div class="IconTextHContainer">
-						<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-							<use href="/icons/SetGroup_Icon.svg#SetGroup" />
-						</svg>
-						<div class="SideBarLinkText">Set Group</div>
-					</div>
-				</a>
-				<a class="SideBarNavLinks" href="/register">
-					<div class="IconTextHContainer">
-						<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-							<use href="/icons/Register_Icon.svg#Register" />
-						</svg>
-						<div class="SideBarLinkText">Register</div>
-					</div>
-				</a>
-				<div class="ViewLinkContainer">
-					<div class="ViewInnerContainer">
-						<div class="accordion">
-							<div class="IconTextHContainer">
-								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-									<use href="/icons/View_Icon.svg#View" />
-								</svg>
-								<div class="SideBarLinkText">View</div>
-							</div>
+	<div class="ContainerForAll IsHidden">
+		<th:block th:replace="~{index :: SideBarFragment}" />
+		<div class="MainContentContainer">
+			<div class="InnerMainContentContainer">
+				<div class="content">
+					<header class="center">
+						<h1>View Player Details</h1>
+					</header>
+					<main class="vcontainer" style="row-gap: 1.25em;" th:object="${player}">
+						<form id="playerSelectorForm" class="hcontainer close" hidden>
+							<label for="playerSelector">
+								<h2>Player:</h2>
+							</label>
+							<select id="playerSelector">
+								<option th:each="p : ${players}" th:text="${p.name}"
+									th:value="@{/view/player/{id} (id = ${p.id})}" th:selected="${p == player}">
+							</select>
+						</form>
+						<div class="hocontainer" style="max-width: 100vw;">
+							<table border="1">
+								<thead>
+									<th>Sessions
+									<th>Matches
+									<th>Rounds
+									<th>
+										<div>In Game Time</div>
+									</th>
+									<th>Wins
+									<th>Win Rate
+									<th>Losses
+									<th>Loss Rate
+									<th>Qualifications
+									<th>Qualification Rate
+									<th>Eliminations
+									<th>Elimination Rate
+									<th>Finishes
+									<th>Finish Rate
+									<th>Fumbles
+									<th>Fumble Rate
+									<th>MVPs
+									<th>MVP Rate
+								</thead>
+								<tbody class="center">
+									<tr>
+										<td th:text="*{numMainPlayerSessions}" />
+										<td th:text="*{numMatches}" />
+										<td th:text="*{aggMapData.plays}" />
+										<td th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}" />
+										<td th:text="*{wins}" />
+										<td th:text="*{winRate}" />
+										<td th:text="*{losses}" />
+										<td th:text="*{lossRate}" />
+										<td th:text="*{aggMapData.qualifications}" />
+										<td th:text="*{aggMapData.qualificationRate}" />
+										<td th:text="*{aggMapData.eliminations}" />
+										<td th:text="*{aggMapData.eliminationRate}" />
+										<td th:text="*{aggMapData.finishes}" />
+										<td th:text="*{aggMapData.finishRate}" />
+										<td th:text="*{aggMapData.fumbles}" />
+										<td th:text="*{aggMapData.fumbleRate}" />
+										<td th:text="*{aggMapData.mvps}" />
+										<td th:text="*{aggMapData.mvpRate}" />
+									</tr>
+								</tbody>
+							</table>
 						</div>
-						<div class="panel">
-							<a class="SideBarNavLinks" href="/view/sessions">
-								<div class="IconTextHContainer">
-									<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-										<use href="/icons/Sessions_Icon.svg#Sessions" />
-									</svg>
-									<div class="SideBarLinkText">Sessions</div>
-								</div>
-							</a>
-							<a class="SideBarNavLinks" href="/view/players">
-								<div class="IconTextHContainer">
-									<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-										<use href="/icons/Player_Icon.svg#Player" />
-									</svg>
-									<div class="SideBarLinkText">Players</div>
-								</div>
-							</a>
+						<div class="hocontainer vocontainer" style="max-width: 100vw; max-height: 50vh;">
+							<table border="1">
+								<thead>
+									<th>Map
+									<th>Plays
+									<th>Occurrence
+									<th>Qualifications
+									<th>Qualification Rate
+									<th>Eliminations
+									<th>Elimination Rate
+									<th>Finishes
+									<th>Finish Rate
+									<th>Fumbles
+									<th>Fumble Rate
+									<th>MVPs
+									<th>MVP Rate
+								</thead>
+								<tbody class="center">
+									<tr th:each="md : *{mapData}" th:object="${md.value}">
+										<td>
+											<div th:text="${md.key.name} != null and ${md.key.type} != null ? ${md.key.friendlyName}"
+												 />
+										</td>
+										<td th:text="*{plays}" />
+										<td th:text="*{occurrence}" />
+										<td th:text="*{qualifications}" />
+										<td th:text="*{qualificationRate}" />
+										<td th:text="*{eliminations}" />
+										<td th:text="*{eliminationRate}" />
+										<td th:text="*{finishes}" />
+										<td th:text="*{finishRate}" />
+										<td th:text="*{fumbles}" />
+										<td th:text="*{fumbleRate}" />
+										<td th:text="*{mvps}" />
+										<td th:text="*{mvpRate}" />
+									</tr>
+								</tbody>
+							</table>
 						</div>
-					</div>
+					</main>
 				</div>
 			</div>
-			<div class="SideBarBottomArea">
-				<footer>
-					<div>
-						<p>Poof Games Media © 2023</p>
-						<p>Terms and Conditions</p>
-						<p>Conditions Of Use</p>
-						<p>Privacy Policy</p>
-						<form th:fragment="themeSelector" id="themeForm" action="/setTheme" method="post" hidden>
-							<select id="theme" th:field="${theme.name}">
-								<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
-							</select>
-							<input type="hidden" name="sourcePath"
-								th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
-						</form>
-					</div>
-				</footer>
+			<div class="MainContentFooterContainer">
+				<div class="MainContentFooterContent">
+					<p>Poof Media © 2023</p>
+					<p>Terms and Conditions</p>
+					<p>Conditions Of Use</p>
+					<p>Privacy Policy</p>
+
+				</div>
 			</div>
+
 		</div>
-		<div class="MainContentContainer">
-			<div class="content">
-				<header class="center">
-					<h1>View Player Details</h1>
-				</header>
-				<main class="vcontainer" style="row-gap: 1.25em;" th:object="${player}">
-					<form id="playerSelectorForm" class="hcontainer close" hidden>
-						<label for="playerSelector">
-							<h2>Player:</h2>
-						</label>
-						<select id="playerSelector">
-							<option th:each="p : ${players}" th:text="${p.name}"
-								th:value="@{/view/player/{id} (id = ${p.id})}" th:selected="${p == player}">
-						</select>
-					</form>
-					<div class="hocontainer" style="max-width: 100vw;">
-						<table border="1">
-							<thead>
-								<th>Sessions
-								<th>Matches
-								<th>Rounds
-								<th>
-									<div max-lines="2">In Game Time</div>
-								</th>
-								<th>Wins
-								<th>Win Rate
-								<th>Losses
-								<th>Loss Rate
-								<th>Qualifications
-								<th>Qualification Rate
-								<th>Eliminations
-								<th>Elimination Rate
-								<th>Finishes
-								<th>Finish Rate
-								<th>Fumbles
-								<th>Fumble Rate
-								<th>MVPs
-								<th>MVP Rate
-							</thead>
-							<tbody class="center">
-								<tr>
-									<td th:text="*{numMainPlayerSessions}" />
-									<td th:text="*{numMatches}" />
-									<td th:text="*{aggMapData.plays}" />
-									<td th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}" />
-									<td th:text="*{wins}" />
-									<td th:text="*{winRate}" />
-									<td th:text="*{losses}" />
-									<td th:text="*{lossRate}" />
-									<td th:text="*{aggMapData.qualifications}" />
-									<td th:text="*{aggMapData.qualificationRate}" />
-									<td th:text="*{aggMapData.eliminations}" />
-									<td th:text="*{aggMapData.eliminationRate}" />
-									<td th:text="*{aggMapData.finishes}" />
-									<td th:text="*{aggMapData.finishRate}" />
-									<td th:text="*{aggMapData.fumbles}" />
-									<td th:text="*{aggMapData.fumbleRate}" />
-									<td th:text="*{aggMapData.mvps}" />
-									<td th:text="*{aggMapData.mvpRate}" />
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="hocontainer vocontainer" style="max-width: 100vw; max-height: 50vh;">
-						<table border="1">
-							<thead>
-								<th>Map
-								<th>Plays
-								<th>Occurrence
-								<th>Qualifications
-								<th>Qualification Rate
-								<th>Eliminations
-								<th>Elimination Rate
-								<th>Finishes
-								<th>Finish Rate
-								<th>Fumbles
-								<th>Fumble Rate
-								<th>MVPs
-								<th>MVP Rate
-							</thead>
-							<tbody class="center">
-								<tr th:each="md : *{mapData}" th:object="${md.value}">
-									<td>
-										<div th:text="${md.key.name} != null and ${md.key.type} != null ? ${md.key.friendlyName}"
-											max-lines="2" />
-									</td>
-									<td th:text="*{plays}" />
-									<td th:text="*{occurrence}" />
-									<td th:text="*{qualifications}" />
-									<td th:text="*{qualificationRate}" />
-									<td th:text="*{eliminations}" />
-									<td th:text="*{eliminationRate}" />
-									<td th:text="*{finishes}" />
-									<td th:text="*{finishRate}" />
-									<td th:text="*{fumbles}" />
-									<td th:text="*{fumbleRate}" />
-									<td th:text="*{mvps}" />
-									<td th:text="*{mvpRate}" />
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</main>
-			</div>
-		</div>
+	</div>
 </body>
 
 </html>

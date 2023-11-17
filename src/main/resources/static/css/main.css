@@ -20,16 +20,6 @@ footer.hcontainer>div {
 	gap: 2.5rem;
 }
 
-a:link {
-	color: black;
-	text-decoration: none;
-}
-
-a:visited {
-	text-decoration: none;
-	color: Black;
-}
-
 .hcontainer {
 	display: flex;
 	justify-content: space-evenly;
@@ -115,7 +105,7 @@ table table {
 
 .ContainerForAll {
 	display: flex;
- 	position: relative;
+	position: relative;
 }
 
 .SideBarContainer {
@@ -152,23 +142,46 @@ table table {
 	display: flex;
 	overflow-x: auto;
 	overflow-y: auto;
-	color: #FFFFF0;
+	color: white;
 	flex-grow: 1;
 	padding: 20px;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
 	position: relative;
+	flex-direction: column;
+}
 
+.InnerMainContentContainer {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+}
+
+.MainContentFooterContainer {
+	margin-top: auto;
+	display: flex;
+	justify-content: center;
+	width: 50%;
+}
+
+.MainContentFooterContent {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 100%;
+	flex-wrap: wrap;
 }
 
 .ButtonAndContentWrapper {
 	position: absolute;
-	background-color: darkgoldenrod;
 	top: 85px;
 	left: 0px;
-	 transform: translate(140px, 0px);
-  z-index: 999; /* Ensure the button is on top of other elements */
+	transform: translate(140px, 0px);
+	z-index: 999;
+	/* Ensure the button is on top of other elements */
 }
 
 .openbtn {
@@ -193,7 +206,17 @@ table table {
 }
 
 .SideBarNavLinks:visited {
-	color: black;
+	color: #8a8f98;
+}
+
+.SideBarNavLinks:link {
+	color: #8a8f98;
+	text-decoration: none;
+}
+
+.SideBarNavLinks:visited {
+	text-decoration: none;
+	color: #8a8f98;
 }
 
 .SideBarIcon {
@@ -208,7 +231,7 @@ footer {
 }
 
 .accordion {
-	color: rgb(0, 0, 0);
+	color: #8a8f98;
 	cursor: pointer;
 	width: 100%;
 	text-align: left;
@@ -243,4 +266,20 @@ footer {
 
 .SideBarLinkText {
 	padding-left: 10px;
+}
+
+/* For LIGHT theme */
+:root {
+	--SideBar-text-Clicked-color-Light: #000;
+	/* Define the text color for LIGHT theme */
+}
+
+/* Apply the text color to the active link */
+.active-link {
+	color: var(--SideBar-text-Clicked-color-Light) !important;
+	/* Use the appropriate variable for the theme */
+}
+
+.IsHidden {
+	display: none;
 }

@@ -22,7 +22,7 @@ table[border] table[border] table[border],
 }
 
 a:link {
-	color: black;
+	color: #FFFFF0;
 	text-decoration: none;
 }
 
@@ -51,4 +51,14 @@ a:visited {
 
 footer {
 	color: #8a8f98;
+}
+
+/* For DARK theme */
+:root {
+  --SideBar-text-Clicked-color-Dark: #fff; /* Define the text color for DARK theme */
+}
+
+/* Additional styles for DARK theme */
+.active-link {
+    color: var(--SideBar-text-Clicked-color-Dark)  !important;
 }
