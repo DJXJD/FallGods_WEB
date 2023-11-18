@@ -171,17 +171,61 @@ table table {
 	width: 100%;
 }
 
-.InnerMainContentContainerForTable table{
+table{
 margin-top: 20px;
 }
 
 
+.InnerMainContentContainerForPlayerTable {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.InnerMainContentContainerForSessionsTable {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.InnerMainContentContainerForPlayerDetailsTable {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+
 @media (max-width: 1350px) {
-  .InnerMainContentContainerForTable {
+  .InnerMainContentContainerForPlayerDetailsTable {
     align-items: normal; 
     justify-content: center;
   }
 }
+
+@media (max-width: 800px) {
+  .InnerMainContentContainerForSessionsTable {
+    align-items: normal; 
+    justify-content: center;
+  }
+}
+
+@media (max-width: 850px) {
+  .InnerMainContentContainerForPlayerTable {
+    align-items: normal; 
+    justify-content: center;
+  }
+}
+
+
 
 .InnerMainContentContainerRow {
 	display: flex;
