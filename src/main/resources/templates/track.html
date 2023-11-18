@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+<th:block th:replace="~{index :: NoJavaScriptFrag}" />
 	<div class="ContainerForAll IsHidden">
 		<th:block th:replace="~{index :: SideBarFragment}" />
 		<div class="MainContentContainer">
@@ -18,7 +18,7 @@
 					<header class="center">
 						<h1>Track Session Data</h1>
 					</header>
-					<main class="hcontainer">
+					<main>
 						<div class="vcontainer">
 							<h2
 								th:text="${gameSession} ? 'Group\'s current session stats' : 'No active session for group'">

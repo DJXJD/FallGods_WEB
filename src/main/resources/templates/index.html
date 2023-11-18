@@ -14,24 +14,26 @@
 	</th:block>
 	<title>FallGods</title>
 </head>
-
-
 <body>
-	<noscript>
-		<div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; min-width: 50vw;">
+	<th:block th:fragment="NoJavaScriptFrag">
+		<noscript>
 			<div
-				style="width: 35%; color: black; border: 3px solid red; border-radius: 10px; background-color: aliceblue; padding: 20px; text-align: center;">
-				<h1 style="color: black;">Hey Poof Media here!</h1>
-				<h2>This website does require Javascript in order to work efficiently and correctly.</h1>
-					<h3>Please enable JavaScript in your browser to proceed.
-				</h2>
-				<h4>Thank you ~ Poof Media</h4>
+				style="display: flex; justify-content: center; align-items: center; min-height: 100vh; min-width: 50vw;">
+				<div
+					style="width: 35%; color: black; border: 3px solid red; border-radius: 10px; background-color: aliceblue; padding: 20px; text-align: center;">
+					<h1 style="color: black;">Hey Poof Media here!</h1>
+					<h2>This website does require Javascript in order to work efficiently and correctly.</h1>
+						<h3>Please enable JavaScript in your browser to proceed.
+					</h2>
+					<h4>Thank you ~ Poof Media</h4>
+				</div>
 			</div>
-		</div>
-	</noscript>
+		</noscript>
+	</th:block>
 	<div class="ContainerForAll IsHidden">
 		<th:block th:fragment="SideBarFragment">
 			<div class="ButtonAndContentWrapper">
+
 				<button id="OpenCloseBtn">&#9776; Open Sidebar</button>
 			</div>
 			<div class="SideBarContainer">
@@ -77,6 +79,15 @@
 										<use href="/icons/View_Icon.svg#View" />
 									</svg>
 									<div class="SideBarLinkText">View</div>
+
+									<div style="margin-left: 25px;" class="ViewArrowContainer">
+										<svg viewBox="0 0 20 20" height="1.5em" class="ArrowRightView">
+											<use href="/icons/arrow_right.svg#ar" />
+										</svg>
+										<svg viewBox="0 0 20 20" height="1.5em" class="ArrowDownView">
+											<use href="/icons/arrow_drop_down.svg#add" />
+										</svg>
+									</div>
 								</div>
 							</div>
 							<div class="panel">
@@ -99,6 +110,22 @@
 							</div>
 						</div>
 					</div>
+					<a class="SideBarNavLinks" href="/view/players" id="PlayerLink">
+						<div class="IconTextHContainer AccordionLink">
+							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+								<use href="/icons/Player_Icon.svg#Player" />
+							</svg>
+							<div class="SideBarLinkText">F.A.Q</div>
+						</div>
+					</a>
+					<a class="SideBarNavLinks" href="/view/players" id="PlayerLink">
+						<div class="IconTextHContainer AccordionLink">
+							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+								<use href="/icons/Player_Icon.svg#Player" />
+							</svg>
+							<div class="SideBarLinkText">About Us</div>
+						</div>
+					</a>
 				</div>
 				<div class="SideBarBottomArea">
 					<form th:fragment="themeSelector" id="themeForm" action="/setTheme" method="post" hidden>
@@ -108,7 +135,6 @@
 						<input type="hidden" name="sourcePath"
 							th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
 					</form>
-
 					<footer>
 						<div>
 							<p>Poof Games Media © 2023</p>
@@ -122,14 +148,15 @@
 			</div>
 		</th:block>
 		<div class="MainContentContainer">
-			<div class="InnerMainContentContainer">
+			<div class="InnerMainContentContainerColumn">
 				<main>
-					<header class="center">
+					<header >
 						<h1>FallGods - The new Fall Guys game tracker for the FDGA</h1>
 						<h3 class="right">btw - im no ui guy</h3>
 					</header>
 				</main>
 			</div>
+			
 			<div class="MainContentFooterContainer">
 				<div class="MainContentFooterContent">
 					<p>Poof Media © 2023</p>

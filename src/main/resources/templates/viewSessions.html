@@ -9,133 +9,131 @@
 </head>
 
 <body>
+	<th:block th:replace="~{index :: NoJavaScriptFrag}" />
 	<div class="ContainerForAll IsHidden">
 		<th:block th:replace="~{index :: SideBarFragment}" />
 		<div class="MainContentContainer">
-			<div class="InnerMainContentContainer">
-				<div class="content">
-					<header class="center">
-						<h1>View Sessions</h1>
-					</header>
-					<main class="vcontainer" style="row-gap: 1.25em;">
-						<div class="hcontainer close">
-							<button id="expandAll">Expand All</button>
-							<button id="collapseAll">Collapse All</button>
-						</div>
-						<div class="hocontainer vocontainer" style="max-width: 100vw; max-height: 75vh;">
-							<table border="1">
-								<thead>
-									<tr>
-										<th></th>
-										<th>Start Date</th>
-										<th>Main Players</th>
-										<th>Duration</th>
-										<th>Wins</th>
-										<th>Losses</th>
-										<th>Win Rate</th>
-										<th>Current Streak</th>
-										<th>Highest Streak</th>
-										<th>Finished</th>
-										<th>Notes</th>
-									</tr>
-								</thead>
-								<tbody class="center" th:each="gameSession : ${gameSessions}"
-									th:object="${gameSession}">
-									<tr>
-										<td class="td-folder-icon" th:fragment="tdFolderIcon">
-											<svg viewBox="0 0 24 24" height="1.5em">
-												<use href="/icons/arrow_right.svg#ar" />
-											</svg>
-											<svg viewBox="0 0 24 24" height="1.5em" style="display: none;">
-												<use href="/icons/arrow_drop_down.svg#add" />
-											</svg>
-										</td>
-										<td th:text="*{#temporals.format(matches[0].startDateTime.toLocalDate)}" />
-										<td th:text="*{mainPlayerNames}" />
-										<td th:text="*{#strings.substring(duration.withNanos(0), 2)}" />
-										<td th:text="*{wins}" />
-										<td th:text="*{losses}" />
-										<td th:text="*{winRate}" />
-										<td th:text="*{currentStreak}" />
-										<td th:text="*{highestStreak}" />
-										<td th:text="*{finished}" />
-										<td th:text="*{notes}" />
-									</tr>
-									<tr style="display: none;">
-										<td />
-										<td colspan="10">
-											<table border="1">
-												<thead>
-													<tr>
-														<th></th>
-														<th>&nbsp;#&nbsp;</th>
-														<th>Start Time</th>
-														<th>Duration</th>
-														<th>Rounds</th>
-														<th>Last Round (LR)</th>
-														<th>LR Losers</th>
-														<th>LR MVP</th>
-														<th>Subs</th>
-													</tr>
-												</thead>
-												<tbody class="center" th:each="match, iStat : *{matches}"
-													th:object="${match}">
-													<tr>
-														<td th:replace="~{ :: tdFolderIcon}" />
-														<td th:text="${iStat.count}"
-															th:style="*{finished} ? ('background-color:' + (*{won} ? 'green;' : 'red;') + 'color: black;')">
-														<td th:text="*{#temporals.format(startDateTime.toLocalTime)}">
-														<td th:text="*{#strings.substring(duration.withNanos(0), 2)}">
-														<td th:text="*{rounds.size}">
-														<td
-															th:text="*{rounds.size} > 0 ? *{lastRound.gameMode.friendlyName}">
-														<td th:text="*{rounds.size} > 0 ? *{lastRound.losers}">
-														<td
-															th:text="*{rounds.size} > 0 and *{lastRound.mvp} != null ? *{lastRound.mvp.name}">
-														<td th:text="*{subs}">
-													</tr>
-													<tr style="display: none;">
-														<td />
-														<td colspan="8">
-															<table border="1">
-																<thead>
-																	<tr>
-																		<th>&nbsp;#&nbsp;</th>
-																		<th>End Time</th>
-																		<th>Duration</th>
-																		<th>Game Mode</th>
-																		<th>Finishers</th>
-																		<th>MVP</th>
-																		<th>Notes</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<tr th:each="round, iStat : *{rounds}"
-																		th:object="${round}">
-																		<td th:text="*{num}"
-																			th:style="*{finalRound} ? ('background-color:' + (*{teamQualified} ? 'green;' : 'red;') + 'color: black;')" />
-																		<td
-																			th:text="*{#temporals.format(endDateTime.toLocalTime)}" />
-																		<td
-																			th:text="*{#strings.substring(duration.withNanos(0), 2)}" />
-																		<td th:text="*{gameMode.friendlyName}" />
-																		<td th:text="*{finishers}" />
-																		<td th:text="*{mvp} != null ? *{mvp.name}" />
-																		<td th:text="*{notes}" />
-																	</tr>
-																</tbody>
-															</table>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</main>
-				</div>
+			<div class="InnerMainContentContainerColumn">
+				<header class="center">
+					<h1>View Sessions</h1>
+				</header>
+				<main class="vcontainer" style="row-gap: 1.25em;">
+					<div class="hcontainer close">
+						<button id="expandAll">Expand All</button>
+						<button id="collapseAll">Collapse All</button>
+					</div>
+					<div class="hocontainer vocontainer" style="max-width: 100vw; max-height: 75vh;">
+						<table border="1">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Start Date</th>
+									<th>Main Players</th>
+									<th>Duration</th>
+									<th>Wins</th>
+									<th>Losses</th>
+									<th>Win Rate</th>
+									<th>Current Streak</th>
+									<th>Highest Streak</th>
+									<th>Finished</th>
+									<th>Notes</th>
+								</tr>
+							</thead>
+							<tbody class="center" th:each="gameSession : ${gameSessions}" th:object="${gameSession}">
+								<tr>
+									<td class="td-folder-icon" th:fragment="tdFolderIcon">
+										<svg viewBox="0 0 24 24" height="1.5em">
+											<use href="/icons/arrow_right.svg#ar" />
+										</svg>
+										<svg viewBox="0 0 24 24" height="1.5em" style="display: none;">
+											<use href="/icons/arrow_drop_down.svg#add" />
+										</svg>
+									</td>
+									<td th:text="*{#temporals.format(matches[0].startDateTime.toLocalDate)}" />
+									<td th:text="*{mainPlayerNames}" />
+									<td th:text="*{#strings.substring(duration.withNanos(0), 2)}" />
+									<td th:text="*{wins}" />
+									<td th:text="*{losses}" />
+									<td th:text="*{winRate}" />
+									<td th:text="*{currentStreak}" />
+									<td th:text="*{highestStreak}" />
+									<td th:text="*{finished}" />
+									<td th:text="*{notes}" />
+								</tr>
+								<tr style="display: none;">
+									<td />
+									<td colspan="10">
+										<table border="1">
+											<thead>
+												<tr>
+													<th></th>
+													<th>&nbsp;#&nbsp;</th>
+													<th>Start Time</th>
+													<th>Duration</th>
+													<th>Rounds</th>
+													<th>Last Round (LR)</th>
+													<th>LR Losers</th>
+													<th>LR MVP</th>
+													<th>Subs</th>
+												</tr>
+											</thead>
+											<tbody class="center" th:each="match, iStat : *{matches}"
+												th:object="${match}">
+												<tr>
+													<td th:replace="~{ :: tdFolderIcon}" />
+													<td th:text="${iStat.count}"
+														th:style="*{finished} ? ('background-color:' + (*{won} ? 'green;' : 'red;') + 'color: black;')">
+													<td th:text="*{#temporals.format(startDateTime.toLocalTime)}">
+													<td th:text="*{#strings.substring(duration.withNanos(0), 2)}">
+													<td th:text="*{rounds.size}">
+													<td
+														th:text="*{rounds.size} > 0 ? *{lastRound.gameMode.friendlyName}">
+													<td th:text="*{rounds.size} > 0 ? *{lastRound.losers}">
+													<td
+														th:text="*{rounds.size} > 0 and *{lastRound.mvp} != null ? *{lastRound.mvp.name}">
+													<td th:text="*{subs}">
+												</tr>
+												<tr style="display: none;">
+													<td />
+													<td colspan="8">
+														<table border="1">
+															<thead>
+																<tr>
+																	<th>&nbsp;#&nbsp;</th>
+																	<th>End Time</th>
+																	<th>Duration</th>
+																	<th>Game Mode</th>
+																	<th>Finishers</th>
+																	<th>MVP</th>
+																	<th>Notes</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr th:each="round, iStat : *{rounds}"
+																	th:object="${round}">
+																	<td th:text="*{num}"
+																		th:style="*{finalRound} ? ('background-color:' + (*{teamQualified} ? 'green;' : 'red;') + 'color: black;')" />
+																	<td
+																		th:text="*{#temporals.format(endDateTime.toLocalTime)}" />
+																	<td
+																		th:text="*{#strings.substring(duration.withNanos(0), 2)}" />
+																	<td th:text="*{gameMode.friendlyName}" />
+																	<td th:text="*{finishers}" />
+																	<td th:text="*{mvp} != null ? *{mvp.name}" />
+																	<td th:text="*{notes}" />
+																</tr>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</main>
 			</div>
 			<div class="MainContentFooterContainer">
 				<div class="MainContentFooterContent">

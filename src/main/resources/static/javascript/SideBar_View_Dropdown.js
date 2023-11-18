@@ -42,14 +42,21 @@ $(() => {
 	//Set the accordion view properties for opening and closing.
 	function SetAccordionView(displayType) {
 		if (displayType === "none") {
+
+			$(".ArrowRightView").show();
+			$(".ArrowDownView").hide();
+
 			localStorage.setItem("AccordionView", "none");
 			$(".accordion").next().css("display", "none");
 			$(".ViewInnerContainer").css("background-color", "");
 			$(".ViewInnerContainer").css("border-radius", "0px");
 		} else if (displayType === "flex") {
+			$(".ArrowRightView").hide();
+			$(".ArrowDownView").show();
 			localStorage.setItem("AccordionView", "flex");
 			if ($(".SideBarLinkText").css("display") === "none") {
-				$(".ViewInnerContainer").css("background-color", "gray");
+
+				$(".ViewInnerContainer").css("background-color", "rgba(122,122,122,0.08)");
 				$(".ViewInnerContainer").css("border-radius", "5px");
 			} else {
 				$(".ViewInnerContainer").css("background-color", "");
@@ -60,9 +67,11 @@ $(() => {
 			$(".accordion").next().css("flex-direction", "column");
 		}
 	}
+	
 	//Set the sidebarview properties for opening and closing.
 	function SetSideBarView(displayType) {
 		if (displayType === "none") {
+			$(".ViewArrowContainer").hide();
 			localStorage.setItem("SideBar", "none");
 			$(".SideBarLinkText, footer").hide();
 			$(".ViewInnerContainer").css("background-color", "");
@@ -70,11 +79,12 @@ $(() => {
 			$(".SideBarIcon").css("padding", "0px 5px 0px");
 			$(".panel").css("padding", "0px 0px 0px");
 			if ($(".panel").css("display") === "flex") {
-				$(".ViewInnerContainer").css("background-color", "gray");
+				$(".ViewInnerContainer").css("background-color", "rgba(122,122,122,0.08)");
 				$(".ViewInnerContainer").css("border-radius", "5px");
 			}
 			$(".SideBarBottomArea").css("border-top", "1px solid #2e2e32");
 		} else if (displayType === "flex") {
+			$(".ViewArrowContainer").show();
 			localStorage.setItem("SideBar", "flex");
 			$(".SideBarLinkText, footer").show();
 			if ($(".panel").css("display") === "flex") {

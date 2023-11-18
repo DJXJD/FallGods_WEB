@@ -45,6 +45,14 @@ a:visited {
 	color: #8a8f98;
 }
 
+
+
+.IconTextHContainer:hover{
+	color: orange;
+}
+
+
+
 .SideBarBottomArea {
 	border-top: 1px solid #2e2e32;
 	}
