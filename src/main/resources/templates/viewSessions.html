@@ -14,11 +14,12 @@
 		<th:block th:replace="~{index :: SideBarFragment}" />
 		<div class="MainContentContainer">
 			<div class="InnerMainContentContainerColumn">
-				<header class="center">
-					<h1>View Sessions</h1>
-				</header>
-				<main class="vcontainer" style="row-gap: 1.25em;">
-					<div class="hcontainer close">
+					<div class="InnerMainContentContainerForTable">
+						
+							<header class="center">
+						<h1>View Sessions</h1>
+					</header>
+					<div class="hcontainer close" style="margin-bottom: 20px;">
 						<button id="expandAll">Expand All</button>
 						<button id="collapseAll">Collapse All</button>
 					</div>
@@ -133,14 +134,11 @@
 							</tbody>
 						</table>
 					</div>
-				</main>
+					</div>
 			</div>
 			<div class="MainContentFooterContainer">
 				<div class="MainContentFooterContent">
 					<p>Poof Media © 2023</p>
-					<p>Terms and Conditions</p>
-					<p>Conditions Of Use</p>
-					<p>Privacy Policy</p>
 				</div>
 			</div>
 		</div>

@@ -162,6 +162,27 @@ table table {
 	width: 100%;
 }
 
+.InnerMainContentContainerForTable {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.InnerMainContentContainerForTable table{
+margin-top: 20px;
+}
+
+
+@media (max-width: 1350px) {
+  .InnerMainContentContainerForTable {
+    align-items: normal; 
+    justify-content: center;
+  }
+}
+
 .InnerMainContentContainerRow {
 	display: flex;
 	flex-direction: row;
