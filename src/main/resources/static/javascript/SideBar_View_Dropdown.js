@@ -1,7 +1,24 @@
 $(() => {
+	
+	if ($(".ContainerForAll").hasClass("IsHidden")) {
+		$(".ContainerForAll").removeClass("IsHidden");
+			$(".SomeShit").remove();
+	}	
+
 	//Check to see if the accordion and sidebar should be collapsed or open on load.
+	$(".ArrowRightView").hide();
+	$(".ArrowDownView").hide();
 	CheckSideBarStatus();
 	CheckAccordionViewStatus();
+
+	
+SetCollapseExpandButtonValues();
+	//Have to add this because it loads a 100ms to early lol, solve this in the future but this works.
+	setTimeout(function() {
+		//When button is pressed, we need to make sure we reset the button position
+	SetCollapseExpandButtonValues();
+	}, 100);
+
 
 	//For displaying the accordion style view links
 	$(".accordion").on("click", function() {
@@ -11,23 +28,43 @@ $(() => {
 			SetAccordionView("flex");
 		}
 	});
+	
+	
+	function SetCollapseExpandButtonValues(){
+		let RightArrowDefaultSizeX = 4.93;
+		let RightArrowDefaultSizeY = 8;
+
+		let RightButtonEmHeight = parseFloat(($(".SideBarArrowRight").css("height"))) / parseFloat(($(".SideBarArrowRight").css("font-size")));
+
+		let RightButtonOffsetX = (RightButtonEmHeight * RightArrowDefaultSizeX);
+		let RightButtonOffsetY = (RightButtonEmHeight * RightArrowDefaultSizeY);
+
+		$(".ButtonAndContentWrapper").css("padding-left", ($(".SideBarContainer").width() - RightButtonOffsetX) + "px");
+		$(".ButtonAndContentWrapper").css("padding-top", ($(".ButtonAndContentWrapper").css("padding-top") - RightButtonOffsetY) + "px");
+	}
 
 	//For opening and closing the side bar
-	$("#OpenCloseBtn").click(() => {
+	$(".OpenCloseBtn").click(() => {
 		if (localStorage.getItem("SideBar") === "none") {
 			SetSideBarView("flex");
 		} else {
 			SetSideBarView("none");
 		}
+
+		//When button is pressed, we need to make sure we reset the button position
+		SetCollapseExpandButtonValues();
 	});
 
 	//Check the sidebar status to set to on load
 	function CheckSideBarStatus() {
+		console.log("Before : " + $(".SideBarContainer").width());
 		if (localStorage.getItem("SideBar") === "flex") {
 			SetSideBarView("flex");
+			console.log("Executed this first");
 		} else if (localStorage.getItem("SideBar") === "none") {
 			SetSideBarView("none");
 		}
+		console.log("After : " + $(".SideBarContainer").width());
 	}
 
 	//Check the accordion view menu status to set to on load
@@ -42,10 +79,8 @@ $(() => {
 	//Set the accordion view properties for opening and closing.
 	function SetAccordionView(displayType) {
 		if (displayType === "none") {
-
 			$(".ArrowRightView").show();
 			$(".ArrowDownView").hide();
-
 			localStorage.setItem("AccordionView", "none");
 			$(".accordion").next().css("display", "none");
 			$(".ViewInnerContainer").css("background-color", "");
@@ -67,7 +102,7 @@ $(() => {
 			$(".accordion").next().css("flex-direction", "column");
 		}
 	}
-	
+
 	//Set the sidebarview properties for opening and closing.
 	function SetSideBarView(displayType) {
 		if (displayType === "none") {
@@ -76,7 +111,7 @@ $(() => {
 			$(".SideBarLinkText, footer").hide();
 			$(".ViewInnerContainer").css("background-color", "");
 			$(".ViewInnerContainer").css("border-radius", "0px");
-			$(".SideBarIcon").css("padding", "0px 5px 0px");
+			$(".SideBarIcon").css("padding", "0px 5px 0px 5px");
 			$(".panel").css("padding", "0px 0px 0px");
 			if ($(".panel").css("display") === "flex") {
 				$(".ViewInnerContainer").css("background-color", "rgba(122,122,122,0.08)");
@@ -91,14 +126,10 @@ $(() => {
 				$(".ViewInnerContainer").css("background-color", "");
 				$(".ViewInnerContainer").css("border-radius", "");
 			}
-			$(".SideBarIcon").css("padding", "0px 0px 0px 0px");
+			$(".SideBarIcon").css("padding", "0px 5px 0px 5px");
 			$(".panel").css("padding", "0px 0px 0px 30px");
 			$(".SideBarBottomArea").css("border-top", "0px solid white");
 		}
-
-		//When button is pressed, we need to make sure we reset the button position
-		let offset = -202.703;
-		$(".ButtonAndContentWrapper").css("left", ($(".SideBarContainer").outerWidth() + offset) + "px");
 	}
 
 	let currentPath = $(location).attr("pathname");
@@ -110,17 +141,6 @@ $(() => {
 				$("#ViewLink").addClass("active-link");
 			}
 		}
-	});
-
-	//When the website is done loading all the stuff, and everything has been applied and calculated
-	//we want to then remove the hidden stuff.
-	$(window).on("load", function() {
-		if ($(".ContainerForAll").hasClass("IsHidden")) {
-			$(".ContainerForAll").removeClass("IsHidden");
-		}
-		//Reset the button here as well to be in the appropriate spot.
-		let offset = -202.703;
-		$(".ButtonAndContentWrapper").css("left", ($(".SideBarContainer").outerWidth() + offset) + "px");
 	});
 });
 

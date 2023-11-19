@@ -14,6 +14,7 @@
 	</th:block>
 	<title>FallGods</title>
 </head>
+
 <body>
 	<th:block th:fragment="NoJavaScriptFrag">
 		<noscript>
@@ -30,11 +31,19 @@
 			</div>
 		</noscript>
 	</th:block>
+	<div class="SomeShit IsHidden" style="background-color: black; width: 100vw; height: 100vh;"></div>
 	<div class="ContainerForAll IsHidden">
+		
 		<th:block th:fragment="SideBarFragment">
 			<div class="ButtonAndContentWrapper">
-
-				<button id="OpenCloseBtn">&#9776; Open Sidebar</button>
+				<div class="OpenCloseBtn">
+					<svg viewBox="0 0 24 24" height="4em" class="SideBarArrowRight">
+						<use class="UseButton" href="/icons/SwitchRight.svg#right" />
+					</svg>
+					<svg viewBox="0 0 24 24" height="4em" style="display: none;" class="SideBarArrowLeft">
+						<use class="UseButton" href="/icons/SwitchLeft.svg#left" />
+					</svg>
+				</div>
 			</div>
 			<div class="SideBarContainer">
 				<div class="SideBarTopArea">
@@ -81,10 +90,11 @@
 									<div class="SideBarLinkText">View</div>
 
 									<div style="margin-left: 25px;" class="ViewArrowContainer">
-										<svg viewBox="0 0 20 20" height="1.5em" class="ArrowRightView">
+										<svg viewBox="0 0 20 20" height="1.25em" class="ArrowRightView">
 											<use href="/icons/arrow_right.svg#ar" />
 										</svg>
-										<svg viewBox="0 0 20 20" height="1.5em" class="ArrowDownView">
+										<svg viewBox="0 0 20 20" height="1.25em" style="display: none;"
+											class="ArrowDownView">
 											<use href="/icons/arrow_drop_down.svg#add" />
 										</svg>
 									</div>
@@ -128,33 +138,70 @@
 					</a>
 				</div>
 				<div class="SideBarBottomArea">
-					<form th:fragment="themeSelector" id="themeForm" action="/setTheme" method="post" hidden>
-						<select id="theme" th:field="${theme.name}">
-							<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
-						</select>
-						<input type="hidden" name="sourcePath"
-							th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
-					</form>
+
 					<footer>
 						<div>
+							<form th:fragment="themeSelector" id="themeForm" action="/setTheme" method="post" hidden>
+								<select id="theme" th:field="${theme.name}">
+									<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
+								</select>
+								<input type="hidden" name="sourcePath"
+									th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
+							</form>
 							<p>Terms and Conditions</p>
 							<p>Conditions Of Use</p>
 							<p>Privacy Policy</p>
+
 						</div>
 					</footer>
+
 				</div>
 			</div>
 		</th:block>
 		<div class="MainContentContainer">
+			<!--Inner Column Begin -->
 			<div class="InnerMainContentContainerColumn">
-					<header >
+				<div class="InnerMainContentContainerRow">
+					<header>
 						<h1>FallGods - The new Fall Guys game tracker for the FDGA</h1>
 						<h3 class="right">btw - im no ui guy</h3>
 					</header>
+				</div>
 			</div>
+
+			<div class="InnerMainContentContainerColumn">
+				<div>Sessions Data Preview</div>
+				<div class="InnerMainContentContainerRow" style="padding: 10px; background-color: black;">
+					<div class="InnerMainRowContent"
+						style="background-color: gray; margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
+						guy 1</div>
+				</div>
+			</div>
+
+			<div class="InnerMainContentContainerColumn" style="margin-top: 50px;">
+				<div>Players Data Preview</div>
+				<div class="InnerMainContentContainerRow" style="padding: 10px; background-color: black;">
+					<div class="InnerMainRowContent"
+						style="background-color: gray; margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
+						guy 1</div>
+				</div>
+			</div>
+
+			<div class="InnerMainContentContainerColumn" style="margin-top: 50px;">
+				<div>Players Data Preview</div>
+				<div class="InnerMainContentContainerRow" style="padding: 10px; background-color: black;">
+					<div class="InnerMainRowContent"
+						style="background-color: gray; margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
+						guy 1</div>
+				</div>
+			</div>
+
+
 			<div class="MainContentFooterContainer">
-				<div class="MainContentFooterContent">
-					<p>Poof Media © 2023</p>
+				<div class="MainContentFooterContainerRow">
+					<div class="MainContentFooterContent">
+						<p class="MainContentFooterContent">Poof Media © 2023</p>
+					</div>
 				</div>
 			</div>
 		</div>

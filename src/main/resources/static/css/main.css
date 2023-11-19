@@ -1,5 +1,11 @@
 @charset "ISO-8859-1";
 
+@font-face {
+	font-family: "SideBar_Inter";
+	src: url("/fonts/Inter/Inter-VariableFont.ttf") format("truetype"),
+}
+
+
 [hidden] {
 	display: none !important;
 }
@@ -71,7 +77,6 @@ footer.hcontainer>div {
 }
 
 .vocontainer thead {
-	position: sticky;
 	top: 0;
 	background-color: white;
 }
@@ -109,7 +114,7 @@ table table {
 }
 
 .SideBarContainer {
-	border-right: 1.5px solid gray;
+	border-right: 1px solid #2e2e32;
 	background-color: rgba(26, 18, 36, 0.01);
 	position: sticky;
 	top: 0;
@@ -125,11 +130,14 @@ table table {
 .SideBarTopArea {
 	display: flex;
 	flex-direction: column;
-	padding: 10px;
+	padding: 10px 10px 10px 10px;
 	text-align: left;
 }
 
 .SideBarBottomArea {
+	font-family: 'SideBar_Inter', sans-serif;
+	font-weight: normal;
+	font-style: normal;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -143,13 +151,12 @@ table table {
 	overflow-x: auto !important;
 	overflow-y: auto !important;
 	color: white;
-	flex: 1;
+	width: 100%;
 	padding: 20px;
 	justify-content: space-between;
 	align-items: center;
 	text-align: center;
 	flex-direction: column;
-
 }
 
 .InnerMainContentContainerColumn {
@@ -162,19 +169,36 @@ table table {
 	width: 100%;
 }
 
-.InnerMainContentContainerForTable {
+.InnerMainContentContainerRow {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	flex-grow: 1;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
+	text-align: center;
 	width: 100%;
+	min-height: 300px;
 }
 
-table{
-margin-top: 20px;
+.InnerMainColumnContent {}
+
+.InnerMainRowContent {
+	background-color: gray;
+	margin-right: 10px;
+	margin-left: 10px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	/* Center horizontally */
+	align-items: center;
+	/* Center vertically */
 }
 
+
+table {
+	margin-top: 20px;
+}
 
 .InnerMainContentContainerForPlayerTable {
 	display: flex;
@@ -205,48 +229,45 @@ margin-top: 20px;
 
 
 @media (max-width: 1350px) {
-  .InnerMainContentContainerForPlayerDetailsTable {
-    align-items: normal; 
-    justify-content: center;
-  }
+	.InnerMainContentContainerForPlayerDetailsTable {
+		align-items: normal;
+		justify-content: center;
+	}
 }
 
 @media (max-width: 800px) {
-  .InnerMainContentContainerForSessionsTable {
-    align-items: normal; 
-    justify-content: center;
-  }
+	.InnerMainContentContainerForSessionsTable {
+		align-items: normal;
+		justify-content: center;
+	}
 }
 
 @media (max-width: 850px) {
-  .InnerMainContentContainerForPlayerTable {
-    align-items: normal; 
-    justify-content: center;
-  }
-}
-
-
-
-.InnerMainContentContainerRow {
-	display: flex;
-	flex-direction: row;
-	flex-grow: 1;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	width: 100%;
-
+	.InnerMainContentContainerForPlayerTable {
+		align-items: normal;
+		justify-content: center;
+	}
 }
 
 .MainContentFooterContainer {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-items: center;
 	text-align: center;
 	width: 100%;
 	margin-top: auto;
 	flex-direction: column;
+}
 
+.MainContentFooterContainerRow {
+	display: flex;
+	flex:1;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	min-height: 100px;
 }
 
 .MainContentFooterContent {
@@ -260,18 +281,15 @@ margin-top: 20px;
 }
 
 .ButtonAndContentWrapper {
+	pointer-events: none;
+	padding-top: 50px;
 	position: absolute;
-	top: 85px;
-	left: 0px;
-	transform: translate(140px, 0px);
 	z-index: 999;
 }
 
-.openbtn {
-	background-color: #111;
+.OpenCloseBtn {
+ 	pointer-events: auto;
 	color: white;
-	padding: 10px 15px;
-	border: none;
 	cursor: pointer;
 }
 
@@ -298,9 +316,7 @@ margin-top: 20px;
 	color: #8a8f98;
 }
 
-.SideBarIcon {
-	padding-left: 5px;
-}
+
 
 footer {
 	padding: 10px;
@@ -333,6 +349,8 @@ footer {
 }
 
 .IconTextHContainer {
+		font-family: 'SideBar_Inter', sans-serif;
+	font-style: normal;
 	display: flex;
 	width: 100%;
 	align-items: center;
@@ -357,6 +375,5 @@ footer {
 	color: var(--SideBar-text-Clicked-color-Light) !important;
 }
 
-.IsHidden {
-	display: none;
+.IsHidden {display: none;
 }

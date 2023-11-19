@@ -36,7 +36,7 @@ a:visited {
 }
 
 .SideBarContainer {
-	border-right: 1.5px solid #2e2e32;
+	border-right: 1px solid #2e2e32;
 	background-color: #141416;
 	color: #8a8f98;
 }
@@ -47,7 +47,7 @@ a:visited {
 
 
 
-.IconTextHContainer:hover{
+.IconTextHContainer:hover {
 	color: orange;
 }
 
@@ -55,7 +55,7 @@ a:visited {
 
 .SideBarBottomArea {
 	border-top: 1px solid #2e2e32;
-	}
+}
 
 footer {
 	color: #8a8f98;
@@ -63,10 +63,11 @@ footer {
 
 /* For DARK theme */
 :root {
-  --SideBar-text-Clicked-color-Dark: #fff; /* Define the text color for DARK theme */
+	--SideBar-text-Clicked-color-Dark: #fff;
+	/* Define the text color for DARK theme */
 }
 
 /* Additional styles for DARK theme */
 .active-link {
-    color: var(--SideBar-text-Clicked-color-Dark)  !important;
+	color: var(--SideBar-text-Clicked-color-Dark) !important;
 }
