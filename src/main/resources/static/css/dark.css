@@ -21,24 +21,20 @@ table[border] table[border] table[border],
 	background-color: #0f0f0f;
 }
 
-a:link {
-	color: #FFFFF0;
-	text-decoration: none;
-}
-
-a:visited {
-	text-decoration: none;
-	color: #FFFFF0;
-}
-
 .accordion {
 	color: #8a8f98;
 }
 
 .SideBarContainer {
-	border-right: 1px solid #2e2e32;
-	background-color: #141416;
+	border-right: 2px solid rgb(35, 40, 54);
+	background-color: rgb(27, 30, 39);
 	color: #8a8f98;
+}
+
+
+
+.MainContentContainer{
+	background-color: #161920;
 }
 
 .SideBarNavLinks:visited {
@@ -46,19 +42,22 @@ a:visited {
 }
 
 
-
 .IconTextHContainer:hover {
-	color: orange;
+	color: rgb(0, 114, 198);
 }
 
-
-
 .SideBarBottomArea {
-	border-top: 1px solid #2e2e32;
+	border-top: 3px solid rgb(160, 160, 167);
+
+}
+
+.MainContentFooterContent{
+
 }
 
 footer {
 	color: #8a8f98;
+	font-weight: bold;
 }
 
 /* For DARK theme */

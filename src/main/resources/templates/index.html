@@ -5,6 +5,7 @@
 	<meta charset="ISO-8859-1">
 	<th:block th:fragment="stdHead">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preload" href="/fonts/Inter/Inter-VariableFont.ttf" as="font" crossorigin="anonymous">
 		<link rel="stylesheet" href="/css/main.css">
 		<link rel="stylesheet" th:if="${theme.name} != LIGHT"
 			th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
@@ -31,13 +32,12 @@
 			</div>
 		</noscript>
 	</th:block>
-	<div class="SomeShit IsHidden" style="background-color: black; width: 100vw; height: 100vh;"></div>
 	<div class="ContainerForAll IsHidden">
-		
+
 		<th:block th:fragment="SideBarFragment">
 			<div class="ButtonAndContentWrapper">
 				<div class="OpenCloseBtn">
-					<svg viewBox="0 0 24 24" height="4em" class="SideBarArrowRight">
+					<svg viewBox="0 0 24 24" height="4em" class="SideBarArrowRight" style="display: none;">
 						<use class="UseButton" href="/icons/SwitchRight.svg#right" />
 					</svg>
 					<svg viewBox="0 0 24 24" height="4em" style="display: none;" class="SideBarArrowLeft">
@@ -47,7 +47,13 @@
 			</div>
 			<div class="SideBarContainer">
 				<div class="SideBarTopArea">
-					<div style="margin-top: 75px; margin-bottom: 75px;"></div>
+					<div style="margin-top: 50px;"></div>
+					<div style="display: flex; flex-direction: row; align-items: center; justify-items: center;">
+						<img src="/icons/fallguyslogo.png" alt="Logo" style="width: 43px; height: 43px;">
+						<div class="FallGodsLogoText">FALLGODS</div>
+					</div>
+					<hr style="width: 100%; color: rgb(160, 160, 167);">
+
 					<a class="SideBarNavLinks" href="/" id="HomeLink">
 						<div class="IconTextHContainer">
 							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
@@ -120,7 +126,7 @@
 							</div>
 						</div>
 					</div>
-					<a class="SideBarNavLinks" href="/view/players" id="PlayerLink">
+					<a class="SideBarNavLinks" href="/FAQ" id="PlayerLink">
 						<div class="IconTextHContainer AccordionLink">
 							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
 								<use href="/icons/Player_Icon.svg#Player" />
@@ -128,7 +134,7 @@
 							<div class="SideBarLinkText">F.A.Q</div>
 						</div>
 					</a>
-					<a class="SideBarNavLinks" href="/view/players" id="PlayerLink">
+					<a class="SideBarNavLinks" href="/AboutUs" id="PlayerLink">
 						<div class="IconTextHContainer AccordionLink">
 							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
 								<use href="/icons/Player_Icon.svg#Player" />
@@ -161,46 +167,45 @@
 		<div class="MainContentContainer">
 			<!--Inner Column Begin -->
 			<div class="InnerMainContentContainerColumn">
-				<div class="InnerMainContentContainerRow">
-					<header>
-						<h1>FallGods - The new Fall Guys game tracker for the FDGA</h1>
-						<h3 class="right">btw - im no ui guy</h3>
-					</header>
+				<div class="InnerMainContentContainerColumn"
+					style="padding: 10px; background-color: rgb(27, 30, 39); width:75%; margin-top: 50px; margin-bottom:50px;">
+					<div>Sessions Data Preview</div>
+					<div class="InnerMainContentContainerRow" style="padding: 10px; ">
+						<div class="InnerMainRowContent"
+							style="margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
+							guy 1</div>
+					</div>
 				</div>
-			</div>
 
-			<div class="InnerMainContentContainerColumn">
-				<div>Sessions Data Preview</div>
-				<div class="InnerMainContentContainerRow" style="padding: 10px; background-color: black;">
-					<div class="InnerMainRowContent"
-						style="background-color: gray; margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
-						guy 1</div>
-				</div>
-			</div>
+				<div class="InnerMainContentContainerColumn">
+					<div class="InnerMainContentContainerColumn"
+						style="padding: 10px; background-color: rgb(27, 30, 39); width:75%; margin-bottom: 50px;">
+						<div>Sessions Data Preview</div>
+						<div class="InnerMainContentContainerRow" style="padding: 10px; ">
+							<div class="InnerMainRowContent"
+								style="margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
+								guy 1</div>
+						</div>
+					</div>
 
-			<div class="InnerMainContentContainerColumn" style="margin-top: 50px;">
-				<div>Players Data Preview</div>
-				<div class="InnerMainContentContainerRow" style="padding: 10px; background-color: black;">
-					<div class="InnerMainRowContent"
-						style="background-color: gray; margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
-						guy 1</div>
-				</div>
-			</div>
+					<div class="InnerMainContentContainerColumn">
+						<div class="InnerMainContentContainerColumn"
+							style="padding: 10px; background-color: rgb(27, 30, 39); width:75%; margin-bottom: 50px;">
+							<div>Sessions Data Preview</div>
+							<div class="InnerMainContentContainerRow" style="padding: 10px; ">
+								<div class="InnerMainRowContent"
+									style="margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
+									guy 1</div>
+							</div>
+						</div>
 
-			<div class="InnerMainContentContainerColumn" style="margin-top: 50px;">
-				<div>Players Data Preview</div>
-				<div class="InnerMainContentContainerRow" style="padding: 10px; background-color: black;">
-					<div class="InnerMainRowContent"
-						style="background-color: gray; margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
-						guy 1</div>
-				</div>
-			</div>
-
-
-			<div class="MainContentFooterContainer">
-				<div class="MainContentFooterContainerRow">
-					<div class="MainContentFooterContent">
-						<p class="MainContentFooterContent">Poof Media © 2023</p>
+						<div class="MainContentFooterContainer">
+							<div class="MainContentFooterContainerRow">
+								<div class="MainContentFooterContent">
+									<h4 class="MainContentFooterContent">Poof Media © 2023</h4>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
