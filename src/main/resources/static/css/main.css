@@ -8,6 +8,21 @@
 	font-display: swap;
 }
 
+@font-face {
+	font-family: "Vina Sans";
+	src: url("/fonts/Vina-Sans/VinaSans-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Roboto";
+	src: url("/fonts/Roboto/Roboto-Black.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
 
 [hidden] {
 	display: none !important;
@@ -126,8 +141,6 @@ table table {
 	overflow-y: auto;
 	overflow-x: hidden;
 	min-width: max-content;
-
-
 }
 
 .SideBarContainer::-webkit-scrollbar {
@@ -141,7 +154,7 @@ table table {
 }
 
 .SideBarContainer::-webkit-scrollbar-thumb {
-	background: rgb(0, 114, 198);;
+	background: rgb(0, 114, 198);
 	border-radius: 10px;
 }
 
@@ -157,12 +170,10 @@ table table {
 }
 
 .MainContentContainer::-webkit-scrollbar-thumb {
-	background: rgb(0, 114, 198);;
+	background: rgb(0, 114, 198);
+	;
 	border-radius: 10px;
 }
-
-
-
 
 .SideBarTopArea {
 	display: flex;
@@ -180,7 +191,6 @@ table table {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	border-top: 1px solid #2e2e32;
 }
 
 
@@ -304,7 +314,7 @@ table table {
 .MainContentFooterContent {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-items: center;
 	width: 50%;
 	flex-wrap: wrap;
@@ -317,7 +327,7 @@ table table {
 
 .ButtonAndContentWrapper {
 	pointer-events: none;
-	padding-top: 0px;
+	padding-top: 78px;
 	position: absolute;
 	z-index: 999;
 }
@@ -339,6 +349,30 @@ table table {
 	text-decoration: none;
 	align-items: center;
 }
+
+.SideBarFirstNavLink {
+	cursor: pointer;
+	width: 100%;
+	text-align: left;
+	font-size: 22px;
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold;
+	padding-top: 20px;
+	text-decoration: none;
+	align-items: center;
+
+}
+
+.SideBarFirstNavLink:link {
+	color: #8a8f98;
+	text-decoration: none;
+}
+
+.SideBarFirstNavLink:visited {
+	text-decoration: none;
+	color: #8a8f98;
+}
+
 
 .SideBarNavLinks:link {
 	color: #8a8f98;
@@ -403,16 +437,21 @@ footer {
 
 
 .FallGodsLogoText {
-	font-family: 'SideBar_Inter', sans-serif;
+	font-family: 'Roboto', monospace;
 	font-style: normal;
-	padding-left: 10px;
-	font-weight: bold;
-	font-size: 32px;
+	font-weight: 400;
+	font-size: 42px;
+
 	justify-content: center;
 	justify-items: center;
 	align-items: center;
 	color: rgb(249, 252, 255);
- text-shadow: 2px 2px black;
+	background: linear-gradient(-70deg, #21d2fe, #a334fd);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	transform: skew(-5deg);
+-webkit-transform: skew(-5deg);
 }
 
 :root {

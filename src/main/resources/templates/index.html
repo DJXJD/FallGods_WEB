@@ -6,6 +6,8 @@
 	<th:block th:fragment="stdHead">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="preload" href="/fonts/Inter/Inter-VariableFont.ttf" as="font" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/Vina-Sans/VinaSans-Regular.ttf" as="font" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/Roboto/Roboto-Black.ttf" as="font" crossorigin="anonymous">
 		<link rel="stylesheet" href="/css/main.css">
 		<link rel="stylesheet" th:if="${theme.name} != LIGHT"
 			th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
@@ -47,14 +49,24 @@
 			</div>
 			<div class="SideBarContainer">
 				<div class="SideBarTopArea">
-					<div style="margin-top: 50px;"></div>
+					<div style="margin-top: 10px; "></div>
 					<div style="display: flex; flex-direction: row; align-items: center; justify-items: center;">
-						<img src="/icons/fallguyslogo.png" alt="Logo" style="width: 43px; height: 43px;">
+						<img src="/icons/testlogo4.png" alt="Logo" style="width: 50px; height: 50px;">
 						<div class="FallGodsLogoText">FALLGODS</div>
 					</div>
-					<hr style="width: 100%; color: rgb(160, 160, 167);">
+					<hr style=" width: 100%; color: rgb(160, 160, 167);">
+					<div
+						style="display:flex; justify-content: center; align-items: center; justify-self: center; padding-top: 20px;">
+						<form th:fragment="themeSelector" id="themeForm" action="/setTheme" method="post" hidden>
+							<select id="theme" th:field="${theme.name}">
+								<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
+							</select>
+							<input type="hidden" name="sourcePath"
+								th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
+						</form>
+					</div>
 
-					<a class="SideBarNavLinks" href="/" id="HomeLink">
+					<a class="SideBarFirstNavLink" style="margin-top: 0px !important;" href="/" id="HomeLink">
 						<div class="IconTextHContainer">
 							<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
 								<use href="/icons/Home_Icon.svg#Home" />
@@ -144,20 +156,11 @@
 					</a>
 				</div>
 				<div class="SideBarBottomArea">
-
 					<footer>
 						<div>
-							<form th:fragment="themeSelector" id="themeForm" action="/setTheme" method="post" hidden>
-								<select id="theme" th:field="${theme.name}">
-									<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
-								</select>
-								<input type="hidden" name="sourcePath"
-									th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
-							</form>
-							<p>Terms and Conditions</p>
-							<p>Conditions Of Use</p>
 							<p>Privacy Policy</p>
-
+							<p>Conditions Of Use</p>
+							<p>Terms and Conditions</p>
 						</div>
 					</footer>
 
@@ -202,7 +205,8 @@
 						<div class="MainContentFooterContainer">
 							<div class="MainContentFooterContainerRow">
 								<div class="MainContentFooterContent">
-									<h4 class="MainContentFooterContent">Poof Media © 2023</h4>
+									<h4 class="MainContentFooterContent"> <img src="/icons/testlogo4.png" alt="Logo"
+											style="width: 43px; height: 43px;">Poof Media © 2023</h4>
 								</div>
 							</div>
 						</div>

@@ -26,7 +26,7 @@ table[border] table[border] table[border],
 }
 
 .SideBarContainer {
-	border-right: 2px solid rgb(35, 40, 54);
+	border-right: 2px solid rgb(29, 33, 46);
 	background-color: rgb(27, 30, 39);
 	color: #8a8f98;
 }
@@ -46,8 +46,8 @@ table[border] table[border] table[border],
 	color: rgb(0, 114, 198);
 }
 
-.SideBarBottomArea {
-	border-top: 3px solid rgb(160, 160, 167);
+.SideBarBottomArea {	
+
 
 }
 
@@ -56,6 +56,8 @@ table[border] table[border] table[border],
 }
 
 footer {
+	width: 85%;
+	border-top: 1px solid white;
 	color: #8a8f98;
 	font-weight: bold;
 }

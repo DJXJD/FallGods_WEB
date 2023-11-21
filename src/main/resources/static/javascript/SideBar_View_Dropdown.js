@@ -3,13 +3,10 @@ $(() => {
 	if ($(".ContainerForAll").hasClass("IsHidden")) {
 		$(".ContainerForAll").removeClass("IsHidden");
 	}
-	
-	$(".ArrowRightView").hide();
-	$(".ArrowDownView").hide();
-	
+
 	CheckSideBarStatus();
 	CheckAccordionViewStatus();
-	
+
 	function SetCollapseExpandButtonValues(displayType, ArrowType) {
 
 		let ArrowDefaultSizeX = 4.93;
@@ -21,12 +18,12 @@ $(() => {
 		let ButtonOffsetY = (ButtonEmHeight * ArrowDefaultSizeY);
 
 		if (displayType === "flex") {
-			
-			$(".ButtonAndContentWrapper").css("padding-left", ($(".SideBarContainer").width() - (ButtonOffsetX * 2))-2 + "px");
+
+			$(".ButtonAndContentWrapper").css("padding-left", ($(".SideBarContainer").width() - (ButtonOffsetX * 2)) - 3 + "px");
 			$(".ButtonAndContentWrapper").css("padding-top", ($(".ButtonAndContentWrapper").css("padding-top") - ButtonOffsetY) + "px");
 		} else if (displayType === "none") {
-			$(".ButtonAndContentWrapper").css("padding-left", ($(".SideBarContainer").width() - ButtonOffsetX)-2 + "px");
-		
+			$(".ButtonAndContentWrapper").css("padding-left", ($(".SideBarContainer").width() - ButtonOffsetX) + 3 + "px");
+
 			$(".ButtonAndContentWrapper").css("padding-top", ($(".ButtonAndContentWrapper").css("padding-top") - ButtonOffsetY) + "px");
 		}
 	}
@@ -118,7 +115,7 @@ $(() => {
 				$(".ViewInnerContainer").css("background-color", "rgba(122,122,122,0.08)");
 				$(".ViewInnerContainer").css("border-radius", "5px");
 			}
-			$(".SideBarBottomArea").css("border-top", "1px solid #2e2e32");
+			$(".footer").css("border-top", "1px solid #2e2e32");
 		} else if (displayType === "flex") {
 			$(".SideBarLinkText, footer, .FallGodsLogoText").show();
 			$(".ViewArrowContainer").show();
@@ -132,7 +129,7 @@ $(() => {
 			}
 			$(".SideBarIcon").css("padding", "0px 5px 0px 5px");
 			$(".panel").css("padding", "0px 0px 0px 30px");
-			$(".SideBarBottomArea").css("border-top", "0px solid white");
+			$(".footer").css("border-top", "1px solid #2e2e32;");
 		}
 	}
 
