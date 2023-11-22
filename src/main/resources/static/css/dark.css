@@ -27,7 +27,7 @@ table[border] table[border] table[border],
 
 .SideBarContainer {
 	border-right: 2px solid rgb(29, 33, 46);
-	background-color: rgb(13, 14, 19);
+	background-color: rgb(7, 7, 15);
 	color: #8a8f98;
 }
 
@@ -50,7 +50,7 @@ table[border] table[border] table[border],
 .MainContentFooterContent {}
 
 footer {
-	border-top: 1px solid white;
+	border-top: 2px solid rgb(29, 33, 46);
 	color: #8a8f98;
 	font-weight: bold;
 	font-size: 18px;

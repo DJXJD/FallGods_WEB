@@ -1,11 +1,13 @@
 $(() => {
-
+	let DarkMode = !($("#ThemeSelectorAction").attr("data-swapTo") == "LIGHT");
+	
 	if ($(".ContainerForAll").hasClass("IsHidden")) {
 		$(".ContainerForAll").removeClass("IsHidden");
 	}
 
 	CheckSideBarStatus();
 	CheckAccordionViewStatus();
+
 
 	function SetCollapseExpandButtonValues(displayType, ArrowType) {
 		let ArrowDefaultSizeX = 4.93;
@@ -56,11 +58,11 @@ $(() => {
 	function CheckSideBarStatus() {
 		if (localStorage.getItem("SideBar") === "flex") {
 			SetSideBarView("flex");
-		
+
 			SetCollapseExpandButtonValues("flex", ".SideBarArrowLeft");
 		} else if (localStorage.getItem("SideBar") === "none") {
 			SetSideBarView("none");
-	
+
 			SetCollapseExpandButtonValues("none", ".SideBarArrowRight");
 		} else {
 			localStorage.setItem("SideBar", "flex");
@@ -115,6 +117,24 @@ $(() => {
 			$(".SideBarArrowLeft").hide();
 			$(".SideBarArrowRight").show();
 			localStorage.setItem("SideBar", "none");
+
+			$("#SwitchLeftCircle").hide();
+			$("#SwitchRightCircle").show();
+
+			$("#switchtoggleoff").hide();
+			$("#switchtoggleon").hide();
+
+			if ($("#darkmodeicon").css("color") == "rgb(255, 255, 255)") {
+				$("#lightmodeicon").hide();
+				$("#darkmodeicon").css("padding-left", "5px");
+				$("#darkmodeicon").css("padding-right", "5px");
+
+			} else if ($("#lightmodeicon").css("color") == "rgb(255, 255, 255)") {
+				$("#darkmodeicon").hide();
+				$("#lightmodeicon").css("padding-left", "5px");
+				$("#lightmodeicon").css("padding-right", "5px");
+			}
+
 			$(".ViewInnerContainer").css("background-color", "");
 			$(".ViewInnerContainer").css("border-radius", "0px");
 			$(".SideBarIcon").css("padding", "0px 5px 0px 5px");
@@ -125,11 +145,34 @@ $(() => {
 			}
 			$(".footer").css("border-top", "1px solid #2e2e32");
 		} else if (displayType === "flex") {
+			
+			$("#SwitchLeftCircle").show();
+			$("#SwitchRightCircle").hide();
+			
 			$(".SideBarLinkText, footer, .FallGodsLogoText").show();
 			$(".ViewArrowContainer").show();
 			$(".SideBarArrowLeft").show();
 			$(".SideBarArrowRight").hide();
 			localStorage.setItem("SideBar", "flex");
+
+			if (DarkMode) {
+				$("#switchtoggleoff").hide();
+				$("#switchtoggleon").show();
+
+			} else {
+				$("#switchtoggleoff").show();
+				$("#switchtoggleon").hide();
+			}
+
+			console.log($("#darkmodeicon").css("color") == "rgb(255, 255, 255)");
+
+			$("#lightmodeicon").show();
+			$("#darkmodeicon").show();
+
+			$("#darkmodeicon").css("padding-left", "0px");
+			$("#darkmodeicon").css("padding-right", "0px");
+			$("#lightmodeicon").css("padding-left", "0px");
+			$("#lightmodeicon").css("padding-right", "0px");
 
 			if ($(".panel").css("display") === "flex") {
 				$(".ViewInnerContainer").css("background-color", "");
@@ -153,8 +196,9 @@ $(() => {
 	});
 
 	$("#ThemeSelectorAction").click((e) => {
+		console.log($(e.currentTarget).attr("data-swapTo"));
+
 		$(`#theme option[value='${$(e.currentTarget).attr("data-swapTo")}']`).attr("selected", true).change();
-		
 	});
 
 });

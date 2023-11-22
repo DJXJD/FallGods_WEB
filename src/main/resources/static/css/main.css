@@ -160,7 +160,7 @@ table table {
 
 .MainContentContainer::-webkit-scrollbar {
 	width: 5px;
-
+	height: 5px;
 }
 
 .MainContentContainer::-webkit-scrollbar-track {
@@ -178,6 +178,7 @@ table table {
 	flex-direction: column;
 	padding: 10px;
 	text-align: left;
+
 }
 
 .SideBarBottomArea {
@@ -332,19 +333,6 @@ z-index: 10;
 
 }
 
-.ButtonAndContentWrapper {
-	pointer-events: none;
-	padding-top: 78px;
-	position: absolute;
-	z-index: 999;
-}
-
-.OpenCloseBtn {
-	pointer-events: auto;
-	color: white;
-	cursor: pointer;
-	z-index: 10;
-}
 
 .SideBarNavLinks {
 	cursor: pointer;
@@ -353,13 +341,11 @@ z-index: 10;
 	font-size: 22px;
 	font-family: 'Times New Roman', Times, serif;
 	font-weight: bold;
-
 	text-decoration: none;
 	align-items: center;
 }
 
 .SideBarFirstNavLink {
-
 	cursor: pointer;
 	width: 100%;
 	text-align: left;
@@ -425,6 +411,7 @@ footer {
 	display: flex;
 	width: 100%;
 	align-items: center;
+
 }
 
 .IconTextHContainer:hover {
@@ -479,4 +466,36 @@ footer {
     width: 100%;
     height: 100%;
     z-index: 0; /* Place it below the inner content */
+}
+
+.ButtonAndContentWrapper {
+	pointer-events: none;
+	padding-top: 78px;
+	position: absolute;
+	z-index: 999;
+	margin-top: 5px;
+}
+
+.OpenCloseBtn {
+	pointer-events: auto;
+	color: white;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.CircleWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.Circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(29, 33, 46);
+  width: 32px; 
+  height: 32px; 
+  border-radius: 50%;
+   z-index: -1; 
 }

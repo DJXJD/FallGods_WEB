@@ -15,7 +15,6 @@
 		<script defer type="text/javascript" src="/javascript/main.js"></script>
 		<script defer type="text/javascript" src="/javascript/SideBar_View_Dropdown.js"></script>
 		<script defer type="text/javascript" src="/javascript/ConnectedDots.js"></script>
-
 	</th:block>
 	<title>FallGods</title>
 </head>
@@ -41,53 +40,28 @@
 		<th:block th:fragment="SideBarFragment">
 			<div class="ButtonAndContentWrapper">
 				<div class="OpenCloseBtn">
-					<svg viewBox="0 0 24 24" height="4em" class="SideBarArrowRight" style="display: none;">
-						<use class="UseButton" href="/icons/SwitchRight.svg#right" />
-					</svg>
-					<svg viewBox="0 0 24 24" height="4em" style="display: none;" class="SideBarArrowLeft">
-						<use class="UseButton" href="/icons/SwitchLeft.svg#left" />
-					</svg>
+					<div class="CircleWrapper">
+						<svg viewBox="0 0 24 24" height="2em" class="SideBarArrowRight" style="display: none;">
+							<use class="UseButton" href="/icons/SwitchRight.svg#right" />
+						</svg>
+						<div id="SwitchRightCircle" class="Circle"></div>
+					</div>
+					<div class="CircleWrapper">
+						<svg viewBox="0 0 24 24" height="2em" style="display: none;" class="SideBarArrowLeft">
+							<use class="UseButton" href="/icons/SwitchLeft.svg#left" />
+						</svg>
+							<div id="SwitchLeftCircle" class="Circle"></div>
+						</div>
 				</div>
 			</div>
 			<div class="SideBarContainer">
 				<div class="SideBarTopArea">
 					<div style="margin-top: 10px; "></div>
 					<div style="display: flex; flex-direction: row; align-items: center; justify-items: center;">
-						<img src="/icons/fallguyslogo7.png" alt="Logo" style="width: 50px; height: 50px;">
+						<img id="MainLogo" src="/icons/fallguyslogo7.png" alt="Logo" style="width: 42px; height: 50px;">
 						<div class="FallGodsLogoText">FALLGODS</div>
 					</div>
-					<hr style=" width: 100%; color: rgb(29, 33, 46);">
-
-					<div
-						style="display:flex; justify-content: center; align-items: center; justify-self: center; padding-top: 20px;">
-						<form th:fragment="themeSelector" id="themeForm" action="/setTheme" method="post" hidden>
-							<select id="theme" th:field="${theme.name}" hidden>
-								<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
-							</select>
-							<input type="hidden" name="sourcePath"
-								th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
-						</form>
-
-						<div id="ThemeSelectorAction" th:data-swapTo="${theme.name} == 'LIGHT' ? 'DARK' : 'LIGHT'">
-							<svg id="lightmodeicon" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
-								th:style="${theme.name} == 'LIGHT' ? 'color:white;'">
-								<use href="/icons/LightMode.svg#lightmode" />
-							</svg>
-							<svg id="switchtoggleon" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
-								style="color: white;" th:if="${theme.name} == 'LIGHT'">
-								<use href="/icons/ToggleModeOff.svg#togglemodeoff" />
-							</svg>
-							<svg id="switchtoggleoff" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
-								style="color: white;" th:if="${theme.name} == 'DARK'">
-								<use href="/icons/ToggleModeOn.svg#togglemodeon" />
-							</svg>
-							<svg id="darkmodeicon" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
-								th:style="${theme.name} == 'DARK' ? 'color:white;'">
-								<use href="/icons/DarkMode.svg#darkmode" />
-							</svg>
-						</div>
-					</div>
-
+					<hr style=" width: 100%; border: 2px solid rgb(29, 33, 46);">
 					<div style="margin-top: 20px;">
 						<a class="SideBarFirstNavLink" style="margin-top: 0px !important;" href="/" id="HomeLink">
 							<div class="IconTextHContainer">
@@ -194,22 +168,56 @@
 					</div>
 				</div>
 				<div class="SideBarBottomArea">
+
 					<footer>
 						<div>
+							<div
+								style="margin-top: 20px; display: flex; flex-direction: row; justify-content: center; align-items: center; justify-self: center;">
+								<form th:fragment="themeSelector" id="themeForm" action="/setTheme" method="post"
+									hidden>
+									<select id="theme" th:field="${theme.name}" hidden>
+										<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
+									</select>
+									<input type="hidden" name="sourcePath"
+										th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
+								</form>
+
+								<div id="ThemeSelectorAction" style=""
+									th:data-swapTo="${theme.name} == 'LIGHT' ? 'DARK' : 'LIGHT'">
+									<svg id="lightmodeicon" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
+										th:style="${theme.name} == 'LIGHT' ? 'color:white;'"
+										style="pointer-events: none;">
+										<use href="/icons/LightMode.svg#lightmode" />
+									</svg>
+									<svg id="switchtoggleon" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
+										th:if="${theme.name} == 'LIGHT'" style="pointer-events: none;">
+										<use href="/icons/ToggleModeOff.svg#togglemodeoff" />
+									</svg>
+									<svg id="switchtoggleoff" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
+										th:if="${theme.name} == 'DARK'" style="pointer-events: none;">
+										<use href="/icons/ToggleModeOn.svg#togglemodeon" />
+									</svg>
+									<svg id="darkmodeicon" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
+										th:style="${theme.name} == 'DARK' ? 'color:white;'"
+										style="pointer-events: none;">
+										<use href="/icons/DarkMode.svg#darkmode" />
+									</svg>
+								</div>
+							</div>
 							<p>Privacy Policy</p>
 							<p>Conditions Of Use</p>
 							<p>Terms and Conditions</p>
 						</div>
 					</footer>
-
 				</div>
 			</div>
+			<canvas id="canvas"></canvas>
 		</th:block>
 		<div class="MainContentContainer">
-			<canvas id="canvas"></canvas>
+
 			<div class="InnerMainContentContainerColumn">
 				<div class="InnerMainContentContainerColumn"
-					style="padding: 10px; background-color: rgb(27, 30, 39); width:75%; margin-top: 50px; margin-bottom:50px;">
+					style="padding: 10px; background-color: rgb(27, 30, 39); border-radius: 16px;  width:75%; margin-top: 50px; margin-bottom:50px;">
 					<div>Sessions Data Preview</div>
 					<div class="InnerMainContentContainerRow" style="padding: 10px; ">
 						<div class="InnerMainRowContent"
@@ -220,7 +228,7 @@
 
 				<div class="InnerMainContentContainerColumn">
 					<div class="InnerMainContentContainerColumn"
-						style="padding: 10px; background-color: rgb(27, 30, 39); width:75%; margin-bottom: 50px;">
+						style="padding: 10px; background-color: rgb(27, 30, 39); border-radius: 16px; width:75%; margin-bottom: 50px;">
 						<div>Sessions Data Preview</div>
 						<div class="InnerMainContentContainerRow" style="padding: 10px; ">
 							<div class="InnerMainRowContent"
@@ -231,7 +239,7 @@
 
 					<div class="InnerMainContentContainerColumn">
 						<div class="InnerMainContentContainerColumn"
-							style="padding: 10px; background-color: rgb(27, 30, 39); width:75%; margin-bottom: 50px;">
+							style="padding: 10px; background-color: rgb(27, 30, 39); border-radius: 16px;  width:75%; margin-bottom: 50px;">
 							<div>Sessions Data Preview</div>
 							<div class="InnerMainContentContainerRow" style="padding: 10px; ">
 								<div class="InnerMainRowContent"
@@ -289,7 +297,7 @@
 											<div class="MainContentFooterContainerRow">
 												<div class="MainContentFooterContent">
 													<h4 class="MainContentFooterContent"> <img
-															src="/icons/testlogo4.png" alt="Logo"
+															src="/icons/fallguyslogo7.png" alt="Logo"
 															style="width: 43px; height: 43px;">Poof Media © 2023</h4>
 												</div>
 											</div>
