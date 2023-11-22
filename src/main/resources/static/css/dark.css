@@ -1,11 +1,12 @@
 @charset "ISO-8859-1";
 
 body {
-	background-color: #0f0f0f;
+	
 	color: darkgray;
 }
 
-table[border], :enabled, .vocontainer thead {
+table[border],
+.vocontainer thead {
 	background-color: #151515;
 	color: inherit;
 }
@@ -20,10 +21,48 @@ table[border] table[border] table[border],
 	background-color: #0f0f0f;
 }
 
-a:link {
-	color: darkcyan;
+.accordion {
+	color: #8a8f98;
 }
 
-a:visited {
-	color: darkslategray;
+.SideBarContainer {
+	border-right: 2px solid rgb(29, 33, 46);
+	background-color: rgb(7, 7, 15);
+	color: #8a8f98;
+}
+
+.MainContentContainer{
+	background: linear-gradient(109.6deg,  rgb(0, 0, 0) 11.2%, rgb(16, 37, 60) 50.0%, rgb(0, 0, 0) 98.6%);
+}
+
+.SideBarNavLinks:visited {
+	color: #8a8f98;
+}
+
+
+.IconTextHContainer:hover {
+		pointer-events: all;
+	color: rgb(0, 114, 198);
+}
+
+.SideBarBottomArea {}
+
+.MainContentFooterContent {}
+
+footer {
+	border-top: 2px solid rgb(29, 33, 46);
+	color: #8a8f98;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+/* For DARK theme */
+:root {
+	--SideBar-text-Clicked-color-Dark: #fff;
+	/* Define the text color for DARK theme */
+}
+
+/* Additional styles for DARK theme */
+.active-link {
+	color: var(--SideBar-text-Clicked-color-Dark) !important;
 }

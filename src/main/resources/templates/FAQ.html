@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<th:block th:replace="~{index :: stdHead}" />
+	<title>F.A.Q - FallGods</title>
+</head>
+
+<body>
+	<th:block th:replace="~{index :: NoJavaScriptFrag}" />
+	<div class="ContainerForAll IsHidden">
+		<th:block th:replace="~{index :: SideBarFragment}" />
+		</th:block>
+		<div class="MainContentContainer">
+
+			<div class="MainContentFooterContainer">
+				<div class="MainContentFooterContainerRow">
+					<div class="MainContentFooterContent">
+						<p class="MainContentFooterContent">Poof Media © 2023</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

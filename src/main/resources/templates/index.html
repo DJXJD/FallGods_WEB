@@ -1,37 +1,321 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
-<meta charset="ISO-8859-1">
-<th:block th:fragment="stdHead">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" th:if="${theme.name} != LIGHT" th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
-<script defer type="text/javascript" src="/javascript/jquery-3.7.0.slim.min.js"></script>
-<script defer type="text/javascript" src="/javascript/main.js"></script>
-</th:block>
-<title>FallGods</title>
+	<meta charset="ISO-8859-1">
+	<th:block th:fragment="stdHead">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preload" href="/fonts/Inter/Inter-VariableFont.ttf" as="font" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/Vina-Sans/VinaSans-Regular.ttf" as="font" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/Roboto/Roboto-Black.ttf" as="font" crossorigin="anonymous">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" th:if="${theme.name} != LIGHT"
+			th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
+		<script defer type="text/javascript" src="/javascript/jquery-3.7.0.slim.min.js"></script>
+		<script defer type="text/javascript" src="/javascript/main.js"></script>
+		<script defer type="text/javascript" src="/javascript/SideBar_View_Dropdown.js"></script>
+		<script defer type="text/javascript" src="/javascript/ConnectedDots.js"></script>
+	</th:block>
+	<title>FallGods</title>
 </head>
-<body class="vcontainer">
-<form th:fragment="themeSelector" class="topright" id="themeForm" action="/setTheme" method="post" hidden>
-	<select id="theme" th:field="${theme.name}">
-		<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
-	</select>
-	<input type="hidden" name="sourcePath" th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
-</form>
-<header class="center">
-	<h1>FallGods - The new Fall Guys game tracker for the FDGA</h1>
-	<h3 class="right">btw - im no ui guy</h3>
-</header>
-<main class="hcontainer">
-	<h2><a href="/view">View</a> (Finally Here!!!)</h2>
-	<h2><a href="/register">Register</a></h2>
-	<h2><a href="/track">Track</a></h2>
-</main>
-<footer class="hcontainer">
-	<div>
-		<p>placeholder1</p>
-		<p>placeholder2</p>
-	</div>
-</footer>
+
+<body>
+	<th:block th:fragment="NoJavaScriptFrag">
+		<noscript>
+			<div
+				style="display: flex; justify-content: center; align-items: center; min-height: 100vh; min-width: 50vw;">
+				<div
+					style="width: 35%; color: black; border: 3px solid red; border-radius: 10px; background-color: aliceblue; padding: 20px; text-align: center;">
+					<h1 style="color: black;">Hey Poof Media here!</h1>
+					<h2>This website does require Javascript in order to work efficiently and correctly.</h1>
+						<h3>Please enable JavaScript in your browser to proceed.
+					</h2>
+					<h4>Thank you ~ Poof Media</h4>
+				</div>
+			</div>
+		</noscript>
+	</th:block>
+	<div class="ContainerForAll IsHidden">
+
+		<th:block th:fragment="SideBarFragment">
+			<div class="ButtonAndContentWrapper">
+				<div class="OpenCloseBtn">
+					<div class="CircleWrapper">
+						<svg viewBox="0 0 24 24" height="2em" class="SideBarArrowRight" style="display: none;">
+							<use class="UseButton" href="/icons/SwitchRight.svg#right" />
+						</svg>
+						<div id="SwitchRightCircle" class="Circle"></div>
+					</div>
+					<div class="CircleWrapper">
+						<svg viewBox="0 0 24 24" height="2em" style="display: none;" class="SideBarArrowLeft">
+							<use class="UseButton" href="/icons/SwitchLeft.svg#left" />
+						</svg>
+							<div id="SwitchLeftCircle" class="Circle"></div>
+						</div>
+				</div>
+			</div>
+			<div class="SideBarContainer">
+				<div class="SideBarTopArea">
+					<div style="margin-top: 10px; "></div>
+					<div style="display: flex; flex-direction: row; align-items: center; justify-items: center;">
+						<img id="MainLogo" src="/icons/fallguyslogo7.png" alt="Logo" style="width: 42px; height: 50px;">
+						<div class="FallGodsLogoText">FALLGODS</div>
+					</div>
+					
+						<div style="margin-top: 5px;">
+						<a class="SideBarNavLinks" href="/register" id="RegisterLink">
+							<div class="IconTextHContainer">
+								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+									<use href="/icons/SwitchRight.svg#right" />
+								</svg>
+							</div>
+						</a>
+					</div>
+					
+					<hr style=" width: 100%; border: 2px solid rgb(29, 33, 46);">
+					<div style="margin-top: 20px;">
+						<a class="SideBarFirstNavLink" style="margin-top: 0px !important;" href="/" id="HomeLink">
+							<div class="IconTextHContainer">
+								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+									<use href="/icons/Home_Icon.svg#Home" />
+								</svg>
+								<div class="SideBarLinkText">Overview</div>
+							</div>
+						</a>
+					</div>
+					<div style="margin-top: 30px;">
+						<a class="SideBarNavLinks" href="/register" id="RegisterLink">
+							<div class="IconTextHContainer">
+								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+									<use href="/icons/Register_Icon.svg#Register" />
+								</svg>
+								<div class="SideBarLinkText">Register</div>
+							</div>
+						</a>
+					</div>
+					<div style="margin-top: 30px;">
+						<a class="SideBarNavLinks" href="/track/setGroup" id="SetGroupLink">
+							<div class="IconTextHContainer">
+								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+									<use href="/icons/SetGroup_Icon.svg#SetGroup" />
+								</svg>
+								<div class="SideBarLinkText">Set Group</div>
+							</div>
+						</a>
+					</div>
+					<div style="margin-top: 30px;">
+						<a class="SideBarNavLinks" href="/track" id="TrackLink">
+							<div class="IconTextHContainer ">
+								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+									<use href="/icons/Track_Icon.svg#Track" />
+								</svg>
+								<div class="SideBarLinkText">Track</div>
+							</div>
+						</a>
+					</div>
+					<div class="ViewLinkContainer">
+						<div class="ViewInnerContainer">
+							<div class="accordion">
+								<div class="IconTextHContainer" id="ViewLink">
+									<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+										<use href="/icons/View_Icon.svg#View" />
+									</svg>
+									<div class="SideBarLinkText">View</div>
+
+									<div style="margin-left: 25px;" class="ViewArrowContainer">
+										<svg viewBox="0 0 20 20" height="1.25em" class="ArrowRightView">
+											<use href="/icons/arrow_right.svg#ar" />
+										</svg>
+										<svg viewBox="0 0 20 20" height="1.25em" style="display: none;"
+											class="ArrowDownView">
+											<use href="/icons/arrow_drop_down.svg#add" />
+										</svg>
+									</div>
+								</div>
+							</div>
+							<div class="panel">
+								<div style="margin-top: 30px;">
+									<a class="SideBarNavLinks" href="/view/sessions" id="SessionsLink">
+										<div class="IconTextHContainer  AccordionLink">
+											<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+												<use href="/icons/Sessions_Icon.svg#Sessions" />
+											</svg>
+											<div class="SideBarLinkText">Sessions</div>
+										</div>
+									</a>
+								</div>
+								<div style="margin-top: 30px;">
+									<a class="SideBarNavLinks" href="/view/players" id="PlayerLink">
+										<div class="IconTextHContainer AccordionLink">
+											<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+												<use href="/icons/Player_Icon.svg#Player" />
+											</svg>
+											<div class="SideBarLinkText">Players</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="margin-top: 30px;">
+						<a class="SideBarNavLinks" href="/FAQ" id="PlayerLink">
+							<div class="IconTextHContainer AccordionLink">
+								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+									<use href="/icons/Player_Icon.svg#Player" />
+								</svg>
+								<div class="SideBarLinkText">F.A.Q</div>
+							</div>
+						</a>
+					</div>
+					<div style="margin-top: 30px;">
+						<a class="SideBarNavLinks" href="/AboutUs" id="PlayerLink">
+							<div class="IconTextHContainer AccordionLink">
+								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+									<use href="/icons/Player_Icon.svg#Player" />
+								</svg>
+								<div class="SideBarLinkText">About Us</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="SideBarBottomArea">
+					<footer>
+						<div>
+							<div
+								style="margin-top: 20px; display: flex; flex-direction: row; justify-content: center; align-items: center; justify-self: center;">
+								<form th:fragment="themeSelector" id="themeForm" action="/setTheme" method="post"
+									hidden>
+									<select id="theme" th:field="${theme.name}" hidden>
+										<option th:each="t : ${themes}" th:text="${t}" th:value="${t}"></option>
+									</select>
+									<input type="hidden" name="sourcePath"
+										th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
+								</form>
+								<div id="ThemeSelectorAction" style=""
+									th:data-swapTo="${theme.name} == 'LIGHT' ? 'DARK' : 'LIGHT'">
+									<svg id="lightmodeicon" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
+										th:style="${theme.name} == 'LIGHT' ? 'color:white;'"
+										style="pointer-events: none;">
+										<use href="/icons/LightMode.svg#lightmode" />
+									</svg>
+									<svg id="switchtoggleon" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
+										th:if="${theme.name} == 'LIGHT'" style="pointer-events: none;">
+										<use href="/icons/ToggleModeOff.svg#togglemodeoff" />
+									</svg>
+									<svg id="switchtoggleoff" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
+										th:if="${theme.name} == 'DARK'" style="pointer-events: none;">
+										<use href="/icons/ToggleModeOn.svg#togglemodeon" />
+									</svg>
+									<svg id="darkmodeicon" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
+										th:style="${theme.name} == 'DARK' ? 'color:white;'"
+										style="pointer-events: none;">
+										<use href="/icons/DarkMode.svg#darkmode" />
+									</svg>
+								</div>
+							</div>
+							<p>Privacy Policy</p>
+							<p>Conditions Of Use</p>
+							<p>Terms and Conditions</p>
+						</div>
+					</footer>
+				</div>
+			</div>
+			<canvas id="canvas"></canvas>
+		</th:block>
+		<div class="MainContentContainer">
+
+			<div class="InnerMainContentContainerColumn">
+				<div class="InnerMainContentContainerColumn"
+					style="padding: 10px; background-color: rgb(27, 30, 39); border-radius: 16px;  width:75%; margin-top: 50px; margin-bottom:50px;">
+					<div>Sessions Data Preview</div>
+					<div class="InnerMainContentContainerRow" style="padding: 10px; ">
+						<div class="InnerMainRowContent"
+							style="margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
+							guy 1</div>
+					</div>
+				</div>
+
+				<div class="InnerMainContentContainerColumn">
+					<div class="InnerMainContentContainerColumn"
+						style="padding: 10px; background-color: rgb(27, 30, 39); border-radius: 16px; width:75%; margin-bottom: 50px;">
+						<div>Sessions Data Preview</div>
+						<div class="InnerMainContentContainerRow" style="padding: 10px; ">
+							<div class="InnerMainRowContent"
+								style="margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
+								guy 1</div>
+						</div>
+					</div>
+
+					<div class="InnerMainContentContainerColumn">
+						<div class="InnerMainContentContainerColumn"
+							style="padding: 10px; background-color: rgb(27, 30, 39); border-radius: 16px;  width:75%; margin-bottom: 50px;">
+							<div>Sessions Data Preview</div>
+							<div class="InnerMainContentContainerRow" style="padding: 10px; ">
+								<div class="InnerMainRowContent"
+									style="margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
+									guy 1</div>
+							</div>
+						</div>
+
+						<div class="InnerMainContentContainerColumn">
+							<div class="InnerMainContentContainerColumn"
+								style="padding: 10px; background-color: rgb(27, 30, 39); width:75%; margin-bottom: 50px;">
+								<div>Sessions Data Preview</div>
+								<div class="InnerMainContentContainerRow" style="padding: 10px; ">
+									<div class="InnerMainRowContent"
+										style="margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
+										guy 1</div>
+								</div>
+							</div>
+
+							<div class="InnerMainContentContainerColumn">
+								<div class="InnerMainContentContainerColumn"
+									style="padding: 10px; background-color: rgb(27, 30, 39); width:75%; margin-bottom: 50px;">
+									<div>Sessions Data Preview</div>
+									<div class="InnerMainContentContainerRow" style="padding: 10px; ">
+										<div class="InnerMainRowContent"
+											style="margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
+											guy 1</div>
+									</div>
+								</div>
+
+								<div class="InnerMainContentContainerColumn">
+									<div class="InnerMainContentContainerColumn"
+										style="padding: 10px; background-color: rgb(27, 30, 39); width:75%; margin-bottom: 50px;">
+										<div>Sessions Data Preview</div>
+										<div class="InnerMainContentContainerRow" style="padding: 10px; ">
+											<div class="InnerMainRowContent"
+												style="margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
+												guy 1</div>
+										</div>
+									</div>
+
+									<div class="InnerMainContentContainerColumn">
+										<div class="InnerMainContentContainerColumn"
+											style="padding: 10px; background-color: rgb(27, 30, 39); width:75%; margin-bottom: 50px;">
+											<div>Sessions Data Preview</div>
+											<div class="InnerMainContentContainerRow" style="padding: 10px; ">
+												<div class="InnerMainRowContent"
+													style="margin-right: 10px; margin-left: 10px; width: 100%; height: 100%;">
+													guy 1</div>
+											</div>
+										</div>
+
+
+										<div class="MainContentFooterContainer">
+											<div class="MainContentFooterContainerRow">
+												<div class="MainContentFooterContent">
+													<h4 class="MainContentFooterContent"> <img
+															src="/icons/fallguyslogo7.png" alt="Logo"
+															style="width: 43px; height: 43px;">Poof Media © 2023</h4>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 </body>
+
 </html>

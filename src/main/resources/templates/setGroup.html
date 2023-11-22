@@ -1,31 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
-<meta charset="ISO-8859-1">
-<th:block th:replace="~{index :: stdHead}"/>
-<title>Set Group - FallGods</title>
+	<meta charset="ISO-8859-1">
+	<th:block th:replace="~{index :: stdHead}" />
+	<title>Set Group - FallGods</title>
 </head>
-<body class="vcontainer">
-<th:block th:replace="~{index :: themeSelector}"/>
-<header class="center">
-	<h1>Set Tracking Group</h1>
-</header>
-<main>
-	<h2>Who do you (mainly) want to track for?</h2>
-	<form class="vcontainer rg10" action="/track/setGroup" method="post" th:object="${group}">
+
+<body>
+	<th:block th:replace="~{index :: NoJavaScriptFrag}" />
+	<div class="ContainerForAll IsHidden">
+		<th:block th:replace="~{index :: SideBarFragment}" />
+		<div class="MainContentContainer">
+			<div class="InnerMainContentContainerColumn">
+				<div class="content">
+					<header class="center">
+						<h1>Set Tracking Group</h1>
+					</header>
+					<main class="hcontainer">
+						<h2>Who do you (mainly) want to track for?</h2>
+						<form class="vcontainer rg10" action="/track/setGroup" method="post" th:object="${group}">
 		<select th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}">
 			<option value="">N/A</option>
 			<option th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
 		</select>
 		<p><input type="submit" value="Set Group"></p>
 	</form>
-</main>
-<footer class="hcontainer">
-	<div>
-		<a href="/">Home</a>
-		<a href="/register">Register</a>
-		<a href="/track">Track</a>
+					</main>
+				</div>
+			</div>
+			<div class="MainContentFooterContainer">
+				<div class="MainContentFooterContainerRow">
+					<p class="MainContentFooterContent">Poof Media © 2023</p>
+				</div></div>
+			</div>
+
+		</div>
 	</div>
-</footer>
 </body>
+
 </html>

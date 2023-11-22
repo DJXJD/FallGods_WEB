@@ -1,13 +1,43 @@
 @charset "ISO-8859-1";
 
-[hidden] { display: none !important; }
-
-html, body {
-	min-height: 100vh;
-	margin: 0;
+@font-face {
+	font-family: "SideBar_Inter";
+	src: url("/fonts/Inter/Inter-VariableFont.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
-footer.hcontainer > div {
+@font-face {
+	font-family: "Vina Sans";
+	src: url("/fonts/Vina-Sans/VinaSans-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Roboto";
+	src: url("/fonts/Roboto/Roboto-Black.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+footer.hcontainer>div {
 	display: flex;
 	gap: 2.5rem;
 }
@@ -26,6 +56,7 @@ footer.hcontainer > div {
 	justify-content: space-evenly;
 	align-items: center;
 	height: 100%;
+	min-width: 100px;
 }
 
 .close {
@@ -64,7 +95,6 @@ footer.hcontainer > div {
 }
 
 .vocontainer thead {
-	position: sticky;
 	top: 0;
 	background-color: white;
 }
@@ -87,10 +117,385 @@ footer.hcontainer > div {
 	right: 0px;
 }
 
-td > svg {
+td>svg {
 	display: block;
 }
 
 table table {
 	width: 100%;
+}
+
+.ContainerForAll {
+	display: flex;
+	position: relative;
+	height: 100vh;
+}
+
+.SideBarContainer {
+	position: sticky;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow-y: auto;
+	overflow-x: hidden;
+	min-width: max-content;
+	z-index: 10;}
+
+.SideBarContainer::-webkit-scrollbar {
+	width: 3px;
+
+}
+
+.SideBarContainer::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px rgb(45, 51, 68);
+	border-radius: 10px;
+}
+
+.SideBarContainer::-webkit-scrollbar-thumb {
+	background: rgb(0, 114, 198);
+	border-radius: 10px;
+}
+
+
+.MainContentContainer::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+
+.MainContentContainer::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px rgb(45, 51, 68);
+	border-radius: 10px;
+}
+
+.MainContentContainer::-webkit-scrollbar-thumb {
+	background: rgb(0, 114, 198);
+	border-radius: 10px;
+}
+
+.SideBarTopArea {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	text-align: left;
+
+}
+
+.SideBarBottomArea {
+	font-family: 'SideBar_Inter', sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+
+.MainContentContainer {
+	display: flex;
+	overflow-x: auto !important;
+	overflow-y: auto !important;
+	color: white;
+	width: 100%;
+	padding: 20px;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+	flex-direction: column;
+}
+
+.InnerMainContentContainerColumn {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	z-index: 10;
+}
+
+.InnerMainContentContainerRow {
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	min-height: 300px;
+z-index: 10;
+}
+
+.InnerMainColumnContent {}
+
+.InnerMainRowContent {
+	background-color: gray;
+	margin-right: 10px;
+	margin-left: 10px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
+}
+
+.InnerMainContentContainerForPlayerTable {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	z-index: 10;
+}
+
+.InnerMainContentContainerForSessionsTable {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	z-index: 10;
+}
+
+.InnerMainContentContainerForPlayerDetailsTable {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	z-index: 10;
+}
+
+
+@media (max-width: 1350px) {
+	.InnerMainContentContainerForPlayerDetailsTable {
+		align-items: normal;
+		justify-content: center;
+	}
+}
+
+@media (max-width: 800px) {
+	.InnerMainContentContainerForSessionsTable {
+		align-items: normal;
+		justify-content: center;
+	}
+}
+
+@media (max-width: 850px) {
+	.InnerMainContentContainerForPlayerTable {
+		align-items: normal;
+		justify-content: center;
+	}
+}
+
+.MainContentFooterContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	margin-top: auto;
+	flex-direction: column;
+	z-index: 10;
+}
+
+.MainContentFooterContainerRow {
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	min-height: 50px;
+	z-index: 10;
+}
+
+.MainContentFooterContent {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	flex-wrap: wrap;
+	font-weight: 300;
+	font-family: 'SideBar_Inter', sans-serif;
+	font-size: 18px;
+	margin: 0;
+	z-index: 10;
+
+}
+
+
+.SideBarNavLinks {
+	cursor: pointer;
+	width: 100%;
+	text-align: left;
+	font-size: 22px;
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold;
+	text-decoration: none;
+	align-items: center;
+}
+
+.SideBarFirstNavLink {
+	cursor: pointer;
+	width: 100%;
+	text-align: left;
+	font-size: 22px;
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold;
+	text-decoration: none;
+	align-items: center;
+
+}
+
+.SideBarFirstNavLink:link {
+	color: #8a8f98;
+	text-decoration: none;
+}
+
+.SideBarFirstNavLink:visited {
+	text-decoration: none;
+	color: #8a8f98;
+}
+
+
+.SideBarNavLinks:link {
+	color: #8a8f98;
+	text-decoration: none;
+}
+
+.SideBarNavLinks:visited {
+	text-decoration: none;
+	color: #8a8f98;
+}
+
+footer {
+	padding: 10px;
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+	width: 100%;
+}
+
+.accordion {
+	color: #8a8f98;
+	cursor: pointer;
+	width: 100%;
+	text-align: left;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.panel {
+	display: none;
+	padding-left: 30px;
+	overflow: hidden;
+	padding-bottom: 10px;
+	padding-right: 10px;
+}
+
+.ViewLinkContainer {
+	padding-top: 30px;
+}
+
+.IconTextHContainer {
+	display: flex;
+	width: 100%;
+	align-items: center;
+
+}
+
+.IconTextHContainer:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 5px;
+	color: orange;
+}
+
+.SideBarLinkText {
+	padding: 0;
+	margin: 0;
+	font-family: 'SideBar_Inter', sans-serif;
+	font-style: normal;
+	padding-left: 10px;
+
+}
+
+
+.FallGodsLogoText {
+	font-family: 'Roboto', monospace;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 42px;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+	color: rgb(249, 252, 255);
+	background: linear-gradient(-70deg, #21d2fe, #a334fd);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	transform: skew(-5deg);
+-webkit-transform: skew(-5deg);
+}
+
+:root {
+	--SideBar-text-Clicked-color-Light: #000;
+}
+
+.active-link {
+	color: var(--SideBar-text-Clicked-color-Light) !important;
+}
+
+.IsHidden {
+	display: none;
+}
+
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Place it below the inner content */
+}
+
+.ButtonAndContentWrapper {
+	pointer-events: none;
+	padding-top: 78px;
+	position: absolute;
+	z-index: 999;
+	margin-top: 5px;
+}
+
+.OpenCloseBtn {
+	pointer-events: auto;
+	color: white;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.CircleWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.Circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(29, 33, 46);
+  width: 32px; 
+  height: 32px; 
+  border-radius: 50%;
+   z-index: -1; 
 }
