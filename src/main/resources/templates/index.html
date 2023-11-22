@@ -61,6 +61,17 @@
 						<img id="MainLogo" src="/icons/fallguyslogo7.png" alt="Logo" style="width: 42px; height: 50px;">
 						<div class="FallGodsLogoText">FALLGODS</div>
 					</div>
+					
+						<div style="margin-top: 5px;">
+						<a class="SideBarNavLinks" href="/register" id="RegisterLink">
+							<div class="IconTextHContainer">
+								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
+									<use href="/icons/SwitchRight.svg#right" />
+								</svg>
+							</div>
+						</a>
+					</div>
+					
 					<hr style=" width: 100%; border: 2px solid rgb(29, 33, 46);">
 					<div style="margin-top: 20px;">
 						<a class="SideBarFirstNavLink" style="margin-top: 0px !important;" href="/" id="HomeLink">
@@ -168,7 +179,6 @@
 					</div>
 				</div>
 				<div class="SideBarBottomArea">
-
 					<footer>
 						<div>
 							<div
@@ -181,7 +191,6 @@
 									<input type="hidden" name="sourcePath"
 										th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
 								</form>
-
 								<div id="ThemeSelectorAction" style=""
 									th:data-swapTo="${theme.name} == 'LIGHT' ? 'DARK' : 'LIGHT'">
 									<svg id="lightmodeicon" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
