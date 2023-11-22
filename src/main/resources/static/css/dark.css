@@ -56,10 +56,11 @@ table[border] table[border] table[border],
 }
 
 footer {
-	width: 85%;
+
 	border-top: 1px solid white;
 	color: #8a8f98;
 	font-weight: bold;
+	font-size: 18px;
 }
 
 /* For DARK theme */
