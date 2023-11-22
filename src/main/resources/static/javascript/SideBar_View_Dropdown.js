@@ -8,7 +8,6 @@ $(() => {
 	CheckAccordionViewStatus();
 
 	function SetCollapseExpandButtonValues(displayType, ArrowType) {
-
 		let ArrowDefaultSizeX = 4.93;
 		let ArrowDefaultSizeY = 8;
 
@@ -19,14 +18,15 @@ $(() => {
 
 		if (displayType === "flex") {
 
-			$(".ButtonAndContentWrapper").css("padding-left", ($(".SideBarContainer").width() - (ButtonOffsetX * 2)) - 3 + "px");
+			$(".ButtonAndContentWrapper").css("padding-left", ($(".SideBarContainer").width() - (ButtonOffsetX * 2)) - 2 + "px");
 			$(".ButtonAndContentWrapper").css("padding-top", ($(".ButtonAndContentWrapper").css("padding-top") - ButtonOffsetY) + "px");
 		} else if (displayType === "none") {
-			$(".ButtonAndContentWrapper").css("padding-left", ($(".SideBarContainer").width() - ButtonOffsetX) + 3 + "px");
+			$(".ButtonAndContentWrapper").css("padding-left", ($(".SideBarContainer").width() - ButtonOffsetX) + 2 + "px");
 
 			$(".ButtonAndContentWrapper").css("padding-top", ($(".ButtonAndContentWrapper").css("padding-top") - ButtonOffsetY) + "px");
 		}
 	}
+
 
 	//For displaying the accordion style view links
 	$(".accordion").on("click", function() {
@@ -56,10 +56,15 @@ $(() => {
 	function CheckSideBarStatus() {
 		if (localStorage.getItem("SideBar") === "flex") {
 			SetSideBarView("flex");
+		
 			SetCollapseExpandButtonValues("flex", ".SideBarArrowLeft");
 		} else if (localStorage.getItem("SideBar") === "none") {
 			SetSideBarView("none");
+	
 			SetCollapseExpandButtonValues("none", ".SideBarArrowRight");
+		} else {
+			localStorage.setItem("SideBar", "flex");
+			CheckSideBarStatus();
 		}
 	}
 
@@ -69,6 +74,9 @@ $(() => {
 			SetAccordionView("flex");
 		} else if (localStorage.getItem("AccordionView") === "none") {
 			SetAccordionView("none");
+		} else {
+			localStorage.setItem("AccordionView", "none");
+			CheckAccordionViewStatus();
 		}
 	}
 
@@ -143,12 +151,10 @@ $(() => {
 			}
 		}
 	});
+
+	$("#ThemeSelectorAction").click((e) => {
+		$(`#theme option[value='${$(e.currentTarget).attr("data-swapTo")}']`).attr("selected", true).change();
+		
+	});
+
 });
-
-
-// Alternative to DOMContentLoaded event
-document.onreadystatechange = () => {
-	if (document.readyState === "complete") {
-		console.log($(".SideBarContainer").width());
-	}
-};

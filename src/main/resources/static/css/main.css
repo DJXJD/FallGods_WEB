@@ -132,7 +132,6 @@ table table {
 }
 
 .SideBarContainer {
-	background-color: rgba(26, 18, 36, 0.01);
 	position: sticky;
 	height: 100vh;
 	display: flex;
@@ -141,7 +140,7 @@ table table {
 	overflow-y: auto;
 	overflow-x: hidden;
 	min-width: max-content;
-}
+	z-index: 10;}
 
 .SideBarContainer::-webkit-scrollbar {
 	width: 3px;
@@ -214,6 +213,7 @@ table table {
 	align-items: center;
 	text-align: center;
 	width: 100%;
+	z-index: 10;
 }
 
 .InnerMainContentContainerRow {
@@ -225,6 +225,7 @@ table table {
 	text-align: center;
 	width: 100%;
 	min-height: 300px;
+z-index: 10;
 }
 
 .InnerMainColumnContent {}
@@ -238,6 +239,7 @@ table table {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 10;
 }
 
 .InnerMainContentContainerForPlayerTable {
@@ -247,6 +249,7 @@ table table {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+	z-index: 10;
 }
 
 .InnerMainContentContainerForSessionsTable {
@@ -256,6 +259,7 @@ table table {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+	z-index: 10;
 }
 
 .InnerMainContentContainerForPlayerDetailsTable {
@@ -265,6 +269,7 @@ table table {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+	z-index: 10;
 }
 
 
@@ -297,6 +302,7 @@ table table {
 	width: 100%;
 	margin-top: auto;
 	flex-direction: column;
+	z-index: 10;
 }
 
 .MainContentFooterContainerRow {
@@ -308,6 +314,7 @@ table table {
 	text-align: center;
 	width: 100%;
 	min-height: 50px;
+	z-index: 10;
 }
 
 .MainContentFooterContent {
@@ -321,6 +328,7 @@ table table {
 	font-family: 'SideBar_Inter', sans-serif;
 	font-size: 18px;
 	margin: 0;
+	z-index: 10;
 
 }
 
@@ -335,6 +343,7 @@ table table {
 	pointer-events: auto;
 	color: white;
 	cursor: pointer;
+	z-index: 10;
 }
 
 .SideBarNavLinks {
@@ -344,19 +353,19 @@ table table {
 	font-size: 22px;
 	font-family: 'Times New Roman', Times, serif;
 	font-weight: bold;
-	padding-top: 30px;
+
 	text-decoration: none;
 	align-items: center;
 }
 
 .SideBarFirstNavLink {
+
 	cursor: pointer;
 	width: 100%;
 	text-align: left;
 	font-size: 22px;
 	font-family: 'Times New Roman', Times, serif;
 	font-weight: bold;
-	padding-top: 20px;
 	text-decoration: none;
 	align-items: center;
 
@@ -382,8 +391,6 @@ table table {
 	text-decoration: none;
 	color: #8a8f98;
 }
-
-
 
 footer {
 	padding: 10px;
@@ -465,10 +472,11 @@ footer {
 	display: none;
 }
 
-.hexagon{
-	position: relative;
-	width: 100px;
-	height: 110px;
-	background: blue;
-	clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Place it below the inner content */
 }

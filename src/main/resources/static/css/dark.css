@@ -1,7 +1,7 @@
 @charset "ISO-8859-1";
 
 body {
-	background-color: #121213;
+	
 	color: darkgray;
 }
 
@@ -27,14 +27,12 @@ table[border] table[border] table[border],
 
 .SideBarContainer {
 	border-right: 2px solid rgb(29, 33, 46);
-	background-color: rgb(27, 30, 39);
+	background-color: rgb(13, 14, 19);
 	color: #8a8f98;
 }
 
-
-
 .MainContentContainer{
-	background-color: #161920;
+	background: linear-gradient(109.6deg,  rgb(0, 0, 0) 11.2%, rgb(16, 37, 60) 50.0%, rgb(0, 0, 0) 98.6%);
 }
 
 .SideBarNavLinks:visited {
@@ -43,20 +41,15 @@ table[border] table[border] table[border],
 
 
 .IconTextHContainer:hover {
+		pointer-events: all;
 	color: rgb(0, 114, 198);
 }
 
-.SideBarBottomArea {	
+.SideBarBottomArea {}
 
-
-}
-
-.MainContentFooterContent{
-
-}
+.MainContentFooterContent {}
 
 footer {
-
 	border-top: 1px solid white;
 	color: #8a8f98;
 	font-weight: bold;

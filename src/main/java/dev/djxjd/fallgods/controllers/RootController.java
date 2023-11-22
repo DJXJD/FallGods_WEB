@@ -49,5 +49,4 @@ public class RootController {
 		model.addAttribute("theme", name);
 		return "redirect:" + sourcePath;
 	}
-
 }
