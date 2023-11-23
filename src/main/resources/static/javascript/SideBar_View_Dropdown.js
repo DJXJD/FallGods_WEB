@@ -16,7 +16,7 @@ $(() => {
 			console.log($(".CircleWrapper").width());
 			let circleWrapperOffset = $(".CircleWrapper").width() / 2;
 			let sidebarWidth = $(".SideBarContainer").width();
-			$(".ButtonAndContentWrapper").css("left", (sidebarWidth - circleWrapperOffset)+ "px");
+			$(".ButtonAndContentWrapper").css("left", (sidebarWidth - circleWrapperOffset) + "px");
 		}
 	}
 
@@ -177,7 +177,7 @@ $(() => {
 	let currentPath = $(location).attr("pathname");
 	//Whenever a link is clicked, this makes sure that it stays lit up, to know where in the navigation we are.
 	$(".IconTextHContainer").each(function(index, element) {
-		if ($(element).closest(".SideBarNavLinks").attr("href") === currentPath) {
+		if ($(element).closest(".SideBarNavLinks").attr("href") === currentPath || $(element).closest(".SideBarFirstNavLink").attr("href") === currentPath) {
 			$(element).addClass("active-link");
 			if ($(element).hasClass("AccordionLink")) {
 				$("#ViewLink").addClass("active-link");

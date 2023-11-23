@@ -1,8 +1,7 @@
 @charset "ISO-8859-1";
 
 body {
-	
-	color: darkgray;
+
 }
 
 table[border],
@@ -27,11 +26,15 @@ table[border] table[border] table[border],
 
 .SideBarContainer {
 	border-right: 2px solid rgb(29, 33, 46);
-	background-color: rgb(7, 7, 15);
+	backdrop-filter: blur(4px);
+	background-color: rgba(7, 7, 15, 0.88);
 	color: #8a8f98;
 }
 
 .MainContentContainer{
+}
+
+.ContainerForAll{
 	background: linear-gradient(32.5deg,  rgb(0, 0, 0) 10%, rgb(16, 37, 60) 50%, rgb(0, 0, 0) 90%);
 }
 

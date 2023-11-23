@@ -48,7 +48,7 @@ footer.hcontainer>div {
 	align-items: center;
 	width: 100%;
 	flex-wrap: wrap;
-z-index: 100;
+	z-index: 100;
 }
 
 .vcontainer {
@@ -133,6 +133,18 @@ table table {
 	height: 100vh;
 }
 
+.SetGroupFormDiv{
+		display: flex;
+	flex-direction: column;
+	
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	min-height: 200px;
+	z-index: 10;
+}
+
 .SideBarContainer {
 	position: sticky;
 	height: 100vh;
@@ -142,7 +154,8 @@ table table {
 	overflow-y: auto;
 	overflow-x: hidden;
 	min-width: max-content;
-	z-index: 10;}
+	z-index: 10;
+}
 
 .SideBarContainer::-webkit-scrollbar {
 	width: 3px;
@@ -441,12 +454,12 @@ footer {
 	justify-items: center;
 	align-items: center;
 	color: rgb(249, 252, 255);
-	background: linear-gradient(-70deg, #21d2fe, #a334fd);
+	background: linear-gradient(-70deg, rgb(1, 177, 222), rgb(138, 2, 249));
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	transform: skew(-5deg);
--webkit-transform: skew(-5deg);
+	-webkit-transform: skew(-5deg);
 }
 
 :root {
@@ -463,12 +476,12 @@ footer {
 
 #canvas {
 	pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
 }
 
 .ButtonAndContentWrapper {
@@ -486,20 +499,32 @@ footer {
 }
 
 .CircleWrapper {
-  position: relative;
-  display: inline-block;
-  text-align: center; /* Center the content horizontally */
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	/* Center the content horizontally */
 }
 
 .Circle {
-  position: relative;
-  background-color: rgb(29, 33, 46);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  z-index: -1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	position: relative;
+	background-color: rgb(29, 33, 46);
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	z-index: -1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
+.InnerBoxContainer {
+	box-shadow: 5px 5px rgb(0, 0, 0);
+	backdrop-filter: blur(8px);
+	z-index: 100;
+	border-radius: 30px;
+	border: 2.5px solid black;
+	background-color: rgba(16, 37, 60, 0.5);
+	padding-bottom: 30px;
+	padding-left: 30px;
+	padding-right: 30px;
 }

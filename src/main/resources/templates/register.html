@@ -12,55 +12,88 @@
 	<div class="ContainerForAll IsHidden">
 		<th:block th:replace="~{index :: SideBarFragment}" />
 		<div class="MainContentContainer">
+
+
+
+
+			<div class="InnerMainContentContainerColumn">
+				<header class="center">
+					<h1>Register New Entities</h1>
+				</header>
+				<div class="InnerMainContentContainerRow">
+
+					<div class="InnerMainContentContainerRow">
+						<div class="InnerMainContentContainerRow">
+							<div class="InnerBoxContainer">
+								<div class="vcontainer">
+									<h2>Register players</h2>
+									<h3 th:if="${rpError}" th:text="${rpError}" style="color: red;"></h3>
+									<form class="vcontainer" action="/register/addPlayer" method="post">
+										<div class="hcontainer cg10">
+											<label for="pName">Name:</label><input type="text" id="pName" name="name"
+												required>
+										</div>
+										<p><input type="submit" value="Add Player"></p>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="InnerMainContentContainerRow">
+							<div class="InnerBoxContainer">
+								<div class="vcontainer">
+									<h2>Register Minigames</h2>
+									<h3 th:if="${rmgError}" th:text="${rmgError}" style="color: red;"></h3>
+									<form class="vcontainer" action="/register/addMinigame" method="post"
+										th:object="${newMinigame}">
+										<div class="vcontainer rg10">
+											<div class="hcontainer cg10">
+												<label for="mgName">Name:</label><input type="text" id="mgName"
+													th:field="*{name}" required>
+											</div>
+											<div class="hcontainer cg10">
+												<label for="mgType">Type:</label>
+												<select id="mgType" th:field="*{type}" required>
+													<option value="">N/A</option>
+													<option th:each="gameType : ${gameTypes}" th:text="${gameType}"
+														th:value="${gameType}">
+													</option>
+												</select>
+											</div>
+										</div>
+										<p><input type="submit" value="Add Minigame"></p>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
 			<div class="InnerMainContentContainerColumn">
 				<div class="content">
-					<header class="center">
-						<h1>Register New Entities</h1>
-					</header>
+
 					<main class="hcontainer">
-						<div class="vcontainer">
-							<h2>Register players</h2>
-							<h3 th:if="${rpError}" th:text="${rpError}" style="color: red;"></h3>
-							<form class="vcontainer" action="/register/addPlayer" method="post">
-								<div class="hcontainer cg10">
-									<label for="pName">Name:</label><input type="text" id="pName" name="name" required>
-								</div>
-								<p><input type="submit" value="Add Player"></p>
-							</form>
-						</div>
-						<div class="vcontainer">
-							<h2>Register Minigames</h2>
-							<h3 th:if="${rmgError}" th:text="${rmgError}" style="color: red;"></h3>
-							<form class="vcontainer" action="/register/addMinigame" method="post"
-								th:object="${newMinigame}">
-								<div class="vcontainer rg10">
-									<div class="hcontainer cg10">
-										<label for="mgName">Name:</label><input type="text" id="mgName"
-											th:field="*{name}" required>
-									</div>
-									<div class="hcontainer cg10">
-										<label for="mgType">Type:</label>
-										<select id="mgType" th:field="*{type}" required>
-											<option value="">N/A</option>
-											<option th:each="gameType : ${gameTypes}" th:text="${gameType}"
-												th:value="${gameType}">
-											</option>
-										</select>
-									</div>
-								</div>
-								<p><input type="submit" value="Add Minigame"></p>
-							</form>
-						</div>
+
+
 					</main>
 				</div>
 			</div>
-		<div class="MainContentFooterContainer">
+			<div class="MainContentFooterContainer">
 				<div class="MainContentFooterContainerRow">
-					<p class="MainContentFooterContent">Poof Media © 2023</p>
-				</div></div>
+					<div class="MainContentFooterContent">
+						<h4 class="MainContentFooterContent"> <img src="/icons/fallguyslogo7.png" alt="Logo"
+								style="width: 43px; height: 43px;">Poof Media © 2023</h4>
+					</div>
+				</div>
 			</div>
-
 		</div>
+
+	</div>
 </body>
 
 </html>
