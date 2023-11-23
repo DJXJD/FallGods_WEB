@@ -48,6 +48,7 @@ footer.hcontainer>div {
 	align-items: center;
 	width: 100%;
 	flex-wrap: wrap;
+z-index: 100;
 }
 
 .vcontainer {
@@ -57,6 +58,7 @@ footer.hcontainer>div {
 	align-items: center;
 	height: 100%;
 	min-width: 100px;
+	z-index: 100;
 }
 
 .close {
@@ -226,7 +228,7 @@ table table {
 	text-align: center;
 	width: 100%;
 	min-height: 300px;
-z-index: 10;
+	z-index: 10;
 }
 
 .InnerMainColumnContent {}
@@ -460,20 +462,20 @@ footer {
 }
 
 #canvas {
+	pointer-events: none;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* Place it below the inner content */
+    z-index: 0;
 }
 
 .ButtonAndContentWrapper {
 	pointer-events: none;
-	padding-top: 78px;
-	position: absolute;
+	padding-top: 65px;
+	position: fixed;
 	z-index: 999;
-	margin-top: 5px;
 }
 
 .OpenCloseBtn {
@@ -486,16 +488,18 @@ footer {
 .CircleWrapper {
   position: relative;
   display: inline-block;
+  text-align: center; /* Center the content horizontally */
 }
 
 .Circle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   background-color: rgb(29, 33, 46);
-  width: 32px; 
-  height: 32px; 
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-   z-index: -1; 
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }

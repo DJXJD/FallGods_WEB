@@ -20,22 +20,23 @@
 					<main class="hcontainer">
 						<h2>Who do you (mainly) want to track for?</h2>
 						<form class="vcontainer rg10" action="/track/setGroup" method="post" th:object="${group}">
-		<select th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}">
-			<option value="">N/A</option>
-			<option th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
-		</select>
-		<p><input type="submit" value="Set Group"></p>
-	</form>
+							<select th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}">
+								<option value="">N/A</option>
+								<option th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
+							</select>
+							<p><input type="submit" value="Set Group"></p>
+						</form>
 					</main>
 				</div>
 			</div>
 			<div class="MainContentFooterContainer">
 				<div class="MainContentFooterContainerRow">
 					<p class="MainContentFooterContent">Poof Media © 2023</p>
-				</div></div>
+				</div>
 			</div>
-
 		</div>
+
+	</div>
 	</div>
 </body>
 

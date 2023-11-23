@@ -1,6 +1,6 @@
 $(() => {
 	let DarkMode = !($("#ThemeSelectorAction").attr("data-swapTo") == "LIGHT");
-	
+
 	if ($(".ContainerForAll").hasClass("IsHidden")) {
 		$(".ContainerForAll").removeClass("IsHidden");
 	}
@@ -8,27 +8,17 @@ $(() => {
 	CheckSideBarStatus();
 	CheckAccordionViewStatus();
 
-
-	function SetCollapseExpandButtonValues(displayType, ArrowType) {
+	function SetCollapseExpandButtonValues(displayType) {
 		let ArrowDefaultSizeX = 4.93;
 		let ArrowDefaultSizeY = 8;
 
-		let ButtonEmHeight = parseFloat(($(ArrowType).css("height"))) / parseFloat(($(ArrowType).css("font-size")));
-
-		let ButtonOffsetX = (ButtonEmHeight * ArrowDefaultSizeX);
-		let ButtonOffsetY = (ButtonEmHeight * ArrowDefaultSizeY);
-
 		if (displayType === "flex") {
-
-			$(".ButtonAndContentWrapper").css("padding-left", ($(".SideBarContainer").width() - (ButtonOffsetX * 2)) - 2 + "px");
-			$(".ButtonAndContentWrapper").css("padding-top", ($(".ButtonAndContentWrapper").css("padding-top") - ButtonOffsetY) + "px");
-		} else if (displayType === "none") {
-			$(".ButtonAndContentWrapper").css("padding-left", ($(".SideBarContainer").width() - ButtonOffsetX) + 2 + "px");
-
-			$(".ButtonAndContentWrapper").css("padding-top", ($(".ButtonAndContentWrapper").css("padding-top") - ButtonOffsetY) + "px");
+			console.log($(".CircleWrapper").width());
+			let circleWrapperOffset = $(".CircleWrapper").width() / 2;
+			let sidebarWidth = $(".SideBarContainer").width();
+			$(".ButtonAndContentWrapper").css("left", (sidebarWidth - circleWrapperOffset)+ "px");
 		}
 	}
-
 
 	//For displaying the accordion style view links
 	$(".accordion").on("click", function() {
@@ -45,11 +35,11 @@ $(() => {
 			SetSideBarView("flex");
 
 			//When button is pressed, we need to make sure we reset the button position
-			SetCollapseExpandButtonValues("flex", ".SideBarArrowLeft");
+			SetCollapseExpandButtonValues("flex");
 		} else {
 			SetSideBarView("none");
 			//When button is pressed, we need to make sure we reset the button position
-			SetCollapseExpandButtonValues("none", ".SideBarArrowRight");
+			SetCollapseExpandButtonValues("none");
 		}
 
 	});
@@ -58,12 +48,10 @@ $(() => {
 	function CheckSideBarStatus() {
 		if (localStorage.getItem("SideBar") === "flex") {
 			SetSideBarView("flex");
-
-			SetCollapseExpandButtonValues("flex", ".SideBarArrowLeft");
+			SetCollapseExpandButtonValues("flex");
 		} else if (localStorage.getItem("SideBar") === "none") {
 			SetSideBarView("none");
-
-			SetCollapseExpandButtonValues("none", ".SideBarArrowRight");
+			SetCollapseExpandButtonValues("none");
 		} else {
 			localStorage.setItem("SideBar", "flex");
 			CheckSideBarStatus();
@@ -117,6 +105,8 @@ $(() => {
 			$(".SideBarArrowLeft").hide();
 			$(".SideBarArrowRight").show();
 			localStorage.setItem("SideBar", "none");
+			$("#SideBarExpandIconRight").show();
+			$(".ButtonAndContentWrapper").hide();
 
 			$("#SwitchLeftCircle").hide();
 			$("#SwitchRightCircle").show();
@@ -145,10 +135,10 @@ $(() => {
 			}
 			$(".footer").css("border-top", "1px solid #2e2e32");
 		} else if (displayType === "flex") {
-			
+			$("#SideBarExpandIconRight").hide();
 			$("#SwitchLeftCircle").show();
 			$("#SwitchRightCircle").hide();
-			
+			$(".ButtonAndContentWrapper").show();
 			$(".SideBarLinkText, footer, .FallGodsLogoText").show();
 			$(".ViewArrowContainer").show();
 			$(".SideBarArrowLeft").show();

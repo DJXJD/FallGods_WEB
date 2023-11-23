@@ -32,7 +32,7 @@ table[border] table[border] table[border],
 }
 
 .MainContentContainer{
-	background: linear-gradient(109.6deg,  rgb(0, 0, 0) 11.2%, rgb(16, 37, 60) 50.0%, rgb(0, 0, 0) 98.6%);
+	background: linear-gradient(32.5deg,  rgb(0, 0, 0) 10%, rgb(16, 37, 60) 50%, rgb(0, 0, 0) 90%);
 }
 
 .SideBarNavLinks:visited {

@@ -41,17 +41,12 @@
 			<div class="ButtonAndContentWrapper">
 				<div class="OpenCloseBtn">
 					<div class="CircleWrapper">
-						<svg viewBox="0 0 24 24" height="2em" class="SideBarArrowRight" style="display: none;">
-							<use class="UseButton" href="/icons/SwitchRight.svg#right" />
-						</svg>
-						<div id="SwitchRightCircle" class="Circle"></div>
-					</div>
-					<div class="CircleWrapper">
-						<svg viewBox="0 0 24 24" height="2em" style="display: none;" class="SideBarArrowLeft">
-							<use class="UseButton" href="/icons/SwitchLeft.svg#left" />
-						</svg>
-							<div id="SwitchLeftCircle" class="Circle"></div>
+						<div id="SwitchLeftCircle" class="Circle">
+							<svg viewBox="0 0 24 24" height="2em" style="display: none;" class="SideBarArrowLeft">
+								<use class="UseButton" href="/icons/SwitchLeft.svg#left" />
+							</svg>
 						</div>
+					</div>
 				</div>
 			</div>
 			<div class="SideBarContainer">
@@ -61,17 +56,16 @@
 						<img id="MainLogo" src="/icons/fallguyslogo7.png" alt="Logo" style="width: 42px; height: 50px;">
 						<div class="FallGodsLogoText">FALLGODS</div>
 					</div>
-					
-						<div style="margin-top: 5px;">
-						<a class="SideBarNavLinks" href="/register" id="RegisterLink">
+
+					<div class="OpenCloseBtn">
+						<div class="SideBarFirstNavLink" style="margin-top: 5px;" id="SideBarExpandIconRight">
 							<div class="IconTextHContainer">
 								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
 									<use href="/icons/SwitchRight.svg#right" />
 								</svg>
 							</div>
-						</a>
+						</div>
 					</div>
-					
 					<hr style=" width: 100%; border: 2px solid rgb(29, 33, 46);">
 					<div style="margin-top: 20px;">
 						<a class="SideBarFirstNavLink" style="margin-top: 0px !important;" href="/" id="HomeLink">
@@ -158,8 +152,8 @@
 						</div>
 					</div>
 					<div style="margin-top: 30px;">
-						<a class="SideBarNavLinks" href="/FAQ" id="PlayerLink">
-							<div class="IconTextHContainer AccordionLink">
+						<a class="SideBarNavLinks" href="/FAQ" id="FAQLink">
+							<div class="IconTextHContainer">
 								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
 									<use href="/icons/Player_Icon.svg#Player" />
 								</svg>
@@ -168,8 +162,8 @@
 						</a>
 					</div>
 					<div style="margin-top: 30px;">
-						<a class="SideBarNavLinks" href="/AboutUs" id="PlayerLink">
-							<div class="IconTextHContainer AccordionLink">
+						<a class="SideBarNavLinks" href="/AboutUs" id="AboutUsLink">
+							<div class="IconTextHContainer">
 								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
 									<use href="/icons/Player_Icon.svg#Player" />
 								</svg>
@@ -191,7 +185,7 @@
 									<input type="hidden" name="sourcePath"
 										th:value="${#ctx['org.springframework.web.util.ServletRequestPathUtils.PATH']}">
 								</form>
-								<div id="ThemeSelectorAction" style=""
+								<div id="ThemeSelectorAction"
 									th:data-swapTo="${theme.name} == 'LIGHT' ? 'DARK' : 'LIGHT'">
 									<svg id="lightmodeicon" viewBox="0 0 24 24" height="2em" class="ThemeIcons"
 										th:style="${theme.name} == 'LIGHT' ? 'color:white;'"
@@ -220,7 +214,7 @@
 					</footer>
 				</div>
 			</div>
-			<canvas id="canvas"></canvas>
+			<canvas style="pointer-events: none;" id="canvas"></canvas>
 		</th:block>
 		<div class="MainContentContainer">
 
