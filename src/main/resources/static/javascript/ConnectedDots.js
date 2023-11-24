@@ -10,7 +10,8 @@ var stars = [],
 	mouse = {};
 
 function calculateNumStars() {
-	var numStars = Math.floor((canvas.width * canvas.height) / 25000);
+	var numStars = Math.floor((canvas.width * canvas.height) / 12500);
+	numStars = Math.min(125, Math.max(0, numStars));
 	return numStars;
 }
 

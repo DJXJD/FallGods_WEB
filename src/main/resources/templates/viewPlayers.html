@@ -12,53 +12,57 @@
 	<div class="ContainerForAll IsHidden">
 		<th:block th:replace="~{index :: SideBarFragment}" />
 		<div class="MainContentContainer">
-			<div class="InnerMainContentContainerColumn">
-				<div class="InnerBoxContainer">
-					<h2 th:text="*{name}" />
-					<div class="InnerMainContentContainerForPlayerTable">
+
+			<div class="SetGroupInnerMainContentContainerColumn">
+				<div class="TrackInnerBoxContainer">
+					<div class="InnerBoxTitleContainerColumn">
 						<header class="center">
-							<h1>View Players</h1>
+							<h1 class="InnerBoxTopContainerFont">VIEW PLAYERS</h1>
 						</header>
-						<div class="hocontainer" style="max-width: 100vw;">
-							<table border="1">
-								<thead>
-									<th>Name
-									<th>Sessions
-									<th>Matches
-									<th>Rounds
-									<th>
-										<div>In Game Time</div>
-									</th>
-									<th>Wins
-									<th>Win Rate
-									<th>Qualifications
-									<th>Qualification Rate
-									<th>Finishes
-									<th>Finish Rate
-									<th>MVPs
-								</thead>
-								<tbody class="center">
-									<tr th:each="player : *{players}" th:object="${player}">
-										<td><a th:text="*{name}" th:href="@{/view/player/{id} (id = *{id})}" /></td>
-										<td th:text="*{numMainPlayerSessions}" />
-										<td th:text="*{numMatches}" />
-										<td th:text="*{aggMapData.plays}" />
-										<td th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}" />
-										<td th:text="*{wins}" />
-										<td th:text="*{winRate}" />
-										<td th:text="*{aggMapData.qualifications}" />
-										<td th:text="*{aggMapData.qualificationRate}" />
-										<td th:text="*{aggMapData.finishes}" />
-										<td th:text="*{aggMapData.finishRate}" />
-										<td th:text="*{aggMapData.mvps}" />
-									</tr>
-								</tbody>
-							</table>
-						</div>
+					</div>
+					<div class="TrackInnerBoxLowerArea">
+						<div class="InnerMainContentContainerRow">
+								<div style="background-color: rgba(29, 33, 46, 0.7); backdrop-filter: blur(4px); border-radius: 30px; padding: 25px; border: 2px solid black;">
+							<div class="hocontainer" style="max-width: 100vw;">
+								<table border="1">
+									<thead>
+										<th>Name
+										<th>Sessions
+										<th>Matches
+										<th>Rounds
+										<th>
+											<div>In Game Time</div>
+										</th>
+										<th>Wins
+										<th>Win Rate
+										<th>Qualifications
+										<th>Qualification Rate
+										<th>Finishes
+										<th>Finish Rate
+										<th>MVPs
+									</thead>
+									<tbody class="center">
+										<tr th:each="player : *{players}" th:object="${player}">
+											<td><a style=" color: white; font-family: SideBar_Inter, monospace;" th:text="*{name}" th:href="@{/view/player/{id} (id = *{id})}" /></td>
+											<td th:text="*{numMainPlayerSessions}" />
+											<td th:text="*{numMatches}" />
+											<td th:text="*{aggMapData.plays}" />
+											<td th:text="*{#strings.substring(inGameTime.withNanos(0), 2)}" />
+											<td th:text="*{wins}" />
+											<td th:text="*{winRate}" />
+											<td th:text="*{aggMapData.qualifications}" />
+											<td th:text="*{aggMapData.qualificationRate}" />
+											<td th:text="*{aggMapData.finishes}" />
+											<td th:text="*{aggMapData.finishRate}" />
+											<td th:text="*{aggMapData.mvps}" />
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div></div>
 					</div>
 				</div>
 			</div>
-
 			<div class="MainContentFooterContainer">
 				<div class="MainContentFooterContainerRow">
 					<div class="MainContentFooterContent">

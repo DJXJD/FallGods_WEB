@@ -12,24 +12,30 @@
 	<div class="ContainerForAll IsHidden">
 		<th:block th:replace="~{index :: SideBarFragment}" />
 		<div class="MainContentContainer">
-
-			<div class="InnerMainContentContainerColumn">
-				<div class="InnerBoxContainer">
-				<header class="center">
-					<h1>Set Tracking Group</h1>
-				</header>
-				<main class="hcontainer">
-					<h2>Who do you (mainly) want to track for?</h2>
-				</main>
-				<div class="SetGroupFormDiv">
-					<form class="vcontainer rg10" action="/track/setGroup" method="post" th:object="${group}">
-						<select th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}">
-							<option value="">N/A</option>
-							<option th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
-						</select>
-						<p><input type="submit" value="Set Group"></p>
-					</form>
-				</div>
+			<div class="SetGroupInnerMainContentContainerColumn">
+				<div class="SetGroupInnerBoxContainer">
+					<div class="InnerBoxTitleContainerColumn">
+						<header class="center">
+							<h1 class="InnerBoxTopContainerFont">SET TRACKING GROUP</h1>
+						</header>
+					</div>
+					<div class="InnerBoxLowerArea">
+						<main class="hcontainer">
+							<h2
+								style="font-family: SideBar_Inter, fantasy; font-size: 32px; font-weight: 600; margin-bottom: 15px;">
+								Who do you (mainly) want to track for?</h2>
+						</main>
+						<div class="SetGroupFormDiv">
+							<form class="vcontainer rg10" action="/track/setGroup" method="post" th:object="${group}">
+								<select th:each="p, iStat : *{players}" th:field="*{players[__${iStat.index}__]}"
+									style=" font-family: SideBar_Inter, fantasy; font-size: 16px; font-weight: 600; border: 3px solid black; width: 200px; text-align: center;">
+									<option value="">N/A</option>
+									<option th:each="player : ${players}" th:text="${player.name}" th:value="${player}">
+								</select>
+								<p><input class="RegisterPageSubmitButton" type="submit" value="Set Group"></p>
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="MainContentFooterContainer">
@@ -41,8 +47,6 @@
 				</div>
 			</div>
 		</div>
-
-	</div>
 	</div>
 </body>
 

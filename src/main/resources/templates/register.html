@@ -13,74 +13,59 @@
 		<th:block th:replace="~{index :: SideBarFragment}" />
 		<div class="MainContentContainer">
 
-
-
-
 			<div class="InnerMainContentContainerColumn">
-				<header class="center">
-					<h1>Register New Entities</h1>
-				</header>
-				<div class="InnerMainContentContainerRow">
-
-					<div class="InnerMainContentContainerRow">
-						<div class="InnerMainContentContainerRow">
-							<div class="InnerBoxContainer">
-								<div class="vcontainer">
-									<h2>Register players</h2>
-									<h3 th:if="${rpError}" th:text="${rpError}" style="color: red;"></h3>
-									<form class="vcontainer" action="/register/addPlayer" method="post">
-										<div class="hcontainer cg10">
-											<label for="pName">Name:</label><input type="text" id="pName" name="name"
-												required>
-										</div>
-										<p><input type="submit" value="Add Player"></p>
-									</form>
-								</div>
+				<div class="InnerBoxContainer">
+					<div class="InnerBoxTitleContainerColumn" >
+						<header class="center">
+							<h1 class="InnerBoxTopContainerFont">REGISTER NEW ENTITIES</h1>
+						</header>
+					
+					</div>
+					<div class="InnerBoxLowerArea">
+					<div class="RegisterPageInnerMainContentContainer">
+						<div class="RegisterPageInnerMainContentContainerRow">
+							<div class="vcontainer">
+								<h2 style="margin:0px; font-family: SideBar_Inter, fantasy; font-size: 32px; font-weight: 600; margin-bottom: 5px;">Register Players</h2>
+									<hr width="100%" style="margin:0px; margin-bottom: 10px">
+								<h3 th:if="${rpError}" th:text="${rpError}" style="margin:0px; color: red;"></h3>
+								<form class="vcontainer" action="/register/addPlayer" method="post">
+									<div class="hcontainer cg10">
+										<label for="pName" style="flex-wrap: nowrap; font-weight: 550; font-family: SideBar_Inter, Fantasy;">Name:</label>
+										<input style="font-family: SideBar_Inter, monospace; font-weight: 500; border-radius: 3px; border: 3px solid black;" type="text" id="pName" name="name"
+											required>
+									</div>
+									
+									<p><input class="RegisterPageSubmitButton" type="submit" value="ADD PLAYER"></p>
+								</form>
 							</div>
 						</div>
-						<div class="InnerMainContentContainerRow">
-							<div class="InnerBoxContainer">
-								<div class="vcontainer">
-									<h2>Register Minigames</h2>
-									<h3 th:if="${rmgError}" th:text="${rmgError}" style="color: red;"></h3>
-									<form class="vcontainer" action="/register/addMinigame" method="post"
-										th:object="${newMinigame}">
-										<div class="vcontainer rg10">
-											<div class="hcontainer cg10">
-												<label for="mgName">Name:</label><input type="text" id="mgName"
-													th:field="*{name}" required>
-											</div>
-											<div class="hcontainer cg10">
-												<label for="mgType">Type:</label>
-												<select id="mgType" th:field="*{type}" required>
-													<option value="">N/A</option>
-													<option th:each="gameType : ${gameTypes}" th:text="${gameType}"
-														th:value="${gameType}">
-													</option>
-												</select>
-											</div>
+						<div class="RegisterPageInnerMainContentContainerRow">
+							<div class="vcontainer">
+								<h2 style="margin:0px; font-family: SideBar_Inter, fantasy; font-size: 32px; font-weight: 600;  margin-bottom: 5px;">Register Minigames</h2>
+									<hr  style="width:100%; margin:0px; margin-bottom: 10px">
+								<h3 th:if="${rmgError}" th:text="${rmgError}" style="margin:0px; color: red;"></h3>
+								<form class="vcontainer" action="/register/addMinigame" method="post"
+									th:object="${newMinigame}">
+									<div class="vcontainer rg10">
+										<div class="hcontainer cg10" style="flex-wrap: wrap;">
+											<label for="mgName" style="font-weight: 550; font-family: SideBar_Inter, Fantasy;">Name:</label>
+											<input style="font-family: SideBar_Inter, monospace; font-weight: 500; border-radius: 3px; border: 3px solid black;" type="text" id="mgName" th:field="*{name}" required>
+											
 										</div>
-										<p><input type="submit" value="Add Minigame"></p>
-									</form>
-								</div>
-							</div>
+											<div class="hcontainer cg10" style="flex-wrap: wrap;">
+										<label for="mgType" style="font-weight: 550; font-family: SideBar_Inter, Fantasy;">Type:</label>
+											<select style="font-family: SideBar_Inter, monospace; font-weight: 500; border-radius: 3px; border: 3px solid black;" id="mgType" th:field="*{type}" required>
+												<option value="">N/A</option>
+												<option th:each="gameType : ${gameTypes}" th:text="${gameType}"
+													th:value="${gameType}">
+												</option>
+											</select>
+									</div></div>
+									<p><input class="RegisterPageSubmitButton" type="submit" value="ADD MINIGAME"></p>
+								</form>
+							</div></div>
 						</div>
 					</div>
-				</div>
-			</div>
-
-
-
-
-
-
-			<div class="InnerMainContentContainerColumn">
-				<div class="content">
-
-					<main class="hcontainer">
-
-
-					</main>
 				</div>
 			</div>
 			<div class="MainContentFooterContainer">
@@ -92,7 +77,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 </body>
 

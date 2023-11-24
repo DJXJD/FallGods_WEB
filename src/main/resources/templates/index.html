@@ -8,6 +8,8 @@
 		<link rel="preload" href="/fonts/Inter/Inter-VariableFont.ttf" as="font" crossorigin="anonymous">
 		<link rel="preload" href="/fonts/Vina-Sans/VinaSans-Regular.ttf" as="font" crossorigin="anonymous">
 		<link rel="preload" href="/fonts/Roboto/Roboto-Black.ttf" as="font" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/Bebas-Neue/BebasNeue-Regular.ttf" as="font" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/Kanit/Kanit-Black.ttf" as="font" crossorigin="anonymous">
 		<link rel="stylesheet" href="/css/main.css">
 		<link rel="stylesheet" th:if="${theme.name} != LIGHT"
 			th:href="@{/css/{theme}.css (theme = ${#strings.toLowerCase(theme)})}">
@@ -155,7 +157,7 @@
 						<a class="SideBarNavLinks" href="/FAQ" id="FAQLink">
 							<div class="IconTextHContainer">
 								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-									<use href="/icons/Player_Icon.svg#Player" />
+									<use href="/icons/Help.svg#Help" />
 								</svg>
 								<div class="SideBarLinkText">F.A.Q</div>
 							</div>
@@ -165,7 +167,7 @@
 						<a class="SideBarNavLinks" href="/AboutUs" id="AboutUsLink">
 							<div class="IconTextHContainer">
 								<svg viewBox="0 0 24 24" height="1.5em" class="SideBarIcon">
-									<use href="/icons/Player_Icon.svg#Player" />
+									<use href="/icons/Face.svg#Face" />
 								</svg>
 								<div class="SideBarLinkText">About Us</div>
 							</div>
@@ -294,8 +296,6 @@
 													guy 1</div>
 											</div>
 										</div>
-
-
 										<div class="MainContentFooterContainer">
 											<div class="MainContentFooterContainerRow">
 												<div class="MainContentFooterContent">

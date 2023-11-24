@@ -9,8 +9,24 @@
 }
 
 @font-face {
+	font-family: "BebasNeue";
+	src: url("/fonts/Bebas-Neue/BebasNeue-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
 	font-family: "Vina Sans";
 	src: url("/fonts/Vina-Sans/VinaSans-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Kanit";
+	src: url("/fonts/Kanit/Kanit-Black.ttf") format("truetype");
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
@@ -22,6 +38,12 @@
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
+}
+
+.InnerBoxTopContainerFont {
+	font-family: 'SideBar_Inter', fantasy;
+	font-weight: 600;
+	font-size: 56px;
 }
 
 [hidden] {
@@ -133,10 +155,10 @@ table table {
 	height: 100vh;
 }
 
-.SetGroupFormDiv{
-		display: flex;
+.SetGroupFormDiv {
+	display: flex;
 	flex-direction: column;
-	
+
 	justify-content: center;
 	align-items: center;
 	text-align: center;
@@ -517,14 +539,155 @@ footer {
 	align-items: center;
 }
 
+.SetGroupInnerBoxContainer {
+	box-shadow: 5px 5px rgb(0, 0, 0);
+	z-index: 101;
+	border-radius: 30px 30px;
+	border: 2.5px solid black;
+	width: 750px;
+
+}
+
+
 .InnerBoxContainer {
 	box-shadow: 5px 5px rgb(0, 0, 0);
-	backdrop-filter: blur(8px);
-	z-index: 100;
-	border-radius: 30px;
+	z-index: 101;
+	border-radius: 30px 30px;
 	border: 2.5px solid black;
+	width: max-content;
+}
+
+@media(max-width: 700px) {
+	.InnerBoxContainer {
+		width: 100%;
+
+	}
+}
+
+.InnerBoxLowerArea {
+	z-index: 100;
+	backdrop-filter: blur(8px);
 	background-color: rgba(16, 37, 60, 0.5);
-	padding-bottom: 30px;
-	padding-left: 30px;
-	padding-right: 30px;
+	border-radius: 0px 0px 27px 27px;
+	
+}
+
+.RegisterPageInnerMainContentContainer {
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	min-height: 300px;
+	z-index: 10;
+}
+
+
+.RegisterPageInnerMainContentContainerRow {
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	min-height: 200px;
+	z-index: 10;
+	padding: 25px;
+	flex-wrap: nowrap;
+	width: 400px;
+	height: 100%;
+}
+
+.ViewSessionOuterMainContentContainerRow{
+		display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	margin-bottom:20px;
+	z-index: 10;
+}
+
+.ViewSessionTableInnerMainContainerRow{
+		display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	width: 100%;
+	justify-content: center;
+	z-index: 10;
+}
+
+.ViewSessionInnerMainContentContainerRow{
+		display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	z-index: 10;
+}
+
+@media (max-width: 700px) {
+	.RegisterPageInnerMainContentContainer {
+		flex-wrap: wrap;
+	}
+
+	.RegisterPageInnerMainContentContainerRow {
+		flex-wrap: wrap;
+	}
+
+	.hcontainer {
+		flex-wrap: wrap;
+	}
+
+}
+
+.SetGroupInnerMainContentContainerColumn {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	z-index: 10;
+}
+
+
+.TrackInnerBoxContainer {
+	box-shadow: 5px 5px rgb(0, 0, 0);
+	z-index: 101;
+	border-radius: 30px 30px;
+	border: 2.5px solid black;
+	width: 1500px;
+	height: max-content;
+}
+
+.TrackInnerBoxLowerArea{
+	z-index: 100;
+	backdrop-filter: blur(8px);
+	background-color: rgba(16, 37, 60, 0.5);
+	border-radius: 0px 0px 27px 27px;
+	padding: 25px;
+}
+
+.InnerBoxTitleContainerColumn {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	background-color: rgba(29, 33, 46, 0.7);
+	border-radius: 27px 27px 0px 0px;
+	border-bottom: 2.5px solid rgb(0, 0, 0);
+	z-index: 100;
+	backdrop-filter: blur(8px);
+	height: 125px;
 }
